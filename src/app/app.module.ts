@@ -8,6 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ComponentsModule } from './components/components.module';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -18,8 +19,12 @@ import { ComponentsModule } from './components/components.module';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    IonicStorageModule.forRoot(),
-    ComponentsModule
+    IonicStorageModule.forRoot({
+      name:'bodegindb',
+      driverOrder: ['localstorage']
+    }),
+    ComponentsModule,
+    HttpClientModule
   ],
   providers: [
     StatusBar,
