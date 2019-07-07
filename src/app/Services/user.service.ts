@@ -20,7 +20,20 @@ export class UserService {
       password:p_password
     }
     let url = `${WEB_SERVICE}api/usuarios/login`
-    
+
+    return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
+      return result;
+    }));
+  }
+
+  confirmarCelular(p_numero){
+    const headers = new HttpHeaders(Header);
+    let body = {
+      celular:p_numero
+    }
+
+    let url = `${WEB_SERVICE}api/usuarios/validaCelular`
+
     return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
       return result;
     }));

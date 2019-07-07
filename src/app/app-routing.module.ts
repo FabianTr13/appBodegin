@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'home', loadChildren: './Pages/home/home.module#HomePageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'login', loadChildren: './Pages/login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './Pages/register/register.module#RegisterPageModule' },
+  { path: 'reset-pass', loadChildren: './Pages/reset-pass/reset-pass.module#ResetPassPageModule' },
 ];
 
 @NgModule({

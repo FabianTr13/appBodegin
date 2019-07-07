@@ -5,6 +5,25 @@ ion-item{
 ion-button{
     --background: #062f77;
 }
+.button-aling{
+  margin-top: 8px;
+  padding-bottom: 0px !important;
+}
+.padding-aling{
+  padding-top: 0px;
+  padding-right: 16px;
+  padding-left: 16px;
+}
 .avatar{
    margin: auto;
+}
+.label-font {
+  font-size: 0.9em;
+  position:absolute;
+  right:0;
+  border-bottom: 5px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding-right: 17px !important;
+  padding-bottom: 5px;
 }
