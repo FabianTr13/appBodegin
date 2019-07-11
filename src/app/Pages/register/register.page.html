@@ -1,40 +1,48 @@
 <app-header></app-header>
 <ion-content padding>
-  <form #form="ngForm">
+  <form #form="ngForm" (ngSubmit)="registrarUsuario(form)">
     <ion-grid>
       <ion-row justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
           <div text-center>
             <h3>Bienvenido</h3>
             <ion-avatar class="avatar">
-              <img src="assets/img/splash.png">
+              <img [src]="logo">
             </ion-avatar>
           </div>
 
           <div padding>
             <ion-item>
-              <ion-input name="nombreComercial" type="text" placeholder="Nombre Comercial" ngModel required></ion-input>
+                <ion-label position="floating">Nombre Comercial</ion-label>
+              <ion-input name="nombreComercial" type="text"  ngModel required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="nombreLegal" type="text" placeholder="Nombre Legal" ngModel required></ion-input>
+              <ion-label position="floating">Nombre legal</ion-label>
+              <ion-input name="nombreLegal" type="text"  ngModel required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="rtn" type="text"  attern="\d*" placeholder="RTN" ngModel required></ion-input>
+              <ion-label position="floating">RTN</ion-label>
+              <ion-input name="rtn" type="text"  attern="\d*"  ngModel required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="phone" maxlength="8" minlength="8" type="tel" pattern="\d*" placeholder="Telefono" ngModel required></ion-input>
+              <ion-label position="floating">Teléfono</ion-label>
+              <ion-input name="phone" maxlength="8" minlength="8" type="tel" pattern="\d*" ngModel required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="direccion" type="text" placeholder="Dirección" ngModel></ion-input>
+              <ion-label position="floating">Dirección</ion-label>
+              <ion-input name="direccion" type="text" ngModel></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="user" type="text" placeholder="Usuario" ngModel required></ion-input>
+              <ion-label position="floating">Usuario</ion-label>
+              <ion-input name="user" type="text"  ngModel required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="password" minlength="8" type="password" placeholder="Contraseña" ngModel required></ion-input>
+              <ion-label position="floating">Clave</ion-label>
+              <ion-input name="password" minlength="8" type="password"  ngModel required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="passwordRepeat" minlength="8" type="password" placeholder="Contraseña" ngModel required></ion-input>
+              <ion-label position="floating">Repetir Clave</ion-label>
+              <ion-input name="passwordRepeat" minlength="8" type="password" ngModel required></ion-input>
             </ion-item>
           </div>
           <div padding>
