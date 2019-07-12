@@ -38,4 +38,18 @@ export class UserService {
       return result;
     }));
   }
+
+  cambiarPassword(p_id_usuario, p_password){
+    const headers = new HttpHeaders(Header);
+    let body = {
+      id_usuario:p_id_usuario,
+      password:p_password
+    }
+
+    let url = `${WEB_SERVICE}api/usuarios/cambiarPassword`
+
+    return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
+      return result;
+    }));
+  }
 }

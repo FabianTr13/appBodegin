@@ -1,23 +1,36 @@
 <app-header></app-header>
 <ion-content padding>
+  <ion-text class="ion-text-center"color="dark">
+    <h3>Restablece tu contraseña</h3>
+  </ion-text>
+  <div text-center [hidden]="!usuario">
+    <ion-avatar class="avatar">
+      <img [src]="logo">
+    </ion-avatar>
+    <h3>Bienvenido: {{usuario}}</h3>
+  </div>
   <form #form="ngForm">
     <ion-grid>
       <ion-row justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
           <ion-item>
-            <ion-input name="celular" maxlength="8" minlength="8" type="tel" pattern="\d*" placeholder="Telefono" ngModel required></ion-input>
+            <ion-label position="floating">Telefono</ion-label>
+            <ion-input name="celular" maxlength="8" minlength="8" type="tel" pattern="\d*" ngModel required></ion-input>
           </ion-item>
-          <ion-item [hidden]="!celularConfirmado">
+          <ion-item *ngIf="celularConfirmado">
+            <ion-label position="floating">Codigo</ion-label>
             <ion-input name="codigo" type="text" placeholder="Codigo" ngModel required></ion-input>
           </ion-item>
-          <ion-item [hidden]="!codigoConfirmado">
-            <ion-input name="nuevaPass" type="text" placeholder="Nueva Contraseña" ngModel required></ion-input>
+          <ion-item *ngIf="codigoConfirmado">
+            <ion-label position="floating">Nueva Contraseña</ion-label>
+            <ion-input name="nuevaPass" type="password" minlength="8" placeholder="Nueva Contraseña" ngModel required></ion-input>
           </ion-item>
-          <ion-item [hidden]="!codigoConfirmado">
-            <ion-input name="nuevaPassC" type="text" placeholder="Nueva Contraseña" ngModel required></ion-input>
+          <ion-item *ngIf="codigoConfirmado">
+            <ion-label position="floating">Nueva Contraseña</ion-label>
+            <ion-input name="nuevaPassC" type="password" minlength="8" placeholder="Nueva Contraseña" ngModel required></ion-input>
           </ion-item>
           <div padding>
-            <ion-button (click)="botonAvance(form)" size="large" expand="block">{{ textBoton }}</ion-button>
+            <ion-button (click)="botonAvance(form)"  [disabled]="form.invalid" size="large" expand="block">{{ textBoton }}</ion-button>
           </div>
           </ion-col>
         </ion-row>
