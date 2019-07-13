@@ -6,4 +6,4 @@ export const Header = {
   'Access-Control-Allow-Origin': '*'
 }
 
-export const WEB_SERVICE = "http://localhost:3000/"
+export const WEB_SERVICE = "http://10.128.0.2:3000/"
