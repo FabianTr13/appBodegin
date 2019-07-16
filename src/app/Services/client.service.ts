@@ -22,7 +22,6 @@ export class ClientService {
       usuario: p_form.user
     }
     let url = `${WEB_SERVICE}api/clientes/validanuevocliente`
-    console.log('llege al servicio', body)
     return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
       return result;
     }));

@@ -17,7 +17,6 @@ export class LoginPage implements OnInit {
               private storage: Storage,
               public loadingController: LoadingController) {
                 this.storage.get('usuario').then(resp=>{
-                  console.log('usuario',resp)
                     this.usuario = resp
                     this.storage.remove('usuario').then(rr=>{})
                 })
@@ -50,7 +49,6 @@ export class LoginPage implements OnInit {
       duration: 2000,
     }).then(a => {
       a.present().then(() => {
-        console.log('presented');
         if (!this.isLoading) {
           a.dismiss().then(() => console.log('abort presenting'));
         }

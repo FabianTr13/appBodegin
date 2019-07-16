@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -21,8 +22,12 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    ComponentsModule
+    ComponentsModule,
+    RecaptchaModule.forRoot()
   ],
+  exports: [
+       RecaptchaModule
+    ],
   declarations: [RegisterPage]
 })
 export class RegisterPageModule {}

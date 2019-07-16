@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ComponentsModule } from './components/components.module';
 import { HttpClientModule } from "@angular/common/http";
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { RecaptchaModule } from 'ng-recaptcha';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    RecaptchaModule.forRoot(),
     AppRoutingModule,
     IonicStorageModule.forRoot({
       name:'bodegindb',

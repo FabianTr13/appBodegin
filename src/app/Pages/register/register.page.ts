@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { ClientService } from '../../Services/client.service';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
@@ -18,13 +18,16 @@ export class RegisterPage implements OnInit {
               private Pro_router:Router,
               private Pro_user:UserService,
               private storage: Storage,
-              public loadingController: LoadingController) { }
+              public loadingController: LoadingController,
+              private zone: NgZone) { }
 
   ngOnInit() {
   }
 
   logo = "assets/img/splash.png"
-  isLoading = false;
+  isLoading = false
+  captchaPassed: boolean = false
+  captchaResponse: string
 
   async registrarUsuario(p_form){
     if (p_form.form.value.password != p_form.form.value.passwordRepeat) {
@@ -91,7 +94,7 @@ export class RegisterPage implements OnInit {
 
   async dismiss() {
     this.isLoading = false;
-    return await this.loadingController.dismiss().then(() => console.log('dismissed'));
+    return await this.loadingController.dismiss().then(() => {});
   }
 
   async login(p_usuario, p_password){
@@ -107,5 +110,16 @@ export class RegisterPage implements OnInit {
     }, async err=>{
       await this.dismiss()
     });
+  }
+
+  captchaResolved(response: string): void {
+        this.zone.run(() => {
+            this.captchaPassed = true;
+            this.captchaResponse = response;
+        });
+  }
+
+  formValid(){
+
   }
 }

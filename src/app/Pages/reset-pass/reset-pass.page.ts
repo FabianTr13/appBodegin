@@ -1,5 +1,5 @@
 import { UserService } from '../../Services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
@@ -16,7 +16,8 @@ export class ResetPassPage implements OnInit {
               public loadingController: LoadingController,
               public toastController: ToastController,
               private Pro_router:Router,
-              private storage: Storage) { }
+              private storage: Storage,
+              private zone: NgZone) { }
 
   ngOnInit() {
   }
@@ -28,6 +29,9 @@ export class ResetPassPage implements OnInit {
   isLoading = false
   usuario = null
   logo = "assets/img/splash.png"
+  captchaPassed: boolean = false
+  captchaResponse: string
+
 
   async botonAvance(p_valor){
     await this.present()
@@ -85,7 +89,6 @@ export class ResetPassPage implements OnInit {
       duration: 5000,
     }).then(a => {
       a.present().then(() => {
-        console.log('presented');
         if (!this.isLoading) {
           a.dismiss().then(() => console.log('abort presenting'));
         }
@@ -95,7 +98,7 @@ export class ResetPassPage implements OnInit {
 
   async dismiss() {
     this.isLoading = false;
-    return await this.loadingController.dismiss().then(() => console.log('dismissed'));
+    return await this.loadingController.dismiss().then(() => {});
   }
 
   async showToast(p_mensaje, p_duration=2000){
@@ -119,5 +122,12 @@ export class ResetPassPage implements OnInit {
     }, async err=>{
       await this.dismiss()
     });
+  }
+
+  captchaResolved(response: string): void {
+        this.zone.run(() => {
+            this.captchaPassed = true;
+            this.captchaResponse = response;
+        });
   }
 }
