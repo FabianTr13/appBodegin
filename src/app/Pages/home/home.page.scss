@@ -1,0 +1,21 @@
+page-home {
+    ion-icon {
+        font-size: 5em;
+    }
+}
+
+ion-grid{
+  ion-row{
+    ion-col{
+      ion-card{
+        background-color: #3880ff;
+        box-shadow: none;
+        color: #FFFFFF;
+        border-radius: 0px;
+        ion-img{
+          height: 64px;
+        }
+      }
+    }
+  }
+}
