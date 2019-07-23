@@ -1,0 +1,31 @@
+.titulo{
+ font-size: 1.5em !important;
+}
+
+ion-menu{
+  ion-header{
+    ion-toolbar{
+      div{
+        ion-item {
+            --min-height:20px;
+            // margin-left: 48px;
+            border-top: 10px !important;
+            border-bottom: 10px !important;
+            ion-img{
+              width: 7px;
+              height: 7px;
+            }
+        }
+      }
+    }
+  }
+  ion-content{
+    ion-list{
+      ion-item{
+        ion-img{
+          margin-right: 10px !important;
+        }
+      }
+    }
+  }
+}

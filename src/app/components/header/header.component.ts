@@ -10,7 +10,6 @@ export class HeaderComponent implements OnInit {
   constructor() {}
 
   @Input() titulo: String = "";
-  @Input() isMenu: boolean = false;
 
   ngOnInit() {}
 

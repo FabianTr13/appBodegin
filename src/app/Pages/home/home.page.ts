@@ -10,6 +10,8 @@ export class HomePage implements OnInit {
 
   constructor(private Pro_router:Router) { }
 
+  sucursal="Barrio Medina"
+
   ngOnInit() {
   }
 
