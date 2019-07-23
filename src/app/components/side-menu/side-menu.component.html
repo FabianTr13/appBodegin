@@ -18,51 +18,51 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <ion-item>
+      <ion-item (click)="navegar('/home')">
         <ion-img src="/assets/side/home.png"></ion-img>
           Inicio
       </ion-item>
-      <ion-item lines="none">
+      <ion-item lines="none" (click)="navegar('/nuevo')">
         <ion-img src="/assets/side/plus.png"></ion-img>
           Nuevo Producto
       </ion-item>
-      <ion-item>
+      <ion-item (click)="navegar('/entregas')">
         <ion-img src="/assets/side/plus.png"></ion-img>
           Entrega
       </ion-item>
-      <ion-item lines="none">
+      <ion-item lines="none" (click)="navegar('/inventarios')">
         <ion-img src="/assets/side/inventory.png"></ion-img>
           Inventario
       </ion-item>
-      <ion-item lines="none">
+      <ion-item lines="none" (click)="navegar('/estadisticas')">
         <ion-img src="/assets/side/chart.png"></ion-img>
           Estadistica
       </ion-item>
-      <ion-item>
+      <ion-item (click)="navegar('/reportes')">
         <ion-img src="/assets/side/bill.png"></ion-img>
           Reportes
       </ion-item>
-      <ion-item lines="none">
+      <ion-item lines="none" (click)="navegar('/categorias')">
         <ion-img src="/assets/side/bill.png"></ion-img>
           Categorias
       </ion-item>
-      <ion-item lines="none">
+      <ion-item lines="none" (click)="navegar('/servicios')">
         <ion-img src="/assets/side/servicio.png"></ion-img>
           Servicios
       </ion-item>
-      <ion-item>
+      <ion-item (click)="navegar('/sucursales')">
         <ion-img src="/assets/side/build.png"></ion-img>
           Sucursales
       </ion-item>
-      <ion-item lines="none">
+      <ion-item lines="none" (click)="navegar('/pagos')">
         <ion-img src="/assets/side/credit.png"></ion-img>
           Pagos
       </ion-item>
-      <ion-item>
+      <ion-item (click)="navegar('/configuration')">
         <ion-img src="/assets/side/config.png"></ion-img>
           Configuración
       </ion-item>
-      <ion-item>
+      <ion-item (click)="navegar('/login')">
         <ion-img src="/assets/side/logout.png"></ion-img>
           Salir
       </ion-item>
