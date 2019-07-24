@@ -6,4 +6,5 @@ export const Header = {
   'Access-Control-Allow-Origin': '*'
 }
 
-export const WEB_SERVICE = "http://192.168.0.15:3000/"
+export const WEB_SERVICE = "http://192.168.0.15:3000/";
+export const isApp = true;

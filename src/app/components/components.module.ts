@@ -1,3 +1,4 @@
+import { HeaderInComponent } from './header-in/header-in.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { HeaderComponent } from './header/header.component';
 import { NgModule } from '@angular/core';
@@ -7,6 +8,7 @@ import { IonicModule } from "@ionic/angular";
 @NgModule({
   declarations: [
     HeaderComponent,
+    HeaderInComponent,
     SideMenuComponent
   ],
   imports: [
@@ -15,6 +17,7 @@ import { IonicModule } from "@ionic/angular";
   ],
   exports:[
     HeaderComponent,
+    HeaderInComponent,
     SideMenuComponent
   ]
 })

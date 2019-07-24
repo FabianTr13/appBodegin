@@ -1,0 +1,14 @@
+ion-header{
+  ion-toolbar{
+    ion-item{
+      ion-img{
+        margin-right: 10%;
+        width: 10px;
+        height: 10px;
+      }
+      ion-label{
+        font-size: 1.2em !important;
+      }
+    }
+  }
+}

@@ -12,6 +12,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { environment } from '../environments/environment';
+import { Camera } from '@ionic-native/camera/ngx';
+import { ActionSheetController } from '@ionic/angular';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { environment } from '../environments/environment';
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
+    ActionSheetController,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

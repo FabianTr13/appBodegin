@@ -1,1 +1,43 @@
-<app-header titulo="Nuevo Producto"></app-header>
+<app-header-in titulo="Nuevo Producto"></app-header-in>
+<ion-content>
+  <div text-center>
+    <img class="image" (click)="presentActionSheet()" [src]="foto[0]" alt="Agregar imagen">
+  </div>
+  <form #form="ngForm" (ngSubmit)="registrarUsuario(form)">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div padding>
+            <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+              <ion-input name="nombre" type="text"  ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Codigo de Producto</ion-label>
+              <ion-input name="codigo" type="text"  ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Descripcion (Opcional)</ion-label>
+              <ion-input name="descripcion" type="text" ngModel></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Cantidad</ion-label>
+              <ion-input name="cantidad" type="tel" pattern="\d*" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Categoria</ion-label>
+              <ion-input name="categoria" type="text" ngModel></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Costo</ion-label>
+              <ion-input name="costo" type="tel" pattern="\d*" ngModel required></ion-input>
+            </ion-item>
+          </div>
+          <div padding>
+            <ion-button shape="round" size="large" type="submit" disabled="{{form.invalid}}" expand="block">Guardar</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
