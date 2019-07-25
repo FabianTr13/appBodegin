@@ -14,6 +14,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { environment } from '../environments/environment';
 import { Camera } from '@ionic-native/camera/ngx';
 import { ActionSheetController } from '@ionic/angular';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ActionSheetController } from '@ionic/angular';
     StatusBar,
     SplashScreen,
     Camera,
+    BarcodeScanner,
     ActionSheetController,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

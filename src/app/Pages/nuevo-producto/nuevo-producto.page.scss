@@ -2,10 +2,35 @@ ion-item{
     --color: #6e6368;
 }
 
+ion-content{
+  form{
+    ion-grid{
+      ion-row{
+        ion-item{
+          ion-label{
+            --position:floating;
+          }
+        }
+      }
+    }
+  }
+}
+
 .image{
   width: 20%;
   height: 200px;
 }
+
+.buttonScanner{
+    height: 27px;
+    width: 27px;
+    margin: auto;
+}
+
+.minMax{
+  padding: 5px;
+}
+
 @media (max-width: 2000px) {
   .image{
     width: 20%;
