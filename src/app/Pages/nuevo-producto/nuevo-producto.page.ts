@@ -95,7 +95,7 @@ export class NuevoProductoPage implements OnInit {
         {
           text: 'Elegir',
           handler: () => {
-            console.log('Share clicked');
+            this.loadImage();
           }
         },
         {
