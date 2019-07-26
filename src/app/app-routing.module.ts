@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'categorias', loadChildren: './Pages/categorias/categorias.module#CategoriasPageModule' },
   { path: 'servicios', loadChildren: './Pages/servicios/servicios.module#ServiciosPageModule' },
   { path: 'producto-detalle', loadChildren: './Pages/producto-detalle/producto-detalle.module#ProductoDetallePageModule' },
+  { path: 'servicio-config', loadChildren: './Pages/servicio-config/servicio-config.module#ServicioConfigPageModule' },
 ];
 
 @NgModule({
