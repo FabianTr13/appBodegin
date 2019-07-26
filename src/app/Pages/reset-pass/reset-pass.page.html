@@ -31,7 +31,10 @@
           </ion-item>
           <div padding>
             <re-captcha [hidden]="captchaPassed" (resolved)="captchaResolved($event)" siteKey="6Lf1160UAAAAAAJEp0oDnFN1jnQURXzUUYyzmPcG"></re-captcha>
-            <ion-button (click)="botonAvance(form)"  disabled="{{form.invalid  ||  !this.captchaPassed}}" size="large" expand="block">{{ textBoton }}</ion-button>
+            <ion-button (click)="botonAvance(form)"
+                        disabled="{{form.invalid  ||  !this.captchaPassed}}"
+                        size="large"
+                        expand="block"><ion-ripple-effect></ion-ripple-effect>{{ textBoton }}</ion-button>
           </div>
           </ion-col>
         </ion-row>
