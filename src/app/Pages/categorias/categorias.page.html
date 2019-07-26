@@ -1,9 +1,29 @@
 <app-header-in titulo="Categoría"></app-header-in>
 <ion-content>
+  <div class="busqueda">
+    <form>
+      <ion-grid>
+        <ion-row color="primary" justify-content-center>
+          <ion-col>
+            <div>
+              <ion-item>
+                <ion-icon slot="end"
+                          name="search"
+                          color="#f4f4f4">
+                </ion-icon>
+                <ion-input type="text"
+                           placeholder="Buscar"
+                           clearInput>
+                </ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
   <ion-button shape="round"
               size="large"
-              type="submit"
-              [disabled]="form.invalid"
               expand="block">Nueva Categoria</ion-button>
   <ion-list>
   <ion-item-sliding>
