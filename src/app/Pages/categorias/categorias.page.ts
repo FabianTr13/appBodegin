@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { isApp } from '../../Config/configuration';
 
 @Component({
   selector: 'app-categorias',

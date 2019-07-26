@@ -1,1 +1,19 @@
 <app-header-in titulo="Categoría"></app-header-in>
+<ion-content>
+  <ion-button shape="round"
+              size="large"
+              type="submit"
+              [disabled]="form.invalid"
+              expand="block">Nueva Categoria</ion-button>
+  <ion-list>
+  <ion-item-sliding>
+    <ion-item>
+      <ion-label>Item</ion-label>
+    </ion-item>
+    <ion-item-options side="end">
+      <ion-item-option (click)="unread(item)">Editar</ion-item-option>
+      <ion-item-option (click)="unread(item)">Eliminar</ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+</ion-content>

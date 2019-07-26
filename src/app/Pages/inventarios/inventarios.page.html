@@ -1,1 +1,45 @@
 <app-header-in titulo="Inventario"></app-header-in>
+<ion-content>
+  <!-- <ion-searchbar showCancelButton="focus" cancelButtonText="Custom Cancel"></ion-searchbar> -->
+  <div class="busqueda">
+    <form>
+      <ion-grid>
+        <ion-row color="primary" justify-content-center>
+          <ion-col>
+            <div>
+              <ion-item>
+                <ion-icon slot="end"
+                          name="search"
+                          color="#f4f4f4">
+                </ion-icon>
+                <ion-input type="text"
+                           placeholder="Buscar"
+                           clearInput>
+                </ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
+  <div padding>
+    <ion-list>
+        <ion-list-header>
+          Nombre de categoria
+        </ion-list-header>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="assets/img/camera.png">
+          </ion-avatar>
+          <ion-label>
+            <h2 class="nombreProducto">Nombre del producto</h2>
+            <h4>Descripcion del producto</h4>
+          </ion-label>
+          <ion-label text-end slot="end">
+            1
+          </ion-label>
+        </ion-item>
+      </ion-list>
+  </div>
+</ion-content>

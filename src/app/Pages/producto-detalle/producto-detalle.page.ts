@@ -5,13 +5,12 @@ import { isApp } from '../../Config/configuration';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 declare var window:any;
-
 @Component({
-  selector: 'app-nuevo-producto',
-  templateUrl: './nuevo-producto.page.html',
-  styleUrls: ['./nuevo-producto.page.scss'],
+  selector: 'app-producto-detalle',
+  templateUrl: './producto-detalle.page.html',
+  styleUrls: ['./producto-detalle.page.scss'],
 })
-export class NuevoProductoPage implements OnInit {
+export class ProductoDetallePage implements OnInit {
   @ViewChild('fileInput') el:ElementRef;
   Pro_producto = {
     foto: [
@@ -137,8 +136,4 @@ export class NuevoProductoPage implements OnInit {
       this.Pro_producto.foto.push(reader.result.toString());
     }
   }
-  //Validador de codigo de barras
-  //Funcion de guardado
-  //instalar toast
-  //combobox de categorias
 }

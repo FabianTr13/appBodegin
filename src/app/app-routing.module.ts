@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'reportes', loadChildren: './Pages/reportes/reportes.module#ReportesPageModule' },
   { path: 'categorias', loadChildren: './Pages/categorias/categorias.module#CategoriasPageModule' },
   { path: 'servicios', loadChildren: './Pages/servicios/servicios.module#ServiciosPageModule' },
+  { path: 'producto-detalle', loadChildren: './Pages/producto-detalle/producto-detalle.module#ProductoDetallePageModule' },
 ];
 
 @NgModule({
