@@ -3,6 +3,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ActionSheetController } from '@ionic/angular';
 import { isApp } from '../../Config/configuration';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { PickerController } from '@ionic/angular';
+import { PickerOptions, PickerButton } from '@ionic/core';
 
 declare var window:any;
 
@@ -25,10 +27,12 @@ export class NuevoProductoPage implements OnInit {
     categoria: null,
     costo: null
   }
+  selected = ['','',''];
 
   constructor(private camera: Camera,
               public actionSheetController: ActionSheetController,
-              private barcodeScanner: BarcodeScanner) { }
+              private barcodeScanner: BarcodeScanner,
+              private pickerCtrl: PickerController) { }
 
   ngOnInit() {
   }
@@ -137,8 +141,62 @@ export class NuevoProductoPage implements OnInit {
       this.Pro_producto.foto.push(reader.result.toString());
     }
   }
+
+  async showAdvancedPicker() {
+    let opts: PickerOptions = {
+      cssClass: 'academy-picker',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Done',
+          cssClass: 'special-done'
+        }
+      ],
+      columns: [
+        {
+          name: 'game',
+          options: [
+            { text: 'Dota', value: 'dota' },
+            { text: 'WoW', value: 'wow' },
+            { text: 'CS', value: 'cs' }
+          ]
+        },
+        {
+          name: 'category',
+          options: [
+            { text: 'MOBA', value: 'MOBA' },
+            { text: 'MMORPG', value: 'MMORPG' }
+          ]
+        },
+        {
+          name: 'rating',
+          options: [
+            { text: 'Good', value: 1 },
+            { text: 'Very Good', value: 2 },
+            { text: 'Excellent', value: 3 }
+          ]
+        }
+      ]
+    };
+    let picker = await this.pickerCtrl.create(opts);
+    picker.present();
+    picker.onDidDismiss().then(async data => {
+      let game = await picker.getColumn('game');
+      let cat = await picker.getColumn('category');
+      let rating = await picker.getColumn('rating');
+      this.selected = [
+        game.options[game.selectedIndex].text,
+        cat.options[cat.selectedIndex].text,
+        rating.options[rating.selectedIndex].text
+      ];
+    });
+  }
   //Validador de codigo de barras
   //Funcion de guardado
   //instalar toast
-  //combobox de categorias
+  //combobox de categorias hacerlo picker
+  //sucursal con acronimo
 }

@@ -39,52 +39,6 @@
             </ion-input>
           </ion-item>
           <ion-item>
-            <ion-label position="floating">Cantidad</ion-label>
-            <ion-input name="cantidad"
-                       type="tel"
-                       pattern="\d*"
-                       [(ngModel)]="Pro_producto.cantidad"
-                       required>
-             </ion-input>
-            <div slot="end">
-              <img text-center (click)="sumLess(-1)"
-                   class="minMax"
-                   src="assets/nuevo/minus.png"
-                   alt="restar">
-              <img text-center (click)="sumLess(1)"
-                    class="minMax"
-                    src="assets/nuevo/plus.png"
-                    alt="sumar">
-            </div>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Minimo en inventario</ion-label>
-            <ion-input name="minimo"
-                       type="tel"
-                       pattern="\d*"
-                       [(ngModel)]="Pro_producto.minimo"
-                       required>
-             </ion-input>
-            <div slot="end">
-              <img text-center (click)="sumLessMin(-1)"
-                   class="minMax"
-                   src="assets/nuevo/minus.png"
-                   alt="restar">
-              <img text-center (click)="sumLessMin(1)"
-                    class="minMax"
-                    src="assets/nuevo/plus.png"
-                    alt="sumar">
-            </div>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Categoria</ion-label>
-            <ion-input name="categoria"
-                       type="text"
-                       [(ngModel)]="Pro_producto.categoria"
-                       required>
-             </ion-input>
-          </ion-item>
-          <ion-item>
             <ion-label position="floating">Categoria</ion-label>
             <ion-select value="brown" okText="Aceptar" cancelText="Cancelar">
               <ion-select-option value="brown">Brown</ion-select-option>
@@ -100,6 +54,22 @@
                        pattern="\d*"
                        [(ngModel)]="Pro_producto.costo">
             </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-grid>
+              <ion-row text-center>
+                <ion-col> sucursal
+                </ion-col>
+                <ion-col> cantidad
+                </ion-col>
+                <ion-col>
+                    minismo
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+          <ion-item>
+            <ion-badge (click)="showAdvancedPicker()" color="primary">   Agregar   </ion-badge>
           </ion-item>
           <div padding>
             <ion-button shape="round"
