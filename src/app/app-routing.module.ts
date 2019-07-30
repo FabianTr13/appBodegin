@@ -4,11 +4,11 @@ import { AuthGuard } from './Guard/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'nuevo', pathMatch: 'full' },
-  // { path: 'home', loadChildren: './Pages/home/home.module#HomePageModule' },
-  { path: 'home', loadChildren: './Pages/home/home.module#HomePageModule', canActivate :[AuthGuard], data: {token: []} },
+  { path: 'home', loadChildren: './Pages/home/home.module#HomePageModule' },
+  // { path: 'home', loadChildren: './Pages/home/home.module#HomePageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'login', loadChildren: './Pages/login/login.module#LoginPageModule' },
-  { path: 'register', loadChildren: './Pages/register/register.module#RegisterPageModule', canActivate :[AuthGuard], data: {token: []} },
-  { path: 'reset-pass', loadChildren: './Pages/reset-pass/reset-pass.module#ResetPassPageModule', canActivate :[AuthGuard], data: {token: []} },
+  { path: 'register', loadChildren: './Pages/register/register.module#RegisterPageModule' },
+  { path: 'reset-pass', loadChildren: './Pages/reset-pass/reset-pass.module#ResetPassPageModule'},
   // { path: 'nuevo', loadChildren: './Pages/nuevo-producto/nuevo-producto.module#NuevoProductoPageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'nuevo', loadChildren: './Pages/nuevo-producto/nuevo-producto.module#NuevoProductoPageModule'},
   { path: 'entregas', loadChildren: './Pages/entregas/entregas.module#EntregasPageModule', canActivate :[AuthGuard], data: {token: []} },

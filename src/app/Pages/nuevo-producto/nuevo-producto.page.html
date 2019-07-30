@@ -7,7 +7,7 @@
          alt="Agregar imagen">
   </div>
   <input #fileInput hidden (change)="fileUpload()" type="file" name="pic" accept="image/*">
-  <form #form="ngForm" (ngSubmit)="guardarProducto()">
+  <form #form="ngForm" (ngSubmit)="guardar()">
     <ion-grid>
       <ion-row justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
@@ -58,13 +58,14 @@
           <ion-item>
             <ion-grid>
               <ion-row text-center>
-                <ion-col> sucursal
-                </ion-col>
-                <ion-col> cantidad
-                </ion-col>
-                <ion-col>
-                    minismo
-                </ion-col>
+                <ion-col> Sucursal </ion-col>
+                <ion-col> Cantidad </ion-col>
+                <ion-col> Mínimo </ion-col>
+              </ion-row>
+              <ion-row *ngFor="let item of this.Pro_producto.sucursales" text-center>
+                <ion-col> {{item.sucursal}} </ion-col>
+                <ion-col> {{item.cantidad}} </ion-col>
+                <ion-col> {{item.minimo}} </ion-col>
               </ion-row>
             </ion-grid>
           </ion-item>

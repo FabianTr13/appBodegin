@@ -15,6 +15,7 @@ import { environment } from '../environments/environment';
 import { Camera } from '@ionic-native/camera/ngx';
 import { ActionSheetController } from '@ionic/angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { Base64 } from '@ionic-native/base64/ngx';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
     SplashScreen,
     Camera,
     BarcodeScanner,
+    Base64,
     ActionSheetController,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

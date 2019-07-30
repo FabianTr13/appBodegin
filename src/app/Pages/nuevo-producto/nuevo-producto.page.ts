@@ -5,6 +5,8 @@ import { isApp } from '../../Config/configuration';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { PickerController } from '@ionic/angular';
 import { PickerOptions, PickerButton } from '@ionic/core';
+import { ProductosService } from '../../Services/productos.service';
+import { Base64 } from '@ionic-native/base64/ngx';
 
 declare var window:any;
 
@@ -22,17 +24,24 @@ export class NuevoProductoPage implements OnInit {
     nombre:null,
     codigo:null,
     descripcion: null,
-    cantidad: 1,
-    minimo: 1,
     categoria: null,
-    costo: null
+    costo: null,
+    sucursales: [
+      {
+        id_sucursal:"1",
+        sucursal: "LOCAL",
+        cantidad: "1",
+        minimo:"1"
+      }
+    ]
   }
-  selected = ['','',''];
 
   constructor(private camera: Camera,
               public actionSheetController: ActionSheetController,
               private barcodeScanner: BarcodeScanner,
-              private pickerCtrl: PickerController) { }
+              private pickerCtrl: PickerController,
+              private Pro_producto_service:ProductosService,
+              private base64: Base64) { }
 
   ngOnInit() {
   }
@@ -40,7 +49,6 @@ export class NuevoProductoPage implements OnInit {
   barCodeScanner(){
     this.barcodeScanner.scan().then(barcodeData => {
       this.Pro_producto.codigo = barcodeData.text
-      console.log(barcodeData)
     }).catch(err => {
         console.log('Error', err);
     });
@@ -79,6 +87,7 @@ export class NuevoProductoPage implements OnInit {
      const img = window.Ionic.WebView.convertFileSrc(imageData);
      this.Pro_producto.foto=[]
      this.Pro_producto.foto.push(img)
+     console.log(this.Pro_producto.foto)
     }, (err) => {
      // Handle error
     });
@@ -112,25 +121,7 @@ export class NuevoProductoPage implements OnInit {
     }else{
       let event = new MouseEvent('click', {bubbles: false});
       await this.el.nativeElement.dispatchEvent(event);
-      // console.log((this.fileInput.nativeElement.files.FileList[0]))
     }
-  }
-
-  sumLess(p_cantidad:number){
-    this.Pro_producto.cantidad = Number(this.Pro_producto.cantidad) + p_cantidad;
-    if (Number(this.Pro_producto.cantidad < 1)) {
-      this.Pro_producto.cantidad = 1;
-    }
-  }
-  sumLessMin(p_cantidad:number){
-    this.Pro_producto.minimo = Number(this.Pro_producto.minimo) + p_cantidad;
-    if (Number(this.Pro_producto.minimo < 1)) {
-      this.Pro_producto.minimo = 1;
-    }
-  }
-
-  guardarProducto(){
-
   }
 
   fileUpload() {
@@ -147,36 +138,36 @@ export class NuevoProductoPage implements OnInit {
       cssClass: 'academy-picker',
       buttons: [
         {
-          text: 'Cancel',
+          text: 'Cancelar',
           role: 'cancel'
         },
         {
-          text: 'Done',
+          text: 'Agregar',
           cssClass: 'special-done'
         }
       ],
       columns: [
         {
-          name: 'game',
+          name: 'id_sucursal',
           options: [
-            { text: 'Dota', value: 'dota' },
-            { text: 'WoW', value: 'wow' },
-            { text: 'CS', value: 'cs' }
+            { text: 'SPS', value: 1 },
+            { text: 'TEG', value: 2 },
+            { text: 'CEB', value: 3 }
           ]
         },
         {
-          name: 'category',
+          name: 'cantidad',
           options: [
-            { text: 'MOBA', value: 'MOBA' },
-            { text: 'MMORPG', value: 'MMORPG' }
+            { text: '1', value: 1 },
+            { text: '2', value: 2 }
           ]
         },
         {
-          name: 'rating',
+          name: 'minimo',
           options: [
-            { text: 'Good', value: 1 },
-            { text: 'Very Good', value: 2 },
-            { text: 'Excellent', value: 3 }
+            { text: '0', value: 0 },
+            { text: '1', value: 1 },
+            { text: '2', value: 2 }
           ]
         }
       ]
@@ -184,15 +175,33 @@ export class NuevoProductoPage implements OnInit {
     let picker = await this.pickerCtrl.create(opts);
     picker.present();
     picker.onDidDismiss().then(async data => {
-      let game = await picker.getColumn('game');
-      let cat = await picker.getColumn('category');
-      let rating = await picker.getColumn('rating');
-      this.selected = [
-        game.options[game.selectedIndex].text,
-        cat.options[cat.selectedIndex].text,
-        rating.options[rating.selectedIndex].text
-      ];
+      let id_sucursal = await picker.getColumn('id_sucursal');
+      let cantidad = await picker.getColumn('cantidad');
+      let minimo = await picker.getColumn('minimo');
+
+      this.Pro_producto.sucursales.push(
+        {
+        id_sucursal: id_sucursal.options[id_sucursal.selectedIndex].value,
+        sucursal: id_sucursal.options[id_sucursal.selectedIndex].text,
+        cantidad: cantidad.options[cantidad.selectedIndex].value,
+        minimo: minimo.options[minimo.selectedIndex].value
+      });
     });
+  }
+
+  async guardar(){
+      let filePath: string = this.Pro_producto.foto[0];
+      this.base64.encodeFile(filePath).then((base64File: string) => {
+        console.log(base64File);
+      }, (err) => {
+        console.log(err);
+      });
+
+    // this.Pro_producto_service.nuevoProducto(this.Pro_producto).subscribe(data=>{
+    //   console.log('Termine', data)
+    // }, err =>{
+    //   console.log(err)
+    // })
   }
   //Validador de codigo de barras
   //Funcion de guardado

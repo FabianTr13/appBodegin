@@ -23,6 +23,7 @@
     "@angular/router": "^7.2.2",
     "@angular/service-worker": "^7.2.2",
     "@ionic-native/barcode-scanner": "^5.10.0",
+    "@ionic-native/base64": "^5.10.0",
     "@ionic-native/camera": "^5.10.0",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/file-chooser": "^4.20.0",
@@ -32,6 +33,7 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^4.1.0",
     "@ionic/storage": "^2.2.0",
+    "com-badrit-base64": "^0.2.0",
     "cordova-android": "^8.0.0",
     "cordova-plugin-camera": "^4.1.0",
     "cordova-plugin-filechooser": "^1.2.0",
@@ -98,7 +100,8 @@
       },
       "phonegap-plugin-barcodescanner": {
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
-      }
+      },
+      "com-badrit-base64": {}
     },
     "platforms": [
       "android"
