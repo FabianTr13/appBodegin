@@ -2,21 +2,24 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders }  from "@angular/common/http";
 import { Header, WEB_SERVICE } from '../Config/configuration';
 import { map } from 'rxjs/operators';
+import { Storage } from '@ionic/storage';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriasService {
 
-  constructor(private Pro_http:HttpClient) { }
+  constructor(private Pro_http:HttpClient,
+              private storage: Storage) { }
 
-  obtenerCategorias(){
+  obtenerCategorias(p_token){
     //Preparacion de header
     const headers = new HttpHeaders(Header);
 
     //Preparacion de body
     let body = {
-      token: "1"
+      token: p_token
     };
     let url = `${WEB_SERVICE}api/categorias/categoriasList`
 
