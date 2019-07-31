@@ -28,35 +28,30 @@ export class CategoriasService {
     }));
   }
 
-  insertCategoria(){
+  async obtenerCategoriasAsync(){
     //Preparacion de header
     const headers = new HttpHeaders(Header);
 
     //Preparacion de body
     let body = {
-      token: "1",
-      nombre: ""
+      token:  await this.storage.get('token'), 
     };
-    let url = `${WEB_SERVICE}api/categorias/insertCategoria`
+    let url = `${WEB_SERVICE}api/categorias/categoriasList`
 
-    return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
-      return result;
-    }));
+    return this.Pro_http.post(url, body, { headers }).toPromise()
   }
 
-  UpdateDeleteCategoria(p_accion){
+  async InsertUpdateDeleteCategoria(p_id_categoria, p_descripcion, p_accion){
     const headers = new HttpHeaders(Header);
-
     //Preparacion de body
     let body = {
-      token: "1",
-      id_categoria: 1,
+      token: await this.storage.get('token'),
+      id_categoria: p_id_categoria,
+      nombre: p_descripcion,
       accion: p_accion
     };
-    let url = `${WEB_SERVICE}api/categorias/updateDeleteCategoria`
+    let url = `${WEB_SERVICE}api/categorias/insertUpdateDeleteCategoria`
 
-    return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
-      return result;
-    }));
+    return await this.Pro_http.post(url, body, { headers }).toPromise();
   }
 }

@@ -42,6 +42,7 @@
     "cordova-sqlite-storage": "^3.2.1",
     "core-js": "^2.5.4",
     "ionic-angular": "^3.9.8",
+    "lodash": "^4.17.15",
     "ng-recaptcha": "^4.3.0",
     "phonegap-plugin-barcodescanner": "^8.1.0",
     "rxjs": "~6.5.1",

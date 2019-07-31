@@ -3,21 +3,20 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './Guard/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'categorias', pathMatch: 'full' },
+  { path: '', redirectTo: 'servicios', pathMatch: 'full' },
   // { path: 'home', loadChildren: './Pages/home/home.module#HomePageModule' },
   { path: 'home', loadChildren: './Pages/home/home.module#HomePageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'login', loadChildren: './Pages/login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './Pages/register/register.module#RegisterPageModule' },
   { path: 'reset-pass', loadChildren: './Pages/reset-pass/reset-pass.module#ResetPassPageModule'},
-  // { path: 'nuevo', loadChildren: './Pages/nuevo-producto/nuevo-producto.module#NuevoProductoPageModule', canActivate :[AuthGuard], data: {token: []} },
-  { path: 'nuevo', loadChildren: './Pages/nuevo-producto/nuevo-producto.module#NuevoProductoPageModule'},
+  { path: 'nuevo', loadChildren: './Pages/nuevo-producto/nuevo-producto.module#NuevoProductoPageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'entregas', loadChildren: './Pages/entregas/entregas.module#EntregasPageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'inventarios', loadChildren: './Pages/inventarios/inventarios.module#InventariosPageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'estadisticas', loadChildren: './Pages/estadisticas/estadisticas.module#EstadisticasPageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'reportes', loadChildren: './Pages/reportes/reportes.module#ReportesPageModule', canActivate :[AuthGuard], data: {token: []} },
-  // { path: 'categorias', loadChildren: './Pages/categorias/categorias.module#CategoriasPageModule', canActivate :[AuthGuard], data: {token: []} },
-  { path: 'categorias', loadChildren: './Pages/categorias/categorias.module#CategoriasPageModule'},
-  { path: 'servicios', loadChildren: './Pages/servicios/servicios.module#ServiciosPageModule', canActivate :[AuthGuard], data: {token: []} },
+  { path: 'categorias', loadChildren: './Pages/categorias/categorias.module#CategoriasPageModule', canActivate :[AuthGuard], data: {token: []} },
+  // { path: 'servicios', loadChildren: './Pages/servicios/servicios.module#ServiciosPageModule', canActivate :[AuthGuard], data: {token: []} },
+  { path: 'servicios', loadChildren: './Pages/servicios/servicios.module#ServiciosPageModule' },
   { path: 'producto-detalle', loadChildren: './Pages/producto-detalle/producto-detalle.module#ProductoDetallePageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'servicio-config', loadChildren: './Pages/servicio-config/servicio-config.module#ServicioConfigPageModule', canActivate :[AuthGuard], data: {token: []} },
 ];
