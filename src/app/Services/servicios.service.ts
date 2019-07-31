@@ -39,6 +39,21 @@ export class ServiciosService {
     return await this.Pro_http.post(url, body, { headers }).toPromise()
   }
 
+   servicioDetalle(p_id_servicio){
+    //Preparacion de header
+    const headers = new HttpHeaders(Header);
+    //Preparacion de body
+    let body = {
+      id_servicio: p_id_servicio
+    };
+
+    let url = `${WEB_SERVICE}api/servicios/serviciosDetalle`
+
+    return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
+      return result;
+    }));
+  }
+
   insertServicio(){
     //Preparacion de header
     const headers = new HttpHeaders(Header);

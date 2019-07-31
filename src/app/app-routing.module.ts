@@ -18,7 +18,8 @@ const routes: Routes = [
   // { path: 'servicios', loadChildren: './Pages/servicios/servicios.module#ServiciosPageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'servicios', loadChildren: './Pages/servicios/servicios.module#ServiciosPageModule' },
   { path: 'producto-detalle', loadChildren: './Pages/producto-detalle/producto-detalle.module#ProductoDetallePageModule', canActivate :[AuthGuard], data: {token: []} },
-  { path: 'servicio-config', loadChildren: './Pages/servicio-config/servicio-config.module#ServicioConfigPageModule', canActivate :[AuthGuard], data: {token: []} },
+  // { path: 'servicio-config', loadChildren: './Pages/servicio-config/servicio-config.module#ServicioConfigPageModule', canActivate :[AuthGuard], data: {token: []} },
+  { path: 'servicio-config/:id_servicio', loadChildren: './Pages/servicio-config/servicio-config.module#ServicioConfigPageModule' },
 ];
 
 @NgModule({

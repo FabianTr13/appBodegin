@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { ServiciosService } from '../../Services/servicios.service';
 import { AlertController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class ServiciosPage implements OnInit {
   constructor(private Pro_servicios:ServiciosService,
               private storage:Storage,
               public alertController: AlertController,
-              public loadingController: LoadingController) { }
+              public loadingController: LoadingController,
+              private router: Router) { }
 
   ngOnInit() {
     this.storage.get('token').then(token=>{
@@ -45,10 +47,10 @@ export class ServiciosPage implements OnInit {
  }
 
  editarServicio(p_id_servicio){
-  console.log(p_id_servicio)
+  this.router.navigate(['/servicio-config', p_id_servicio])
  }
 
  nuevoServicio(){
-   console.log('nuevo')
+   this.router.navigate(['/servicio-config', 0])
  }
 }
