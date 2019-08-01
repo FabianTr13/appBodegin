@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -14,64 +14,30 @@ import { ProductosServiciosPage } from '../../Modals/productos-servicios/product
   styleUrls: ['./servicio-config.page.scss'],
 })
 export class ServicioConfigPage implements OnInit {
+
+  productos=[];
+
   servicio = {
     encabezado:{
       descripcion:null,
       id_servicio:null
-    },
-    productos:[],
-    productosList:[]
+    }
   }
+
+  productosList:[]
 
   constructor(private Pro_servicios:ServiciosService,
               route: ActivatedRoute,
-              private pickerCtrl: PickerController,
               public modalController: ModalController) {
-    let id_servicio = route.snapshot.params["id_servicio"];
-    this.Pro_servicios.servicioDetalle(id_servicio).subscribe(data=>{
+    this.servicio.encabezado.id_servicio = route.snapshot.params["id_servicio"];
+    this.Pro_servicios.servicioDetalle(this.servicio.encabezado.id_servicio).subscribe(data=>{
       this.servicio = data;
-      console.log(this.servicio)
+      this.productos = []
+      this.productos = data.productos;
     })
   }
 
   ngOnInit() {
-  }
-
-
-    async showAdvancedPicker() {
-      let opts: PickerOptions = {
-        cssClass: 'academy-picker',
-        buttons: [
-          {
-            text: 'Cancelar',
-            role: 'cancel'
-          },
-          {
-            text: 'Agregar',
-            cssClass: 'special-done'
-          }
-        ],
-        columns: this.servicio.productosList
-      };
-      let picker = await this.pickerCtrl.create(opts);
-      picker.present();
-      picker.onDidDismiss().then(async data => {
-        let id_sucursal = await picker.getColumn('id_sucursal');
-        let cantidad = await picker.getColumn('cantidad');
-        let minimo = await picker.getColumn('minimo');
-
-        this.servicio.productos.push(
-          {
-          id_sucursal: id_sucursal.options[id_sucursal.selectedIndex].value,
-          sucursal: id_sucursal.options[id_sucursal.selectedIndex].text,
-          cantidad: cantidad.options[cantidad.selectedIndex].value,
-          minimo: minimo.options[minimo.selectedIndex].value
-        });
-      });
-  }
-
-  async eliminarProducto(p_item){
-
   }
 
   async presentModal() {
@@ -81,6 +47,23 @@ export class ServicioConfigPage implements OnInit {
         'id_servicio': this.servicio.encabezado.id_servicio
       }
     });
-    return await modal.present();
+    await modal.present();
+    let data  = await modal.onDidDismiss()
+    this.productos = []
+    for (let i = 0; i < data.data.productos.length; i++) {
+      if (this.productos.push(data.data.productos[i]['is_check'])) {
+          this.productos.push(data.data.productos[i])
+      }
+    }
   }
+
+
+    async doRefresh(event) {
+      this.Pro_servicios.servicioDetalle(this.servicio.encabezado.id_servicio).subscribe(data=>{
+        this.servicio = data;
+        event.target.complete();
+      }, err=>{
+        event.target.complete();
+      })
+   }
 }

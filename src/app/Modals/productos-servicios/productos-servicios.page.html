@@ -1,17 +1,33 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>My Navigation Bar</ion-title>
-  </ion-toolbar>
-
-  <ion-toolbar>
-    <ion-title>Subheader</ion-title>
-  </ion-toolbar>
-</ion-header>
-
+<app-header-in titulo="Productos"></app-header-in>
 <ion-content>
+  <div class="busqueda">
+    <form>
+      <ion-grid>
+        <ion-row color="primary" justify-content-center>
+          <ion-col>
+            <div #list>
+              <ion-item>
+                <ion-icon slot="end"
+                          name="search"
+                          color="#f4f4f4">
+                </ion-icon>
+                <ion-input type="text"
+                           placeholder="Buscar"
+                           clearInput
+                           [(ngModel)]='textSearch'
+                           (ionChange)='busqueda($event.target.value)'
+                           (input)='busqueda($event.target.value)'
+                           >
+                </ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
+
+
   <ion-item>
     Productos
   </ion-item>
@@ -21,4 +37,17 @@
       <ion-checkbox slot="end" [(ngModel)]="item.is_check"></ion-checkbox>
     </ion-item>
   </ion-list>
+  <ion-item lines="none">
+    <ion-button class="button"
+                (click)="guardarProductos()"
+                color="primary"
+                size="default"
+                shape="round">Guardar<ion-icon slot="end" name="save"></ion-icon></ion-button>
+
+    <ion-button class="buttonExit"
+                (click)="Salir()"
+                color="medium"
+                size="default"
+                shape="round">Cancelar<ion-icon slot="end" name="exit"></ion-icon></ion-button>
+  </ion-item>
 </ion-content>

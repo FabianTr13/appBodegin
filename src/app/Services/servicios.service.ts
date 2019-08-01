@@ -54,6 +54,20 @@ export class ServiciosService {
     }));
   }
 
+  async updateProductos(p_id_servicio, p_productos){
+    //Preparacion de header
+    const headers = new HttpHeaders(Header);
+    //Preparacion de body
+    let body = {
+      id_servicio: p_id_servicio,
+      productos: p_productos
+    };
+
+    let url = `${WEB_SERVICE}api/servicios/updateProductosServicios`
+
+    return await this.Pro_http.post(url, body, { headers }).toPromise()
+  }
+
   insertServicio(){
     //Preparacion de header
     const headers = new HttpHeaders(Header);

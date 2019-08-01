@@ -1,41 +1,40 @@
 <app-header-in titulo="Configuracion de Servicio"></app-header-in>
 <ion-content>
-  <form>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content  pullingIcon="arrow-dropdown"
+                            pullingText="Hale para recargar"
+                            refreshingSpinner="circles"
+                            refreshingText="Recargando..."></ion-refresher-content>
+  </ion-refresher>
+  <ion-item lines="none">
+      <ion-label text-wrap>{{servicio.encabezado.descripcion}}</ion-label>
+    <div padding slot="end" text-center>
+      <ion-icon name="create"></ion-icon>
+    </div>
+  </ion-item>
+  <div text-center>
+    <h5>Productos</h5>
+  </div>
+  <ion-item lines="none">
     <ion-grid>
-      <ion-row justify-content-center>
-        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-          <ion-item>
-            <ion-label position="floating">Nombre</ion-label>
-            <ion-input type="text"
-                      name="nombre"
-                       [(ngModel)]="servicio.encabezado.descripcion"
-                       required>
-            </ion-input>
-          </ion-item>
-          <ion-list>
-            <ion-item-sliding *ngFor="let item of servicio.productos" (click)="eliminarProducto(item)">
-              <ion-item>
-                <ion-label>{{item.descripcion}}</ion-label>
-                <ion-label>{{item.cantidad}}</ion-label>
-                <ion-icon slot="end" name="trash"></ion-icon>
-              </ion-item>
-            </ion-item-sliding>
-          </ion-list>
-          <ion-item>
-            <ion-badge (click)="presentModal()" color="primary">   Agregar   </ion-badge>
-          </ion-item>
-          <!-- <div padding>
-            <ion-button shape="round"
-                        size="large"
-                        type="submit"
-                        [disabled]="form.invalid"
-                        expand="block"><ion-ripple-effect></ion-ripple-effect>Guardar</ion-button>
-          </div> -->
-        </ion-col>
+      <ion-row no-lines>
+        <ion-col class="col" size="9"> Producto </ion-col>
+        <ion-col class="col" size="2"> Cant. </ion-col>
+        <ion-col class="col" size="1"></ion-col>
+      </ion-row>
+      <ion-row no-lines *ngFor="let item of this.productos">
+        <ion-col size="9" text-left> {{item.descripcion}} </ion-col>
+        <ion-col size="2" text-center> {{item.cantidad}} </ion-col>
+        <ion-col size="1" text-right> <ion-icon name="trash"></ion-icon> </ion-col>
       </ion-row>
     </ion-grid>
-  </form>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-button class="button"
+                (click)="presentModal()"
+                color="primary"
+                size="default"
+                shape="round">Agregar producto<ion-icon slot="end" name="add-circle"></ion-icon></ion-button>
+  </ion-item>
 </ion-content>
-<!-- //Va quedar como label y con un botn de update mandamos un alert y actualizamos elnombre
-//los productos seran en vivo con el select
- -->
