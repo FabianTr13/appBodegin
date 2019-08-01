@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>My Navigation Bar</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-title>Subheader</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    Productos
+  </ion-item>
+  <ion-list>
+    <ion-item *ngFor="let item of productos">
+      <ion-label>{{item.descripcion}}</ion-label>
+      <ion-checkbox slot="end" [(ngModel)]="item.is_check"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -7,36 +7,35 @@
           <ion-item>
             <ion-label position="floating">Nombre</ion-label>
             <ion-input type="text"
-                       [(ngModel)]="Pro_producto.nombre"
+                      name="nombre"
+                       [(ngModel)]="servicio.encabezado.descripcion"
                        required>
             </ion-input>
           </ion-item>
+          <ion-list>
+            <ion-item-sliding *ngFor="let item of servicio.productos" (click)="eliminarProducto(item)">
+              <ion-item>
+                <ion-label>{{item.descripcion}}</ion-label>
+                <ion-label>{{item.cantidad}}</ion-label>
+                <ion-icon slot="end" name="trash"></ion-icon>
+              </ion-item>
+            </ion-item-sliding>
+          </ion-list>
           <ion-item>
-            <ion-grid>
-              <ion-row text-center>
-                <ion-col> Sucursal </ion-col>
-                <ion-col> Cantidad </ion-col>
-                <ion-col> Mínimo </ion-col>
-              </ion-row>
-              <ion-row *ngFor="let item of this.Pro_producto.sucursales" text-center>
-                <ion-col> {{item.sucursal}} </ion-col>
-                <ion-col> {{item.cantidad}} </ion-col>
-                <ion-col> {{item.minimo}} </ion-col>
-              </ion-row>
-            </ion-grid>
+            <ion-badge (click)="presentModal()" color="primary">   Agregar   </ion-badge>
           </ion-item>
-          <ion-item>
-            <ion-badge (click)="showAdvancedPicker()" color="primary">   Agregar   </ion-badge>
-          </ion-item>
-          <div padding>
+          <!-- <div padding>
             <ion-button shape="round"
                         size="large"
                         type="submit"
                         [disabled]="form.invalid"
                         expand="block"><ion-ripple-effect></ion-ripple-effect>Guardar</ion-button>
-          </div>
+          </div> -->
         </ion-col>
       </ion-row>
     </ion-grid>
   </form>
 </ion-content>
+<!-- //Va quedar como label y con un botn de update mandamos un alert y actualizamos elnombre
+//los productos seran en vivo con el select
+ -->

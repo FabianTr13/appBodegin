@@ -22,9 +22,24 @@ export class ProductosService {
       return result;
     }));
   }
+
+  listaProductos(p_idServicio){
+    //Preparacion de header
+    const headers = new HttpHeaders(Header);
+
+    //Preparacion de body
+    let body = {
+      id_servicio:p_idServicio
+    };
+    let url = `${WEB_SERVICE}api/productos/productosList`
+
+    return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
+      return result;
+    }));
+  }
 }
 
-// 
+//
 // {
 // 	"token": "patito" ,
 // 	"nombre": "hola",

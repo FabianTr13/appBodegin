@@ -5,6 +5,8 @@ import {map} from 'rxjs/operators';
 import { ServiciosService } from '../../Services/servicios.service';
 import { PickerController } from '@ionic/angular';
 import { PickerOptions, PickerButton } from '@ionic/core';
+import { ModalController } from '@ionic/angular';
+import { ProductosServiciosPage } from '../../Modals/productos-servicios/productos-servicios.page';
 
 @Component({
   selector: 'app-servicio-config',
@@ -12,15 +14,23 @@ import { PickerOptions, PickerButton } from '@ionic/core';
   styleUrls: ['./servicio-config.page.scss'],
 })
 export class ServicioConfigPage implements OnInit {
+  servicio = {
+    encabezado:{
+      descripcion:null,
+      id_servicio:null
+    },
+    productos:[],
+    productosList:[]
+  }
 
-  id_servicio;
-  servicio = {}
   constructor(private Pro_servicios:ServiciosService,
               route: ActivatedRoute,
-              private pickerCtrl: PickerController) {
-    this.id_servicio = route.snapshot.params["id_servicio"];
-    this.Pro_servicios.servicioDetalle(this.id_servicio).subscribe(data=>{
+              private pickerCtrl: PickerController,
+              public modalController: ModalController) {
+    let id_servicio = route.snapshot.params["id_servicio"];
+    this.Pro_servicios.servicioDetalle(id_servicio).subscribe(data=>{
       this.servicio = data;
+      console.log(this.servicio)
     })
   }
 
@@ -41,31 +51,7 @@ export class ServicioConfigPage implements OnInit {
             cssClass: 'special-done'
           }
         ],
-        columns: [
-          {
-            name: 'id_sucursal',
-            options: [
-              { text: 'SPS', value: 1 },
-              { text: 'TEG', value: 2 },
-              { text: 'CEB', value: 3 }
-            ]
-          },
-          {
-            name: 'cantidad',
-            options: [
-              { text: '1', value: 1 },
-              { text: '2', value: 2 }
-            ]
-          },
-          {
-            name: 'minimo',
-            options: [
-              { text: '0', value: 0 },
-              { text: '1', value: 1 },
-              { text: '2', value: 2 }
-            ]
-          }
-        ]
+        columns: this.servicio.productosList
       };
       let picker = await this.pickerCtrl.create(opts);
       picker.present();
@@ -74,7 +60,7 @@ export class ServicioConfigPage implements OnInit {
         let cantidad = await picker.getColumn('cantidad');
         let minimo = await picker.getColumn('minimo');
 
-        this.Pro_producto.sucursales.push(
+        this.servicio.productos.push(
           {
           id_sucursal: id_sucursal.options[id_sucursal.selectedIndex].value,
           sucursal: id_sucursal.options[id_sucursal.selectedIndex].text,
@@ -82,5 +68,19 @@ export class ServicioConfigPage implements OnInit {
           minimo: minimo.options[minimo.selectedIndex].value
         });
       });
-    }
+  }
+
+  async eliminarProducto(p_item){
+
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: ProductosServiciosPage,
+      componentProps: {
+        'id_servicio': this.servicio.encabezado.id_servicio
+      }
+    });
+    return await modal.present();
+  }
 }
