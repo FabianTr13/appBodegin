@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { NavParams } from '@ionic/angular';
 import { ServiciosService } from '../../Services/servicios.service';
 import { ModalController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-productos-servicios',
@@ -14,12 +15,14 @@ export class ProductosServiciosPage implements OnInit {
 
   productos = []
   productos_backup = []
+  textSearch = null
   @Input() id_servicio: string;
 
   constructor(private Pro_productos:ProductosService,
               private storage:Storage,
               private Pro_service: ServiciosService,
-              public modalController: ModalController) { }
+              public modalController: ModalController,
+              public toastController: ToastController) { }
 
   ngOnInit() {
       this.Pro_productos.listaProductos(this.id_servicio).subscribe(data=>{
@@ -36,9 +39,32 @@ export class ProductosServiciosPage implements OnInit {
     });
   }
 
+  async validador(){
+    for (let i = 0; i < this.productos.length; i++) {
+      if (this.productos[i].cantidad <= 0 && this.productos[i].is_check) {
+          await this.showToast('Producto con cantidad invalida')
+          return false
+      }
+    }
+    return true
+  }
+
+  async showToast(p_mensaje, p_duration=3000){
+    const toast = await this.toastController.create({
+      message: p_mensaje,
+      duration: p_duration,
+      position: 'middle',
+      showCloseButton:true,
+      closeButtonText: 'Cerrar'
+    });
+    toast.present();
+  }
+
   async guardarProductos(){
-     let productos_save = await this.Pro_service.updateProductos(this.id_servicio, this.productos)
-     this.modalController.dismiss({productos:productos_save});
+    if (await this.validador()) {
+      let productos_save = await this.Pro_service.updateProductos(this.id_servicio, this.productos)
+      this.modalController.dismiss({productos:productos_save});
+    }
   }
 
   async Salir(){

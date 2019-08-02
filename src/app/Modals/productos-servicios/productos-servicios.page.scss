@@ -3,6 +3,7 @@
   left: 0;
   bottom: 50px;
   right: 0;
+  z-index: 500;
 }
 
 .buttonExit{
@@ -10,8 +11,20 @@
   left: 0;
   bottom: 5px;
   right: 0;
+  z-index: 500;
 }
 
 .busqueda{
   background: #3880ff;
+}
+
+.col{
+color: gray;
+border-top: 1px solid #dedede;
+border-bottom: 1px solid #dedede;
+}
+
+.inputCant{
+  border: solid 1px #dedede;
+  border-radius: 25px;
 }

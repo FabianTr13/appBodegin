@@ -4,12 +4,14 @@ import { HeaderComponent } from './header/header.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from "@ionic/angular";
+import { HeaderModalComponent } from './header-modal/header-modal.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     HeaderInComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    HeaderModalComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { IonicModule } from "@ionic/angular";
   exports:[
     HeaderComponent,
     HeaderInComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    HeaderModalComponent
   ]
 })
 export class ComponentsModule { }

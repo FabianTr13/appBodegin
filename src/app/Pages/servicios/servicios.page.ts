@@ -5,6 +5,7 @@ import { ServiciosService } from '../../Services/servicios.service';
 import { AlertController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class ServiciosPage implements OnInit {
               private storage:Storage,
               public alertController: AlertController,
               public loadingController: LoadingController,
-              private router: Router) { }
+              private router: Router,
+              public toastController: ToastController) { }
 
   ngOnInit() {
     this.storage.get('token').then(token=>{
@@ -44,6 +46,50 @@ export class ServiciosPage implements OnInit {
          this.servicios.push(variable)
        }
    });
+ }
+
+ async insertServicio() {
+   const alert = await this.alertController.create({
+     header: 'Nuevo servicio',
+     inputs: [
+       {
+         name: 'input',
+         type: 'text',
+         value: null,
+         placeholder: 'Nombre'
+       }
+     ],
+     buttons: [
+       {
+         text: 'Cancelar',
+         cssClass: 'secondary'
+       }, {
+         text: 'Cambiar',
+         handler: async data=> {
+           if (data.input != null && data.input.trim().length) {
+            let id_servicio = await this.Pro_servicios.insertServicio(data.input).catch(err=>{})
+            this.servicios = this.servicios_backup = await this.Pro_servicios.serviciosListAsync()
+            this.editarServicio(id_servicio)
+           }
+           else{
+             await this.showToast('Nombre vacio');
+           }
+         }
+       }
+     ]
+   });
+   await alert.present();
+ }
+
+ async showToast(p_mensaje, p_duration=3000){
+   const toast = await this.toastController.create({
+     message: p_mensaje,
+     duration: p_duration,
+     position: 'middle',
+     showCloseButton: true,
+     closeButtonText: 'Cerrar'
+   });
+   toast.present();
  }
 
  editarServicio(p_id_servicio){

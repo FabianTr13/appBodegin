@@ -68,27 +68,34 @@ export class ServiciosService {
     return await this.Pro_http.post(url, body, { headers }).toPromise()
   }
 
-  insertServicio(){
+  async updateNombre(p_id_servicio, p_accion, p_nombre){
     //Preparacion de header
     const headers = new HttpHeaders(Header);
     //Preparacion de body
     let body = {
-      token: "",
-      nombre: "",
-      productos:[
-        {
-          id_producto: 1,
-          cantidad : 1,
-          tipo_consumo: 1
-        }
-      ]
+      id_servicio: p_id_servicio,
+      accion: p_accion,
+      descripcion: p_nombre
     };
 
-    let url = `${WEB_SERVICE}api/servicios/serviciosList`
+    let url = `${WEB_SERVICE}api/servicios/updateNombre`
 
-    return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
-      return result;
-    }));
+    return await this.Pro_http.post(url, body, { headers }).toPromise()
+  }
+  //--------------------
+
+  async insertServicio(p_nombre){
+    //Preparacion de header
+    const headers = new HttpHeaders(Header);
+    //Preparacion de body
+    let body = {
+      token: await this.storage.get('token'),
+      nombre: p_nombre
+    };
+
+    let url = `${WEB_SERVICE}api/servicios/insertServicio`
+
+    return this.Pro_http.post(url, body, { headers }).toPromise()
   }
 
   updateServicio(){

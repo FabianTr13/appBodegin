@@ -1,4 +1,4 @@
-<app-header-in titulo="Productos"></app-header-in>
+<app-header-modal titulo="Productos"></app-header-modal>
 <ion-content>
   <div class="busqueda">
     <form>
@@ -26,17 +26,33 @@
       </ion-grid>
     </form>
   </div>
-
-
-  <ion-item>
-    Productos
+  <div text-center>
+    <h5>Productos</h5>
+  </div>
+  <ion-item lines="none">
+    <ion-grid>
+      <ion-row no-lines>
+        <ion-col class="col" size="9"> Producto </ion-col>
+        <ion-col class="col" size="2"> Cant. </ion-col>
+        <ion-col class="col" size="1"></ion-col>
+      </ion-row>
+      <ion-row align-items-center  no-lines *ngFor="let item of productos">
+        <ion-col size="9" text-left> {{item.descripcion}} </ion-col>
+        <ion-col size="2" text-center>
+          <ion-input  class="inputCant"
+                      name="phone"
+                      maxlength="3"
+                      minlength="3"
+                      type="tel"
+                      pattern="\d*"
+                      [(ngModel)]="item.cantidad"></ion-input>
+        </ion-col>
+        <ion-col  size="1">
+          <ion-checkbox color="primary" [(ngModel)]="item.is_check"></ion-checkbox>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-item>
-  <ion-list>
-    <ion-item *ngFor="let item of productos">
-      <ion-label>{{item.descripcion}}</ion-label>
-      <ion-checkbox slot="end" [(ngModel)]="item.is_check"></ion-checkbox>
-    </ion-item>
-  </ion-list>
   <ion-item lines="none">
     <ion-button class="button"
                 (click)="guardarProductos()"
