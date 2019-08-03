@@ -17,7 +17,9 @@ const routes: Routes = [
   { path: 'categorias', loadChildren: './Pages/categorias/categorias.module#CategoriasPageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'servicios', loadChildren: './Pages/servicios/servicios.module#ServiciosPageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'producto-detalle', loadChildren: './Pages/producto-detalle/producto-detalle.module#ProductoDetallePageModule'},
-  { path: 'servicio-config/:id_servicio', loadChildren: './Pages/servicio-config/servicio-config.module#ServicioConfigPageModule',canActivate :[AuthGuard], data: {token: []} },
+  { path: 'servicio-config/:id_servicio', loadChildren: './Pages/servicio-config/servicio-config.module#ServicioConfigPageModule',canActivate :[AuthGuard], data: {token: []} },  { path: 'sucursales', loadChildren: './Pages/sucursales/sucursales.module#SucursalesPageModule' },
+  { path: 'sucursales', loadChildren: './Pages/sucursales/sucursales.module#SucursalesPageModule' ,canActivate :[AuthGuard], data: {token: []} },
+
 ];
 
 @NgModule({

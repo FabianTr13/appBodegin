@@ -1,6 +1,11 @@
 <app-header-in titulo="Inventario"></app-header-in>
 <ion-content>
-  <!-- <ion-searchbar showCancelButton="focus" cancelButtonText="Custom Cancel"></ion-searchbar> -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content  pullingIcon="arrow-dropdown"
+                            pullingText="Hale para recargar"
+                            refreshingSpinner="circles"
+                            refreshingText="Recargando..."></ion-refresher-content>
+  </ion-refresher>
   <div class="busqueda">
     <form>
       <ion-grid>
@@ -25,19 +30,16 @@
   </div>
   <div padding>
     <ion-list>
-        <ion-list-header>
-          Nombre de categoria
-        </ion-list-header>
-        <ion-item>
+        <ion-item *ngFor="let item of productos">
           <ion-avatar slot="start">
-            <img src="assets/img/camera.png">
+            <img src="item.imagen">
           </ion-avatar>
           <ion-label>
-            <h2 class="nombreProducto">Nombre del producto</h2>
-            <h4>Descripcion del producto</h4>
+            <h2 class="nombreProducto">{{item.descripcion}}</h2>
+            <h4>{{item.descripcion}}</h4>
           </ion-label>
           <ion-label text-end slot="end">
-            1
+            {{item.cantidad}}
           </ion-label>
         </ion-item>
       </ion-list>
