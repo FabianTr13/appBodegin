@@ -23,13 +23,14 @@ export class ProductosService {
     }));
   }
 
-  listaProductos(p_idServicio){
+  listaProductos(p_token, p_idServicio){
     //Preparacion de header
     const headers = new HttpHeaders(Header);
 
     //Preparacion de body
     let body = {
-      id_servicio:p_idServicio
+      id_servicio:p_idServicio,
+      token: p_token
     };
     let url = `${WEB_SERVICE}api/productos/productosList`
 

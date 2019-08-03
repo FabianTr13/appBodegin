@@ -25,8 +25,10 @@ export class ProductosServiciosPage implements OnInit {
               public toastController: ToastController) { }
 
   ngOnInit() {
-      this.Pro_productos.listaProductos(this.id_servicio).subscribe(data=>{
-        this.productos = this.productos_backup = data;
+      this.storage.get('token').then(token=>{
+        this.Pro_productos.listaProductos(token, this.id_servicio).subscribe(data=>{
+          this.productos = this.productos_backup = data;
+        })
       })
   }
 
