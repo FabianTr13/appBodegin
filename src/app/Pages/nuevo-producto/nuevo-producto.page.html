@@ -60,12 +60,10 @@
               <ion-row text-center>
                 <ion-col> Sucursal </ion-col>
                 <ion-col> Cantidad </ion-col>
-                <ion-col> Mínimo </ion-col>
               </ion-row>
               <ion-row *ngFor="let item of this.Pro_producto.sucursales" text-center>
                 <ion-col> {{item.sucursal}} </ion-col>
                 <ion-col> {{item.cantidad}} </ion-col>
-                <ion-col> {{item.minimo}} </ion-col>
               </ion-row>
             </ion-grid>
           </ion-item>
