@@ -94,6 +94,9 @@ export class NuevoProductoPage implements OnInit {
    });
   }
 
+  async onChange(item){
+    console.log(item)
+  }
   async presentActionSheet() {
     if (isApp) {
       const actionSheet = await this.actionSheetController.create({
@@ -134,7 +137,8 @@ export class NuevoProductoPage implements OnInit {
     }
   }
 
-  async guardar(){
+  async guardar(file){
+    console.log(this.Pro_producto.categoria)
       let filePath: string = this.Pro_producto.foto[0];
 
   }

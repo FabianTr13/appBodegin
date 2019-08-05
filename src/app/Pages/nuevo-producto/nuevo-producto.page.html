@@ -7,7 +7,7 @@
          alt="Agregar imagen">
   </div>
   <input #fileInput hidden (change)="fileUpload()" type="file" name="pic" accept="image/*">
-  <form #form="ngForm" (ngSubmit)="guardar()">
+  <form #form="ngForm" (ngSubmit)="guardar(form)">
     <ion-grid>
       <ion-row justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
@@ -41,7 +41,8 @@
           <ion-item>
             <ion-label>Categorias</ion-label>
             <ion-select placeholder="Seleccione una">
-              <ion-select-option name="id_categoria" *ngFor="let item of categorias" value="{{item.id_categoria}}">{{item.descripcion}}</ion-select-option>
+              <ion-select-option *ngFor="let item of categorias"
+                                 value="{{item.id_categoria}}">{{item.descripcion}}</ion-select-option>
             </ion-select>
           </ion-item>
           <div padding>
