@@ -94,9 +94,6 @@ export class NuevoProductoPage implements OnInit {
    });
   }
 
-  async onChange(item){
-    console.log(item)
-  }
   async presentActionSheet() {
     if (isApp) {
       const actionSheet = await this.actionSheetController.create({
