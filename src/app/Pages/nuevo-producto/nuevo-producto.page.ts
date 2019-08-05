@@ -135,6 +135,7 @@ export class NuevoProductoPage implements OnInit {
   }
 
   async guardar(){
-      this.pro
+      let filePath: string = this.Pro_producto.foto[0];
+
   }
 }
