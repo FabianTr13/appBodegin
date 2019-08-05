@@ -43,7 +43,6 @@ export class NuevoProductoPage implements OnInit {
     this.storage.get('token').then(token=>{
       this.Pro_categorias.obtenerCategorias(token).subscribe(data=>{
         this.categorias = data
-        console.log(this.categorias)
       })
     })
   }
@@ -58,8 +57,8 @@ export class NuevoProductoPage implements OnInit {
 
   take(){
     const options: CameraOptions = {
-    quality: 100,
-    destinationType: this.camera.DestinationType.FILE_URI,
+    quality: 50,
+    destinationType: this.camera.DestinationType.DATA_URL,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
     correctOrientation:true,
@@ -67,18 +66,19 @@ export class NuevoProductoPage implements OnInit {
   }
 
     this.camera.getPicture(options).then((imageData) => {
-     const img = window.Ionic.WebView.convertFileSrc(imageData);
+
+     // const img = window.Ionic.WebView.convertFileSrc(imageData);
+     let base64Image = "data:image/jpeg;base64,"+imageData;
+
      this.Pro_producto.foto=[]
-     this.Pro_producto.foto.push(img)
-    }, (err) => {
-     // Handle error
+     this.Pro_producto.foto.push(base64Image)
     });
   }
 
   loadImage(){
     const options: CameraOptions = {
-    quality: 100,
-    destinationType: this.camera.DestinationType.FILE_URI,
+    quality: 50,
+    destinationType: this.camera.DestinationType.DATA_URL,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
     correctOrientation:true,
@@ -86,10 +86,11 @@ export class NuevoProductoPage implements OnInit {
   }
 
     this.camera.getPicture(options).then((imageData) => {
-     const img = window.Ionic.WebView.convertFileSrc(imageData);
+     // const img = window.Ionic.WebView.convertFileSrc(imageData);
+     let base64Image = "data:image/jpeg;base64,"+imageData;
+
      this.Pro_producto.foto=[]
-     this.Pro_producto.foto.push(img)
-     console.log(this.Pro_producto.foto)
+     this.Pro_producto.foto.push(base64Image)
    });
   }
 
@@ -134,11 +135,6 @@ export class NuevoProductoPage implements OnInit {
   }
 
   async guardar(){
-      let filePath: string = this.Pro_producto.foto[0];
-      this.base64.encodeFile(filePath).then((base64File: string) => {
-        console.log(base64File);
-      }, (err) => {
-        console.log(err);
-      });
+      this.pro
   }
 }
