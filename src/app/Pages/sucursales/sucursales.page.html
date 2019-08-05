@@ -30,6 +30,18 @@
           </ion-col>
         </ion-row>
       </ion-grid>
+      <ion-item>
+        <ion-label>Music</ion-label>
+        <ion-select>
+          <ion-select-option>Alice in Chains</ion-select-option>
+          <ion-select-option>Green Day</ion-select-option>
+          <ion-select-option selected>Nirvana</ion-select-option>
+          <ion-select-option>Pearl Jam</ion-select-option>
+          <ion-select-option>Smashing Pumpkins</ion-select-option>
+          <ion-select-option>Soundgarden</ion-select-option>
+          <ion-select-option>Stone Temple Pilots</ion-select-option>
+        </ion-select>
+      </ion-item>
     </form>
   </div>
 
@@ -41,15 +53,16 @@
       </ion-item-option>
       </ion-item-options>
       <ion-item>
-        <ion-label>{{item.descripcion}}</ion-label>
-        <ion-icon slot="end" name="create" (click)="sucursalInsertUpdate(item.id_sucursal, 'UPDATE', item.descripcion)"></ion-icon>
+        <ion-label>{{item.nombre_corto}}  {{item.descripcion}}</ion-label>
+        <ion-icon slot="end" name="create" (click)="presentModal('UPDATE',item)"></ion-icon>
       </ion-item>
     </ion-item-sliding>
   </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" #fab>
-    <ion-fab-button (click)="sucursalInsertUpdate(null,'INSERT', '', fab)">
+    <ion-fab-button (click)="presentModal('INSERT')">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
 </ion-content>

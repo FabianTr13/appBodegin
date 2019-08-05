@@ -41,13 +41,14 @@ export class SucursalesService {
   }
 
 
-    async InserUpdateDeleteSucursal(p_id_sucursal, p_descripcion, p_accion){
+    async InserUpdateDeleteSucursal(p_id_sucursal, p_descripcion, p_smallName, p_accion){
       const headers = new HttpHeaders(Header);
       //Preparacion de body
       let body = {
         token: await this.storage.get('token'),
         id_sucursal: p_id_sucursal,
         nombre: p_descripcion,
+        nombre_corto:p_smallName,
         accion: p_accion
       };
       let url = `${WEB_SERVICE}api/sucursales/insertUpdateDeleteSucursales`

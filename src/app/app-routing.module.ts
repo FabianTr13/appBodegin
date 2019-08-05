@@ -3,13 +3,13 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './Guard/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'nuevo', pathMatch: 'full' },
   { path: 'home', loadChildren: './Pages/home/home.module#HomePageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'login', loadChildren: './Pages/login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './Pages/register/register.module#RegisterPageModule' },
   { path: 'reset-pass', loadChildren: './Pages/reset-pass/reset-pass.module#ResetPassPageModule'},
-  { path: 'nuevo', loadChildren: './Pages/nuevo-producto/nuevo-producto.module#NuevoProductoPageModule', canActivate :[AuthGuard], data: {token: []} },
-  // { path: 'nuevo', loadChildren: './Pages/nuevo-producto/nuevo-producto.module#NuevoProductoPageModule'},
+  // { path: 'nuevo', loadChildren: './Pages/nuevo-producto/nuevo-producto.module#NuevoProductoPageModule', canActivate :[AuthGuard], data: {token: []} },
+  { path: 'nuevo', loadChildren: './Pages/nuevo-producto/nuevo-producto.module#NuevoProductoPageModule'},
   { path: 'entregas', loadChildren: './Pages/entregas/entregas.module#EntregasPageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'inventarios', loadChildren: './Pages/inventarios/inventarios.module#InventariosPageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'estadisticas', loadChildren: './Pages/estadisticas/estadisticas.module#EstadisticasPageModule', canActivate :[AuthGuard], data: {token: []} },
@@ -19,7 +19,6 @@ const routes: Routes = [
   { path: 'producto-detalle', loadChildren: './Pages/producto-detalle/producto-detalle.module#ProductoDetallePageModule'},
   { path: 'servicio-config/:id_servicio', loadChildren: './Pages/servicio-config/servicio-config.module#ServicioConfigPageModule',canActivate :[AuthGuard], data: {token: []} },  { path: 'sucursales', loadChildren: './Pages/sucursales/sucursales.module#SucursalesPageModule' },
   { path: 'sucursales', loadChildren: './Pages/sucursales/sucursales.module#SucursalesPageModule' ,canActivate :[AuthGuard], data: {token: []} },
-
 ];
 
 @NgModule({

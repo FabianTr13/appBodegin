@@ -39,36 +39,16 @@
             </ion-input>
           </ion-item>
           <ion-item>
-            <ion-label position="floating">Categoria</ion-label>
-            <ion-select value="brown" okText="Aceptar" cancelText="Cancelar">
-              <ion-select-option value="brown">Brown</ion-select-option>
-              <ion-select-option value="blonde">Blonde</ion-select-option>
-              <ion-select-option value="black">Black</ion-select-option>
-              <ion-select-option value="red">Red</ion-select-option>
+            <ion-label>Music</ion-label>
+            <ion-select>
+              <ion-select-option>Alice in Chains</ion-select-option>
+              <ion-select-option>Green Day</ion-select-option>
+              <ion-select-option selected>Nirvana</ion-select-option>
+              <ion-select-option>Pearl Jam</ion-select-option>
+              <ion-select-option>Smashing Pumpkins</ion-select-option>
+              <ion-select-option>Soundgarden</ion-select-option>
+              <ion-select-option>Stone Temple Pilots</ion-select-option>
             </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Costo</ion-label>
-            <ion-input name="costo"
-                       type="tel"
-                       pattern="\d*"
-                       [(ngModel)]="Pro_producto.costo">
-            </ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-grid>
-              <ion-row text-center>
-                <ion-col> Sucursal </ion-col>
-                <ion-col> Cantidad </ion-col>
-              </ion-row>
-              <ion-row *ngFor="let item of this.Pro_producto.sucursales" text-center>
-                <ion-col> {{item.sucursal}} </ion-col>
-                <ion-col> {{item.cantidad}} </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-item>
-          <ion-item>
-            <ion-badge (click)="showAdvancedPicker()" color="primary">   Agregar   </ion-badge>
           </ion-item>
           <div padding>
             <ion-button shape="round"

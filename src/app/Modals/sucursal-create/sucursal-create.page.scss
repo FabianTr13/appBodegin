@@ -1,0 +1,17 @@
+ion-item{
+    --color: #6e6368;
+}
+
+ion-content{
+  form{
+    ion-grid{
+      ion-row{
+        ion-item{
+          ion-label{
+            --position:floating;
+          }
+        }
+      }
+    }
+  }
+}

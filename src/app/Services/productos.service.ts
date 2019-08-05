@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders }  from "@angular/common/http";
 import { Header, WEB_SERVICE } from '../Config/configuration';
 import { map } from 'rxjs/operators';
+import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductosService {
 
-  constructor(private Pro_http:HttpClient) { }
+  constructor(private Pro_http:HttpClient,
+              private storage: Storage) { }
 
   nuevoProducto(p_form){
     //Preparacion de header
