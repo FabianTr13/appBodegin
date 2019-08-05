@@ -7,13 +7,14 @@
          alt="Agregar imagen">
   </div>
   <input #fileInput hidden (change)="fileUpload()" type="file" name="pic" accept="image/*">
-  <form #form="ngForm" (ngSubmit)="guardarProducto()">
+  <form #form="ngForm" (ngSubmit)="guardar()">
     <ion-grid>
       <ion-row justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
           <ion-item>
             <ion-label position="floating">Nombre</ion-label>
-            <ion-input type="text"
+            <ion-input name="nombre"
+                       type="text"
                        [(ngModel)]="Pro_producto.nombre"
                        required>
             </ion-input>
@@ -39,86 +40,22 @@
             </ion-input>
           </ion-item>
           <ion-item>
-            <ion-label position="floating">Cantidad</ion-label>
-            <ion-input name="cantidad"
-                       type="tel"
-                       pattern="\d*"
-                       [(ngModel)]="Pro_producto.cantidad"
-                       required>
-             </ion-input>
-            <div slot="end">
-              <img text-center (click)="sumLess(-1)"
-                   class="minMax"
-                   src="assets/nuevo/minus.png"
-                   alt="restar">
-              <img text-center (click)="sumLess(1)"
-                    class="minMax"
-                    src="assets/nuevo/plus.png"
-                    alt="sumar">
-            </div>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Minimo en inventario</ion-label>
-            <ion-input name="minimo"
-                       type="tel"
-                       pattern="\d*"
-                       [(ngModel)]="Pro_producto.minimo"
-                       required>
-             </ion-input>
-            <div slot="end">
-              <img text-center (click)="sumLessMin(-1)"
-                   class="minMax"
-                   src="assets/nuevo/minus.png"
-                   alt="restar">
-              <img text-center (click)="sumLessMin(1)"
-                    class="minMax"
-                    src="assets/nuevo/plus.png"
-                    alt="sumar">
-            </div>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Categoria</ion-label>
-            <ion-input name="categoria"
-                       type="text"
-                       [(ngModel)]="Pro_producto.categoria"
-                       required>
-             </ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Categoria</ion-label>
-            <ion-select value="brown" okText="Aceptar" cancelText="Cancelar">
-              <ion-select-option value="brown">Brown</ion-select-option>
-              <ion-select-option value="blonde">Blonde</ion-select-option>
-              <ion-select-option value="black">Black</ion-select-option>
-              <ion-select-option value="red">Red</ion-select-option>
+            <ion-label>Categorias</ion-label>
+            <ion-select value="{{id_categoria}}" [(ngModel)]="id_categoria" (ionChange)="categroriaGet($event)" placeholder="Seleccione una">
+              <ion-select-option *ngFor="let item of categorias"
+                                  value="{{item.id_categoria}}">{{item.descripcion}}</ion-select-option>
             </ion-select>
           </ion-item>
-          <ion-item>
-            <ion-label position="floating">Costo</ion-label>
-            <ion-input name="costo"
-                       type="tel"
-                       pattern="\d*"
-                       [(ngModel)]="Pro_producto.costo">
-            </ion-input>
-          </ion-item>
           <div padding>
-            <ion-button shape="round"
-                        size="large"
-                        type="submit"
-                        [disabled]="form.invalid"
-                        expand="block">Guardar</ion-button>
+            <ion-button shape = "round"
+                        size = "large"
+                        type = "submit"
+                        [disabled] = "form.invalid"
+                        expand = "block">Guardar</ion-button>
           </div>
         </ion-col>
       </ion-row>
     </ion-grid>
   </form>
-  <div text-center class="historial">
-    <h3>Historial</h3>
-  </div>
-  <ion-list>
-    <ion-item>
-      <img src="assets/nuevo/plus.png" slot="start" alt="">
-      <ion-label>Ingreso en inventario <ion-label text-end slot="end">3</ion-label> hjhjhkjh</ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-button expand="full" coloe="primaty">Historial de transacciones  <ion-icon ios="ios-swap" md="md-swap"></ion-icon></ion-button>
 </ion-content>

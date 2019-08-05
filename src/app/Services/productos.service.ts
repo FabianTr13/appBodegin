@@ -12,17 +12,22 @@ export class ProductosService {
   constructor(private Pro_http:HttpClient,
               private storage: Storage) { }
 
-  nuevoProducto(p_form){
+  async nuevoProducto(p_form){
     //Preparacion de header
     const headers = new HttpHeaders(Header);
-
     //Preparacion de body
-    let body = p_form;
+    let body = {
+      token: await this.storage.get('token'),
+      nombre: p_form.nombre,
+      descripcion: p_form.descripcion,
+      codigobarra: p_form.codigo,
+      id_categoria: p_form.id_categoria,
+      fotografia: p_form.foto[0]
+    }
+
     let url = `${WEB_SERVICE}api/productos/nuevoProducto`
 
-    return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
-      return result;
-    }));
+    return await this.Pro_http.post(url, body, { headers }).toPromise()
   }
 
   listaProductos(p_token, p_idServicio){
@@ -67,6 +72,20 @@ export class ProductosService {
     let url = `${WEB_SERVICE}api/productos/inventarioList`
 
     return await this.Pro_http.post(url, body, { headers }).toPromise()
+  }
+
+  getProducto(p_id_producto){
+    //Preparacion de header
+    const headers = new HttpHeaders(Header);
+    //Preparacion de body
+    let body = {
+      id_producto: p_id_producto
+    };
+    let url = `${WEB_SERVICE}api/productos/getProducto`
+
+    return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
+      return result;
+    }));
   }
 }
 

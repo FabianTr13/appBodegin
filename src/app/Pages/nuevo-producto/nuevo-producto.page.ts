@@ -3,13 +3,10 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ActionSheetController } from '@ionic/angular';
 import { isApp } from '../../Config/configuration';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
-import { PickerController } from '@ionic/angular';
 import { ProductosService } from '../../Services/productos.service';
-import { Base64 } from '@ionic-native/base64/ngx';
 import { CategoriasService } from '../../Services/categorias.service';
 import { Storage } from '@ionic/storage';
-
-declare var window:any;
+import * as resizebase64 from 'resize-base64';
 
 @Component({
   selector: 'app-nuevo-producto',
@@ -25,7 +22,7 @@ export class NuevoProductoPage implements OnInit {
     nombre:null,
     codigo:null,
     descripcion: null,
-    categoria: null
+    id_categoria: null
   }
 
   categorias = []
@@ -33,11 +30,10 @@ export class NuevoProductoPage implements OnInit {
   constructor(private camera: Camera,
               public actionSheetController: ActionSheetController,
               private barcodeScanner: BarcodeScanner,
-              private pickerCtrl: PickerController,
-              private Pro_producto_service:ProductosService,
-              private base64: Base64,
+              private Pro_productos:ProductosService,
               private Pro_categorias:CategoriasService,
-              private storage:Storage) { }
+              private storage:Storage) {
+  }
 
   ngOnInit() {
     this.storage.get('token').then(token=>{
@@ -66,10 +62,7 @@ export class NuevoProductoPage implements OnInit {
   }
 
     this.camera.getPicture(options).then((imageData) => {
-
-     // const img = window.Ionic.WebView.convertFileSrc(imageData);
      let base64Image = "data:image/jpeg;base64,"+imageData;
-
      this.Pro_producto.foto=[]
      this.Pro_producto.foto.push(base64Image)
     });
@@ -86,9 +79,7 @@ export class NuevoProductoPage implements OnInit {
   }
 
     this.camera.getPicture(options).then((imageData) => {
-     // const img = window.Ionic.WebView.convertFileSrc(imageData);
      let base64Image = "data:image/jpeg;base64,"+imageData;
-
      this.Pro_producto.foto=[]
      this.Pro_producto.foto.push(base64Image)
    });
@@ -125,6 +116,10 @@ export class NuevoProductoPage implements OnInit {
     }
   }
 
+  async categroriaGet(p_sls){
+    this.Pro_producto.id_categoria = p_sls.target.value
+  }
+
   fileUpload() {
     var reader = new FileReader();
     reader.readAsDataURL(this.el.nativeElement.files[0]);
@@ -134,9 +129,11 @@ export class NuevoProductoPage implements OnInit {
     }
   }
 
-  async guardar(file){
-    console.log(this.Pro_producto.categoria)
-      let filePath: string = this.Pro_producto.foto[0];
-
+  async guardar(){
+    let filePath: string = this.Pro_producto.foto[0]
+     this.Pro_producto.foto[0] = resizebase64(filePath, 500, 450);
+    await this.Pro_productos.nuevoProducto(this.Pro_producto).catch(err=>{
+      console.log(err)
+    })
   }
 }

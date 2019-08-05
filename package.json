@@ -45,6 +45,7 @@
     "lodash": "^4.17.15",
     "ng-recaptcha": "^4.3.0",
     "phonegap-plugin-barcodescanner": "^8.1.0",
+    "resize-base64": "^1.0.12",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.29"

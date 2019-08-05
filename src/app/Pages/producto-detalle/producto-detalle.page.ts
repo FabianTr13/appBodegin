@@ -3,13 +3,18 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ActionSheetController } from '@ionic/angular';
 import { isApp } from '../../Config/configuration';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { ProductosService } from '../../Services/productos.service';
+import { CategoriasService } from '../../Services/categorias.service';
+import { Storage } from '@ionic/storage';
+import * as resizebase64 from 'resize-base64';
+import {ActivatedRoute} from '@angular/router';
 
-declare var window:any;
 @Component({
   selector: 'app-producto-detalle',
   templateUrl: './producto-detalle.page.html',
   styleUrls: ['./producto-detalle.page.scss'],
 })
+
 export class ProductoDetallePage implements OnInit {
   @ViewChild('fileInput') el:ElementRef;
   Pro_producto = {
@@ -19,23 +24,40 @@ export class ProductoDetallePage implements OnInit {
     nombre:null,
     codigo:null,
     descripcion: null,
-    cantidad: 1,
-    minimo: 1,
-    categoria: null,
-    costo: null
+    id_categoria: null
   }
+
+  categorias = []
+  id_categoria:any;
 
   constructor(private camera: Camera,
               public actionSheetController: ActionSheetController,
-              private barcodeScanner: BarcodeScanner) { }
+              private barcodeScanner: BarcodeScanner,
+              private Pro_productos:ProductosService,
+              private Pro_categorias:CategoriasService,
+              private storage:Storage,
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
+    let id_producto = this.route.snapshot.params["id_producto"];
+    this.Pro_productos.getProducto(id_producto).subscribe(data=>{
+      this.Pro_producto = data
+      this.Pro_producto.foto = []
+      this.Pro_producto.foto.push(data.fotografia)
+      this.id_categoria = this.Pro_producto.id_categoria
+      console.log(this.Pro_producto)
+    })
+    this.storage.get('token').then(token=>{
+      this.Pro_categorias.obtenerCategorias(token).subscribe(data=>{
+        this.categorias = data
+      })
+    })
   }
 
   barCodeScanner(){
     this.barcodeScanner.scan().then(barcodeData => {
       this.Pro_producto.codigo = barcodeData.text
-      console.log(barcodeData)
     }).catch(err => {
         console.log('Error', err);
     });
@@ -43,8 +65,8 @@ export class ProductoDetallePage implements OnInit {
 
   take(){
     const options: CameraOptions = {
-    quality: 100,
-    destinationType: this.camera.DestinationType.FILE_URI,
+    quality: 50,
+    destinationType: this.camera.DestinationType.DATA_URL,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
     correctOrientation:true,
@@ -52,18 +74,16 @@ export class ProductoDetallePage implements OnInit {
   }
 
     this.camera.getPicture(options).then((imageData) => {
-     const img = window.Ionic.WebView.convertFileSrc(imageData);
+     let base64Image = "data:image/jpeg;base64,"+imageData;
      this.Pro_producto.foto=[]
-     this.Pro_producto.foto.push(img)
-    }, (err) => {
-     // Handle error
+     this.Pro_producto.foto.push(base64Image)
     });
   }
 
   loadImage(){
     const options: CameraOptions = {
-    quality: 100,
-    destinationType: this.camera.DestinationType.FILE_URI,
+    quality: 50,
+    destinationType: this.camera.DestinationType.DATA_URL,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
     correctOrientation:true,
@@ -71,12 +91,10 @@ export class ProductoDetallePage implements OnInit {
   }
 
     this.camera.getPicture(options).then((imageData) => {
-     const img = window.Ionic.WebView.convertFileSrc(imageData);
+     let base64Image = "data:image/jpeg;base64,"+imageData;
      this.Pro_producto.foto=[]
-     this.Pro_producto.foto.push(img)
-    }, (err) => {
-     // Handle error
-    });
+     this.Pro_producto.foto.push(base64Image)
+   });
   }
 
   async presentActionSheet() {
@@ -107,25 +125,11 @@ export class ProductoDetallePage implements OnInit {
     }else{
       let event = new MouseEvent('click', {bubbles: false});
       await this.el.nativeElement.dispatchEvent(event);
-      // console.log((this.fileInput.nativeElement.files.FileList[0]))
     }
   }
 
-  sumLess(p_cantidad:number){
-    this.Pro_producto.cantidad = Number(this.Pro_producto.cantidad) + p_cantidad;
-    if (Number(this.Pro_producto.cantidad < 1)) {
-      this.Pro_producto.cantidad = 1;
-    }
-  }
-  sumLessMin(p_cantidad:number){
-    this.Pro_producto.minimo = Number(this.Pro_producto.minimo) + p_cantidad;
-    if (Number(this.Pro_producto.minimo < 1)) {
-      this.Pro_producto.minimo = 1;
-    }
-  }
-
-  guardarProducto(){
-
+  async categroriaGet(p_sls){
+    this.Pro_producto.id_categoria = p_sls.target.value
   }
 
   fileUpload() {
@@ -135,5 +139,13 @@ export class ProductoDetallePage implements OnInit {
       this.Pro_producto.foto = []
       this.Pro_producto.foto.push(reader.result.toString());
     }
+  }
+
+  async guardar(){
+    let filePath: string = this.Pro_producto.foto[0]
+     this.Pro_producto.foto[0] = resizebase64(filePath, 500, 450);
+    await this.Pro_productos.nuevoProducto(this.Pro_producto).catch(err=>{
+      console.log(err)
+    })
   }
 }

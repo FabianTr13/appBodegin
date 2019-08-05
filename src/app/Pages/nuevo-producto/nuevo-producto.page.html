@@ -7,13 +7,14 @@
          alt="Agregar imagen">
   </div>
   <input #fileInput hidden (change)="fileUpload()" type="file" name="pic" accept="image/*">
-  <form #form="ngForm" (ngSubmit)="guardar(form)">
+  <form #form="ngForm" (ngSubmit)="guardar()">
     <ion-grid>
       <ion-row justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
           <ion-item>
             <ion-label position="floating">Nombre</ion-label>
-            <ion-input type="text"
+            <ion-input name="nombre"
+                       type="text"
                        [(ngModel)]="Pro_producto.nombre"
                        required>
             </ion-input>
@@ -40,9 +41,10 @@
           </ion-item>
           <ion-item>
             <ion-label>Categorias</ion-label>
-            <ion-select  placeholder="Seleccione una">
+            <ion-select [(ngModel)]="id_categoria" (ionChange)="categroriaGet($event)" placeholder="Seleccione una">
               <ion-select-option *ngFor="let item of categorias"
-                                 value="{{item.id_categoria}}">{{item.descripcion}}</ion-select-option>
+
+                                  value="{{item.id_categoria}}">{{item.descripcion}}</ion-select-option>
             </ion-select>
           </ion-item>
           <div padding>
