@@ -93,6 +93,19 @@ export class ProductosService {
     return await this.Pro_http.post(url, body, { headers }).toPromise()
   }
 
+  async deleteProducto(p_id_producto){
+    //Preparacion de header
+    const headers = new HttpHeaders(Header);
+    //Preparacion de body
+    let body = {
+      token: await this.storage.get('token'),
+      id_producto : p_id_producto
+    };
+    let url = `${WEB_SERVICE}api/productos/deleteProducto`
+
+    return await this.Pro_http.post(url, body, { headers }).toPromise()
+  }
+
   getProducto(p_id_producto){
     //Preparacion de header
     const headers = new HttpHeaders(Header);
@@ -107,21 +120,3 @@ export class ProductosService {
     }));
   }
 }
-
-//
-// {
-// 	"token": "patito" ,
-// 	"nombre": "hola",
-// 	"descripcion": "hola",
-// 	"codigobarra": "ee",
-//     "id_categoria": 1,
-//     "fotografia": "dddd",
-//     "sucursales": [
-//     	{
-//     		"id_sucursal": 1,
-//     		"cantidad": 1,
-//     		"minimo": 1
-//     	}
-//     	],
-//     "costo": 23
-// }
