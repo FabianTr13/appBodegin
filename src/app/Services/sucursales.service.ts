@@ -41,18 +41,54 @@ export class SucursalesService {
   }
 
 
-    async InserUpdateDeleteSucursal(p_id_sucursal, p_descripcion, p_smallName, p_accion){
-      const headers = new HttpHeaders(Header);
-      //Preparacion de body
-      let body = {
-        token: await this.storage.get('token'),
-        id_sucursal: p_id_sucursal,
-        nombre: p_descripcion,
-        nombre_corto:p_smallName,
-        accion: p_accion
-      };
-      let url = `${WEB_SERVICE}api/sucursales/insertUpdateDeleteSucursales`
+  async InserUpdateDeleteSucursal(p_id_sucursal, p_descripcion, p_smallName, p_accion){
+    const headers = new HttpHeaders(Header);
+    //Preparacion de body
+    let body = {
+      token: await this.storage.get('token'),
+      id_sucursal: p_id_sucursal,
+      nombre: p_descripcion,
+      nombre_corto:p_smallName,
+      accion: p_accion
+    };
+    let url = `${WEB_SERVICE}api/sucursales/insertUpdateDeleteSucursales`
 
-      return await this.Pro_http.post(url, body, { headers }).toPromise();
-    }
+    return await this.Pro_http.post(url, body, { headers }).toPromise();
+  }
+
+  obtenerSucursalSeleccionda(p_token){
+    const headers = new HttpHeaders(Header);
+    //Preparacion de body
+    let body = {
+      token: p_token
+    };
+    let url = `${WEB_SERVICE}api/sucursales/obtenerSucursalSeleccionada`
+
+    return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
+      return result;
+    }));
+  }
+
+  async sucursalesListUsuario(){
+    const headers = new HttpHeaders(Header);
+    //Preparacion de body
+    let body = {
+      token: await this.storage.get('token')
+    };
+    let url = `${WEB_SERVICE}api/sucursales/sucursalesListUsuario`
+
+    return this.Pro_http.post(url, body, { headers }).toPromise()
+  }
+
+  async updateSucursalSeleccionda(p_id_sucursal){
+    const headers = new HttpHeaders(Header);
+    //Preparacion de body
+    let body = {
+      token: await this.storage.get('token'),
+      id_sucursal: p_id_sucursal
+    };
+    let url = `${WEB_SERVICE}api/sucursales/updateSucursalSeleccionada`
+
+    return await this.Pro_http.post(url, body, { headers }).toPromise()
+  }
 }

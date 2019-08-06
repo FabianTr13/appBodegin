@@ -30,6 +30,25 @@ export class ProductosService {
     return await this.Pro_http.post(url, body, { headers }).toPromise()
   }
 
+  async updateProducto(p_form){
+    //Preparacion de header
+    const headers = new HttpHeaders(Header);
+    //Preparacion de body
+    let body = {
+      token: await this.storage.get('token'),
+      id_producto: p_form.id_producto,
+      nombre: p_form.nombre,
+      descripcion: p_form.descripcion,
+      codigobarra: p_form.codigo,
+      id_categoria: p_form.id_categoria,
+      fotografia: p_form.foto[0]
+    }
+
+    let url = `${WEB_SERVICE}api/productos/updateProducto`
+
+    return await this.Pro_http.post(url, body, { headers }).toPromise()
+  }
+
   listaProductos(p_token, p_idServicio){
     //Preparacion de header
     const headers = new HttpHeaders(Header);

@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { SucursalesService } from '../../Services/sucursales.service';
+import { Storage } from '@ionic/storage';
+
 
 @Component({
   selector: 'app-header',
@@ -8,55 +11,43 @@ import { AlertController } from '@ionic/angular';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public alertController: AlertController) {}
+  constructor(public alertController: AlertController,
+              private Pro_sucursales:SucursalesService,
+              private storage:Storage) {}
+
+  sucursal = {
+    id_sucursal : null,
+    descripcion : null
+  }
 
   @Input() titulo: String = "";
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.storage.get('token').then(token=>{
+      this.Pro_sucursales.obtenerSucursalSeleccionda(token).subscribe(data=>{
+        this.sucursal = data;
+      })
+    })
+  }
 
 
   async presentAlertRadio() {
-    const alert = await this.alertController.create({
-      header: 'Radio',
-      inputs: [
-        {
-          name: 'radio1',
-          type: 'radio',
-          label: 'Radio 1',
-          value: 'value1',
-          checked: true
-        },
-        {
-          name: 'radio2',
-          type: 'radio',
-          label: 'Radio 2',
-          value: 'value2'
-        },
-        {
-          name: 'radio3',
-          type: 'radio',
-          label: 'Radio 3',
-          value: 'value3'
-        },
-        {
-          name: 'radio4',
-          type: 'radio',
-          label: 'Radio 4',
-          value: 'value4'
-        },
-        {
-          name: 'radio5',
-          type: 'radio',
-          label: 'Radio 5',
-          value: 'value5'
-        },
-        {
-          name: 'radio6',
-          type: 'radio',
-          label: 'Radi 6',
-          value: 'value6'
-        }
-      ],
+    let sucursales = []
+
+    let sucursales_list = await this.Pro_sucursales.sucursalesListUsuario();
+    if (Array.isArray(sucursales_list)) {
+      for (let i = 0; i < sucursales_list.length; i++) {
+        sucursales.push({
+          type:'radio',
+          label: sucursales_list[i].descripcion,
+          value: sucursales_list[i].id_sucursal
+        })
+      }
+    }
+
+    let alert = await this.alertController.create({
+      header: 'Sucursales',
+      inputs: sucursales,
       buttons: [
         {
           text: 'Cancelar',
@@ -68,7 +59,13 @@ export class HeaderComponent implements OnInit {
         }, {
           text: 'Cambiar',
           handler: async data=> {
-            console.log('Confirm Ok', data);
+            if (Array.isArray(sucursales_list)) {
+              this.sucursal =  sucursales_list.filter(item=> item.id_sucursal == data)[0]
+              this.storage.set('sucursal', this.sucursal);
+              await this.Pro_sucursales.updateSucursalSeleccionda(this.sucursal.id_sucursal).catch(err=>{
+                this.sucursal = {id_sucursal:null, descripcion:null}
+              })
+            }
           }
         }
       ]
@@ -76,5 +73,4 @@ export class HeaderComponent implements OnInit {
 
     await alert.present();
   }
-
 }

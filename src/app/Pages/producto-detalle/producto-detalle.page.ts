@@ -144,7 +144,7 @@ export class ProductoDetallePage implements OnInit {
   async guardar(){
     let filePath: string = this.Pro_producto.foto[0]
      this.Pro_producto.foto[0] = resizebase64(filePath, 500, 450);
-    await this.Pro_productos.nuevoProducto(this.Pro_producto).catch(err=>{
+    await this.Pro_productos.updateProducto(this.Pro_producto).catch(err=>{
       console.log(err)
     })
   }
