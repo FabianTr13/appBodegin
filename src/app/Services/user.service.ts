@@ -52,4 +52,18 @@ export class UserService {
       return result;
     }));
   }
+
+  getUsuariosList(p_token, p_id_sucursal){
+    const headers = new HttpHeaders(Header);
+    let body = {
+      token: p_token,
+      id_sucursal:p_id_sucursal
+    }
+
+    let url = `${WEB_SERVICE}api/usuarios/usuariosList`
+
+    return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
+      return result;
+    }));
+  }
 }

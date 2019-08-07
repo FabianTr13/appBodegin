@@ -16,6 +16,13 @@ ion-content{
   }
 }
 
+.inv-in{
+	color: #6e6368 !important;
+}
+.inv-out{
+	color: red !important;
+}
+
 .image{
   width: 20%;
   height: 200px;
@@ -27,8 +34,20 @@ ion-content{
     margin: auto;
 }
 
+.active{
+  margin-right: 10%;
+  width: 10px;
+  height: 10px;
+}
+
 .minMax{
   padding: 5px;
+}
+
+.transaccion{
+  font-size: 0.9em !important;
+  color: #3880ff;
+  font-weight: bold;
 }
 
 @media (max-width: 2000px) {

@@ -69,6 +69,17 @@ export class SucursalesService {
     }));
   }
 
+  async obtenerSucursalSelecciondaAsync(){
+    const headers = new HttpHeaders(Header);
+    //Preparacion de body
+    let body = {
+      token: await this.storage.get('token')
+    };
+    let url = `${WEB_SERVICE}api/sucursales/obtenerSucursalSeleccionada`
+
+    return await this.Pro_http.post(url, body, { headers }).toPromise();
+  }
+
   async sucursalesListUsuario(){
     const headers = new HttpHeaders(Header);
     //Preparacion de body
@@ -76,6 +87,18 @@ export class SucursalesService {
       token: await this.storage.get('token')
     };
     let url = `${WEB_SERVICE}api/sucursales/sucursalesListUsuario`
+
+    return this.Pro_http.post(url, body, { headers }).toPromise()
+  }
+
+  async insertSucursalUsuario(p_usuarios, p_id_sucursal){
+    const headers = new HttpHeaders(Header);
+    //Preparacion de body
+    let body = {
+      usuarios: p_usuarios,
+      id_sucursal: p_id_sucursal
+    };
+    let url = `${WEB_SERVICE}api/sucursales/sucursalesInsertUsuarios`
 
     return this.Pro_http.post(url, body, { headers }).toPromise()
   }

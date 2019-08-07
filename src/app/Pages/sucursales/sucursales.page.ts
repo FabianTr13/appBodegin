@@ -36,15 +36,18 @@ export class SucursalesPage implements OnInit {
     })
   }
 
-  async presentModal(p_accion, p_sucursal = {
-    id_sucursal:null,
-    descripcion:null,
-    nombre_corto:null
-  }) {
+  async presentModal(p_accion, p_sucursal) {
+
+    let suc = {
+      id_sucursal:p_sucursal ? p_sucursal.id_sucursal : null,
+      descripcion: p_sucursal ? p_sucursal.descripcion : null,
+      nombre_corto: p_sucursal ? p_sucursal.nombre_corto : null
+    }
+
     const modal = await this.modalController.create({
       component: SucursalCreatePage,
       componentProps: {
-        'sucursal': p_sucursal,
+        'sucursal': suc,
         'accion':p_accion
       }
     });
@@ -79,6 +82,7 @@ export class SucursalesPage implements OnInit {
   }
 
   async refreshUpdate(){
+    console.log('caimos al refresh')
     this.sucursales = this.sucursales_backup = await this.Pro_sucursales.obtenerSucursalesAsync()
     let event = new MouseEvent('click', {bubbles: false});
     await this.el.nativeElement.dispatchEvent(event);

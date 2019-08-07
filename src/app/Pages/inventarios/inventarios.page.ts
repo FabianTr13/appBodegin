@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosService } from '../../Services/productos.service';
 import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-inventarios',
@@ -8,13 +10,14 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./inventarios.page.scss'],
 })
 export class InventariosPage implements OnInit {
-  
+
   productos;
   productos_backup;
   textSearch = ''
-  
+
   constructor(private Pro_productos:ProductosService,
-              private storage:Storage) { }
+              private storage:Storage,
+              private router:Router) { }
 
   ngOnInit() {
     this.storage.get('token').then(token =>{
@@ -23,7 +26,7 @@ export class InventariosPage implements OnInit {
     })
   })
   }
-  
+
   async busqueda(p_busqueda){
      this.productos = []
      this.productos_backup.forEach(variable => {
@@ -32,9 +35,13 @@ export class InventariosPage implements OnInit {
          }
      });
    }
-   
+
    async doRefresh(event) {
      this.productos = this.productos_backup = await this.Pro_productos.inventarioListAsync()
      event.target.complete();
+   }
+
+   async productoDetalle(p_id_producto){
+     this.router.navigate(['/producto-detalle/', p_id_producto])
    }
 }

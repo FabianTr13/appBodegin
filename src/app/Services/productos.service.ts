@@ -106,6 +106,18 @@ export class ProductosService {
     return await this.Pro_http.post(url, body, { headers }).toPromise()
   }
 
+  async inventarioTransacciones(p_id_producto, p_sucursal){
+    //Preparacion de header
+    const headers = new HttpHeaders(Header);
+    //Preparacion de body
+    let body = {
+      id_producto : p_id_producto,
+      id_sucursal : p_sucursal.id_sucursal
+    };
+    let url = `${WEB_SERVICE}api/productos/inventarioTransacciones`
+    return await this.Pro_http.post(url, body, { headers }).toPromise()
+  }
+
   getProducto(p_id_producto){
     //Preparacion de header
     const headers = new HttpHeaders(Header);

@@ -25,25 +25,34 @@
                        required>
              </ion-input>
           </ion-item>
-          <div>
-            <ion-button expand="block"
-                        shape="round"
-                        color="primary"
+
+          <ion-list>
+        <ion-list-header>Usuarios</ion-list-header>
+          <ion-item *ngFor="let item of usuarios">
+            <ion-label>{{item.nombre}}</ion-label>
+            <ion-checkbox [(ngModel)]="item.seleccionado"
+                          color="primary"
+                          checked="{{item.seleccionado}}"
+                          name="seleccionado"
+                          slot="end">
+            </ion-checkbox>
+          </ion-item>
+        </ion-list>
+
+          <ion-item lines="none">
+            <ion-button class="button"
+                        [disabled]="form.invalid"
                         type="submit"
-                        [disabled]="form.invalid">Guardar
-                        <ion-icon slot="end"
-                          name="save">
-                        </ion-icon>
-            </ion-button>
-            <ion-button expand="block"
-                        shape="round"
+                        color="primary"
+                        size="default"
+                        shape="round">Guardar<ion-icon slot="end" name="save"></ion-icon></ion-button>
+
+            <ion-button class="buttonExit"
+                        (click)="Salir()"
                         color="medium"
-                        (click)="Salir()">Cancelar
-                        <ion-icon slot="end"
-                                  name="exit">
-                        </ion-icon>
-            </ion-button>
-          </div>
+                        size="default"
+                        shape="round">Cancelar<ion-icon slot="end" name="exit"></ion-icon></ion-button>
+          </ion-item>
         </ion-col>
       </ion-row>
     </ion-grid>

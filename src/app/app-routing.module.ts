@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'register', loadChildren: './Pages/register/register.module#RegisterPageModule' },
   { path: 'reset-pass', loadChildren: './Pages/reset-pass/reset-pass.module#ResetPassPageModule'},
   { path: 'nuevo', loadChildren: './Pages/nuevo-producto/nuevo-producto.module#NuevoProductoPageModule', canActivate :[AuthGuard], data: {token: []} },
-  { path: 'producto-detalle', loadChildren: './Pages/producto-detalle/producto-detalle.module#ProductoDetallePageModule' , canActivate :[AuthGuard], data: {token: []} },
+  { path: 'producto-detalle/:id_producto', loadChildren: './Pages/producto-detalle/producto-detalle.module#ProductoDetallePageModule' , canActivate :[AuthGuard], data: {token: []} },
   { path: 'entregas', loadChildren: './Pages/entregas/entregas.module#EntregasPageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'inventarios', loadChildren: './Pages/inventarios/inventarios.module#InventariosPageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'estadisticas', loadChildren: './Pages/estadisticas/estadisticas.module#EstadisticasPageModule', canActivate :[AuthGuard], data: {token: []} },

@@ -1,5 +1,9 @@
 <app-header-in titulo="Nuevo Producto"></app-header-in>
 <ion-content>
+  <ion-item lines="none" (click)="deleteProducto()">
+    <ion-label text-right>Eliminar</ion-label>
+      <ion-icon color="danger" name="trash"></ion-icon>
+  </ion-item>
   <div text-center>
     <img class="image"
          (click)="presentActionSheet()"
@@ -48,14 +52,38 @@
           </ion-item>
           <div padding>
             <ion-button shape = "round"
-                        size = "large"
+                        size = "default"
                         type = "submit"
                         [disabled] = "form.invalid"
-                        expand = "block">Guardar</ion-button>
+                        expand = "block">Guardar <ion-icon name="save"></ion-icon></ion-button>
           </div>
         </ion-col>
       </ion-row>
     </ion-grid>
   </form>
-  <ion-button expand="full" coloe="primaty">Historial de transacciones  <ion-icon ios="ios-swap" md="md-swap"></ion-icon></ion-button>
+  <ion-item color="primary" (click)="sucursalesSelect()">
+    {{sucursal.nombre_corto}}
+    <ion-img slot="start" class="active" src="/assets/side/point_side.png"></ion-img>
+    <ion-item color="primary">
+      <p slot="end">Historial</p>
+    </ion-item>
+    <ion-icon slot="end" name="list-box"></ion-icon>
+  </ion-item>
+  <div padding >
+    <ion-list >
+        <ion-item *ngFor="let item of inventarios">
+          <ion-avatar slot="start">
+            <img src="{{item.imagen}}">
+          </ion-avatar>
+          <ion-label>
+            <h2 class="transaccion">{{item.transaccion}}</h2>
+            <h4>Fecha creada: {{item.fecha}}</h4>
+          </ion-label>
+          <ion-label text-end slot="end">
+            <h2 class="transaccion">Cant.</h2>
+            <h4>{{item.cantidad}}</h4>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+  </div>
 </ion-content>
