@@ -32,6 +32,8 @@ export class NuevoProductoPage implements OnInit {
   categorias = []
   tiposConsumo = []
   id_consumo = 1;
+  id_categoria;
+
 
   constructor(private camera: Camera,
               public actionSheetController: ActionSheetController,

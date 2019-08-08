@@ -36,7 +36,7 @@ export class SucursalesPage implements OnInit {
     })
   }
 
-  async presentModal(p_accion, p_sucursal) {
+  async presentModal(p_accion, p_sucursal=undefined) {
 
     let suc = {
       id_sucursal:p_sucursal ? p_sucursal.id_sucursal : null,
