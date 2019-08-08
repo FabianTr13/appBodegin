@@ -1,0 +1,101 @@
+<app-header-modal titulo="Editar Producto"></app-header-modal>
+<ion-content>
+  <ion-item lines="none" (click)="deleteProducto()">
+    <ion-label text-right>Eliminar</ion-label>
+      <ion-icon color="danger" name="trash"></ion-icon>
+  </ion-item>
+  <div text-center>
+    <img class="image"
+         (click)="presentActionSheet()"
+         [src]="Pro_producto.foto[0]"
+         alt="Agregar imagen">
+  </div>
+  <input #fileInput hidden (change)="fileUpload()" type="file" name="pic" accept="image/*">
+  <form #form="ngForm" (ngSubmit)="guardar()">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input name="nombre"
+                       type="text"
+                       [(ngModel)]="Pro_producto.nombre"
+                       required>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Codigo de Producto</ion-label>
+            <ion-input name="codigo"
+                       type="text"
+                       [(ngModel)]="Pro_producto.codigo"
+                       required>
+             </ion-input>
+            <img text-center (click)="barCodeScanner()"
+                 slot="end"
+                 class="buttonScanner"
+                 src="assets/img/barcode.png"
+                 alt="leerQR">
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Descripcion (Opcional)</ion-label>
+            <ion-input name="descripcion"
+                       type="text"
+                       [(ngModel)]="Pro_producto.descripcion">
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Tipo de consumo</ion-label>
+            <ion-select value="{{id_tipo_consumo}}" [(ngModel)]="id_tipo_consumo" (ionChange)="consumoGet($event)" placeholder="Seleccione una">
+              <ion-select-option *ngFor="let item of tiposConsumo"
+                                  value="{{item.id_tipo_consumo}}">{{item.descripcion}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>Categorias</ion-label>
+            <ion-select value="{{id_categoria}}" [(ngModel)]="id_categoria" (ionChange)="categroriaGet($event)" placeholder="Seleccione una">
+              <ion-select-option *ngFor="let item of categorias"
+                                  value="{{item.id_categoria}}">{{item.descripcion}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <div padding>
+            <ion-button shape = "round"
+                        size = "default"
+                        type = "submit"
+                        [disabled] = "form.invalid"
+                        expand = "block">Guardar <ion-icon name="save"></ion-icon></ion-button>
+            <ion-button (click)="Salir()"
+                        color="medium"
+                        size="default"
+                        expand="block"
+                        shape="round">Salir<ion-icon slot="end" name="exit"></ion-icon></ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <ion-item color="primary" (click)="sucursalesSelect()">
+    {{sucursal.nombre_corto}}
+    <ion-img slot="start" class="active" src="/assets/side/point_side.png"></ion-img>
+    <ion-item color="primary">
+      <p slot="end">Historial</p>
+    </ion-item>
+    <ion-icon slot="end" name="list-box"></ion-icon>
+  </ion-item>
+  <div padding >
+    <ion-list >
+        <ion-item *ngFor="let item of inventarios">
+          <ion-avatar slot="start">
+            <img src="{{item.imagen}}">
+          </ion-avatar>
+          <ion-label>
+            <h2 class="transaccion">{{item.transaccion}}</h2>
+            <h4>Fecha creada: {{item.fecha}}</h4>
+          </ion-label>
+          <ion-label text-end slot="end">
+            <h2 class="transaccion">Cant.</h2>
+            <h4>{{item.cantidad}}</h4>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+  </div>
+</ion-content>

@@ -1,4 +1,3 @@
-import { ComponentsModule } from '../../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -6,12 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { NuevoProductoPage } from './nuevo-producto.page';
+import { ConfigUsuarioNuevoPage } from './config-usuario-nuevo.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: NuevoProductoPage
+    component: ConfigUsuarioNuevoPage
   }
 ];
 
@@ -20,9 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
-    ComponentsModule
+    RouterModule.forChild(routes)
   ],
-  declarations: [NuevoProductoPage]
+  declarations: [ConfigUsuarioNuevoPage]
 })
-export class NuevoProductoPageModule {}
+export class ConfigUsuarioNuevoPageModule {}

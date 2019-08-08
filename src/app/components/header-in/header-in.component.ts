@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-in',
@@ -8,9 +9,12 @@ import { Component, OnInit, Input } from '@angular/core';
 export class HeaderInComponent implements OnInit {
 
   @Input() titulo: String = "";
-
-  constructor() { }
+  constructor(private router:Router,
+              private reload:ChangeDetectorRef) {}
 
   ngOnInit() {}
 
+  public refresh() {
+    this.reload.detectChanges();
+  }
 }

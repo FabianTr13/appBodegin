@@ -1,12 +1,14 @@
 import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, NavController } from '@ionic/angular';
 import { isApp } from '../../Config/configuration';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { ProductosService } from '../../Services/productos.service';
 import { CategoriasService } from '../../Services/categorias.service';
 import { Storage } from '@ionic/storage';
 import * as resizebase64 from 'resize-base64';
+import { ModalController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-nuevo-producto',
@@ -15,6 +17,7 @@ import * as resizebase64 from 'resize-base64';
 })
 export class NuevoProductoPage implements OnInit {
   @ViewChild('fileInput') el:ElementRef;
+
   Pro_producto = {
     foto: [
       'assets/nuevo/camera.png'
@@ -22,23 +25,30 @@ export class NuevoProductoPage implements OnInit {
     nombre:null,
     codigo:null,
     descripcion: null,
-    id_categoria: null
+    id_categoria: null,
+    id_tipo_consumo:null
   }
 
   categorias = []
+  tiposConsumo = []
+  id_consumo = 1;
 
   constructor(private camera: Camera,
               public actionSheetController: ActionSheetController,
               private barcodeScanner: BarcodeScanner,
               private Pro_productos:ProductosService,
               private Pro_categorias:CategoriasService,
-              private storage:Storage) {
+              private storage:Storage,
+              public modalController: ModalController) {
   }
 
   ngOnInit() {
-    this.storage.get('token').then(token=>{
+    this.storage.get('token').then(async token=>{
       this.Pro_categorias.obtenerCategorias(token).subscribe(data=>{
         this.categorias = data
+      })
+      this.Pro_productos.getTiposConsumo(token).subscribe(data=>{
+        this.tiposConsumo = data
       })
     })
   }
@@ -120,6 +130,10 @@ export class NuevoProductoPage implements OnInit {
     this.Pro_producto.id_categoria = p_sls.target.value
   }
 
+  async consumoGet(p_tipo){
+    this.Pro_producto.id_tipo_consumo = p_tipo.target.value
+  }
+
   fileUpload() {
     var reader = new FileReader();
     reader.readAsDataURL(this.el.nativeElement.files[0]);
@@ -130,10 +144,21 @@ export class NuevoProductoPage implements OnInit {
   }
 
   async guardar(){
-    let filePath: string = this.Pro_producto.foto[0]
-     this.Pro_producto.foto[0] = resizebase64(filePath, 500, 450);
-    await this.Pro_productos.nuevoProducto(this.Pro_producto).catch(err=>{
+    if (this.Pro_producto.foto[0]!='assets/nuevo/camera.png') {
+      let filePath: string = this.Pro_producto.foto[0]
+      this.Pro_producto.foto[0] = resizebase64(filePath, 500, 450);
+    }
+    else{
+      this.Pro_producto.foto[0] = null
+    }
+
+    let producto_id = await this.Pro_productos.nuevoProducto(this.Pro_producto).catch(err=>{
       console.log(err)
     })
+    this.modalController.dismiss({id_producto:producto_id});
+  }
+
+  async Salir(){
+    this.modalController.dismiss();
   }
 }

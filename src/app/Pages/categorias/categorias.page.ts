@@ -87,7 +87,6 @@ export class CategoriasPage implements OnInit {
     let event = new MouseEvent('click', {bubbles: false});
     await this.el.nativeElement.dispatchEvent(event);
     this.textSearch = 'HOLA'
-    console.log(this.textSearch)
   }
 
   async doRefresh(event) {

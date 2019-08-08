@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { NuevoProductoPage } from '../../Modals/nuevo-producto/nuevo-producto.page';
+
 
 @Component({
   selector: 'app-home',
@@ -8,14 +11,28 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
 
-  constructor(private Pro_router:Router) { }
+  constructor(private Pro_router:Router,
+              private modalController:ModalController) { }
 
-  sucursal="Barrio Medina"
+  sucursal="NINGUNA"
 
   ngOnInit() {
   }
 
   navegar(pRuta){
     this.Pro_router.navigate([pRuta])
+  }
+
+  async crearProducto() {
+    const modal = await this.modalController.create({
+      component: NuevoProductoPage,
+      componentProps: {}
+    });
+    await modal.present();
+    let data  = await modal.onDidDismiss()
+
+    if (data.data != undefined) {
+       this.navegar('inventarios')
+    }
   }
 }

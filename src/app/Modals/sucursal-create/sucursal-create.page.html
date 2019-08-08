@@ -29,8 +29,10 @@
       </ion-row>
     </ion-grid>
   </form>
-  <ion-list>
-    <ion-list-header>Usuarios</ion-list-header>
+  <div text-center class="separador">
+    <h3>Usuarios &nbsp;&nbsp;<ion-icon name="person-add"></ion-icon></h3>
+  </div>
+  <ion-list class="gridBorder">
     <ion-item *ngFor="let item of usuarios">
       <ion-label>{{item.nombre}}</ion-label>
       <ion-checkbox [(ngModel)]="item.seleccionado"
@@ -41,7 +43,6 @@
       </ion-checkbox>
     </ion-item>
   </ion-list>
-
   <ion-item lines="none">
     <ion-button class="button"
                 [disabled]="form.invalid"

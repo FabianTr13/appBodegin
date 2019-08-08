@@ -15,7 +15,7 @@
               <ion-input name="user" type="text" placeholder="Usuario" [(ngModel)]="usuario" required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="password" type="password" placeholder="Contraseña" ngModel required></ion-input>
+              <ion-input name="password" type="password" placeholder="Contraseña" ngModel required (keyup.enter)="login(form)"></ion-input>
             </ion-item>
           </div>
           <ion-label routerLink="/reset-pass" class="label-font" text-right>Olvidaste tu contraseña?</ion-label>

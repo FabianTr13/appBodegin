@@ -1,4 +1,4 @@
-<app-header-in titulo="Nuevo Producto"></app-header-in>
+<app-header-modal titulo="Nuevo Producto"></app-header-modal>
 <ion-content>
   <div text-center>
     <img class="image"
@@ -40,19 +40,30 @@
             </ion-input>
           </ion-item>
           <ion-item>
+            <ion-label>Tipo de Consumo</ion-label>
+            <ion-select [(ngModel)]="id_consumo" (ionChange)="consumoGet($event)" placeholder="Seleccione un tipo">
+              <ion-select-option *ngFor="let item of tiposConsumo"
+                                  value="{{item.id_tipo_consumo}}">{{item.descripcion}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
             <ion-label>Categorias</ion-label>
             <ion-select [(ngModel)]="id_categoria" (ionChange)="categroriaGet($event)" placeholder="Seleccione una">
               <ion-select-option *ngFor="let item of categorias"
-
                                   value="{{item.id_categoria}}">{{item.descripcion}}</ion-select-option>
             </ion-select>
           </ion-item>
           <div padding>
             <ion-button shape="round"
-                        size="large"
+                        size="default"
                         type="submit"
                         [disabled]="form.invalid"
-                        expand="block"><ion-ripple-effect></ion-ripple-effect>Guardar</ion-button>
+                        expand="block">Guardar <ion-icon slot="end" name="save"></ion-icon></ion-button>
+            <ion-button shape="round"
+                        size="default"
+                        (click)="Salir()"
+                        color="medium"
+                        expand="block">Cancelar <ion-icon slot="end" name="exit"></ion-icon></ion-button>
           </div>
         </ion-col>
       </ion-row>

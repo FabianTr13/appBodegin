@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NavParams } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
-import { ToastController } from '@ionic/angular';
 import { SucursalesService } from '../../Services/sucursales.service';
 import { UserService } from '../../Services/user.service';
 import { Storage } from '@ionic/storage';
@@ -34,7 +32,6 @@ export class SucursalCreatePage implements OnInit {
 
   constructor(private Pro_sucursales: SucursalesService,
               public modalController: ModalController,
-              public toastController: ToastController,
               private Pro_usuarios:UserService,
               private storage: Storage) { }
 

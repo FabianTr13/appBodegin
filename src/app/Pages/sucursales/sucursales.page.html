@@ -32,6 +32,7 @@
       </ion-grid>
     </form>
   </div>
+
   <ion-list>
     <ion-item-sliding *ngFor="let item of sucursales">
       <ion-item-options side="start">
@@ -40,7 +41,7 @@
       </ion-item-option>
       </ion-item-options>
       <ion-item>
-        <ion-label>{{item.nombre_corto}} &nbsp;&nbsp; {{item.descripcion}}
+        <ion-label>{{item.nombre_corto | uppercase}} &nbsp;-&nbsp; {{item.descripcion}}
         </ion-label>
         <ion-icon slot="end" name="create" (click)="presentModal('UPDATE',item)"></ion-icon>
       </ion-item>
