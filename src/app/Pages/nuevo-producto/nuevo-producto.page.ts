@@ -26,6 +26,7 @@ export class NuevoProductoPage implements OnInit {
   }
 
   categorias = []
+  id_categoria;
 
   constructor(private camera: Camera,
               public actionSheetController: ActionSheetController,
