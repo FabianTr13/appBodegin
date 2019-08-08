@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1565239085366,
+  "timestamp": 1565240053536,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -113,7 +113,7 @@
         "/21.784f406cb638ca4d304d.js",
         "/22.a4a8ddd12ef9f4f971d7.js",
         "/23.1fd9976279acb2ed4bda.js",
-        "/24.2faa239851e81d1f9d79.js",
+        "/24.8c1e2b622b15db02184d.js",
         "/25.46055e490f0a28ef6888.js",
         "/26.294a304beb4b56f7ea99.js",
         "/27.c8f86e174df09ce3a93b.js",
@@ -200,7 +200,7 @@
         "/index.html",
         "/main.af15476b1e57405db85d.js",
         "/polyfills.263c27518d7e480017ca.js",
-        "/runtime.afcd52e8a3bc0e5a38d8.js",
+        "/runtime.e15ffa443db829c9e398.js",
         "/styles.64752c58c96d36ffc4ca.css"
       ],
       "patterns": []
@@ -359,7 +359,7 @@
     "/21.784f406cb638ca4d304d.js": "61f40cdf668b441cf3d7f6695f69eca5b088a18e",
     "/22.a4a8ddd12ef9f4f971d7.js": "32db23505b25ddd06678c5fe2911b28ae753e3c0",
     "/23.1fd9976279acb2ed4bda.js": "4f44fa51701688a8e7457ac808086e142d143e9b",
-    "/24.2faa239851e81d1f9d79.js": "ecea456d652b291c0cf80d10fb5347034c7c1cf4",
+    "/24.8c1e2b622b15db02184d.js": "d5a859b2fca829c520afd04a4b913c97f266f75a",
     "/25.46055e490f0a28ef6888.js": "2e2d52e8b64991801a976ea9a1c059a8209d4fb8",
     "/26.294a304beb4b56f7ea99.js": "8deaffb2ee126a21fa48ab3a19e9aec74b6220d0",
     "/27.c8f86e174df09ce3a93b.js": "b379b74126e86ab5483a7906a215818e1c2a27ce",
@@ -481,10 +481,10 @@
     "/assets/transacciones/out.png": "c2fdbddc5c306fa2f097d0974da99e0b15ecd761",
     "/common.75989055d5c35b6a36b2.js": "c24a555d24de31e23ab3e9f5900c49b7bb136445",
     "/es2015-polyfills.17ca442a014859664845.js": "f3ac6a8e8158ab33efbba174a8066754f507a5f3",
-    "/index.html": "3493ff743ecb25d67ecce07de5b7dbbb99c760ca",
+    "/index.html": "1a06a1b270e450bbbe3fb2ca409a2e96ac61828d",
     "/main.af15476b1e57405db85d.js": "bd5f51c0c7c5be1770f032d717a0b13bf2ed2484",
     "/polyfills.263c27518d7e480017ca.js": "b057c0e45d947832282f37b8d005a0c872b59790",
-    "/runtime.afcd52e8a3bc0e5a38d8.js": "e05665d424ca54799ab64555651801773f71831c",
+    "/runtime.e15ffa443db829c9e398.js": "5e4b92c9b9541281581b3bab53d60599519f9a17",
     "/styles.64752c58c96d36ffc4ca.css": "042c60dc5a1bc91f241ac8a0c1439a38d042f5a8"
   },
   "navigationUrls": [
