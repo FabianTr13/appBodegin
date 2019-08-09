@@ -952,7 +952,7 @@ const Header = {
   'Access-Control-Allow-Origin': '*'
 }
 
-const WEB_SERVICE = "http://www.bodegin.com:3000/";
+const WEB_SERVICE = "http://192.168.2.219:3000/";
 const isApp = true;
 
 
@@ -1348,7 +1348,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app>\n  <ion-router-outlet></ion-router-outlet>\n</ion-app>\n"
+module.exports = "<ion-app>\r\n  <ion-router-outlet></ion-router-outlet>\r\n</ion-app>\r\n"
 
 /***/ }),
 
@@ -1378,7 +1378,7 @@ var AppComponent = /** @class */ (function () {
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
         this.initializeApp();
-        // this.statusBar.overlaysWebView(true);
+        this.statusBar.overlaysWebView(true);
     }
     AppComponent.prototype.initializeApp = function () {
         var _this = this;
@@ -1433,6 +1433,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/barcode-scanner/ngx */ "./node_modules/@ionic-native/barcode-scanner/ngx/index.js");
 /* harmony import */ var _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/base64/ngx */ "./node_modules/@ionic-native/base64/ngx/index.js");
 /* harmony import */ var _Pipe_filter_pipe__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./Pipe/filter.pipe */ "./src/app/Pipe/filter.pipe.ts");
+/* harmony import */ var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @ionic-native/file-transfer/ngx */ "./node_modules/@ionic-native/file-transfer/ngx/index.js");
 
 
 
@@ -1453,6 +1454,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+// import { ImagenPipe } from './Pipe/imagen.pipe';
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -1480,6 +1483,7 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__["StatusBar"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_6__["SplashScreen"],
                 _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_15__["Camera"],
+                _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_19__["FileTransfer"],
                 _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_16__["BarcodeScanner"],
                 _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_17__["Base64"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ActionSheetController"],
@@ -1558,7 +1562,7 @@ var ComponentsModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header no-border>\n  <ion-toolbar color=\"primary\">\n    <ion-item color =\"primary\" lines=\"none\" text-center>\n      <ion-label>{{titulo}}</ion-label>\n    </ion-item>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n"
+module.exports = "<ion-header no-border>\r\n  <div class=\"heider\"></div>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-item color =\"primary\" lines=\"none\" text-center>\r\n      <ion-label>{{titulo}}</ion-label>\r\n      <div></div>\r\n    </ion-item>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n"
 
 /***/ }),
 
@@ -1569,7 +1573,7 @@ module.exports = "<ion-header no-border>\n  <ion-toolbar color=\"primary\">\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-header ion-toolbar ion-item ion-img {\n  margin-right: 10%;\n  width: 10px;\n  height: 10px; }\n\nion-header ion-toolbar ion-item ion-label {\n  font-size: 1.2em !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mYWJpYW4vRG9jdW1lbnRzL2JvZGVnaW4vYXBwL3NyYy9hcHAvY29tcG9uZW50cy9oZWFkZXItaW4vaGVhZGVyLWluLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBSVEsaUJBQWlCO0VBQ2pCLFdBQVc7RUFDWCxZQUFZLEVBQUE7O0FBTnBCO0VBU1EsMkJBQTJCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2hlYWRlci1pbi9oZWFkZXItaW4uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24taGVhZGVye1xuICBpb24tdG9vbGJhcntcbiAgICBpb24taXRlbXtcbiAgICAgIGlvbi1pbWd7XG4gICAgICAgIG1hcmdpbi1yaWdodDogMTAlO1xuICAgICAgICB3aWR0aDogMTBweDtcbiAgICAgICAgaGVpZ2h0OiAxMHB4O1xuICAgICAgfVxuICAgICAgaW9uLWxhYmVse1xuICAgICAgICBmb250LXNpemU6IDEuMmVtICFpbXBvcnRhbnQ7XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */"
+module.exports = "ion-header ion-toolbar ion-item div {\n  margin-right: 10%;\n  width: 10px;\n  height: 10px; }\n\nion-header ion-toolbar ion-item ion-label {\n  font-size: 1.2em !important; }\n\n.heider {\n  background: #3880ff;\n  height: 12px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9oZWFkZXItaW4vQzpcXFVzZXJzXFxGYWJpYW5cXERvY3VtZW50c1xcYm9kZWdpblxcYXBwQm9kZWdpbi9zcmNcXGFwcFxcY29tcG9uZW50c1xcaGVhZGVyLWluXFxoZWFkZXItaW4uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFJUSxpQkFBaUI7RUFDakIsV0FBVztFQUNYLFlBQVksRUFBQTs7QUFOcEI7RUFTUSwyQkFBMkIsRUFBQTs7QUFLbkM7RUFDRSxtQkFBbUI7RUFDbkIsWUFBWSxFQUFBIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9oZWFkZXItaW4vaGVhZGVyLWluLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWhlYWRlcntcclxuICBpb24tdG9vbGJhcntcclxuICAgIGlvbi1pdGVte1xyXG4gICAgICBkaXZ7XHJcbiAgICAgICAgbWFyZ2luLXJpZ2h0OiAxMCU7XHJcbiAgICAgICAgd2lkdGg6IDEwcHg7XHJcbiAgICAgICAgaGVpZ2h0OiAxMHB4O1xyXG4gICAgICB9XHJcbiAgICAgIGlvbi1sYWJlbHtcclxuICAgICAgICBmb250LXNpemU6IDEuMmVtICFpbXBvcnRhbnQ7XHJcbiAgICAgIH1cclxuICAgIH1cclxuICB9XHJcbn1cclxuLmhlaWRlcntcclxuICBiYWNrZ3JvdW5kOiAjMzg4MGZmO1xyXG4gIGhlaWdodDogMTJweDtcclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -1626,7 +1630,7 @@ var HeaderInComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header no-border>\n  <ion-toolbar color=\"primary\">\n    <ion-item color =\"primary\" lines=\"none\" text-center>\n      <ion-label>{{titulo}}</ion-label>\n    </ion-item>\n  </ion-toolbar>\n</ion-header>\n"
+module.exports = "<ion-header no-border>\n  <div class=\"heider\"></div>\n  <ion-toolbar color=\"primary\">\n    <ion-item color =\"primary\" lines=\"none\" text-center>\n      <ion-label>{{titulo}}</ion-label>\n    </ion-item>\n  </ion-toolbar>\n</ion-header>\n"
 
 /***/ }),
 
@@ -1637,7 +1641,7 @@ module.exports = "<ion-header no-border>\n  <ion-toolbar color=\"primary\">\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-header ion-toolbar ion-item ion-img {\n  margin-right: 10%;\n  width: 10px;\n  height: 10px; }\n\nion-header ion-toolbar ion-item ion-label {\n  font-size: 1.2em !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mYWJpYW4vRG9jdW1lbnRzL2JvZGVnaW4vYXBwL3NyYy9hcHAvY29tcG9uZW50cy9oZWFkZXItbW9kYWwvaGVhZGVyLW1vZGFsLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBSVEsaUJBQWlCO0VBQ2pCLFdBQVc7RUFDWCxZQUFZLEVBQUE7O0FBTnBCO0VBU1EsMkJBQTJCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2hlYWRlci1tb2RhbC9oZWFkZXItbW9kYWwuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24taGVhZGVye1xuICBpb24tdG9vbGJhcntcbiAgICBpb24taXRlbXtcbiAgICAgIGlvbi1pbWd7XG4gICAgICAgIG1hcmdpbi1yaWdodDogMTAlO1xuICAgICAgICB3aWR0aDogMTBweDtcbiAgICAgICAgaGVpZ2h0OiAxMHB4O1xuICAgICAgfVxuICAgICAgaW9uLWxhYmVse1xuICAgICAgICBmb250LXNpemU6IDEuMmVtICFpbXBvcnRhbnQ7XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */"
+module.exports = "ion-header ion-toolbar ion-item ion-img {\n  margin-right: 10%;\n  width: 10px;\n  height: 10px; }\n\nion-header ion-toolbar ion-item ion-label {\n  font-size: 1.2em !important; }\n\n.heider {\n  background: #3880ff;\n  height: 12px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9oZWFkZXItbW9kYWwvQzpcXFVzZXJzXFxGYWJpYW5cXERvY3VtZW50c1xcYm9kZWdpblxcYXBwQm9kZWdpbi9zcmNcXGFwcFxcY29tcG9uZW50c1xcaGVhZGVyLW1vZGFsXFxoZWFkZXItbW9kYWwuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFJUSxpQkFBaUI7RUFDakIsV0FBVztFQUNYLFlBQVksRUFBQTs7QUFOcEI7RUFTUSwyQkFBMkIsRUFBQTs7QUFLbkM7RUFDRSxtQkFBbUI7RUFDbkIsWUFBWSxFQUFBIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9oZWFkZXItbW9kYWwvaGVhZGVyLW1vZGFsLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWhlYWRlcntcclxuICBpb24tdG9vbGJhcntcclxuICAgIGlvbi1pdGVte1xyXG4gICAgICBpb24taW1ne1xyXG4gICAgICAgIG1hcmdpbi1yaWdodDogMTAlO1xyXG4gICAgICAgIHdpZHRoOiAxMHB4O1xyXG4gICAgICAgIGhlaWdodDogMTBweDtcclxuICAgICAgfVxyXG4gICAgICBpb24tbGFiZWx7XHJcbiAgICAgICAgZm9udC1zaXplOiAxLjJlbSAhaW1wb3J0YW50O1xyXG4gICAgICB9XHJcbiAgICB9XHJcbiAgfVxyXG59XHJcbi5oZWlkZXJ7XHJcbiAgYmFja2dyb3VuZDogIzM4ODBmZjtcclxuICBoZWlnaHQ6IDEycHg7XHJcbn1cclxuIl19 */"
 
 /***/ }),
 
@@ -1686,7 +1690,7 @@ var HeaderModalComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header no-border>\n  <ion-toolbar color=\"primary\">\n    <ion-item color =\"primary\" lines=\"none\" text-center>\n      <ion-label (click)=\"presentAlertRadio()\">{{sucursal.descripcion}}</ion-label>\n      <ion-img src=\"/assets/side/point_side.png\"></ion-img>\n    </ion-item>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button autoHide=\"true\"></ion-menu-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n<app-side-menu></app-side-menu>\n"
+module.exports = "<ion-header no-border>\r\n  <div class=\"heider\"></div>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-item color =\"primary\" lines=\"none\" text-center>\r\n      <ion-label (click)=\"presentAlertRadio()\">{{sucursal.descripcion}}</ion-label>\r\n      <ion-img src=\"/assets/side/point_side.png\"></ion-img>\r\n    </ion-item>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-menu-button autoHide=\"true\"></ion-menu-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n<app-side-menu></app-side-menu>\r\n"
 
 /***/ }),
 
@@ -1697,7 +1701,7 @@ module.exports = "<ion-header no-border>\n  <ion-toolbar color=\"primary\">\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-header ion-toolbar ion-item ion-img {\n  margin-right: 10%;\n  width: 10px;\n  height: 10px; }\n\nion-header ion-toolbar ion-item ion-label {\n  font-size: 1.2em !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mYWJpYW4vRG9jdW1lbnRzL2JvZGVnaW4vYXBwL3NyYy9hcHAvY29tcG9uZW50cy9oZWFkZXIvaGVhZGVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBSVEsaUJBQWlCO0VBQ2pCLFdBQVc7RUFDWCxZQUFZLEVBQUE7O0FBTnBCO0VBU1EsMkJBQTJCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2hlYWRlci9oZWFkZXIuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24taGVhZGVye1xuICBpb24tdG9vbGJhcntcbiAgICBpb24taXRlbXtcbiAgICAgIGlvbi1pbWd7XG4gICAgICAgIG1hcmdpbi1yaWdodDogMTAlO1xuICAgICAgICB3aWR0aDogMTBweDtcbiAgICAgICAgaGVpZ2h0OiAxMHB4O1xuICAgICAgfVxuICAgICAgaW9uLWxhYmVse1xuICAgICAgICBmb250LXNpemU6IDEuMmVtICFpbXBvcnRhbnQ7XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */"
+module.exports = "ion-header ion-toolbar ion-item ion-img {\n  margin-right: 10%;\n  width: 10px;\n  height: 10px; }\n\nion-header ion-toolbar ion-item ion-label {\n  font-size: 1.2em !important; }\n\n.heider {\n  background: #3880ff;\n  height: 12px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9oZWFkZXIvQzpcXFVzZXJzXFxGYWJpYW5cXERvY3VtZW50c1xcYm9kZWdpblxcYXBwQm9kZWdpbi9zcmNcXGFwcFxcY29tcG9uZW50c1xcaGVhZGVyXFxoZWFkZXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFJUSxpQkFBaUI7RUFDakIsV0FBVztFQUNYLFlBQVksRUFBQTs7QUFOcEI7RUFTUSwyQkFBMkIsRUFBQTs7QUFLbkM7RUFDRSxtQkFBbUI7RUFDbkIsWUFBWSxFQUFBIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9oZWFkZXIvaGVhZGVyLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWhlYWRlcntcclxuICBpb24tdG9vbGJhcntcclxuICAgIGlvbi1pdGVte1xyXG4gICAgICBpb24taW1ne1xyXG4gICAgICAgIG1hcmdpbi1yaWdodDogMTAlO1xyXG4gICAgICAgIHdpZHRoOiAxMHB4O1xyXG4gICAgICAgIGhlaWdodDogMTBweDtcclxuICAgICAgfVxyXG4gICAgICBpb24tbGFiZWx7XHJcbiAgICAgICAgZm9udC1zaXplOiAxLjJlbSAhaW1wb3J0YW50O1xyXG4gICAgICB9XHJcbiAgICB9XHJcbiAgfVxyXG59XHJcbi5oZWlkZXJ7XHJcbiAgYmFja2dyb3VuZDogIzM4ODBmZjtcclxuICBoZWlnaHQ6IDEycHg7XHJcbn1cclxuIl19 */"
 
 /***/ }),
 
@@ -1831,7 +1835,7 @@ var HeaderComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-menu contentId=\"content1\" side=\"start\">\n  <ion-header no-border>\n    <ion-toolbar color =\"primary\">\n      <ion-item color =\"primary\" lines=\"none\">\n        <ion-avatar slot=\"start\">\n          <img src=\"https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y\">\n        </ion-avatar>\n        <ion-label class=\"titulo\">Bodegin\n        </ion-label>\n      </ion-item>\n      <div>\n      <ion-item color =\"primary\" lines=\"none\">\n        <ion-img src=\"/assets/side/point_side.png\"></ion-img>\n        <ion-label>Barrio las acacias</ion-label>\n      </ion-item>\n      </div>\n    </ion-toolbar>\n  </ion-header>\n  <ion-content>\n    <ion-list>\n      <ion-item (click)=\"navegar('/home')\">\n        <ion-img src=\"/assets/side/home.png\"></ion-img>\n          Inicio\n      </ion-item>\n      <ion-item lines=\"none\" (click)=\"navegar('/nuevo')\">\n        <ion-img src=\"/assets/side/plus.png\"></ion-img>\n          Nuevo Producto\n      </ion-item>\n      <ion-item (click)=\"navegar('/entregas')\">\n        <ion-img src=\"/assets/side/plus.png\"></ion-img>\n          Entrega\n      </ion-item>\n      <ion-item lines=\"none\" (click)=\"navegar('/inventarios')\">\n        <ion-img src=\"/assets/side/inventory.png\"></ion-img>\n          Inventario\n      </ion-item>\n      <ion-item lines=\"none\" (click)=\"navegar('/estadisticas')\">\n        <ion-img src=\"/assets/side/chart.png\"></ion-img>\n          Estadistica\n      </ion-item>\n      <ion-item (click)=\"navegar('/reportes')\">\n        <ion-img src=\"/assets/side/bill.png\"></ion-img>\n          Reportes\n      </ion-item>\n      <ion-item lines=\"none\" (click)=\"navegar('/categorias')\">\n        <ion-img src=\"/assets/side/bill.png\"></ion-img>\n          Categorias\n      </ion-item>\n      <ion-item lines=\"none\" (click)=\"navegar('/servicios')\">\n        <ion-img src=\"/assets/side/servicio.png\"></ion-img>\n          Servicios\n      </ion-item>\n      <ion-item (click)=\"navegar('/sucursales')\">\n        <ion-img src=\"/assets/side/build.png\"></ion-img>\n          Sucursales\n      </ion-item>\n      <ion-item lines=\"none\" (click)=\"navegar('/pagos')\">\n        <ion-img src=\"/assets/side/credit.png\"></ion-img>\n          Pagos\n      </ion-item>\n      <ion-item (click)=\"navegar('/config')\">\n        <ion-img src=\"/assets/side/config.png\"></ion-img>\n          Configuración\n      </ion-item>\n      <ion-item (click)=\"navegar('/login')\">\n        <ion-img src=\"/assets/side/logout.png\"></ion-img>\n          Salir\n      </ion-item>\n    </ion-list>\n  </ion-content>\n</ion-menu>\n"
+module.exports = "<ion-menu contentId=\"content1\" side=\"start\">\r\n  <ion-header no-border>\r\n    <ion-toolbar color =\"primary\">\r\n      <ion-item color =\"primary\" lines=\"none\">\r\n        <ion-avatar slot=\"start\">\r\n          <img src=\"https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y\">\r\n        </ion-avatar>\r\n        <ion-label class=\"titulo\">Bodegin\r\n        </ion-label>\r\n      </ion-item>\r\n      <div>\r\n      <ion-item color =\"primary\" lines=\"none\">\r\n        <ion-img src=\"/assets/side/point_side.png\"></ion-img>\r\n        <ion-label>Barrio las acacias</ion-label>\r\n      </ion-item>\r\n      </div>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  <ion-content>\r\n    <ion-list>\r\n      <ion-item (click)=\"navegar('/home')\">\r\n        <ion-img src=\"/assets/side/home.png\"></ion-img>\r\n          Inicio\r\n      </ion-item>\r\n      <ion-item lines=\"none\" (click)=\"navegar('/nuevo')\">\r\n        <ion-img src=\"/assets/side/plus.png\"></ion-img>\r\n          Nuevo Producto\r\n      </ion-item>\r\n      <ion-item (click)=\"navegar('/entregas')\">\r\n        <ion-img src=\"/assets/side/plus.png\"></ion-img>\r\n          Entrega\r\n      </ion-item>\r\n      <ion-item lines=\"none\" (click)=\"navegar('/inventarios')\">\r\n        <ion-img src=\"/assets/side/inventory.png\"></ion-img>\r\n          Inventario\r\n      </ion-item>\r\n      <ion-item lines=\"none\" (click)=\"navegar('/estadisticas')\">\r\n        <ion-img src=\"/assets/side/chart.png\"></ion-img>\r\n          Estadistica\r\n      </ion-item>\r\n      <ion-item (click)=\"navegar('/reportes')\">\r\n        <ion-img src=\"/assets/side/bill.png\"></ion-img>\r\n          Reportes\r\n      </ion-item>\r\n      <ion-item lines=\"none\" (click)=\"navegar('/categorias')\">\r\n        <ion-img src=\"/assets/side/bill.png\"></ion-img>\r\n          Categorias\r\n      </ion-item>\r\n      <ion-item lines=\"none\" (click)=\"navegar('/servicios')\">\r\n        <ion-img src=\"/assets/side/servicio.png\"></ion-img>\r\n          Servicios\r\n      </ion-item>\r\n      <ion-item (click)=\"navegar('/sucursales')\">\r\n        <ion-img src=\"/assets/side/build.png\"></ion-img>\r\n          Sucursales\r\n      </ion-item>\r\n      <ion-item lines=\"none\" (click)=\"navegar('/pagos')\">\r\n        <ion-img src=\"/assets/side/credit.png\"></ion-img>\r\n          Pagos\r\n      </ion-item>\r\n      <ion-item (click)=\"navegar('/config')\">\r\n        <ion-img src=\"/assets/side/config.png\"></ion-img>\r\n          Configuración\r\n      </ion-item>\r\n      <ion-item (click)=\"navegar('/login')\">\r\n        <ion-img src=\"/assets/side/logout.png\"></ion-img>\r\n          Salir\r\n      </ion-item>\r\n    </ion-list>\r\n  </ion-content>\r\n</ion-menu>\r\n"
 
 /***/ }),
 
@@ -1842,7 +1846,7 @@ module.exports = "<ion-menu contentId=\"content1\" side=\"start\">\n  <ion-heade
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".titulo {\n  font-size: 1.5em !important; }\n\nion-menu ion-header ion-toolbar div ion-item {\n  --min-height:20px;\n  border-top: 10px !important;\n  border-bottom: 10px !important; }\n\nion-menu ion-header ion-toolbar div ion-item ion-img {\n    width: 7px;\n    height: 7px; }\n\nion-menu ion-content ion-list ion-item ion-img {\n  margin-right: 10px !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mYWJpYW4vRG9jdW1lbnRzL2JvZGVnaW4vYXBwL3NyYy9hcHAvY29tcG9uZW50cy9zaWRlLW1lbnUvc2lkZS1tZW51LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0MsMkJBQTJCLEVBQUE7O0FBRzVCO0VBS1ksaUJBQWE7RUFFYiwyQkFBMkI7RUFDM0IsOEJBQThCLEVBQUE7O0FBUjFDO0lBVWMsVUFBVTtJQUNWLFdBQVcsRUFBQTs7QUFYekI7RUFxQlUsNkJBQTZCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3NpZGUtbWVudS9zaWRlLW1lbnUuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudGl0dWxve1xuIGZvbnQtc2l6ZTogMS41ZW0gIWltcG9ydGFudDtcbn1cblxuaW9uLW1lbnV7XG4gIGlvbi1oZWFkZXJ7XG4gICAgaW9uLXRvb2xiYXJ7XG4gICAgICBkaXZ7XG4gICAgICAgIGlvbi1pdGVtIHtcbiAgICAgICAgICAgIC0tbWluLWhlaWdodDoyMHB4O1xuICAgICAgICAgICAgLy8gbWFyZ2luLWxlZnQ6IDQ4cHg7XG4gICAgICAgICAgICBib3JkZXItdG9wOiAxMHB4ICFpbXBvcnRhbnQ7XG4gICAgICAgICAgICBib3JkZXItYm90dG9tOiAxMHB4ICFpbXBvcnRhbnQ7XG4gICAgICAgICAgICBpb24taW1ne1xuICAgICAgICAgICAgICB3aWR0aDogN3B4O1xuICAgICAgICAgICAgICBoZWlnaHQ6IDdweDtcbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgfVxuICBpb24tY29udGVudHtcbiAgICBpb24tbGlzdHtcbiAgICAgIGlvbi1pdGVte1xuICAgICAgICBpb24taW1ne1xuICAgICAgICAgIG1hcmdpbi1yaWdodDogMTBweCAhaW1wb3J0YW50O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */"
+module.exports = ".titulo {\n  font-size: 1.5em !important; }\n\nion-menu ion-header ion-toolbar div ion-item {\n  --min-height:20px;\n  border-top: 10px !important;\n  border-bottom: 10px !important; }\n\nion-menu ion-header ion-toolbar div ion-item ion-img {\n    width: 7px;\n    height: 7px; }\n\nion-menu ion-content ion-list ion-item ion-img {\n  margin-right: 10px !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaWRlLW1lbnUvQzpcXFVzZXJzXFxGYWJpYW5cXERvY3VtZW50c1xcYm9kZWdpblxcYXBwQm9kZWdpbi9zcmNcXGFwcFxcY29tcG9uZW50c1xcc2lkZS1tZW51XFxzaWRlLW1lbnUuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDQywyQkFBMkIsRUFBQTs7QUFHNUI7RUFLWSxpQkFBYTtFQUViLDJCQUEyQjtFQUMzQiw4QkFBOEIsRUFBQTs7QUFSMUM7SUFVYyxVQUFVO0lBQ1YsV0FBVyxFQUFBOztBQVh6QjtFQXFCVSw2QkFBNkIsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvc2lkZS1tZW51L3NpZGUtbWVudS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi50aXR1bG97XHJcbiBmb250LXNpemU6IDEuNWVtICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbmlvbi1tZW51e1xyXG4gIGlvbi1oZWFkZXJ7XHJcbiAgICBpb24tdG9vbGJhcntcclxuICAgICAgZGl2e1xyXG4gICAgICAgIGlvbi1pdGVtIHtcclxuICAgICAgICAgICAgLS1taW4taGVpZ2h0OjIwcHg7XHJcbiAgICAgICAgICAgIC8vIG1hcmdpbi1sZWZ0OiA0OHB4O1xyXG4gICAgICAgICAgICBib3JkZXItdG9wOiAxMHB4ICFpbXBvcnRhbnQ7XHJcbiAgICAgICAgICAgIGJvcmRlci1ib3R0b206IDEwcHggIWltcG9ydGFudDtcclxuICAgICAgICAgICAgaW9uLWltZ3tcclxuICAgICAgICAgICAgICB3aWR0aDogN3B4O1xyXG4gICAgICAgICAgICAgIGhlaWdodDogN3B4O1xyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgfVxyXG4gICAgICB9XHJcbiAgICB9XHJcbiAgfVxyXG4gIGlvbi1jb250ZW50e1xyXG4gICAgaW9uLWxpc3R7XHJcbiAgICAgIGlvbi1pdGVte1xyXG4gICAgICAgIGlvbi1pbWd7XHJcbiAgICAgICAgICBtYXJnaW4tcmlnaHQ6IDEwcHggIWltcG9ydGFudDtcclxuICAgICAgICB9XHJcbiAgICAgIH1cclxuICAgIH1cclxuICB9XHJcbn1cclxuIl19 */"
 
 /***/ }),
 
@@ -1947,7 +1951,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/fabian/Documents/bodegin/app/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Fabian\Documents\bodegin\appBodegin\src\main.ts */"./src/main.ts");
 
 
 /***/ })

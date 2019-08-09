@@ -15,7 +15,7 @@ export class AppComponent {
     private statusBar: StatusBar
   ) {
     this.initializeApp();
-     // this.statusBar.overlaysWebView(true);
+    this.statusBar.overlaysWebView(true);  
   }
 
   initializeApp() {

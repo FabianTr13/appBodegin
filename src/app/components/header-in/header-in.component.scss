@@ -1,7 +1,7 @@
 ion-header{
   ion-toolbar{
     ion-item{
-      ion-img{
+      div{
         margin-right: 10%;
         width: 10px;
         height: 10px;
@@ -11,4 +11,8 @@ ion-header{
       }
     }
   }
+}
+.heider{
+  background: #3880ff;
+  height: 12px;
 }

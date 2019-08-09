@@ -7,7 +7,7 @@
   <div text-center>
     <img class="image"
          (click)="presentActionSheet()"
-         [src]="Pro_producto.foto[0]"
+         [src]="Pro_producto.foto[1] | domSanitizer"
          alt="Agregar imagen">
   </div>
   <input #fileInput hidden (change)="fileUpload()" type="file" name="pic" accept="image/*">

@@ -61,7 +61,7 @@ var EstadisticasPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header-in titulo=\"Estadistica\"></app-header-in>\n"
+module.exports = "<app-header-in titulo=\"Estadistica\"></app-header-in>\r\n"
 
 /***/ }),
 

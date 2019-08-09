@@ -17,6 +17,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _producto_detalle_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./producto-detalle.page */ "./src/app/Modals/producto-detalle/producto-detalle.page.ts");
+/* harmony import */ var _Pipe_pipes_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Pipe/pipes.module */ "./src/app/Pipe/pipes.module.ts");
+
 
 
 
@@ -33,6 +35,7 @@ var ProductoDetallePageModule = /** @class */ (function () {
                 _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+                _Pipe_pipes_module__WEBPACK_IMPORTED_MODULE_7__["PipesModule"],
                 _components_components_module__WEBPACK_IMPORTED_MODULE_1__["ComponentsModule"]
             ],
             declarations: [_producto_detalle_page__WEBPACK_IMPORTED_MODULE_6__["ProductoDetallePage"]],
@@ -53,7 +56,7 @@ var ProductoDetallePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header-modal titulo=\"Editar Producto\"></app-header-modal>\n<ion-content>\n  <ion-item lines=\"none\" (click)=\"deleteProducto()\">\n    <ion-label text-right>Eliminar</ion-label>\n      <ion-icon color=\"danger\" name=\"trash\"></ion-icon>\n  </ion-item>\n  <div text-center>\n    <img class=\"image\"\n         (click)=\"presentActionSheet()\"\n         [src]=\"Pro_producto.foto[0]\"\n         alt=\"Agregar imagen\">\n  </div>\n  <input #fileInput hidden (change)=\"fileUpload()\" type=\"file\" name=\"pic\" accept=\"image/*\">\n  <form #form=\"ngForm\" (ngSubmit)=\"guardar()\">\n    <ion-grid>\n      <ion-row justify-content-center>\n        <ion-col align-self-center size-md=\"6\" size-lg=\"5\" size-xs=\"12\">\n          <ion-item>\n            <ion-label position=\"floating\">Nombre</ion-label>\n            <ion-input name=\"nombre\"\n                       type=\"text\"\n                       [(ngModel)]=\"Pro_producto.nombre\"\n                       required>\n            </ion-input>\n          </ion-item>\n          <ion-item>\n            <ion-label position=\"floating\">Codigo de Producto</ion-label>\n            <ion-input name=\"codigo\"\n                       type=\"text\"\n                       [(ngModel)]=\"Pro_producto.codigo\"\n                       required>\n             </ion-input>\n            <img text-center (click)=\"barCodeScanner()\"\n                 slot=\"end\"\n                 class=\"buttonScanner\"\n                 src=\"assets/img/barcode.png\"\n                 alt=\"leerQR\">\n          </ion-item>\n          <ion-item>\n            <ion-label position=\"floating\">Descripcion (Opcional)</ion-label>\n            <ion-input name=\"descripcion\"\n                       type=\"text\"\n                       [(ngModel)]=\"Pro_producto.descripcion\">\n            </ion-input>\n          </ion-item>\n          <ion-item>\n            <ion-label>Tipo de consumo</ion-label>\n            <ion-select value=\"{{id_tipo_consumo}}\" [(ngModel)]=\"id_tipo_consumo\" (ionChange)=\"consumoGet($event)\" placeholder=\"Seleccione una\">\n              <ion-select-option *ngFor=\"let item of tiposConsumo\"\n                                  value=\"{{item.id_tipo_consumo}}\">{{item.descripcion}}</ion-select-option>\n            </ion-select>\n          </ion-item>\n          <ion-item>\n            <ion-label>Categorias</ion-label>\n            <ion-select value=\"{{id_categoria}}\" [(ngModel)]=\"id_categoria\" (ionChange)=\"categroriaGet($event)\" placeholder=\"Seleccione una\">\n              <ion-select-option *ngFor=\"let item of categorias\"\n                                  value=\"{{item.id_categoria}}\">{{item.descripcion}}</ion-select-option>\n            </ion-select>\n          </ion-item>\n          <div padding>\n            <ion-button shape = \"round\"\n                        size = \"default\"\n                        type = \"submit\"\n                        [disabled] = \"form.invalid\"\n                        expand = \"block\">Guardar <ion-icon name=\"save\"></ion-icon></ion-button>\n            <ion-button (click)=\"Salir()\"\n                        color=\"medium\"\n                        size=\"default\"\n                        expand=\"block\"\n                        shape=\"round\">Salir<ion-icon slot=\"end\" name=\"exit\"></ion-icon></ion-button>\n          </div>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </form>\n  <ion-item color=\"primary\" (click)=\"sucursalesSelect()\">\n    {{sucursal.nombre_corto}}\n    <ion-img slot=\"start\" class=\"active\" src=\"/assets/side/point_side.png\"></ion-img>\n    <ion-item color=\"primary\">\n      <p slot=\"end\">Historial</p>\n    </ion-item>\n    <ion-icon slot=\"end\" name=\"list-box\"></ion-icon>\n  </ion-item>\n  <div padding >\n    <ion-list >\n        <ion-item *ngFor=\"let item of inventarios\">\n          <ion-avatar slot=\"start\">\n            <img src=\"{{item.imagen}}\">\n          </ion-avatar>\n          <ion-label>\n            <h2 class=\"transaccion\">{{item.transaccion}}</h2>\n            <h4>Fecha creada: {{item.fecha}}</h4>\n          </ion-label>\n          <ion-label text-end slot=\"end\">\n            <h2 class=\"transaccion\">Cant.</h2>\n            <h4>{{item.cantidad}}</h4>\n          </ion-label>\n        </ion-item>\n      </ion-list>\n  </div>\n</ion-content>\n"
+module.exports = "<app-header-modal titulo=\"Editar Producto\"></app-header-modal>\r\n<ion-content>\r\n  <ion-item lines=\"none\" (click)=\"deleteProducto()\">\r\n    <ion-label text-right>Eliminar</ion-label>\r\n      <ion-icon color=\"danger\" name=\"trash\"></ion-icon>\r\n  </ion-item>\r\n  <div text-center>\r\n    <img class=\"image\"\r\n         (click)=\"presentActionSheet()\"\r\n         [src]=\"Pro_producto.foto[1] | domSanitizer\"\r\n         alt=\"Agregar imagen\">\r\n  </div>\r\n  <input #fileInput hidden (change)=\"fileUpload()\" type=\"file\" name=\"pic\" accept=\"image/*\">\r\n  <form #form=\"ngForm\" (ngSubmit)=\"guardar()\">\r\n    <ion-grid>\r\n      <ion-row justify-content-center>\r\n        <ion-col align-self-center size-md=\"6\" size-lg=\"5\" size-xs=\"12\">\r\n          <ion-item>\r\n            <ion-label position=\"floating\">Nombre</ion-label>\r\n            <ion-input name=\"nombre\"\r\n                       type=\"text\"\r\n                       [(ngModel)]=\"Pro_producto.nombre\"\r\n                       required>\r\n            </ion-input>\r\n          </ion-item>\r\n          <ion-item>\r\n            <ion-label position=\"floating\">Codigo de Producto</ion-label>\r\n            <ion-input name=\"codigo\"\r\n                       type=\"text\"\r\n                       [(ngModel)]=\"Pro_producto.codigo\"\r\n                       required>\r\n             </ion-input>\r\n            <img text-center (click)=\"barCodeScanner()\"\r\n                 slot=\"end\"\r\n                 class=\"buttonScanner\"\r\n                 src=\"assets/img/barcode.png\"\r\n                 alt=\"leerQR\">\r\n          </ion-item>\r\n          <ion-item>\r\n            <ion-label position=\"floating\">Descripcion (Opcional)</ion-label>\r\n            <ion-input name=\"descripcion\"\r\n                       type=\"text\"\r\n                       [(ngModel)]=\"Pro_producto.descripcion\">\r\n            </ion-input>\r\n          </ion-item>\r\n          <ion-item>\r\n            <ion-label>Tipo de consumo</ion-label>\r\n            <ion-select value=\"{{id_tipo_consumo}}\" [(ngModel)]=\"id_tipo_consumo\" (ionChange)=\"consumoGet($event)\" placeholder=\"Seleccione una\">\r\n              <ion-select-option *ngFor=\"let item of tiposConsumo\"\r\n                                  value=\"{{item.id_tipo_consumo}}\">{{item.descripcion}}</ion-select-option>\r\n            </ion-select>\r\n          </ion-item>\r\n          <ion-item>\r\n            <ion-label>Categorias</ion-label>\r\n            <ion-select value=\"{{id_categoria}}\" [(ngModel)]=\"id_categoria\" (ionChange)=\"categroriaGet($event)\" placeholder=\"Seleccione una\">\r\n              <ion-select-option *ngFor=\"let item of categorias\"\r\n                                  value=\"{{item.id_categoria}}\">{{item.descripcion}}</ion-select-option>\r\n            </ion-select>\r\n          </ion-item>\r\n          <div padding>\r\n            <ion-button shape = \"round\"\r\n                        size = \"default\"\r\n                        type = \"submit\"\r\n                        [disabled] = \"form.invalid\"\r\n                        expand = \"block\">Guardar <ion-icon name=\"save\"></ion-icon></ion-button>\r\n            <ion-button (click)=\"Salir()\"\r\n                        color=\"medium\"\r\n                        size=\"default\"\r\n                        expand=\"block\"\r\n                        shape=\"round\">Salir<ion-icon slot=\"end\" name=\"exit\"></ion-icon></ion-button>\r\n          </div>\r\n        </ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n  </form>\r\n  <ion-item color=\"primary\" (click)=\"sucursalesSelect()\">\r\n    {{sucursal.nombre_corto}}\r\n    <ion-img slot=\"start\" class=\"active\" src=\"/assets/side/point_side.png\"></ion-img>\r\n    <ion-item color=\"primary\">\r\n      <p slot=\"end\">Historial</p>\r\n    </ion-item>\r\n    <ion-icon slot=\"end\" name=\"list-box\"></ion-icon>\r\n  </ion-item>\r\n  <div padding >\r\n    <ion-list >\r\n        <ion-item *ngFor=\"let item of inventarios\">\r\n          <ion-avatar slot=\"start\">\r\n            <img src=\"{{item.imagen}}\">\r\n          </ion-avatar>\r\n          <ion-label>\r\n            <h2 class=\"transaccion\">{{item.transaccion}}</h2>\r\n            <h4>Fecha creada: {{item.fecha}}</h4>\r\n          </ion-label>\r\n          <ion-label text-end slot=\"end\">\r\n            <h2 class=\"transaccion\">Cant.</h2>\r\n            <h4>{{item.cantidad}}</h4>\r\n          </ion-label>\r\n        </ion-item>\r\n      </ion-list>\r\n  </div>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -64,7 +67,7 @@ module.exports = "<app-header-modal titulo=\"Editar Producto\"></app-header-moda
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-item {\n  --color: #6e6368; }\n\nion-content form ion-grid ion-row ion-item ion-label {\n  --position:floating; }\n\n.button {\n  left: 0;\n  bottom: 50px;\n  right: 0;\n  z-index: 500; }\n\n.buttonExit {\n  left: 0;\n  bottom: 5px;\n  right: 0;\n  z-index: 500; }\n\n.inv-in {\n  color: #6e6368 !important; }\n\n.inv-out {\n  color: red !important; }\n\n.image {\n  width: 20%;\n  height: 200px; }\n\n.buttonScanner {\n  height: 27px;\n  width: 27px;\n  margin: auto; }\n\n.active {\n  margin-right: 10%;\n  width: 10px;\n  height: 10px; }\n\n.minMax {\n  padding: 5px; }\n\n.transaccion {\n  font-size: 0.9em !important;\n  color: #3880ff;\n  font-weight: bold; }\n\n@media (max-width: 2000px) {\n  .image {\n    width: 20%;\n    height: 180px; } }\n\n@media (max-width: 1000px) {\n  .image {\n    width: 40%;\n    height: 180px; } }\n\n@media (max-width: 500px) {\n  .image {\n    width: 100%;\n    height: 180px; } }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mYWJpYW4vRG9jdW1lbnRzL2JvZGVnaW4vYXBwL3NyYy9hcHAvTW9kYWxzL3Byb2R1Y3RvLWRldGFsbGUvcHJvZHVjdG8tZGV0YWxsZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxnQkFBUSxFQUFBOztBQUdaO0VBTVksbUJBQVcsRUFBQTs7QUFRdkI7RUFFRSxPQUFPO0VBQ1AsWUFBWTtFQUNaLFFBQVE7RUFDUixZQUFZLEVBQUE7O0FBR2Q7RUFFRSxPQUFPO0VBQ1AsV0FBVztFQUNYLFFBQVE7RUFDUixZQUFZLEVBQUE7O0FBR2Q7RUFDQyx5QkFBeUIsRUFBQTs7QUFFMUI7RUFDQyxxQkFBcUIsRUFBQTs7QUFHdEI7RUFDRSxVQUFVO0VBQ1YsYUFBYSxFQUFBOztBQUdmO0VBQ0ksWUFBWTtFQUNaLFdBQVc7RUFDWCxZQUFZLEVBQUE7O0FBR2hCO0VBQ0UsaUJBQWlCO0VBQ2pCLFdBQVc7RUFDWCxZQUFZLEVBQUE7O0FBR2Q7RUFDRSxZQUFZLEVBQUE7O0FBR2Q7RUFDRSwyQkFBMkI7RUFDM0IsY0FBYztFQUNkLGlCQUFpQixFQUFBOztBQUduQjtFQUNFO0lBQ0UsVUFBVTtJQUNWLGFBQWEsRUFBQSxFQUNkOztBQUVIO0VBQ0U7SUFDRSxVQUFVO0lBQ1YsYUFBYSxFQUFBLEVBQ2Q7O0FBR0g7RUFDRTtJQUNFLFdBQVc7SUFDWCxhQUFhLEVBQUEsRUFDZCIsImZpbGUiOiJzcmMvYXBwL01vZGFscy9wcm9kdWN0by1kZXRhbGxlL3Byb2R1Y3RvLWRldGFsbGUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWl0ZW17XG4gICAgLS1jb2xvcjogIzZlNjM2ODtcbn1cblxuaW9uLWNvbnRlbnR7XG4gIGZvcm17XG4gICAgaW9uLWdyaWR7XG4gICAgICBpb24tcm93e1xuICAgICAgICBpb24taXRlbXtcbiAgICAgICAgICBpb24tbGFiZWx7XG4gICAgICAgICAgICAtLXBvc2l0aW9uOmZsb2F0aW5nO1xuICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgfVxufVxuXG4uYnV0dG9ue1xuICAvLyBwb3NpdGlvbjogZml4ZWQ7XG4gIGxlZnQ6IDA7XG4gIGJvdHRvbTogNTBweDtcbiAgcmlnaHQ6IDA7XG4gIHotaW5kZXg6IDUwMDtcbn1cblxuLmJ1dHRvbkV4aXR7XG4gIC8vIHBvc2l0aW9uOiBmaXhlZDtcbiAgbGVmdDogMDtcbiAgYm90dG9tOiA1cHg7XG4gIHJpZ2h0OiAwO1xuICB6LWluZGV4OiA1MDA7XG59XG5cbi5pbnYtaW57XG5cdGNvbG9yOiAjNmU2MzY4ICFpbXBvcnRhbnQ7XG59XG4uaW52LW91dHtcblx0Y29sb3I6IHJlZCAhaW1wb3J0YW50O1xufVxuXG4uaW1hZ2V7XG4gIHdpZHRoOiAyMCU7XG4gIGhlaWdodDogMjAwcHg7XG59XG5cbi5idXR0b25TY2FubmVye1xuICAgIGhlaWdodDogMjdweDtcbiAgICB3aWR0aDogMjdweDtcbiAgICBtYXJnaW46IGF1dG87XG59XG5cbi5hY3RpdmV7XG4gIG1hcmdpbi1yaWdodDogMTAlO1xuICB3aWR0aDogMTBweDtcbiAgaGVpZ2h0OiAxMHB4O1xufVxuXG4ubWluTWF4e1xuICBwYWRkaW5nOiA1cHg7XG59XG5cbi50cmFuc2FjY2lvbntcbiAgZm9udC1zaXplOiAwLjllbSAhaW1wb3J0YW50O1xuICBjb2xvcjogIzM4ODBmZjtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG5cbkBtZWRpYSAobWF4LXdpZHRoOiAyMDAwcHgpIHtcbiAgLmltYWdle1xuICAgIHdpZHRoOiAyMCU7XG4gICAgaGVpZ2h0OiAxODBweDtcbiAgfVxufVxuQG1lZGlhIChtYXgtd2lkdGg6IDEwMDBweCkge1xuICAuaW1hZ2V7XG4gICAgd2lkdGg6IDQwJTtcbiAgICBoZWlnaHQ6IDE4MHB4O1xuICB9XG59XG5cbkBtZWRpYSAobWF4LXdpZHRoOiA1MDBweCkge1xuICAuaW1hZ2V7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiAxODBweDtcbiAgfVxufVxuIl19 */"
+module.exports = "ion-item {\n  --color: #6e6368; }\n\nion-content form ion-grid ion-row ion-item ion-label {\n  --position:floating; }\n\n.button {\n  left: 0;\n  bottom: 50px;\n  right: 0;\n  z-index: 500; }\n\n.buttonExit {\n  left: 0;\n  bottom: 5px;\n  right: 0;\n  z-index: 500; }\n\n.inv-in {\n  color: #6e6368 !important; }\n\n.inv-out {\n  color: red !important; }\n\n.image {\n  width: 20%;\n  height: 200px; }\n\n.buttonScanner {\n  height: 27px;\n  width: 27px;\n  margin: auto; }\n\n.active {\n  margin-right: 10%;\n  width: 10px;\n  height: 10px; }\n\n.minMax {\n  padding: 5px; }\n\n.transaccion {\n  font-size: 0.9em !important;\n  color: #3880ff;\n  font-weight: bold; }\n\n@media (max-width: 2000px) {\n  .image {\n    width: 20%;\n    height: 180px; } }\n\n@media (max-width: 1000px) {\n  .image {\n    width: 40%;\n    height: 180px; } }\n\n@media (max-width: 500px) {\n  .image {\n    width: 100%;\n    height: 180px; } }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvTW9kYWxzL3Byb2R1Y3RvLWRldGFsbGUvQzpcXFVzZXJzXFxGYWJpYW5cXERvY3VtZW50c1xcYm9kZWdpblxcYXBwQm9kZWdpbi9zcmNcXGFwcFxcTW9kYWxzXFxwcm9kdWN0by1kZXRhbGxlXFxwcm9kdWN0by1kZXRhbGxlLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGdCQUFRLEVBQUE7O0FBR1o7RUFNWSxtQkFBVyxFQUFBOztBQVF2QjtFQUVFLE9BQU87RUFDUCxZQUFZO0VBQ1osUUFBUTtFQUNSLFlBQVksRUFBQTs7QUFHZDtFQUVFLE9BQU87RUFDUCxXQUFXO0VBQ1gsUUFBUTtFQUNSLFlBQVksRUFBQTs7QUFHZDtFQUNDLHlCQUF5QixFQUFBOztBQUUxQjtFQUNDLHFCQUFxQixFQUFBOztBQUd0QjtFQUNFLFVBQVU7RUFDVixhQUFhLEVBQUE7O0FBR2Y7RUFDSSxZQUFZO0VBQ1osV0FBVztFQUNYLFlBQVksRUFBQTs7QUFHaEI7RUFDRSxpQkFBaUI7RUFDakIsV0FBVztFQUNYLFlBQVksRUFBQTs7QUFHZDtFQUNFLFlBQVksRUFBQTs7QUFHZDtFQUNFLDJCQUEyQjtFQUMzQixjQUFjO0VBQ2QsaUJBQWlCLEVBQUE7O0FBR25CO0VBQ0U7SUFDRSxVQUFVO0lBQ1YsYUFBYSxFQUFBLEVBQ2Q7O0FBRUg7RUFDRTtJQUNFLFVBQVU7SUFDVixhQUFhLEVBQUEsRUFDZDs7QUFHSDtFQUNFO0lBQ0UsV0FBVztJQUNYLGFBQWEsRUFBQSxFQUNkIiwiZmlsZSI6InNyYy9hcHAvTW9kYWxzL3Byb2R1Y3RvLWRldGFsbGUvcHJvZHVjdG8tZGV0YWxsZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24taXRlbXtcclxuICAgIC0tY29sb3I6ICM2ZTYzNjg7XHJcbn1cclxuXHJcbmlvbi1jb250ZW50e1xyXG4gIGZvcm17XHJcbiAgICBpb24tZ3JpZHtcclxuICAgICAgaW9uLXJvd3tcclxuICAgICAgICBpb24taXRlbXtcclxuICAgICAgICAgIGlvbi1sYWJlbHtcclxuICAgICAgICAgICAgLS1wb3NpdGlvbjpmbG9hdGluZztcclxuICAgICAgICAgIH1cclxuICAgICAgICB9XHJcbiAgICAgIH1cclxuICAgIH1cclxuICB9XHJcbn1cclxuXHJcbi5idXR0b257XHJcbiAgLy8gcG9zaXRpb246IGZpeGVkO1xyXG4gIGxlZnQ6IDA7XHJcbiAgYm90dG9tOiA1MHB4O1xyXG4gIHJpZ2h0OiAwO1xyXG4gIHotaW5kZXg6IDUwMDtcclxufVxyXG5cclxuLmJ1dHRvbkV4aXR7XHJcbiAgLy8gcG9zaXRpb246IGZpeGVkO1xyXG4gIGxlZnQ6IDA7XHJcbiAgYm90dG9tOiA1cHg7XHJcbiAgcmlnaHQ6IDA7XHJcbiAgei1pbmRleDogNTAwO1xyXG59XHJcblxyXG4uaW52LWlue1xyXG5cdGNvbG9yOiAjNmU2MzY4ICFpbXBvcnRhbnQ7XHJcbn1cclxuLmludi1vdXR7XHJcblx0Y29sb3I6IHJlZCAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4uaW1hZ2V7XHJcbiAgd2lkdGg6IDIwJTtcclxuICBoZWlnaHQ6IDIwMHB4O1xyXG59XHJcblxyXG4uYnV0dG9uU2Nhbm5lcntcclxuICAgIGhlaWdodDogMjdweDtcclxuICAgIHdpZHRoOiAyN3B4O1xyXG4gICAgbWFyZ2luOiBhdXRvO1xyXG59XHJcblxyXG4uYWN0aXZle1xyXG4gIG1hcmdpbi1yaWdodDogMTAlO1xyXG4gIHdpZHRoOiAxMHB4O1xyXG4gIGhlaWdodDogMTBweDtcclxufVxyXG5cclxuLm1pbk1heHtcclxuICBwYWRkaW5nOiA1cHg7XHJcbn1cclxuXHJcbi50cmFuc2FjY2lvbntcclxuICBmb250LXNpemU6IDAuOWVtICFpbXBvcnRhbnQ7XHJcbiAgY29sb3I6ICMzODgwZmY7XHJcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuXHJcbkBtZWRpYSAobWF4LXdpZHRoOiAyMDAwcHgpIHtcclxuICAuaW1hZ2V7XHJcbiAgICB3aWR0aDogMjAlO1xyXG4gICAgaGVpZ2h0OiAxODBweDtcclxuICB9XHJcbn1cclxuQG1lZGlhIChtYXgtd2lkdGg6IDEwMDBweCkge1xyXG4gIC5pbWFnZXtcclxuICAgIHdpZHRoOiA0MCU7XHJcbiAgICBoZWlnaHQ6IDE4MHB4O1xyXG4gIH1cclxufVxyXG5cclxuQG1lZGlhIChtYXgtd2lkdGg6IDUwMHB4KSB7XHJcbiAgLmltYWdle1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBoZWlnaHQ6IDE4MHB4O1xyXG4gIH1cclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -87,10 +90,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Services_productos_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Services/productos.service */ "./src/app/Services/productos.service.ts");
 /* harmony import */ var _Services_categorias_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Services/categorias.service */ "./src/app/Services/categorias.service.ts");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
-/* harmony import */ var resize_base64__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! resize-base64 */ "./node_modules/resize-base64/index.js");
-/* harmony import */ var resize_base64__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(resize_base64__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _Services_sucursales_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../Services/sucursales.service */ "./src/app/Services/sucursales.service.ts");
-
+/* harmony import */ var _Services_sucursales_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Services/sucursales.service */ "./src/app/Services/sucursales.service.ts");
 
 
 
@@ -117,6 +117,7 @@ var ProductoDetallePage = /** @class */ (function () {
         this.Pro_producto = {
             id_producto: null,
             foto: [
+                'assets/nuevo/camera.png',
                 'assets/nuevo/camera.png'
             ],
             nombre: null,
@@ -142,6 +143,7 @@ var ProductoDetallePage = /** @class */ (function () {
                     case 0:
                         this.Pro_producto = data;
                         this.Pro_producto.foto = [];
+                        this.Pro_producto.foto.push(data.fotografia);
                         this.Pro_producto.foto.push(data.fotografia);
                         this.id_categoria = this.Pro_producto.id_categoria;
                         this.id_tipo_consumo = this.Pro_producto.id_tipo_consumo;
@@ -183,32 +185,34 @@ var ProductoDetallePage = /** @class */ (function () {
         var _this = this;
         var options = {
             quality: 50,
-            destinationType: this.camera.DestinationType.DATA_URL,
+            destinationType: this.camera.DestinationType.FILE_URI,
             encodingType: this.camera.EncodingType.JPEG,
             mediaType: this.camera.MediaType.PICTURE,
             correctOrientation: true,
             sourceType: this.camera.PictureSourceType.CAMERA
         };
         this.camera.getPicture(options).then(function (imageData) {
-            var base64Image = "data:image/jpeg;base64," + imageData;
+            var img = window.Ionic.WebView.convertFileSrc(imageData);
             _this.Pro_producto.foto = [];
-            _this.Pro_producto.foto.push(base64Image);
+            _this.Pro_producto.foto.push(imageData);
+            _this.Pro_producto.foto.push(img);
         });
     };
     ProductoDetallePage.prototype.loadImage = function () {
         var _this = this;
         var options = {
             quality: 50,
-            destinationType: this.camera.DestinationType.DATA_URL,
+            destinationType: this.camera.DestinationType.FILE_URI,
             encodingType: this.camera.EncodingType.JPEG,
             mediaType: this.camera.MediaType.PICTURE,
             correctOrientation: true,
             sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
         };
         this.camera.getPicture(options).then(function (imageData) {
-            var base64Image = "data:image/jpeg;base64," + imageData;
             _this.Pro_producto.foto = [];
-            _this.Pro_producto.foto.push(base64Image);
+            var img = window.Ionic.WebView.convertFileSrc(imageData);
+            _this.Pro_producto.foto.push(imageData);
+            _this.Pro_producto.foto.push(img);
         });
     };
     ProductoDetallePage.prototype.presentActionSheet = function () {
@@ -280,6 +284,7 @@ var ProductoDetallePage = /** @class */ (function () {
         reader.readAsDataURL(this.el.nativeElement.files[0]);
         reader.onload = function (_event) {
             _this.Pro_producto.foto = [];
+            _this.Pro_producto.foto.push(reader.result.toString());
             _this.Pro_producto.foto.push(reader.result.toString());
         };
     };
@@ -414,12 +419,22 @@ var ProductoDetallePage = /** @class */ (function () {
                     case 0:
                         if (this.Pro_producto.foto[0] != 'assets/nuevo/camera.png') {
                             filePath = this.Pro_producto.foto[0];
-                            this.Pro_producto.foto[0] = resize_base64__WEBPACK_IMPORTED_MODULE_9__(filePath, 500, 450);
+                            this.Pro_producto.foto[0] = filePath;
+                        }
+                        if (!_Config_configuration__WEBPACK_IMPORTED_MODULE_4__["isApp"]) {
+                            this.Pro_producto.foto[0] = this.el.nativeElement.files[0];
                         }
                         return [4 /*yield*/, this.Pro_productos.updateProducto(this.Pro_producto).catch(function (err) {
                                 console.log(err);
-                            })];
+                            })
+                            // console.log(this.el.nativeElement.files[0])
+                        ];
                     case 1:
+                        _a.sent();
+                        // console.log(this.el.nativeElement.files[0])
+                        return [4 /*yield*/, this.Pro_productos.subirImagen(this.Pro_producto.foto[0], this.Pro_producto.id_producto)];
+                    case 2:
+                        // console.log(this.el.nativeElement.files[0])
                         _a.sent();
                         this.modalController.dismiss({ productos: 1 });
                         return [2 /*return*/];
@@ -455,7 +470,7 @@ var ProductoDetallePage = /** @class */ (function () {
             _Services_productos_service__WEBPACK_IMPORTED_MODULE_6__["ProductosService"],
             _Services_categorias_service__WEBPACK_IMPORTED_MODULE_7__["CategoriasService"],
             _ionic_storage__WEBPACK_IMPORTED_MODULE_8__["Storage"],
-            _Services_sucursales_service__WEBPACK_IMPORTED_MODULE_10__["SucursalesService"],
+            _Services_sucursales_service__WEBPACK_IMPORTED_MODULE_9__["SucursalesService"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"]])
     ], ProductoDetallePage);
@@ -486,8 +501,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Modals_nuevo_producto_nuevo_producto_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Modals/nuevo-producto/nuevo-producto.module */ "./src/app/Modals/nuevo-producto/nuevo-producto.module.ts");
 /* harmony import */ var _Modals_producto_detalle_producto_detalle_page__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Modals/producto-detalle/producto-detalle.page */ "./src/app/Modals/producto-detalle/producto-detalle.page.ts");
 /* harmony import */ var _Modals_producto_detalle_producto_detalle_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Modals/producto-detalle/producto-detalle.module */ "./src/app/Modals/producto-detalle/producto-detalle.module.ts");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _inventarios_page__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./inventarios.page */ "./src/app/Pages/inventarios/inventarios.page.ts");
+/* harmony import */ var _Pipe_pipes_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../Pipe/pipes.module */ "./src/app/Pipe/pipes.module.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _inventarios_page__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./inventarios.page */ "./src/app/Pages/inventarios/inventarios.page.ts");
+
 
 
 
@@ -503,7 +520,7 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [
     {
         path: '',
-        component: _inventarios_page__WEBPACK_IMPORTED_MODULE_11__["InventariosPage"]
+        component: _inventarios_page__WEBPACK_IMPORTED_MODULE_12__["InventariosPage"]
     }
 ];
 var InventariosPageModule = /** @class */ (function () {
@@ -518,13 +535,14 @@ var InventariosPageModule = /** @class */ (function () {
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
-                _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["IonicModule"],
+                _ionic_angular__WEBPACK_IMPORTED_MODULE_11__["IonicModule"],
+                _Pipe_pipes_module__WEBPACK_IMPORTED_MODULE_10__["PipesModule"],
                 _Modals_producto_detalle_producto_detalle_module__WEBPACK_IMPORTED_MODULE_9__["ProductoDetallePageModule"],
                 _Modals_nuevo_producto_nuevo_producto_module__WEBPACK_IMPORTED_MODULE_7__["NuevoProductoPageModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"].forChild(routes),
                 _components_components_module__WEBPACK_IMPORTED_MODULE_1__["ComponentsModule"]
             ],
-            declarations: [_inventarios_page__WEBPACK_IMPORTED_MODULE_11__["InventariosPage"]]
+            declarations: [_inventarios_page__WEBPACK_IMPORTED_MODULE_12__["InventariosPage"]]
         })
     ], InventariosPageModule);
     return InventariosPageModule;
@@ -541,7 +559,7 @@ var InventariosPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header-in titulo=\"Inventario\"></app-header-in>\n<ion-content>\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\">\n    <ion-refresher-content  pullingIcon=\"arrow-dropdown\"\n                            pullingText=\"Hale para recargar\"\n                            refreshingSpinner=\"circles\"\n                            refreshingText=\"Recargando...\"></ion-refresher-content>\n  </ion-refresher>\n  <div class=\"busqueda\">\n    <form #form=\"ngForm\">\n      <ion-grid>\n        <ion-row color=\"primary\" justify-content-center>\n          <ion-col>\n            <div #list>\n              <ion-item>\n                <ion-icon slot=\"end\"\n                          name=\"search\"\n                          color=\"#f4f4f4\">\n                </ion-icon>\n                <ion-input type=\"text\"\n                           placeholder=\"Buscar\"\n                           clearInput\n                           [(ngModel)]='textSearch'\n                           (ionChange)='busqueda($event.target.value)'\n                           (input)='busqueda($event.target.value)'\n                           >\n                </ion-input>\n              </ion-item>\n            </div>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </form>\n  </div>\n\n  <div padding >\n    <ion-list >\n        <ion-item *ngFor=\"let item of productos\" (click)=\"productoDetalle(item.id_producto)\">\n          <ion-avatar slot=\"start\">\n            <img src=\"{{item.imagen}}\">\n          </ion-avatar>\n          <ion-label>\n            <h2 class=\"nombreProducto\">{{item.nombre | uppercase}}</h2>\n            <h4>{{item.descripcion}}</h4>\n            <ion-badge *ngIf=\"item.tipo_consumo == 'Unidad'\" color=\"primary\">{{item.tipo_consumo}}</ion-badge>\n            <ion-badge *ngIf=\"item.tipo_consumo == 'Porcentaje'\" color=\"tertiary\">{{item.tipo_consumo}}</ion-badge>\n          </ion-label>\n          <ion-label text-end slot=\"end\">\n            <h2 class=\"nombreProducto\">Cant.</h2>\n            <h4>{{item.cantidad}}</h4>\n          </ion-label>\n        </ion-item>\n      </ion-list>\n  </div>\n\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\" #fab>\n    <ion-fab-button (click)=\"crearProducto()\">\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n</ion-content>\n"
+module.exports = "<app-header-in titulo=\"Inventario\"></app-header-in>\r\n<ion-content>\r\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\">\r\n    <ion-refresher-content  pullingIcon=\"arrow-dropdown\"\r\n                            pullingText=\"Hale para recargar\"\r\n                            refreshingSpinner=\"circles\"\r\n                            refreshingText=\"Recargando...\"></ion-refresher-content>\r\n  </ion-refresher>\r\n  <div class=\"busqueda\">\r\n    <form #form=\"ngForm\">\r\n      <ion-grid>\r\n        <ion-row color=\"primary\" justify-content-center>\r\n          <ion-col>\r\n            <div #list>\r\n              <ion-item>\r\n                <ion-icon slot=\"end\"\r\n                          name=\"search\"\r\n                          color=\"#f4f4f4\">\r\n                </ion-icon>\r\n                <ion-input type=\"text\"\r\n                           placeholder=\"Buscar\"\r\n                           clearInput\r\n                           [(ngModel)]='textSearch'\r\n                           (ionChange)='busqueda($event.target.value)'\r\n                           (input)='busqueda($event.target.value)'\r\n                           >\r\n                </ion-input>\r\n              </ion-item>\r\n            </div>\r\n          </ion-col>\r\n        </ion-row>\r\n      </ion-grid>\r\n    </form>\r\n  </div>\r\n\r\n  <div padding >\r\n    <ion-list >\r\n        <ion-item *ngFor=\"let item of productos\" (click)=\"productoDetalle(item.id_producto)\">\r\n          <ion-avatar slot=\"start\">\r\n            <img [src]=\"item.imagen | domSanitizer\">\r\n          </ion-avatar>\r\n          <ion-label>\r\n            <h2 class=\"nombreProducto\">{{item.nombre | uppercase}}</h2>\r\n            <h4>{{item.descripcion}}</h4>\r\n            <ion-badge *ngIf=\"item.tipo_consumo == 'Unidad'\" color=\"primary\">{{item.tipo_consumo}}</ion-badge>\r\n            <ion-badge *ngIf=\"item.tipo_consumo == 'Porcentaje'\" color=\"tertiary\">{{item.tipo_consumo}}</ion-badge>\r\n          </ion-label>\r\n          <ion-label text-end slot=\"end\">\r\n            <h2 class=\"nombreProducto\">Cant.</h2>\r\n            <h4>{{item.cantidad}}</h4>\r\n          </ion-label>\r\n        </ion-item>\r\n      </ion-list>\r\n  </div>\r\n\r\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\" #fab>\r\n    <ion-fab-button (click)=\"crearProducto()\">\r\n      <ion-icon name=\"add\"></ion-icon>\r\n    </ion-fab-button>\r\n  </ion-fab>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -552,7 +570,7 @@ module.exports = "<app-header-in titulo=\"Inventario\"></app-header-in>\n<ion-co
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-col div ion-item {\n  --background: #3880ff;\n  --color: #fff; }\n\n.busqueda {\n  background: #3880ff; }\n\n.nombreProducto {\n  font-size: 0.9em !important;\n  color: #3880ff;\n  font-weight: bold; }\n\n.tipoConsumo {\n  color: #3880ff; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mYWJpYW4vRG9jdW1lbnRzL2JvZGVnaW4vYXBwL3NyYy9hcHAvUGFnZXMvaW52ZW50YXJpb3MvaW52ZW50YXJpb3MucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUNBO0VBR1EscUJBQWE7RUFDYixhQUFRLEVBQUE7O0FBSWhCO0VBQ0UsbUJBQW1CLEVBQUE7O0FBRXJCO0VBQ0UsMkJBQTJCO0VBQzNCLGNBQWM7RUFDZCxpQkFBaUIsRUFBQTs7QUFHbkI7RUFDRSxjQUNGLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9QYWdlcy9pbnZlbnRhcmlvcy9pbnZlbnRhcmlvcy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbmlvbi1jb2x7XG4gIGRpdntcbiAgICBpb24taXRlbXtcbiAgICAgICAgLS1iYWNrZ3JvdW5kOiAjMzg4MGZmO1xuICAgICAgICAtLWNvbG9yOiAjZmZmO1xuICAgIH1cbiAgfVxufVxuLmJ1c3F1ZWRhe1xuICBiYWNrZ3JvdW5kOiAjMzg4MGZmO1xufVxuLm5vbWJyZVByb2R1Y3Rve1xuICBmb250LXNpemU6IDAuOWVtICFpbXBvcnRhbnQ7XG4gIGNvbG9yOiAjMzg4MGZmO1xuICBmb250LXdlaWdodDogYm9sZDtcbn1cblxuLnRpcG9Db25zdW1ve1xuICBjb2xvcjogIzM4ODBmZlxufVxuIl19 */"
+module.exports = "ion-col div ion-item {\n  --background: #3880ff;\n  --color: #fff; }\n\n.busqueda {\n  background: #3880ff; }\n\n.nombreProducto {\n  font-size: 0.9em !important;\n  color: #3880ff;\n  font-weight: bold; }\n\n.tipoConsumo {\n  color: #3880ff; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvUGFnZXMvaW52ZW50YXJpb3MvQzpcXFVzZXJzXFxGYWJpYW5cXERvY3VtZW50c1xcYm9kZWdpblxcYXBwQm9kZWdpbi9zcmNcXGFwcFxcUGFnZXNcXGludmVudGFyaW9zXFxpbnZlbnRhcmlvcy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFHUSxxQkFBYTtFQUNiLGFBQVEsRUFBQTs7QUFJaEI7RUFDRSxtQkFBbUIsRUFBQTs7QUFFckI7RUFDRSwyQkFBMkI7RUFDM0IsY0FBYztFQUNkLGlCQUFpQixFQUFBOztBQUduQjtFQUNFLGNBQ0YsRUFBQSIsImZpbGUiOiJzcmMvYXBwL1BhZ2VzL2ludmVudGFyaW9zL2ludmVudGFyaW9zLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG5pb24tY29se1xyXG4gIGRpdntcclxuICAgIGlvbi1pdGVte1xyXG4gICAgICAgIC0tYmFja2dyb3VuZDogIzM4ODBmZjtcclxuICAgICAgICAtLWNvbG9yOiAjZmZmO1xyXG4gICAgfVxyXG4gIH1cclxufVxyXG4uYnVzcXVlZGF7XHJcbiAgYmFja2dyb3VuZDogIzM4ODBmZjtcclxufVxyXG4ubm9tYnJlUHJvZHVjdG97XHJcbiAgZm9udC1zaXplOiAwLjllbSAhaW1wb3J0YW50O1xyXG4gIGNvbG9yOiAjMzg4MGZmO1xyXG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG59XHJcblxyXG4udGlwb0NvbnN1bW97XHJcbiAgY29sb3I6ICMzODgwZmZcclxufVxyXG4iXX0= */"
 
 /***/ }),
 

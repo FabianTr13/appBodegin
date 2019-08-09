@@ -7,6 +7,7 @@ import { NuevoProductoPage } from '../../Modals/nuevo-producto/nuevo-producto.pa
 import { NuevoProductoPageModule } from '../../Modals/nuevo-producto/nuevo-producto.module';
 import { ProductoDetallePage } from '../../Modals/producto-detalle/producto-detalle.page';
 import { ProductoDetallePageModule } from '../../Modals/producto-detalle/producto-detalle.module';
+import { PipesModule } from '../../Pipe/pipes.module';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -28,6 +29,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    PipesModule,
     ProductoDetallePageModule,
     NuevoProductoPageModule,
     RouterModule.forChild(routes),

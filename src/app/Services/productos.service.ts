@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders }  from "@angular/common/http";
-import { Header, WEB_SERVICE } from '../Config/configuration';
+import { Header, WEB_SERVICE, isApp } from '../Config/configuration';
 import { map } from 'rxjs/operators';
 import { Storage } from '@ionic/storage';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ import { Storage } from '@ionic/storage';
 export class ProductosService {
 
   constructor(private Pro_http:HttpClient,
-              private storage: Storage) { }
+              private storage: Storage,
+              private fileTransfer :FileTransfer) { }
 
   async nuevoProducto(p_form){
     //Preparacion de header
@@ -22,7 +24,7 @@ export class ProductosService {
       descripcion: p_form.descripcion,
       codigobarra: p_form.codigo,
       id_categoria: p_form.id_categoria,
-      fotografia: p_form.foto[0],
+      fotografia: 'p_form.foto[0]',
       id_tipo_consumo: p_form.id_tipo_consumo
     }
 
@@ -42,7 +44,7 @@ export class ProductosService {
       descripcion: p_form.descripcion,
       codigobarra: p_form.codigo,
       id_categoria: p_form.id_categoria,
-      fotografia: p_form.foto[0],
+      fotografia: null,
       id_tipo_consumo: p_form.id_tipo_consumo
     }
 
@@ -145,5 +147,45 @@ export class ProductosService {
     return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
       return result;
     }));
+  }
+
+  subirImagen( img: string, p_id_producto ) {
+
+    const headers = new HttpHeaders(Header);
+    if (!isApp) {
+
+      // this.fileToUpload = files.item(0);
+
+      let formData = new FormData();
+      formData.append('image', img, 'image');
+      formData.append('id_producto', String(p_id_producto));
+
+      let url = `${WEB_SERVICE}api/productos/upload`
+
+      this.Pro_http.post(url, formData).subscribe((val) => {
+        console.log(val);
+      });
+    }
+    else
+    {
+      const options: FileUploadOptions = {
+          fileKey: 'image',
+          headers: headers,
+          params:{
+              id_producto:p_id_producto
+            }
+          };
+          const fileTransfer: FileTransferObject = this.fileTransfer.create();
+          
+          let url = `${WEB_SERVICE}api/productos/upload`
+
+          fileTransfer.upload( img, url, options ).then( data => {
+                console.log('leoeoeooe');
+                console.log(data);
+              }).catch( err => {
+                  console.log('leoeoeooe');
+          });
+    }
+
   }
 }

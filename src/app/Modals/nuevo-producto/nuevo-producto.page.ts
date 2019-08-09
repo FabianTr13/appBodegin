@@ -8,7 +8,7 @@ import { CategoriasService } from '../../Services/categorias.service';
 import { Storage } from '@ionic/storage';
 import * as resizebase64 from 'resize-base64';
 import { ModalController } from '@ionic/angular';
-
+declare var window: any;
 
 @Component({
   selector: 'app-nuevo-producto',
@@ -20,6 +20,7 @@ export class NuevoProductoPage implements OnInit {
 
   Pro_producto = {
     foto: [
+      'assets/nuevo/camera.png',
       'assets/nuevo/camera.png'
     ],
     nombre:null,
@@ -33,7 +34,6 @@ export class NuevoProductoPage implements OnInit {
   tiposConsumo = []
   id_consumo = 1;
   id_categoria;
-
 
   constructor(private camera: Camera,
               public actionSheetController: ActionSheetController,
@@ -66,7 +66,7 @@ export class NuevoProductoPage implements OnInit {
   take(){
     const options: CameraOptions = {
     quality: 50,
-    destinationType: this.camera.DestinationType.DATA_URL,
+    destinationType: this.camera.DestinationType.FILE_URI,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
     correctOrientation:true,
@@ -74,26 +74,28 @@ export class NuevoProductoPage implements OnInit {
   }
 
     this.camera.getPicture(options).then((imageData) => {
-     let base64Image = "data:image/jpeg;base64,"+imageData;
+     const img = window.Ionic.WebView.convertFileSrc( imageData );
      this.Pro_producto.foto=[]
-     this.Pro_producto.foto.push(base64Image)
+     this.Pro_producto.foto.push(imageData)
+     this.Pro_producto.foto.push(img)
     });
   }
 
   loadImage(){
     const options: CameraOptions = {
     quality: 50,
-    destinationType: this.camera.DestinationType.DATA_URL,
+    destinationType: this.camera.DestinationType.FILE_URI,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
     correctOrientation:true,
     sourceType:this.camera.PictureSourceType.PHOTOLIBRARY
-  }
+    }
 
     this.camera.getPicture(options).then((imageData) => {
-     let base64Image = "data:image/jpeg;base64,"+imageData;
-     this.Pro_producto.foto=[]
-     this.Pro_producto.foto.push(base64Image)
+      this.Pro_producto.foto=[]
+     const img = window.Ionic.WebView.convertFileSrc( imageData );
+     this.Pro_producto.foto.push(imageData)
+     this.Pro_producto.foto.push(img)
    });
   }
 
@@ -148,7 +150,7 @@ export class NuevoProductoPage implements OnInit {
   async guardar(){
     if (this.Pro_producto.foto[0]!='assets/nuevo/camera.png') {
       let filePath: string = this.Pro_producto.foto[0]
-      this.Pro_producto.foto[0] = resizebase64(filePath, 500, 450);
+      this.Pro_producto.foto[0] = filePath;
     }
     else{
       this.Pro_producto.foto[0] = null
@@ -157,6 +159,8 @@ export class NuevoProductoPage implements OnInit {
     let producto_id = await this.Pro_productos.nuevoProducto(this.Pro_producto).catch(err=>{
       console.log(err)
     })
+
+    await this.Pro_productos.subirImagen(this.Pro_producto.foto[0], producto_id)
     this.modalController.dismiss({id_producto:producto_id});
   }
 
