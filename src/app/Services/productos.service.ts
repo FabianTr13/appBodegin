@@ -152,7 +152,7 @@ export class ProductosService {
   subirImagen( img: string, p_id_producto ) {
 
     const headers = new HttpHeaders(Header);
-    if (img != null) {
+    if (img != null || !img.includes('www.bodegin.com')) {
       if (!isApp) {
         let formData = new FormData();
         formData.append('image', img, 'image');
