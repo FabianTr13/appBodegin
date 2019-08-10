@@ -22,6 +22,8 @@
             <ion-input name="nombre_corto"
                        type="text"
                        [(ngModel)]="sucursal.nombre_corto"
+                       minlength="3"
+                       maxlength="3"
                        required>
              </ion-input>
           </ion-item>
