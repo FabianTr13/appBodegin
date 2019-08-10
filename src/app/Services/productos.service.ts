@@ -152,40 +152,38 @@ export class ProductosService {
   subirImagen( img: string, p_id_producto ) {
 
     const headers = new HttpHeaders(Header);
-    if (!isApp) {
+    if (img != null) {
+      if (!isApp) {
+        let formData = new FormData();
+        formData.append('image', img, 'image');
+        formData.append('id_producto', String(p_id_producto));
 
-      // this.fileToUpload = files.item(0);
+        let url = `${WEB_SERVICE}api/productos/upload`
 
-      let formData = new FormData();
-      formData.append('image', img, 'image');
-      formData.append('id_producto', String(p_id_producto));
+        this.Pro_http.post(url, formData).subscribe((val) => {
+          console.log(val);
+        });
+      }
+      else
+      {
+        const options: FileUploadOptions = {
+            fileKey: 'image',
+            headers: headers,
+            params:{
+                id_producto:p_id_producto
+              }
+            };
+            const fileTransfer: FileTransferObject = this.fileTransfer.create();
 
-      let url = `${WEB_SERVICE}api/productos/upload`
+            let url = `${WEB_SERVICE}api/productos/upload`
 
-      this.Pro_http.post(url, formData).subscribe((val) => {
-        console.log(val);
-      });
-    }
-    else
-    {
-      const options: FileUploadOptions = {
-          fileKey: 'image',
-          headers: headers,
-          params:{
-              id_producto:p_id_producto
-            }
-          };
-          const fileTransfer: FileTransferObject = this.fileTransfer.create();
-          
-          let url = `${WEB_SERVICE}api/productos/upload`
-
-          fileTransfer.upload( img, url, options ).then( data => {
-                console.log('leoeoeooe');
-                console.log(data);
-              }).catch( err => {
+            fileTransfer.upload( img, url, options ).then( data => {
                   console.log('leoeoeooe');
-          });
+                  console.log(data);
+                }).catch( err => {
+                    console.log('leoeoeooe');
+            });
+      }
     }
-
   }
 }

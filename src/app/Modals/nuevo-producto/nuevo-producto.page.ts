@@ -65,7 +65,7 @@ export class NuevoProductoPage implements OnInit {
 
   take(){
     const options: CameraOptions = {
-    quality: 50,
+    quality: 20,
     destinationType: this.camera.DestinationType.FILE_URI,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
@@ -83,7 +83,7 @@ export class NuevoProductoPage implements OnInit {
 
   loadImage(){
     const options: CameraOptions = {
-    quality: 50,
+    quality: 20,
     destinationType: this.camera.DestinationType.FILE_URI,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
