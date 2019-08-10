@@ -150,40 +150,54 @@ export class ProductosService {
   }
 
   subirImagen( img: string, p_id_producto ) {
+    return new Promise(async (reject, resolve)=>{
+      const headers = new HttpHeaders(Header);
 
-    const headers = new HttpHeaders(Header);
-    if (img != null || !img.includes('www.bodegin.com')) {
-      if (!isApp) {
-        let formData = new FormData();
-        formData.append('image', img, 'image');
-        formData.append('id_producto', String(p_id_producto));
-
-        let url = `${WEB_SERVICE}api/productos/upload`
-
-        this.Pro_http.post(url, formData).subscribe((val) => {
-          console.log(val);
-        });
+      let tipado = true
+      if (typeof(img)=='string') {
+          if (img.includes('www.bodegin.com')) {
+              tipado = false
+          }
       }
-      else
-      {
-        const options: FileUploadOptions = {
-            fileKey: 'image',
-            headers: headers,
-            params:{
-                id_producto:p_id_producto
-              }
-            };
-            const fileTransfer: FileTransferObject = this.fileTransfer.create();
 
-            let url = `${WEB_SERVICE}api/productos/upload`
+      if (img != null && img!=undefined && tipado) {
+        if (!isApp) {
+          let formData = new FormData();
+          formData.append('image', img, 'image');
+          formData.append('id_producto', String(p_id_producto));
 
-            fileTransfer.upload( img, url, options ).then( data => {
-                  console.log('leoeoeooe');
-                  console.log(data);
-                }).catch( err => {
-                    console.log('leoeoeooe');
-            });
+          let url = `${WEB_SERVICE}api/productos/upload`
+
+          this.Pro_http.post(url, formData).subscribe((val) => {
+            resolve(true)
+          }, err=>{
+            resolve(true)
+          });
+        }
+        else
+        {
+          const options: FileUploadOptions = {
+              fileKey: 'image',
+              headers: headers,
+              params:{
+                  id_producto:p_id_producto
+                }
+              };
+              const fileTransfer: FileTransferObject = this.fileTransfer.create();
+
+              let url = `${WEB_SERVICE}api/productos/upload`
+
+              await fileTransfer.upload( img, url, options ).then( data => {
+                console.log('subida')
+                  resolve(true)
+                  }).catch( err => {
+                  resolve(true)
+              });
+        }
       }
-    }
+      else{
+        resolve(true)
+      }
+    })
   }
 }

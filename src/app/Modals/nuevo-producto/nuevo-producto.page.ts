@@ -8,6 +8,7 @@ import { CategoriasService } from '../../Services/categorias.service';
 import { Storage } from '@ionic/storage';
 import * as resizebase64 from 'resize-base64';
 import { ModalController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 declare var window: any;
 
 @Component({
@@ -34,6 +35,7 @@ export class NuevoProductoPage implements OnInit {
   tiposConsumo = []
   id_consumo = 1;
   id_categoria;
+  isLoading = false
 
   constructor(private camera: Camera,
               public actionSheetController: ActionSheetController,
@@ -41,7 +43,8 @@ export class NuevoProductoPage implements OnInit {
               private Pro_productos:ProductosService,
               private Pro_categorias:CategoriasService,
               private storage:Storage,
-              public modalController: ModalController) {
+              public modalController: ModalController,
+              public loadingController: LoadingController) {
   }
 
   ngOnInit() {
@@ -148,7 +151,26 @@ export class NuevoProductoPage implements OnInit {
     }
   }
 
+  async present() {
+    this.isLoading = true;
+    return await this.loadingController.create({
+      duration: 10000
+    }).then(a => {
+      a.present().then(() => {
+        if (!this.isLoading) {
+          a.dismiss().then(() => console.log('abort presenting'));
+        }
+      });
+    });
+  }
+
+  async dismiss() {
+    this.isLoading = false;
+    return await this.loadingController.dismiss().then(() => console.log('dismissed'));
+  }
+
   async guardar(){
+    await this.present()
     if (this.Pro_producto.foto[0]!='assets/nuevo/camera.png') {
       let filePath: string = this.Pro_producto.foto[0]
       this.Pro_producto.foto[0] = filePath;
@@ -165,7 +187,8 @@ export class NuevoProductoPage implements OnInit {
       console.log(err)
     })
 
-    await this.Pro_productos.subirImagen(this.Pro_producto.foto[0], producto_id)
+    await this.Pro_productos.subirImagen(this.Pro_producto.foto[0], producto_id).catch(err=>{})
+    await this.dismiss()
     this.modalController.dismiss({id_producto:producto_id});
   }
 

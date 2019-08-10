@@ -10,6 +10,7 @@ import * as resizebase64 from 'resize-base64';
 import { SucursalesService } from '../../Services/sucursales.service';
 import { AlertController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 declare var window: any;
 
 
@@ -41,6 +42,7 @@ export class ProductoDetallePage implements OnInit {
   inventarios = []
   tiposConsumo = []
   sucursal:any;
+  isLoading = false;
 
   constructor(private camera: Camera,
               public actionSheetController: ActionSheetController,
@@ -50,7 +52,8 @@ export class ProductoDetallePage implements OnInit {
               private storage:Storage,
               private Pro_sucursales:SucursalesService,
               public alertController: AlertController,
-              public modalController: ModalController) {
+              public modalController: ModalController,
+              public loadingController: LoadingController) {
   }
 
   ngOnInit() {
@@ -98,7 +101,7 @@ export class ProductoDetallePage implements OnInit {
 
   take(){
     const options: CameraOptions = {
-    quality: 50,
+    quality: 20,
     destinationType: this.camera.DestinationType.FILE_URI,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
@@ -116,7 +119,7 @@ export class ProductoDetallePage implements OnInit {
 
   loadImage(){
     const options: CameraOptions = {
-    quality: 50,
+    quality: 20,
     destinationType: this.camera.DestinationType.FILE_URI,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
@@ -256,7 +259,26 @@ export class ProductoDetallePage implements OnInit {
     await alert.present();
   }
 
+  async present() {
+    this.isLoading = true;
+    return await this.loadingController.create({
+      duration: 10000
+    }).then(a => {
+      a.present().then(() => {
+        if (!this.isLoading) {
+          a.dismiss().then(() => console.log('abort presenting'));
+        }
+      });
+    });
+  }
+
+  async dismiss() {
+    this.isLoading = false;
+    return await this.loadingController.dismiss().then(() => console.log('dismissed'));
+  }
+
   async guardar(){
+    await this.present()
     if (this.Pro_producto.foto[0]!='assets/nuevo/camera.png') {
       let filePath: string = this.Pro_producto.foto[0]
        this.Pro_producto.foto[0] = filePath
@@ -269,9 +291,10 @@ export class ProductoDetallePage implements OnInit {
     await this.Pro_productos.updateProducto(this.Pro_producto).catch(err=>{
       console.log(err)
     })
-    // console.log(this.el.nativeElement.files[0])
-    await this.Pro_productos.subirImagen(this.Pro_producto.foto[0], this.Pro_producto.id_producto)
+
+    await this.Pro_productos.subirImagen(this.Pro_producto.foto[0], this.Pro_producto.id_producto).catch(err=>{})
     this.modalController.dismiss({productos: 1});
+    await this.dismiss()
   }
 
   async Salir(){
