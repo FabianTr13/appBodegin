@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1565456956403,
+  "timestamp": 1565457094255,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -200,7 +200,7 @@
         "/common.c093a619d8580a7d6c9a.js",
         "/es2015-polyfills.3162559b68d258301ea3.js",
         "/index.html",
-        "/main.3a0e997e28cb71828856.js",
+        "/main.be455987931e96d71901.js",
         "/polyfills.0c0ce2c23a80372a114a.js",
         "/runtime.64e31bb19a54df83ea98.js",
         "/styles.64752c58c96d36ffc4ca.css"
@@ -485,8 +485,8 @@
     "/assets/transacciones/out.png": "c2fdbddc5c306fa2f097d0974da99e0b15ecd761",
     "/common.c093a619d8580a7d6c9a.js": "2c63453d7dffa6db876730f984c8cb2766eb8680",
     "/es2015-polyfills.3162559b68d258301ea3.js": "374d2e369e74babb4037a6e75de83c4034947e35",
-    "/index.html": "9aaf79cf58a94d688137729a1228624fa618cd77",
-    "/main.3a0e997e28cb71828856.js": "e16f73be8e0baeaa3fa4bd48023300b5bf2f25d0",
+    "/index.html": "60a0bd1fbd9d90a66361fb5003ef6544c7fb8a41",
+    "/main.be455987931e96d71901.js": "7c9b5ba63fd8320a18b3a8c9f2ca23a39492b79e",
     "/polyfills.0c0ce2c23a80372a114a.js": "69dfe48553313fa03ee050081acca9901e3b3293",
     "/runtime.64e31bb19a54df83ea98.js": "aff40bef4dda4f06463f80b34cf5ee645cea0255",
     "/styles.64752c58c96d36ffc4ca.css": "042c60dc5a1bc91f241ac8a0c1439a38d042f5a8"
