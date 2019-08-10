@@ -144,6 +144,7 @@ export class NuevoProductoPage implements OnInit {
     reader.onload = (_event) => {
       this.Pro_producto.foto = []
       this.Pro_producto.foto.push(reader.result.toString());
+      this.Pro_producto.foto.push(reader.result.toString());
     }
   }
 
@@ -154,6 +155,10 @@ export class NuevoProductoPage implements OnInit {
     }
     else{
       this.Pro_producto.foto[0] = null
+    }
+
+    if (!isApp) {
+      this.Pro_producto.foto[0] = this.el.nativeElement.files[0]
     }
 
     let producto_id = await this.Pro_productos.nuevoProducto(this.Pro_producto).catch(err=>{

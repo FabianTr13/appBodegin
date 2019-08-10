@@ -53,6 +53,9 @@ MIT
 @ionic-native/core
 MIT
 
+@ionic-native/file-transfer
+MIT
+
 @ionic-native/splash-screen
 MIT
 
@@ -196,9 +199,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
-resize-base64
-ISC
 
 rxjs
 Apache-2.0
