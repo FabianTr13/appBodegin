@@ -37,7 +37,11 @@
         <ion-col class="col" size="1"></ion-col>
       </ion-row>
       <ion-row align-items-center  no-lines *ngFor="let item of productos">
-        <ion-col size="9" text-left> {{item.descripcion}} </ion-col>
+        <ion-col size="9" text-left>
+          <ion-label> {{item.descripcion}} </ion-label>
+          <ion-badge *ngIf="item.tipo_consumo == 'Unidad'" color="primary">{{item.tipo_consumo}}</ion-badge>
+          <ion-badge *ngIf="item.tipo_consumo == 'Porcentaje'" color="tertiary">{{item.tipo_consumo}}</ion-badge>
+        </ion-col>
         <ion-col size="2" text-center>
           <ion-input  class="inputCant"
                       name="phone"
