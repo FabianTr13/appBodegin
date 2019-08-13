@@ -169,8 +169,12 @@ var DomSanitizerPipe = /** @class */ (function () {
         this.domSanitizer = domSanitizer;
     }
     DomSanitizerPipe.prototype.transform = function (img) {
-        // console.log(this.domSanitizer.bypassSecurityTrustUrl( img ))
-        return this.domSanitizer.bypassSecurityTrustUrl(img);
+        if (!img || img == null) {
+            return 'assets/img/splash.png';
+        }
+        else {
+            return this.domSanitizer.bypassSecurityTrustUrl(img);
+        }
     };
     DomSanitizerPipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
@@ -291,6 +295,181 @@ var PipesModule = /** @class */ (function () {
         })
     ], PipesModule);
     return PipesModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/Services/client.service.ts":
+/*!********************************************!*\
+  !*** ./src/app/Services/client.service.ts ***!
+  \********************************************/
+/*! exports provided: ClientService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClientService", function() { return ClientService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _Config_configuration__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Config/configuration */ "./src/app/Config/configuration.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/file-transfer/ngx */ "./node_modules/@ionic-native/file-transfer/ngx/index.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
+
+
+
+
+
+
+
+var ClientService = /** @class */ (function () {
+    function ClientService(Pro_http, fileTransfer, storage) {
+        this.Pro_http = Pro_http;
+        this.fileTransfer = fileTransfer;
+        this.storage = storage;
+    }
+    ClientService.prototype.validarNuevoCliente = function (p_form) {
+        //Preparacion de header
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["Header"]);
+        //Preparacion de body
+        var body = {
+            nombre_legal: p_form.nombreLegal,
+            rtn: p_form.rtn,
+            celular: p_form.phone,
+            usuario: p_form.user
+        };
+        var url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/clientes/validanuevocliente";
+        return this.Pro_http.post(url, body, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
+            return result;
+        }));
+    };
+    ClientService.prototype.validaUsuario = function (p_id_cliente, p_usuario) {
+        //Preparacion de header
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["Header"]);
+        //Preparacion de body
+        var body = {
+            id_cliente: p_id_cliente,
+            usuario: p_usuario
+        };
+        var url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/clientes/validaUsuario";
+        return this.Pro_http.post(url, body, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
+            return result;
+        }));
+    };
+    ClientService.prototype.registraUsuario = function (p_form) {
+        //Preparacion de header
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["Header"]);
+        //Preparacion de body
+        var body = {
+            nombre_comercial: p_form.nombreComercial,
+            nombre_legal: p_form.nombreLegal,
+            logo: p_form.logo,
+            rtn: p_form.rtn,
+            direccion: p_form.direccion,
+            celular: p_form.phone,
+            usuario: p_form.user,
+            clave: p_form.password
+        };
+        var url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/clientes/CrearCliente";
+        return this.Pro_http.post(url, body, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
+            return result;
+        }));
+    };
+    ClientService.prototype.recuperarCliente = function (p_token) {
+        //Preparacion de header
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["Header"]);
+        //Preparacion de body
+        var body = {
+            token: p_token
+        };
+        var url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/clientes/getCliente";
+        return this.Pro_http.post(url, body, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
+            return result;
+        }));
+    };
+    ClientService.prototype.updateCliente = function (p_cliente) {
+        //Preparacion de header
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["Header"]);
+        //Preparacion de body
+        var body = {
+            id_cliente: p_cliente.id_cliente,
+            nombre_legal: p_cliente.nombre_legal,
+            nombre_comercial: p_cliente.nombre_comercial,
+            rtn: p_cliente.rtn,
+            telefono: p_cliente.telefono,
+            direccion: p_cliente.direccion,
+            usuario: p_cliente.usuario
+        };
+        var url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/clientes/updateCliente";
+        return this.Pro_http.post(url, body, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
+            return result;
+        }));
+    };
+    ClientService.prototype.subirImagen = function (img, p_id_cliente) {
+        var _this = this;
+        return new Promise(function (reject, resolve) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+            var headers, tipado, formData, url, options, fileTransfer, url;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["Header"]);
+                        tipado = true;
+                        if (typeof (img) == 'string') {
+                            if (img.includes('www.bodegin.com')) {
+                                tipado = false;
+                            }
+                        }
+                        if (!(img != null && img != undefined && tipado)) return [3 /*break*/, 4];
+                        if (!!_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["isApp"]) return [3 /*break*/, 1];
+                        formData = new FormData();
+                        formData.append('image', img, 'image');
+                        formData.append('id_cliente', String(p_id_cliente));
+                        url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/clientes/uploadImagenClientes";
+                        this.Pro_http.post(url, formData).subscribe(function (val) {
+                            resolve(true);
+                        }, function (err) {
+                            resolve(true);
+                        });
+                        return [3 /*break*/, 3];
+                    case 1:
+                        options = {
+                            fileKey: 'image',
+                            headers: headers,
+                            params: {
+                                id_cliente: p_id_cliente
+                            }
+                        };
+                        fileTransfer = this.fileTransfer.create();
+                        url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/clientes/uploadImage";
+                        return [4 /*yield*/, fileTransfer.upload(img, url, options).then(function (data) {
+                                resolve(true);
+                            }).catch(function (err) {
+                                resolve(true);
+                            })];
+                    case 2:
+                        _a.sent();
+                        _a.label = 3;
+                    case 3: return [3 /*break*/, 5];
+                    case 4:
+                        resolve(true);
+                        _a.label = 5;
+                    case 5: return [2 /*return*/];
+                }
+            });
+        }); });
+    };
+    ClientService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
+            _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_5__["FileTransfer"],
+            _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"]])
+    ], ClientService);
+    return ClientService;
 }());
 
 

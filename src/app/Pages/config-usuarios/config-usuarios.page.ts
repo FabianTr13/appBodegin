@@ -168,7 +168,6 @@ export class ConfigUsuariosPage implements OnInit {
     }
 
     await this.Pro_cliente.subirImagen(this.cliente.foto[0], this.cliente.id_cliente).catch(err=>{})
-    this.modalController.dismiss({productos: 1});
     await this.dismiss()
   }
 

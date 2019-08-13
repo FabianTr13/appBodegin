@@ -68,7 +68,7 @@ var RegisterPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header-in></app-header-in>\r\n<ion-content padding>\r\n  <form #form=\"ngForm\" (ngSubmit)=\"registrarUsuario(form)\">\r\n    <ion-grid>\r\n      <ion-row justify-content-center>\r\n        <ion-col align-self-center size-md=\"6\" size-lg=\"5\" size-xs=\"12\">\r\n          <div text-center>\r\n            <h3>Bienvenido</h3>\r\n            <ion-avatar class=\"avatar\">\r\n              <img [src]=\"logo\">\r\n            </ion-avatar>\r\n          </div>\r\n\r\n          <div padding>\r\n            <ion-item>\r\n                <ion-label position=\"floating\">Nombre Comercial</ion-label>\r\n              <ion-input name=\"nombreComercial\" type=\"text\"  ngModel required></ion-input>\r\n            </ion-item>\r\n            <ion-item>\r\n              <ion-label position=\"floating\">Nombre legal</ion-label>\r\n              <ion-input name=\"nombreLegal\" type=\"text\"  ngModel required></ion-input>\r\n            </ion-item>\r\n            <ion-item>\r\n              <ion-label position=\"floating\">Rtn</ion-label>\r\n              <ion-input name=\"rtn\" type=\"text\"  pattern=\"\\d*\"  ngModel required></ion-input>\r\n            </ion-item>\r\n            <ion-item>\r\n              <ion-label position=\"floating\">Teléfono</ion-label>\r\n              <ion-input name=\"phone\" maxlength=\"8\" minlength=\"8\" type=\"tel\" pattern=\"\\d*\" ngModel required></ion-input>\r\n            </ion-item>\r\n            <ion-item>\r\n              <ion-label position=\"floating\">Dirección</ion-label>\r\n              <ion-input name=\"direccion\" type=\"text\" ngModel></ion-input>\r\n            </ion-item>\r\n            <ion-item>\r\n              <ion-label position=\"floating\">Usuario</ion-label>\r\n              <ion-input name=\"user\" type=\"text\"  ngModel required></ion-input>\r\n            </ion-item>\r\n            <ion-item>\r\n              <ion-label position=\"floating\">Clave</ion-label>\r\n              <ion-input name=\"password\" minlength=\"8\" type=\"password\"  ngModel required></ion-input>\r\n            </ion-item>\r\n            <ion-item>\r\n              <ion-label position=\"floating\">Repetir Clave</ion-label>\r\n              <ion-input name=\"passwordRepeat\" minlength=\"8\" type=\"password\" ngModel required></ion-input>\r\n            </ion-item>\r\n          </div>\r\n          <div padding>\r\n            <re-captcha (resolved)=\"captchaResolved($event)\" siteKey=\"6Lf1160UAAAAAAJEp0oDnFN1jnQURXzUUYyzmPcG\"></re-captcha>\r\n            <ion-button size=\"large\" type=\"submit\" disabled=\"{{form.invalid  ||  !this.captchaPassed}}\" expand=\"block\">Registrar</ion-button>\r\n          </div>\r\n        </ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n  </form>\r\n</ion-content>\r\n"
+module.exports = "<app-header-in></app-header-in>\n<ion-content padding>\n  <form #form=\"ngForm\" (ngSubmit)=\"registrarUsuario(form)\">\n    <ion-grid>\n      <ion-row justify-content-center>\n        <ion-col align-self-center size-md=\"6\" size-lg=\"5\" size-xs=\"12\">\n          <div text-center>\n            <h3>Bienvenido</h3>\n            <ion-avatar class=\"avatar\">\n              <img [src]=\"logo\">\n            </ion-avatar>\n          </div>\n\n          <div padding>\n            <ion-item>\n                <ion-label position=\"floating\">Nombre Comercial</ion-label>\n              <ion-input name=\"nombreComercial\" type=\"text\"  ngModel required></ion-input>\n            </ion-item>\n            <ion-item>\n              <ion-label position=\"floating\">Nombre legal</ion-label>\n              <ion-input name=\"nombreLegal\" type=\"text\"  ngModel required></ion-input>\n            </ion-item>\n            <ion-item>\n              <ion-label position=\"floating\">Rtn</ion-label>\n              <ion-input name=\"rtn\" type=\"text\"  pattern=\"\\d*\"  ngModel required></ion-input>\n            </ion-item>\n            <ion-item>\n              <ion-label position=\"floating\">Teléfono</ion-label>\n              <ion-input name=\"phone\" maxlength=\"8\" minlength=\"8\" type=\"tel\" pattern=\"\\d*\" ngModel required></ion-input>\n            </ion-item>\n            <ion-item>\n              <ion-label position=\"floating\">Dirección</ion-label>\n              <ion-input name=\"direccion\" type=\"text\" ngModel></ion-input>\n            </ion-item>\n            <ion-item>\n              <ion-label position=\"floating\">Usuario</ion-label>\n              <ion-input name=\"user\" type=\"text\"  ngModel required></ion-input>\n            </ion-item>\n            <ion-item>\n              <ion-label position=\"floating\">Clave</ion-label>\n              <ion-input name=\"password\" minlength=\"8\" type=\"password\"  ngModel required></ion-input>\n            </ion-item>\n            <ion-item>\n              <ion-label position=\"floating\">Repetir Clave</ion-label>\n              <ion-input name=\"passwordRepeat\" minlength=\"8\" type=\"password\" ngModel required></ion-input>\n            </ion-item>\n          </div>\n          <div padding>\n            <re-captcha (resolved)=\"captchaResolved($event)\" siteKey=\"6Lf1160UAAAAAAJEp0oDnFN1jnQURXzUUYyzmPcG\"></re-captcha>\n            <ion-button size=\"large\" type=\"submit\" disabled=\"{{form.invalid  ||  !this.captchaPassed}}\" expand=\"block\">Registrar</ion-button>\n          </div>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </form>\n</ion-content>\n"
 
 /***/ }),
 
@@ -79,7 +79,7 @@ module.exports = "<app-header-in></app-header-in>\r\n<ion-content padding>\r\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-item {\n  --color: #3880ff; }\n\n.avatar {\n  margin: auto; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvUGFnZXMvcmVnaXN0ZXIvQzpcXFVzZXJzXFxGYWJpYW5cXERvY3VtZW50c1xcYm9kZWdpblxcYXBwQm9kZWdpbi9zcmNcXGFwcFxcUGFnZXNcXHJlZ2lzdGVyXFxyZWdpc3Rlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxnQkFBUSxFQUFBOztBQUtaO0VBQ0csWUFBWSxFQUFBIiwiZmlsZSI6InNyYy9hcHAvUGFnZXMvcmVnaXN0ZXIvcmVnaXN0ZXIucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWl0ZW17XHJcbiAgICAtLWNvbG9yOiAjMzg4MGZmO1xyXG59XHJcbi8vIGlvbi1idXR0b257XHJcbi8vICAgICAtLWJhY2tncm91bmQ6ICMwNjJmNzc7XHJcbi8vIH1cclxuLmF2YXRhcntcclxuICAgbWFyZ2luOiBhdXRvO1xyXG59XHJcbiJdfQ== */"
+module.exports = "ion-item {\n  --color: #3880ff; }\n\n.avatar {\n  margin: auto; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9mYWJpYW4vRG9jdW1lbnRzL2JvZGVnaW4vYXBwL3NyYy9hcHAvUGFnZXMvcmVnaXN0ZXIvcmVnaXN0ZXIucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksZ0JBQVEsRUFBQTs7QUFFWjtFQUNHLFlBQVksRUFBQSIsImZpbGUiOiJzcmMvYXBwL1BhZ2VzL3JlZ2lzdGVyL3JlZ2lzdGVyLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1pdGVte1xuICAgIC0tY29sb3I6ICMzODgwZmY7XG59XG4uYXZhdGFye1xuICAgbWFyZ2luOiBhdXRvO1xufVxuIl19 */"
 
 /***/ }),
 
@@ -142,8 +142,8 @@ var RegisterPage = /** @class */ (function () {
                             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                                 switch (_a.label) {
                                     case 0:
-                                        if (!(resp != null)) return [3 /*break*/, 8];
-                                        if (!(resp == 0)) return [3 /*break*/, 1];
+                                        if (!(resp != null)) return [3 /*break*/, 5];
+                                        if (!(resp == true)) return [3 /*break*/, 1];
                                         this.Pro_cliente.registraUsuario(p_form.form.value).subscribe(function (data) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
                                             var _this = this;
                                             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
@@ -182,31 +182,20 @@ var RegisterPage = /** @class */ (function () {
                                                 }
                                             });
                                         }); });
-                                        return [3 /*break*/, 7];
-                                    case 1:
-                                        if (!(resp == 1)) return [3 /*break*/, 4];
-                                        return [4 /*yield*/, this.showToast('Empresa ya registrada')];
+                                        return [3 /*break*/, 4];
+                                    case 1: return [4 /*yield*/, this.showToast('El usuario ya existe')];
                                     case 2:
                                         _a.sent();
                                         return [4 /*yield*/, this.dismiss()];
                                     case 3:
                                         _a.sent();
-                                        return [3 /*break*/, 7];
-                                    case 4:
-                                        if (!(resp == 2)) return [3 /*break*/, 7];
-                                        return [4 /*yield*/, this.showToast('Usuario ya registrado')];
-                                    case 5:
-                                        _a.sent();
-                                        return [4 /*yield*/, this.dismiss()];
+                                        _a.label = 4;
+                                    case 4: return [3 /*break*/, 7];
+                                    case 5: return [4 /*yield*/, this.dismiss()];
                                     case 6:
                                         _a.sent();
                                         _a.label = 7;
-                                    case 7: return [3 /*break*/, 10];
-                                    case 8: return [4 /*yield*/, this.dismiss()];
-                                    case 9:
-                                        _a.sent();
-                                        _a.label = 10;
-                                    case 10: return [2 /*return*/];
+                                    case 7: return [2 /*return*/];
                                 }
                             });
                         }); }, function (err) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
@@ -341,77 +330,6 @@ var RegisterPage = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]])
     ], RegisterPage);
     return RegisterPage;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/Services/client.service.ts":
-/*!********************************************!*\
-  !*** ./src/app/Services/client.service.ts ***!
-  \********************************************/
-/*! exports provided: ClientService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClientService", function() { return ClientService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _Config_configuration__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Config/configuration */ "./src/app/Config/configuration.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-
-
-
-
-
-var ClientService = /** @class */ (function () {
-    function ClientService(Pro_http) {
-        this.Pro_http = Pro_http;
-    }
-    ClientService.prototype.validarNuevoCliente = function (p_form) {
-        //Preparacion de header
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["Header"]);
-        //Preparacion de body
-        var body = {
-            nombre_legal: p_form.nombreLegal,
-            rtn: p_form.rtn,
-            celular: p_form.phone,
-            usuario: p_form.user
-        };
-        var url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/clientes/validanuevocliente";
-        return this.Pro_http.post(url, body, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
-            return result;
-        }));
-    };
-    ClientService.prototype.registraUsuario = function (p_form) {
-        //Preparacion de header
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["Header"]);
-        //Preparacion de body
-        var body = {
-            nombre_comercial: p_form.nombreComercial,
-            nombre_legal: p_form.nombreLegal,
-            logo: p_form.logo,
-            rtn: p_form.rtn,
-            direccion: p_form.direccion,
-            celular: p_form.phone,
-            usuario: p_form.user,
-            clave: p_form.password
-        };
-        var url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/clientes/CrearCliente";
-        return this.Pro_http.post(url, body, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
-            return result;
-        }));
-    };
-    ClientService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-    ], ClientService);
-    return ClientService;
 }());
 
 
