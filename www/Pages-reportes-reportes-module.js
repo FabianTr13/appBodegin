@@ -61,7 +61,7 @@ var ReportesPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header-in titulo=\"Reportes\"></app-header-in>\n"
+module.exports = "<app-header-in titulo=\"Reportes\"></app-header-in>\r\n"
 
 /***/ }),
 

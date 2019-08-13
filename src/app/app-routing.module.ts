@@ -18,8 +18,7 @@ const routes: Routes = [
   { path: 'sucursales', loadChildren: './Pages/sucursales/sucursales.module#SucursalesPageModule' ,canActivate :[AuthGuard], data: {token: []} },
   { path: 'inventario-transacciones', loadChildren: './Pages/inventario-transacciones/inventario-transacciones.module#InventarioTransaccionesPageModule' },
   { path: 'config', loadChildren: './Pages/config-usuarios/config-usuarios.module#ConfigUsuariosPageModule' },
-  { path: 'config-edit-usuarios', loadChildren: './Pages/config-edit-usuarios/config-edit-usuarios.module#ConfigEditUsuariosPageModule' },
-  { path: 'config-usuario-nuevo', loadChildren: './Pages/config-usuario-nuevo/config-usuario-nuevo.module#ConfigUsuarioNuevoPageModule' },
+  { path: 'configUsuariosList', loadChildren: './Pages/config-usuarios-list/config-usuarios-list.module#ConfigUsuariosListPageModule' }
 ];
 
 @NgModule({

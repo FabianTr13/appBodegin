@@ -1,0 +1,65 @@
+<app-header-modal titulo="Usuarios"></app-header-modal>
+<ion-content>
+  <ion-item *ngIf="accion=='UPDATE'" lines="none" (click)="InhabilitarUsuario()">
+    <ion-label text-right>Eliminar</ion-label>
+      <ion-icon color="danger" name="person"></ion-icon>
+  </ion-item>
+  <form #form="ngForm" (ngSubmit)="InsertUpdateUsuario()">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div padding>
+            <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+              <ion-input name="nombre"
+                         type="text"
+                         [(ngModel)]="usuario.nombre"
+                         required>
+              </ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Tipo de consumo</ion-label>
+              <ion-select value="{{id_perfil}}" [(ngModel)]="id_perfil" (ionChange)="perfilget($event)" placeholder="Seleccione un perfil">
+                <ion-select-option *ngFor="let item of perfiles"
+                                    value="{{item.id_perfil}}">{{item.descripcion}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Teléfono</ion-label>
+              <ion-input name="phone"
+                         maxlength="8"
+                         minlength="8"
+                         type="tel"
+                         pattern="\d*"
+                         [(ngModel)]="usuario.telefono"
+                         required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Usuario</ion-label>
+              <ion-input name="usuario"
+                         type="text"
+                         [(ngModel)]="usuario.usuario"
+                         required>
+              </ion-input>
+            </ion-item>
+          </div>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div padding>
+      <ion-button class="button"
+                  [disabled]="form.invalid"
+                  color="primary"
+                  size="default"
+                  type="submit"
+                  shape="round">Guardar<ion-icon slot="end" name="save"></ion-icon></ion-button>
+
+      <ion-button class="buttonExit"
+                  (click)="Salir()"
+                  color="medium"
+                  size="default"
+                  shape="round">Salir<ion-icon slot="end" name="exit"></ion-icon></ion-button>
+    </div>
+  </form>
+</ion-content>

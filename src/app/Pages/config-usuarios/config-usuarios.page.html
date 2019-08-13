@@ -63,14 +63,17 @@
                </ion-input>
             </ion-item>
           </div>
-          <div padding>
-            <ion-button shape="round"
-                        size="default"
+          <ion-item lines="none">
+            <ion-button class="button"
                         type="submit"
-                        [disabled]="form.invalid"
-                        expand="block">Guardar <ion-icon slot="end" name="save"></ion-icon>
-            </ion-button>
-          </div>
+                        size="default"
+                        shape="round">Guardar<ion-icon slot="end" name="save"></ion-icon></ion-button>
+
+            <ion-button class="buttonExit"
+                        (click)="configUsuarios()"
+                        size="default"
+                        shape="round">Configurar Usuarios<ion-icon slot="end" name="cog"></ion-icon></ion-button>
+          </ion-item>
         </ion-col>
       </ion-row>
     </ion-grid>

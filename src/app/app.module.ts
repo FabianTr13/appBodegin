@@ -16,15 +16,11 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { ActionSheetController } from '@ionic/angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Base64 } from '@ionic-native/base64/ngx';
-import { FilterPipe } from './Pipe/filter.pipe';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
-// import { ImagenPipe } from './Pipe/imagen.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilterPipe,
-    // ImagenPipe,
   ],
   entryComponents: [],
   imports: [

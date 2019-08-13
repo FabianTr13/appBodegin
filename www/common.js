@@ -170,7 +170,7 @@ var DomSanitizerPipe = /** @class */ (function () {
     }
     DomSanitizerPipe.prototype.transform = function (img) {
         if (!img || img == null) {
-            return 'assets/img/splash.png';
+            return 'assets/img/camera.png';
         }
         else {
             return this.domSanitizer.bypassSecurityTrustUrl(img);
@@ -443,7 +443,7 @@ var ClientService = /** @class */ (function () {
                             }
                         };
                         fileTransfer = this.fileTransfer.create();
-                        url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/clientes/uploadImage";
+                        url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/clientes/uploadImagenClientes";
                         return [4 /*yield*/, fileTransfer.upload(img, url, options).then(function (data) {
                                 resolve(true);
                             }).catch(function (err) {

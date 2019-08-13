@@ -9,7 +9,7 @@ export class DomSanitizerPipe implements PipeTransform {
   constructor( private domSanitizer: DomSanitizer ) { }
   transform( img: string ): any {
     if (!img || img == null) {
-      return 'assets/img/splash.png'
+      return 'assets/img/camera.png'
     }
     else
     {

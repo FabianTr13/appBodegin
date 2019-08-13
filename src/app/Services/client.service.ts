@@ -21,9 +21,6 @@ export class ClientService {
 
     //Preparacion de body
     let body = {
-      nombre_legal:p_form.nombreLegal,
-      rtn:p_form.rtn,
-      celular: p_form.phone,
       usuario: p_form.user
     }
     let url = `${WEB_SERVICE}api/clientes/validanuevocliente`
@@ -142,7 +139,7 @@ export class ClientService {
               };
               const fileTransfer: FileTransferObject = this.fileTransfer.create();
 
-              let url = `${WEB_SERVICE}api/clientes/uploadImage`
+              let url = `${WEB_SERVICE}api/clientes/uploadImagenClientes`
 
               await fileTransfer.upload( img, url, options ).then( data => {
                   resolve(true)

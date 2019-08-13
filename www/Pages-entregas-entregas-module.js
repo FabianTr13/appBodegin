@@ -61,7 +61,7 @@ var EntregasPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header-in titulo=\"Entrega\"></app-header-in>\n"
+module.exports = "<app-header-in titulo=\"Entrega\"></app-header-in>\r\n"
 
 /***/ }),
 

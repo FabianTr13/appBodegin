@@ -6,7 +6,7 @@ import { isApp } from '../../Config/configuration';
 import { ActionSheetController } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { LoadingController } from '@ionic/angular';
-import { ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 declare var window: any;
 
@@ -37,7 +37,7 @@ export class ConfigUsuariosPage implements OnInit {
               public actionSheetController: ActionSheetController,
               private camera: Camera,
               public loadingController: LoadingController,
-              private modalController:ModalController) { }
+              private router:Router) { }
 
   ngOnInit() {
     this.storage.get('token').then(token=>{
@@ -46,7 +46,6 @@ export class ConfigUsuariosPage implements OnInit {
         this.cliente.foto = []
         this.cliente.foto.push(data.logo)
         this.cliente.foto.push(data.logo)
-        console.log(data)
       })
     })
   }
@@ -139,18 +138,22 @@ export class ConfigUsuariosPage implements OnInit {
     toast.present();
   }
 
+  async configUsuarios() {
+    await this.router.navigate(['configUsuariosList'])
+  }
+
   async present() {
-  this.isLoading = true;
-  return await this.loadingController.create({
-    duration: 10000
-  }).then(a => {
-    a.present().then(() => {
-      if (!this.isLoading) {
-        a.dismiss().then(() => console.log('abort presenting'));
-      }
+    this.isLoading = true;
+    return await this.loadingController.create({
+      duration: 10000
+    }).then(a => {
+      a.present().then(() => {
+        if (!this.isLoading) {
+          a.dismiss().then(() => {});
+        }
+      });
     });
-  });
-}
+  }
 
   async dismiss() {
     this.isLoading = false;
