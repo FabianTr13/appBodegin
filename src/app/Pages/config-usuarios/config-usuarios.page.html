@@ -1,13 +1,13 @@
 <app-header-in titulo="Cambio"></app-header-in>
 <ion-content>
   <input #fileInput hidden (change)="fileUpload()" type="file" name="pic" accept="image/*">
-  <form #form="ngForm" (ngSubmit)="updateUsuario(form)">
+  <form *ngIf="cliente.id_cliente!=null"  #form="ngForm" (ngSubmit)="updateUsuario()">
     <ion-grid>
       <ion-row justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
           <div text-center>
             <ion-avatar class="avatar">
-              <img [src]="cliente.logo[1] | domSanitizer"
+              <img [src]="cliente.foto[1] | domSanitizer"
                    (click)="presentActionSheet()">
             </ion-avatar>
           </div>
@@ -58,7 +58,7 @@
               <ion-label position="floating">Usuario</ion-label>
               <ion-input name="user"
                          type="text"
-                         [(ngModel)]="cliente.nombre_comercial"
+                         [(ngModel)]="cliente.usuario"
                          required>
                </ion-input>
             </ion-item>

@@ -38,7 +38,7 @@ export class RegisterPage implements OnInit {
       await this.present()
       this.Pro_cliente.validarNuevoCliente(p_form.form.value).subscribe(async resp=>{
         if (resp!=null) {
-          if (resp==0) {
+          if (resp==true) {
             this.Pro_cliente.registraUsuario(p_form.form.value).subscribe(async data => {
               this.Pro_user.login(p_form.form.value.user, p_form.form.value.password).subscribe(async respAuth=>{
                 if (respAuth!=null) {
@@ -53,12 +53,9 @@ export class RegisterPage implements OnInit {
             }, async err=>{
               await this.dismiss()
             })
-          }else if (resp==1) {
-              await this.showToast('Empresa ya registrada')
+          }else {
+              await this.showToast('El usuario ya existe')
               await this.dismiss()
-          }else if (resp==2) {
-            await this.showToast('Usuario ya registrado')
-            await this.dismiss()
           }
         }
         else{

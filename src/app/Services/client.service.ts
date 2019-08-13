@@ -31,6 +31,22 @@ export class ClientService {
       return result;
     }));
   }
+
+  validaUsuario(p_id_cliente, p_usuario){
+    //Preparacion de header
+    const headers = new HttpHeaders(Header);
+
+    //Preparacion de body
+    let body = {
+      id_cliente: p_id_cliente,
+      usuario: p_usuario
+    }
+    let url = `${WEB_SERVICE}api/clientes/validaUsuario`
+    return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
+      return result;
+    }));
+  }
+
   registraUsuario(p_form){
     //Preparacion de header
     const headers = new HttpHeaders(Header);
@@ -68,15 +84,21 @@ export class ClientService {
     }));
   }
 
-  async updateCliente(p_cliente){
+  updateCliente(p_cliente){
     //Preparacion de header
     const headers = new HttpHeaders(Header);
 
     //Preparacion de body
     let body = {
-      token: await this.storage.get('token'),
-      cliente: p_cliente
+      id_cliente: p_cliente.id_cliente,
+      nombre_legal: p_cliente.nombre_legal,
+      nombre_comercial: p_cliente.nombre_comercial,
+      rtn: p_cliente.rtn,
+      telefono: p_cliente.telefono,
+      direccion: p_cliente.direccion,
+      usuario: p_cliente.usuario
     }
+
     let url = `${WEB_SERVICE}api/clientes/updateCliente`
 
     return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
@@ -84,7 +106,7 @@ export class ClientService {
     }));
   }
 
-  subirImagen( img: string, p_id_producto ) {
+  subirImagen( img: string, p_id_cliente ) {
     return new Promise(async (reject, resolve)=>{
       const headers = new HttpHeaders(Header);
 
@@ -99,9 +121,9 @@ export class ClientService {
         if (!isApp) {
           let formData = new FormData();
           formData.append('image', img, 'image');
-          formData.append('id_producto', String(p_id_producto));
+          formData.append('id_cliente', String(p_id_cliente));
 
-          let url = `${WEB_SERVICE}api/productos/upload`
+          let url = `${WEB_SERVICE}api/clientes/uploadImagenClientes`
 
           this.Pro_http.post(url, formData).subscribe((val) => {
             resolve(true)
@@ -115,15 +137,14 @@ export class ClientService {
               fileKey: 'image',
               headers: headers,
               params:{
-                  id_producto:p_id_producto
+                  id_cliente:p_id_cliente
                 }
               };
               const fileTransfer: FileTransferObject = this.fileTransfer.create();
 
-              let url = `${WEB_SERVICE}api/cliente/uploadImage`
+              let url = `${WEB_SERVICE}api/clientes/uploadImage`
 
               await fileTransfer.upload( img, url, options ).then( data => {
-                console.log('subida')
                   resolve(true)
                   }).catch( err => {
                   resolve(true)

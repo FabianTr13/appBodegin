@@ -25,7 +25,7 @@ export class ConfigUsuariosPage implements OnInit {
     telefono:null,
     direccion:null,
     usuario:null,
-    logo: null
+    foto: []
   }
 
   @ViewChild('fileInput') el:ElementRef;
@@ -43,6 +43,10 @@ export class ConfigUsuariosPage implements OnInit {
     this.storage.get('token').then(token=>{
       this.Pro_cliente.recuperarCliente(token).subscribe(data=>{
         this.cliente = data
+        this.cliente.foto = []
+        this.cliente.foto.push(data.logo)
+        this.cliente.foto.push(data.logo)
+        console.log(data)
       })
     })
   }
@@ -90,9 +94,9 @@ export class ConfigUsuariosPage implements OnInit {
 
     this.camera.getPicture(options).then((imageData) => {
      const img = window.Ionic.WebView.convertFileSrc( imageData );
-     this.cliente.logo=[]
-     this.cliente.logo.push(imageData)
-     this.cliente.logo.push(img)
+     this.cliente.foto=[]
+     this.cliente.foto.push(imageData)
+     this.cliente.foto.push(img)
     });
   }
 
@@ -107,10 +111,10 @@ export class ConfigUsuariosPage implements OnInit {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-     this.cliente.logo=[]
+     this.cliente.foto=[]
      const img = window.Ionic.WebView.convertFileSrc( imageData );
-     this.cliente.logo.push(imageData)
-     this.cliente.logo.push(img)
+     this.cliente.foto.push(imageData)
+     this.cliente.foto.push(img)
    });
   }
 
@@ -118,9 +122,9 @@ export class ConfigUsuariosPage implements OnInit {
     var reader = new FileReader();
     reader.readAsDataURL(this.el.nativeElement.files[0]);
     reader.onload = (_event) => {
-      this.cliente.logo = []
-      this.cliente.logo.push(reader.result.toString());
-      this.cliente.logo.push(reader.result.toString());
+      this.cliente.foto = []
+      this.cliente.foto.push(reader.result.toString());
+      this.cliente.foto.push(reader.result.toString());
     }
   }
 
@@ -150,26 +154,46 @@ export class ConfigUsuariosPage implements OnInit {
 
   async dismiss() {
     this.isLoading = false;
-    return await this.loadingController.dismiss().then(() => console.log('dismissed'));
+    return await this.loadingController.dismiss().then(() => {});
   }
 
-  async guardar(){
-    await this.present()
-    if (this.cliente.logo[0]!='assets/nuevo/camera.png') {
-      let filePath: string = this.cliente.logo[0]
-       this.cliente.logo[0] = filePath
+  async guardarImagen(){
+    if (this.cliente.foto[0]!='assets/nuevo/camera.png') {
+      let filePath: string = this.cliente.foto[0]
+       this.cliente.foto[0] = filePath
     }
 
     if (!isApp) {
-      this.cliente.logo[0] = this.el.nativeElement.files[0]
+      this.cliente.foto[0] = this.el.nativeElement.files[0]
     }
 
-    await this.Pro_cliente.updateCliente(this.cliente).catch(err=>{
-      console.log(err)
-    })
-
-    await this.Pro_cliente.subirImagen(this.cliente.logo[0], this.cliente.id_cliente).catch(err=>{})
+    await this.Pro_cliente.subirImagen(this.cliente.foto[0], this.cliente.id_cliente).catch(err=>{})
     this.modalController.dismiss({productos: 1});
     await this.dismiss()
+  }
+
+  async updateUsuario(){
+      await this.present()
+      this.Pro_cliente.validaUsuario(this.cliente.id_cliente, this.cliente.usuario)
+        .subscribe(async resp=>{
+          if (resp!=null) {
+            if (resp==true) {
+              this.Pro_cliente.updateCliente(this.cliente).subscribe(async data => {
+                await this.guardarImagen()
+                await this.dismiss()
+              }, async err=>{
+                await this.dismiss()
+              })
+            }else {
+                await this.showToast('El usuario ya existe')
+                await this.dismiss()
+            }
+          }
+          else{
+            await this.dismiss()
+          }
+      }, async err =>{
+        await this.dismiss()
+      });
   }
 }
