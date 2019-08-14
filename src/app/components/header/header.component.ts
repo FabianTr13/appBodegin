@@ -73,4 +73,9 @@ export class HeaderComponent implements OnInit {
 
     await alert.present();
   }
+
+  header(p_event){
+    console.log('lelellee')
+  }
+
 }

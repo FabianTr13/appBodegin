@@ -6,7 +6,6 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { ProductosService } from '../../Services/productos.service';
 import { CategoriasService } from '../../Services/categorias.service';
 import { Storage } from '@ionic/storage';
-import * as resizebase64 from 'resize-base64';
 import { SucursalesService } from '../../Services/sucursales.service';
 import { AlertController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';

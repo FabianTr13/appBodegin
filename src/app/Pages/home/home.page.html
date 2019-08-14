@@ -1,4 +1,4 @@
-<app-header titulo="sucursal"></app-header>
+<app-header (onHeader)="header($event)" titulo="sucursal"></app-header>
 <ion-content id="content1" main>
   <ion-grid>
     <ion-row>
@@ -60,6 +60,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <button type="button" (click)="headerSiii()" name="button">ddddddddd</button>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button>
       <ion-icon name="add"></ion-icon>

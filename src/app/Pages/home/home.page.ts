@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { NuevoProductoPage } from '../../Modals/nuevo-producto/nuevo-producto.page';
@@ -11,12 +11,19 @@ import { NuevoProductoPage } from '../../Modals/nuevo-producto/nuevo-producto.pa
 })
 export class HomePage implements OnInit {
 
+  @Output() onHeader:EventEmitter<number> = new EventEmitter<number>();
+
   constructor(private Pro_router:Router,
               private modalController:ModalController) { }
 
   sucursal="NINGUNA"
 
   ngOnInit() {
+  }
+
+  headerSiii(){
+    console.log('eeeeeee')
+    this.onHeader.emit(1);
   }
 
   navegar(pRuta){
