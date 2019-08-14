@@ -17,14 +17,20 @@
     </ion-row>
     <ion-row>
       <ion-col col-12>
+        <ion-card text-center padding (click)="navegar('transacciones')">
+          <ion-img src="/assets/icones/transacciones.png"></ion-img>
+          <h2>Transacciones</h2>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
         <ion-card text-center padding (click)="navegar('/inventarios')">
           <ion-img src="/assets/icones/inventario.png"></ion-img>
           <h2>Inventario</h2>
         </ion-card>
       </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-12>
+      <ion-col col-6>
         <ion-card text-center padding (click)="navegar('estadisticas')">
           <ion-img src="/assets/icones/estadisticas.png"></ion-img>
           <h2>Estadistica</h2>

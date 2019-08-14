@@ -1,0 +1,22 @@
+.plus-minus{
+  --background: white !important;
+  --background-activated: #3880ff;
+  --background-checked: #3880ff !important;
+}
+
+.input{
+  --background: white !important;
+  --background-activated: white;
+  --background-checked: white !important;
+  --color: black;
+}
+
+.round{
+  border: solid 2px;
+  border-color: #3880ff;
+  border-radius: 15px;
+  background: white;
+  color: black;
+  font-size: 1.3em;
+  width:60%;
+}

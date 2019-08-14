@@ -1,9 +1,32 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>inventarioTransacciones</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<app-header-in titulo="Inventario"></app-header-in>
+<ion-content padding>
+ <ion-segment mode="ios">
+   <ion-segment-button class="plus-minus"
+                       layout="icon-bottom"
+                       mode="ios">
+     <ion-icon name="remove"></ion-icon>
+     <ion-label>Menos</ion-label>
+   </ion-segment-button>
+   <ion-segment-button class="input"
+                       layout="icon-bottom"
+                       mode="ios">
+     <!-- <ion-item> -->
+       <ion-input class="round"
+                  name="phone"
+                  maxlength="3"
+                  minlength="1"
+                  type="tel"
+                  pattern="\d*"
+                  [(ngModel)]="cantidad"
+                  text-center>
+      </ion-input>
+     <!-- </ion-item> -->
+   </ion-segment-button>
+   <ion-segment-button class="plus-minus"
+                       layout="icon-bottom"
+                       mode="ios">
+     <ion-icon name="add"></ion-icon>
+     <ion-label>Mas</ion-label>
+   </ion-segment-button>
+ </ion-segment>
 </ion-content>

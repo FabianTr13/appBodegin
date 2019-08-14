@@ -16,9 +16,9 @@ const routes: Routes = [
   { path: 'servicios', loadChildren: './Pages/servicios/servicios.module#ServiciosPageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'servicio-config/:id_servicio', loadChildren: './Pages/servicio-config/servicio-config.module#ServicioConfigPageModule',canActivate :[AuthGuard], data: {token: []} },  { path: 'sucursales', loadChildren: './Pages/sucursales/sucursales.module#SucursalesPageModule' },
   { path: 'sucursales', loadChildren: './Pages/sucursales/sucursales.module#SucursalesPageModule' ,canActivate :[AuthGuard], data: {token: []} },
-  { path: 'inventario-transacciones', loadChildren: './Pages/inventario-transacciones/inventario-transacciones.module#InventarioTransaccionesPageModule' },
-  { path: 'config', loadChildren: './Pages/config-usuarios/config-usuarios.module#ConfigUsuariosPageModule' },
-  { path: 'configUsuariosList', loadChildren: './Pages/config-usuarios-list/config-usuarios-list.module#ConfigUsuariosListPageModule' }
+  { path: 'transacciones', loadChildren: './Pages/inventario-transacciones/inventario-transacciones.module#InventarioTransaccionesPageModule', canActivate :[AuthGuard], data: {token: []} },
+  { path: 'config', loadChildren: './Pages/config-usuarios/config-usuarios.module#ConfigUsuariosPageModule', canActivate :[AuthGuard], data: {token: []} },
+  { path: 'configUsuariosList', loadChildren: './Pages/config-usuarios-list/config-usuarios-list.module#ConfigUsuariosListPageModule', canActivate :[AuthGuard], data: {token: []} }
 ];
 
 @NgModule({
