@@ -862,6 +862,7 @@ var map = {
 	],
 	"./Pages/inventario-transacciones/inventario-transacciones.module": [
 		"./src/app/Pages/inventario-transacciones/inventario-transacciones.module.ts",
+		"common",
 		"Pages-inventario-transacciones-inventario-transacciones-module"
 	],
 	"./Pages/inventarios/inventarios.module": [
@@ -948,7 +949,7 @@ const Header = {
 }
 
 const WEB_SERVICE = "http://www.bodegin.com:3000/";
-const isApp = true;
+const isApp = false;
 
 
 /***/ }),

@@ -308,6 +308,22 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "window.FileTransfer"
       ]
+    },
+    {
+      "id": "cordova-plugin-calendar.Calendar",
+      "file": "plugins/cordova-plugin-calendar/www/Calendar.js",
+      "pluginId": "cordova-plugin-calendar",
+      "clobbers": [
+        "Calendar"
+      ]
+    },
+    {
+      "id": "cordova-plugin-datepicker.DatePicker",
+      "file": "plugins/cordova-plugin-datepicker/www/android/DatePicker.js",
+      "pluginId": "cordova-plugin-datepicker",
+      "clobbers": [
+        "datePicker"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -325,6 +341,8 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "com-badrit-base64": "0.2.0",
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-file": "6.0.2",
-    "cordova-plugin-file-transfer": "1.7.1"
+    "cordova-plugin-file-transfer": "1.7.1",
+    "cordova-plugin-calendar": "5.1.4",
+    "cordova-plugin-datepicker": "0.9.3"
   };
 });

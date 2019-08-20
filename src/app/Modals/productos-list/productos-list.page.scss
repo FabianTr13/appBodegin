@@ -1,0 +1,35 @@
+
+ion-col{
+  div{
+    ion-item{
+        --background: #3880ff;
+        --color: #fff;
+    }
+  }
+}
+
+.image{
+  width: 20%;
+  height: 200px;
+}
+
+.busqueda{
+  background: #3880ff;
+}
+.nombreProducto{
+  font-size: 0.9em !important;
+  color: #3880ff;
+  font-weight: bold;
+}
+
+.tipoConsumo{
+  color: #3880ff
+}
+
+.buttonExit{
+  // position: fixed;
+  left: 0;
+  bottom: 5px;
+  right: 0;
+  z-index: 500;
+}
