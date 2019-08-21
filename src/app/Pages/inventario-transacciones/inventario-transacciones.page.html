@@ -37,15 +37,27 @@
       </ion-col>
       <ion-col align-self-center size-md="3" size-lg="2" size-xs="6">
         <ion-item lines="none">
-          <ion-label position="floating">Costo unitario</ion-label>
+          <ion-label position="floating">Costo unitario LPS</ion-label>
           <ion-input type="tel"
                      name="phone"
                      maxlength="8"
                      minlength="1"
+                     (keydown)="validateNumber(event, true)"
                      pattern="\d*"
                      placeholder="00.00"
                      [(ngModel)]="costo">
          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <ion-item>
+          <ion-label>Sucursal</ion-label>
+          <ion-select value="{{id_sucursal}}" [(ngModel)]="id_sucursal" (ionChange)="sucursalGet($event)" placeholder="Seleccione una">
+            <ion-select-option *ngFor="let item of sucursales"
+                                value="{{item.id_sucursal}}">{{item.descripcion}}</ion-select-option>
+          </ion-select>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -97,7 +109,8 @@
                          maxlength="3"
                          minlength="1"
                          min="1"
-                         pattern="\d*"
+                         pattern="[0-9.]+"
+                         (keydown)="validateNumber(event)"
                          [(ngModel)]="cantidad"
                          text-center>
              </ion-input>
