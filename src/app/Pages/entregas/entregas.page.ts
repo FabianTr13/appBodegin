@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { EntregasService } from '../../Services/entregas.service';
+import { Storage } from '@ionic/storage';
+
 
 @Component({
   selector: 'app-entregas',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntregasPage implements OnInit {
 
-  constructor() { }
+  servicios = []
+
+  constructor(private Pro_entregas:EntregasService,
+              private storage:Storage) { }
 
   ngOnInit() {
+    this.storage.get('token').then(token=>{
+      this.Pro_entregas.getSetvicios(token).subscribe(data=>{
+        this.servicios = data
+        console.log(this.servicios)
+      })
+    })
   }
-
 }

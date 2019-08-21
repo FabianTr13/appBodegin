@@ -27,9 +27,9 @@ export class InventarioTransaccionesPage implements OnInit {
   cantidad:number=1;
   today = new Date().toISOString().slice(0, 10)
   fecha = new Date().toISOString().slice(0, 10)
-  id_tipo_transaccion: 1
+  id_tipo_transaccion= 1
   costo=null
-  id_sucursal=null
+  id_sucursal:any;
 
   constructor(public alertController: AlertController,
               private modalController:ModalController,
@@ -40,9 +40,11 @@ export class InventarioTransaccionesPage implements OnInit {
   }
 
   ngOnInit() {
-    this.storage.get('token').then(token=>{
-      this.Pro_sucursales.obtenerSucursales(token).subscribe(data=>{
-        this.sucursales = data
+    this.storage.get('token').then(async token=>{
+      this.Pro_sucursales.obtenerSucursalSeleccionda(token).subscribe(async sucursal=>{
+          this.id_sucursal = sucursal.id_sucursal.toString()
+          let suc = await this.Pro_sucursales.sucursalesListUsuario()
+          this.sucursales = Array.isArray(suc) ? suc : []
       })
     })
   }
@@ -77,9 +79,7 @@ export class InventarioTransaccionesPage implements OnInit {
   async seleccionarProducto(){
     const modal = await this.modalController.create({
       component: ProductosListPage,
-      componentProps: {
-
-      }
+      componentProps: {}
     });
     await modal.present();
     let data  = await modal.onDidDismiss()
@@ -87,6 +87,10 @@ export class InventarioTransaccionesPage implements OnInit {
     if (data.data != undefined) {
       this.producto = data.data.producto
     }
+  }
+
+  async sucursalGet(p_sucursal){
+    this.id_sucursal = p_sucursal.target.value
   }
 
   async guardar(){
@@ -99,8 +103,33 @@ export class InventarioTransaccionesPage implements OnInit {
         id_tipo_transaccion: this.id_tipo_transaccion,
         id_sucursal: this.id_sucursal
       }
-      await this.Pro_inventarios.insertTransaccion(transaccion).catch(err=>{})
+      let result = await this.Pro_inventarios.insertTransaccion(transaccion).catch(err=>{})
+      console.log(result)
+      if (result) {
+          if (result=='1') {
+            await this.showToast('No se aceptan invetarios en 0', 3500);
+          }
+          else{
+            await this.showToast('Transaccion exitosa', 1000);
+            await this.limpiar()
+          }
+      }
+
     }
+  }
+
+  async limpiar(){
+    this.producto ={
+      id_producto: null,
+      nombre: "Seleccione un producto",
+      imagen: 'assets/img/splash.png',
+      codigo: null
+    }
+
+    this.cantidad=1;
+    this.today = new Date().toISOString().slice(0, 10)
+    this.fecha = new Date().toISOString().slice(0, 10)
+    this.costo=null
   }
 
   async validador(){
