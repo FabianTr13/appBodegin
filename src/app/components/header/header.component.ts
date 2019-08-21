@@ -3,7 +3,6 @@ import { AlertController } from '@ionic/angular';
 import { SucursalesService } from '../../Services/sucursales.service';
 import { Storage } from '@ionic/storage';
 
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',

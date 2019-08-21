@@ -21,9 +21,10 @@ export class InventariosService {
       token: await this.storage.get('token'),
       id_producto: p_trans.id_producto,
       cantidad: p_trans.cantidad,
-      id_tipo_transaccion: 1,
-      id_sucursal: p_trans.id_sucursal,
-      fecha: p_trans.fecha
+      costo: p_trans.costo,
+      fecha: p_trans.fecha,
+      id_tipo_transaccion: p_trans.id_tipo_transaccion,
+      id_sucursal: p_trans.id_sucursal
     }
     let url = `${WEB_SERVICE}api/inventarios/insertTransaccion`
     return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {

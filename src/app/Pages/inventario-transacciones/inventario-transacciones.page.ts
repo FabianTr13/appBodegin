@@ -27,7 +27,7 @@ export class InventarioTransaccionesPage implements OnInit {
   cantidad:number=1;
   today = new Date().toISOString().slice(0, 10)
   fecha = new Date().toISOString().slice(0, 10)
-  tipoTransaccion: 1
+  id_tipo_transaccion: 1
   costo=null
   id_sucursal=null
 
@@ -71,7 +71,7 @@ export class InventarioTransaccionesPage implements OnInit {
   }
 
   salidaEntrada(p_valor){
-    this.tipoTransaccion = p_valor
+    this.id_tipo_transaccion = p_valor
   }
 
   async seleccionarProducto(){
@@ -96,8 +96,8 @@ export class InventarioTransaccionesPage implements OnInit {
         cantidad: this.cantidad,
         costo: this.costo,
         fecha: this.fecha,
-        id_sucursal: this.id_sucursal,
-        id_tipo_transaccion: this.tipoTransaccion
+        id_tipo_transaccion: this.id_tipo_transaccion,
+        id_sucursal: this.id_sucursal
       }
       await this.Pro_inventarios.insertTransaccion(transaccion).catch(err=>{})
     }
