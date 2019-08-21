@@ -20,3 +20,48 @@
   font-size: 1.3em;
   width:60%;
 }
+
+.avatar{
+   margin: auto;
+}
+
+
+.salida{
+  --background: white !important;
+  --background-activated: #f04141;
+  --background-checked: #f04141 !important;
+}
+
+.entrada{
+  --background: white !important;
+  --background-activated: #10dc60;
+  --background-checked: #10dc60 !important;
+}
+
+.label {
+  font-size: 1.2em;
+}
+
+.font_button{
+  font-size: 0.7rem;
+}
+
+.boder{
+  border: solid 1px #000000;
+}
+
+.buttone{
+  position: fixed;
+  left: 0;
+  bottom: 50px;
+  right: 0;
+  z-index: 500;
+}
+
+.buttonExit{
+  position: fixed;
+  left: 0;
+  bottom: 5px;
+  right: 0;
+  z-index: 500;
+}

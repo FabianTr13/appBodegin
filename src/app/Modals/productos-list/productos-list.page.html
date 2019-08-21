@@ -1,0 +1,61 @@
+<app-header-modal titulo="Productos"></app-header-modal>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content  pullingIcon="arrow-dropdown"
+                            pullingText="Hale para recargar"
+                            refreshingSpinner="circles"
+                            refreshingText="Recargando..."></ion-refresher-content>
+  </ion-refresher>
+  <div class="busqueda">
+    <form #form="ngForm">
+      <ion-grid>
+        <ion-row color="primary" justify-content-center>
+          <ion-col>
+            <div #list>
+              <ion-item>
+                <ion-icon slot="end"
+                          name="search"
+                          color="#f4f4f4">
+                </ion-icon>
+                <ion-input type="text"
+                           placeholder="Buscar"
+                           clearInput
+                           [(ngModel)]='textSearch'
+                           (ionChange)='busqueda($event.target.value)'
+                           (input)='busqueda($event.target.value)'
+                           >
+                </ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
+
+  <div padding >
+    <ion-list >
+      <ion-radio-group>
+        <ion-item *ngFor="let item of productos" (click)="productoDetalle(item)">
+          <ion-avatar slot="start">
+            <img [src]="item.imagen | domSanitizer">
+          </ion-avatar>
+          <ion-label>
+            <h2 class="nombreProducto">{{item.nombre | uppercase}}</h2>
+            <h4>{{item.descripcion}}</h4>
+          </ion-label>
+          <ion-radio text-end
+                     slot="end"
+                     mode="md">
+          </ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </div>
+
+  <ion-button (click)="Salir()"
+              color="medium"
+              size="default"
+              expand="block"
+              shape="round">Salir<ion-icon slot="end" name="exit"></ion-icon></ion-button>
+</ion-content>
