@@ -1,12 +1,14 @@
 .contenedor{
-    background:#52f450 !important;
+  //--background:#e0e0e0;
 }
 
 .car{
   border: solid 1px #cacaca;
+  --background: white;
 }
 
 .precio{
   font-size: 1.4em;
   color: #52f450;
+  font-weight: bold;
 }
