@@ -12,3 +12,39 @@
   color: #52f450;
   font-weight: bold;
 }
+
+.boton{
+  width: 100%;
+}
+
+.car-head{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #6e6368;
+  border-top: solid 4px #3880ff;
+}
+
+@media (min-width: 600px) {
+  .boton{
+    width: 45%;
+    float: right;
+  }
+}
+@media (min-width: 700px) {
+  .boton{
+    width: 33%;
+    float: right;
+  }
+}
+@media (min-width: 900px) {
+  .boton{
+    width: 25%;
+    float: right;
+  }
+}
+@media (min-width: 1100px) {
+  .boton{
+    width: 20%;
+    float: right;
+  }
+}

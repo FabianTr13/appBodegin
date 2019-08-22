@@ -19,7 +19,17 @@ export class EntregasPage implements OnInit {
     this.storage.get('token').then(token=>{
       this.Pro_entregas.getSetvicios(token).subscribe(data=>{
         this.servicios = data
-        console.log(this.servicios)
+      })
+    })
+  }
+
+  async doRefresh(event) {
+    this.storage.get('token').then(token=>{
+      this.Pro_entregas.getSetvicios(token).subscribe(data=>{
+        this.servicios = data
+        event.target.complete();
+      }, err=>{
+        event.target.complete();
       })
     })
   }

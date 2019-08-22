@@ -1,24 +1,31 @@
 <app-header-in titulo="Entrega"></app-header-in>
 <ion-content class="contenedor">
-<ion-card class="car" *ngFor="let item of servicios">
-  <ion-item>
-    <ion-icon name="md-basket" slot="start"></ion-icon>
-    <ion-label>{{item.descripcion}}</ion-label>
-  </ion-item>
-  <ion-card-content>
-    <ion-chip *ngFor="let item_productos of item.productos">
-      <ion-avatar>
-        <img [src]="item_productos.fotografia | domSanitizer">
-      </ion-avatar>
-      <ion-label>{{item_productos.nombre}} &nbsp;</ion-label>
-      <ion-badge color="medium">{{item_productos.cantidad}}</ion-badge>
-    </ion-chip>
-  </ion-card-content>
-  <ion-button expand="full"
-              color="primary"
-              shape="round">
-  Entregar Servicio <ion-label class="precio">&nbsp;L. {{item.precio}}</ion-label>
-  <ion-icon name="arrow-round-forward" slot="end"></ion-icon>
-</ion-button>
-</ion-card>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+  <ion-refresher-content  pullingIcon="arrow-dropdown"
+                          pullingText="Hale para recargar"
+                          refreshingSpinner="circles"
+                          refreshingText="Recargando..."></ion-refresher-content>
+  </ion-refresher>
+  <ion-card class="car" *ngFor="let item of servicios">
+    <ion-item class="car-head" lines="none">
+      <ion-icon name="md-basket" slot="start"></ion-icon>
+      <ion-label>{{item.descripcion}}</ion-label>
+    </ion-item>
+    <ion-card-content>
+      <ion-chip *ngFor="let item_productos of item.productos">
+        <ion-avatar>
+          <img [src]="item_productos.fotografia | domSanitizer">
+        </ion-avatar>
+        <ion-label>{{item_productos.nombre}} &nbsp;</ion-label>
+        <ion-badge color="medium">{{item_productos.cantidad}}</ion-badge>
+      </ion-chip>
+    </ion-card-content>
+    <ion-button expand="full"
+                color="primary"
+                shape="round"
+                class="boton">
+                Entregar<ion-label class="precio">&nbsp;L. {{item.precio}}</ion-label>
+      <ion-icon name="arrow-round-forward" slot="end"></ion-icon>
+    </ion-button>
+  </ion-card>
 </ion-content>
