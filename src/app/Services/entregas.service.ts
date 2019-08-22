@@ -26,4 +26,18 @@ export class EntregasService {
       return result;
     }));
   }
+
+  async realizarEntrega(p_id_servicio){
+    //Preparacion de header
+    const headers = new HttpHeaders(Header);
+
+    //Preparacion de body
+    let body = {
+      token: await this.storage.get('token'),
+      id_servicio: p_id_servicio
+    }
+
+    let url = `${WEB_SERVICE}api/entregas/realizarEntrega`
+    return await this.Pro_http.post(url, body, { headers }).toPromise()
+  }
 }

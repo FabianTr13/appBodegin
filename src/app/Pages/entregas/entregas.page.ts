@@ -33,4 +33,8 @@ export class EntregasPage implements OnInit {
       })
     })
   }
+
+  async entregarServicio(p_id_servicio){
+    await this.Pro_entregas.realizarEntrega(p_id_servicio);
+  }
 }

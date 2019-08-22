@@ -9,7 +9,7 @@
   <ion-card class="car" *ngFor="let item of servicios">
     <ion-item class="car-head" lines="none">
       <ion-icon name="md-basket" slot="start"></ion-icon>
-      <ion-label>{{item.descripcion}}</ion-label>
+      <p>{{item.descripcion}}</p>
     </ion-item>
     <ion-card-content>
       <ion-chip *ngFor="let item_productos of item.productos">
@@ -20,12 +20,15 @@
         <ion-badge color="medium">{{item_productos.cantidad}}</ion-badge>
       </ion-chip>
     </ion-card-content>
-    <ion-button expand="full"
-                color="primary"
-                shape="round"
-                class="boton">
-                Entregar<ion-label class="precio">&nbsp;L. {{item.precio}}</ion-label>
-      <ion-icon name="arrow-round-forward" slot="end"></ion-icon>
-    </ion-button>
+    <div class="center-boton">
+      <ion-button expand="full"
+                  color="primary"
+                  shape="round"
+                  (click)="entregarServicio(item.id_servicio)"
+                  class="boton">
+                  Entregar<ion-label class="precio">&nbsp;L. {{item.precio}}</ion-label>
+                  <ion-icon name="arrow-round-forward" slot="end"></ion-icon>
+      </ion-button>
+    </div>
   </ion-card>
 </ion-content>
