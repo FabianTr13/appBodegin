@@ -45,4 +45,8 @@ export class ProductosListPage implements OnInit {
  productoDetalle(p_item){
    this.modalController.dismiss({producto:p_item});
  }
+
+ async Salir(){
+   this.modalController.dismiss();
+ }
 }

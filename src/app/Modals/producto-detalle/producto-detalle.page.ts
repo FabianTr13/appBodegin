@@ -65,8 +65,8 @@ export class ProductoDetallePage implements OnInit {
       this.Pro_producto.foto = []
       this.Pro_producto.foto.push(data.fotografia)
       this.Pro_producto.foto.push(data.fotografia)
-      this.id_categoria = this.Pro_producto.id_categoria
-      this.id_tipo_consumo = this.Pro_producto.id_tipo_consumo
+      this.id_categoria = String(this.Pro_producto.id_categoria)
+      this.id_tipo_consumo = String(this.Pro_producto.id_tipo_consumo)
 
       this.sucursal =
         await this.Pro_sucursales.obtenerSucursalSelecciondaAsync().catch(err=>{
@@ -265,7 +265,7 @@ export class ProductoDetallePage implements OnInit {
     }).then(a => {
       a.present().then(() => {
         if (!this.isLoading) {
-          a.dismiss().then(() => console.log('abort presenting'));
+          a.dismiss().then(() => {});
         }
       });
     });
@@ -273,7 +273,7 @@ export class ProductoDetallePage implements OnInit {
 
   async dismiss() {
     this.isLoading = false;
-    return await this.loadingController.dismiss().then(() => console.log('dismissed'));
+    return await this.loadingController.dismiss().then(() => {});
   }
 
   async guardar(){

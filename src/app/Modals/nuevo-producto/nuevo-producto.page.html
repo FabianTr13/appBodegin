@@ -41,14 +41,20 @@
           </ion-item>
           <ion-item>
             <ion-label>Tipo de Consumo</ion-label>
-            <ion-select [(ngModel)]="id_consumo" (ionChange)="consumoGet($event)" placeholder="Seleccione un tipo">
+            <ion-select [(ngModel)]="id_consumo"
+                        name="consumo"
+                        (ionChange)="consumoGet($event)"
+                        placeholder="Seleccione un tipo">
               <ion-select-option *ngFor="let item of tiposConsumo"
                                   value="{{item.id_tipo_consumo}}">{{item.descripcion}}</ion-select-option>
             </ion-select>
           </ion-item>
           <ion-item>
             <ion-label>Categorias</ion-label>
-            <ion-select [(ngModel)]="id_categoria" (ionChange)="categroriaGet($event)" placeholder="Seleccione una">
+            <ion-select [(ngModel)]="id_categoria"
+                        name="categoria"
+                        (ionChange)="categroriaGet($event)"
+                        placeholder="Seleccione una">
               <ion-select-option *ngFor="let item of categorias"
                                   value="{{item.id_categoria}}">{{item.descripcion}}</ion-select-option>
             </ion-select>

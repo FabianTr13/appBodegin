@@ -94,7 +94,7 @@ export class InventarioTransaccionesPage implements OnInit {
   }
 
   async guardar(){
-    if (this.validador()) {
+    if (await this.validador()) {
       let transaccion = {
         id_producto: this.producto.id_producto,
         cantidad: this.cantidad,
@@ -104,9 +104,9 @@ export class InventarioTransaccionesPage implements OnInit {
         id_sucursal: this.id_sucursal
       }
       let result = await this.Pro_inventarios.insertTransaccion(transaccion).catch(err=>{})
-      console.log(result)
+      // console.log(result)
       if (result) {
-          if (result=='1') {
+          if (result==1) {
             await this.showToast('No se aceptan invetarios en 0', 3500);
           }
           else{

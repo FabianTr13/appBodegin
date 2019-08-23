@@ -16,8 +16,8 @@ export class CategoriasPage implements OnInit {
               public alertController: AlertController,
               public loadingController: LoadingController) { }
 
-  categorias;
-  categorias_backup;
+  categorias=[];
+  categorias_backup=[];
   textSearch = ''
 
   @ViewChild('list') el:ElementRef;
@@ -51,7 +51,10 @@ export class CategoriasPage implements OnInit {
         }, {
           text: boton,
           handler: async data=> {
-            await this.Pro_categorias.InsertUpdateDeleteCategoria(p_id_categoria, data.input, p_accion).catch(err=>{});
+            await this.Pro_categorias.InsertUpdateDeleteCategoria(p_id_categoria,
+              data.input,
+              p_accion
+            ).catch(err=>{});
             await this.refreshUpdate();
           }
         }
@@ -73,7 +76,10 @@ export class CategoriasPage implements OnInit {
         }, {
           text: 'Eliminar',
           handler: async data => {
-            await this.Pro_categorias.InsertUpdateDeleteCategoria(p_id_categoria, data, 'DELETE');
+            await this.Pro_categorias.InsertUpdateDeleteCategoria(p_id_categoria,
+              data,
+              'DELETE'
+            );
             await this.refreshUpdate();
           }
         }
@@ -83,10 +89,11 @@ export class CategoriasPage implements OnInit {
   }
 
   async refreshUpdate(){
-    this.categorias = this.categorias_backup = await this.Pro_categorias.obtenerCategoriasAsync()
+    let categorias_result = await this.Pro_categorias.obtenerCategoriasAsync()
+    this.categorias = this.categorias_backup = Array.isArray(categorias_result) ? categorias_result : []
     let event = new MouseEvent('click', {bubbles: false});
     await this.el.nativeElement.dispatchEvent(event);
-    this.textSearch = 'HOLA'
+    this.textSearch = ''
   }
 
   async doRefresh(event) {

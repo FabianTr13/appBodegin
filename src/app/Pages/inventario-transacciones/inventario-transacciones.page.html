@@ -27,6 +27,7 @@
         <ion-item lines="none">
           <ion-label position="floating">Fecha</ion-label>
           <ion-input type="date"
+                     name="fecha"
                      min="2000-01-01"
                      [max]="today"
                      [(ngModel)]="fecha"
@@ -39,7 +40,7 @@
         <ion-item lines="none">
           <ion-label position="floating">Costo unitario LPS</ion-label>
           <ion-input type="tel"
-                     name="phone"
+                     name="costo"
                      maxlength="8"
                      minlength="1"
                      (keydown)="validateNumber(event, true)"
@@ -54,7 +55,11 @@
       <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
         <ion-item>
           <ion-label>Sucursal</ion-label>
-          <ion-select value="{{id_sucursal}}" [(ngModel)]="id_sucursal" (ionChange)="sucursalGet($event)" placeholder="Seleccione una">
+          <ion-select name="sucursal"
+                      value="{{id_sucursal}}"
+                      [(ngModel)]="id_sucursal"
+                      (ionChange)="sucursalGet($event)"
+                      placeholder="Seleccionar">
             <ion-select-option *ngFor="let item of sucursales"
                                 value="{{item.id_sucursal}}">{{item.descripcion}}</ion-select-option>
           </ion-select>
@@ -105,7 +110,7 @@
                               mode="ios">
               <ion-input type="tel"
                          class="round"
-                         name="phone"
+                         name="cantidad"
                          maxlength="3"
                          minlength="1"
                          min="1"
@@ -133,9 +138,4 @@
              size="default"
              shape="round">Guardar Transaccion<ion-icon slot="end" name="save"></ion-icon>
   </ion-button>
-  <ion-button class="buttonExit"
-              (click)="Salir()"
-              color="medium"
-              size="default"
-              shape="round">Cancelar<ion-icon slot="end" name="exit"></ion-icon></ion-button>
 </ion-content>

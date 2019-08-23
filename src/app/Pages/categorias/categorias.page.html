@@ -18,9 +18,10 @@
                           color="#f4f4f4">
                 </ion-icon>
                 <ion-input type="text"
+                           name="smartSearch"
                            placeholder="Buscar"
                            clearInput
-                           [(ngModel)]='textSearch'
+                           [(ngModel)]="textSearch"
                            (ionChange)='busqueda($event.target.value)'
                            (input)='busqueda($event.target.value)'
                            >
@@ -33,7 +34,7 @@
     </form>
   </div>
 
-  <ion-list>
+  <ion-list *ngIf="categorias.length > 0">
     <ion-item-sliding *ngFor="let item of categorias">
       <ion-item-options side="start">
         <ion-item-option color="danger"

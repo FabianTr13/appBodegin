@@ -45,16 +45,26 @@
           </ion-item>
           <ion-item>
             <ion-label>Tipo de consumo</ion-label>
-            <ion-select value="{{id_tipo_consumo}}" [(ngModel)]="id_tipo_consumo" (ionChange)="consumoGet($event)" placeholder="Seleccione una">
+            <ion-select name="id_tipo_consumo"
+                        value="{{id_tipo_consumo}}"
+                        [(ngModel)]="id_tipo_consumo"
+                        (ionChange)="consumoGet($event)"
+                        placeholder="Seleccione una">
               <ion-select-option *ngFor="let item of tiposConsumo"
-                                  value="{{item.id_tipo_consumo}}">{{item.descripcion}}</ion-select-option>
+                                  value="{{item.id_tipo_consumo}}">{{item.descripcion}}
+              </ion-select-option>
             </ion-select>
           </ion-item>
           <ion-item>
             <ion-label>Categorias</ion-label>
-            <ion-select value="{{id_categoria}}" [(ngModel)]="id_categoria" (ionChange)="categroriaGet($event)" placeholder="Seleccione una">
+            <ion-select name="id_categoria"
+                        value="{{id_categoria}}"
+                        [(ngModel)]="id_categoria"
+                        (ionChange)="categroriaGet($event)"
+                        placeholder="Seleccione una">
               <ion-select-option *ngFor="let item of categorias"
-                                  value="{{item.id_categoria}}">{{item.descripcion}}</ion-select-option>
+                                  value="{{item.id_categoria}}">{{item.descripcion}}
+              </ion-select-option>
             </ion-select>
           </ion-item>
           <div padding>
@@ -73,7 +83,7 @@
       </ion-row>
     </ion-grid>
   </form>
-  <ion-item color="primary" (click)="sucursalesSelect()">
+  <ion-item color="primary" (click)="sucursalesSelect()" *ngIf="sucursal">
     {{sucursal.nombre_corto}}
     <ion-img slot="start" class="active" src="/assets/side/point_side.png"></ion-img>
     <ion-item color="primary">
