@@ -136,6 +136,19 @@ export class UserService {
     }));
   }
 
+  getUsuarioSide(p_token){
+    const headers = new HttpHeaders(Header);
+    let body = {
+      token: p_token
+    }
+
+    let url = `${WEB_SERVICE}api/usuarios/getUsuarioSide`
+
+    return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
+      return result;
+    }));
+  }
+
   getUPerfiles(){
     const headers = new HttpHeaders(Header);
     let body = {}

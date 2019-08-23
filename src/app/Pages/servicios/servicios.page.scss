@@ -4,11 +4,18 @@ ion-col{
         --background: #3880ff;
         --color: #fff;
         ion-label{
-          font-size: 1.5em !important;
+
         }
     }
   }
 }
+
+.titulo{
+  font-size: 1.0em;
+  font-weight: bold;
+  color: #4e5c6a;
+}
+
 .busqueda{
   background: #3880ff;
 }
@@ -17,4 +24,8 @@ ion-col{
    position:fixed;
    bottom:20px;
    z-index: 100;
+}
+.precio{
+  font-size: 0.7rem;
+  color: #3880ff;
 }

@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { NuevoProductoPage } from '../../Modals/nuevo-producto/nuevo-producto.page';
+import { SucursalesService } from '../../Services/sucursales.service';
+import { Storage } from '@ionic/storage';
+import { UserService } from '../../Services/user.service';
+
 
 @Component({
   selector: 'app-side-menu',
@@ -10,10 +14,31 @@ import { NuevoProductoPage } from '../../Modals/nuevo-producto/nuevo-producto.pa
 })
 export class SideMenuComponent implements OnInit {
 
-  constructor(private Pro_router:Router,
-              private modalController:ModalController) { }
+  sucursal;
+  usuario;
 
-  ngOnInit() {}
+  constructor(private Pro_router:Router,
+              private modalController:ModalController,
+              private Pro_sucursal:SucursalesService,
+              private storage:Storage,
+              private Pro_usuario:UserService) { }
+
+  ngOnInit() {
+    this.refresher()
+  }
+
+  public refresher(){
+    this.storage.get('token').then(token=>{
+      this.Pro_sucursal.obtenerSucursalSeleccionda(token).subscribe(suc=>{
+        this.sucursal = suc
+        // console.log(suc)
+      })
+      this.Pro_usuario.getUsuarioSide(token).subscribe(user=>{
+        this.usuario = user
+        console.log(user)
+      })
+    })
+  }
 
   navegar(pRuta){
     this.Pro_router.navigate([pRuta])

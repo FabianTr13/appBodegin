@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from "@ionic/angular";
 import { HeaderModalComponent } from './header-modal/header-modal.component';
+import { PipesModule } from '../Pipe/pipes.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HeaderModalComponent } from './header-modal/header-modal.component';
   ],
   imports: [
     CommonModule,
-    IonicModule
+    IonicModule,
+    PipesModule
   ],
   exports:[
     HeaderComponent,

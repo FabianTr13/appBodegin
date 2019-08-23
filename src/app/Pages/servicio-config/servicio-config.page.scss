@@ -15,5 +15,36 @@ border-bottom: 1px solid #dedede;
 }
 
 .label {
-  font-size: 2em;
+  font-size: 1.0em;
+  font-weight: bold;
+}
+
+.precio{
+  font-size: 1.0em;
+  font-weight: bold;
+  color: #3880ff;
+}
+
+.rowLine{
+  border-top: solid 1px #ddd9d9;
+}
+
+.porcentaje_valor{
+  background: #7044ff;
+  color: white;
+  border: solid 1px #7044ff;
+  border-radius: 25px;
+  height: 100%;
+  line-height: 35px;
+  vertical-align: middle;
+}
+
+.unidad_valor{
+  background: #3880ff;
+  color: white;
+  border: solid 1px #3880ff;
+  border-radius: 25px;
+  height: 100%;
+  line-height: 40px;
+  vertical-align: middle;
 }

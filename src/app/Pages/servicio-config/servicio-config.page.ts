@@ -21,7 +21,8 @@ export class ServicioConfigPage implements OnInit {
   servicio = {
     encabezado:{
       descripcion:null,
-      id_servicio:null
+      id_servicio:null,
+      precio: null
     }
   }
 
@@ -92,6 +93,46 @@ export class ServicioConfigPage implements OnInit {
     await alert.present();
   }
 
+  async updadeServicioCosto() {
+    const alert = await this.alertController.create({
+      header: 'Cambiar precio',
+      inputs: [
+        {
+          name: 'input',
+          type: 'text',
+          value: this.servicio.encabezado.precio,
+          placeholder: 'Precio'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          cssClass: 'secondary'
+        }, {
+          text: 'Cambiar',
+          handler: async data=> {
+            if (data.input != null && data.input.trim().length) {
+              if(this.IsNumeric(data.input)){
+                await this.Pro_servicios.updateCosto(this.servicio.encabezado.id_servicio, data.input).catch(err=>{})
+                this.servicio.encabezado.precio = data.input
+              }
+              else{
+                  await this.showToast('Precio no valido');
+              }
+            }
+            else{
+              await this.showToast('Precio vacio');
+            }
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  IsNumeric(input){
+    return (input - 0) == input && (''+input).trim().length > 0;
+  }
 
   async servicioDelete() {
     const alert = await this.alertController.create({

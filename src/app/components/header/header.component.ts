@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { SucursalesService } from '../../Services/sucursales.service';
 import { Storage } from '@ionic/storage';
+import { SideMenuComponent } from '../side-menu/side-menu.component';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +10,8 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+
+  @ViewChild('side') sideMenu:SideMenuComponent;
 
   constructor(public alertController: AlertController,
               private Pro_sucursales:SucursalesService,
@@ -29,6 +32,9 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+  sideMenuRefresh(){
+    this.sideMenu.refresher();
+  }
 
   async presentAlertRadio() {
     let sucursales = []

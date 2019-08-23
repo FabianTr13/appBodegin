@@ -37,7 +37,8 @@
   <ion-list>
     <ion-item-sliding *ngFor="let item of servicios" (click)="editarServicio(item.id_servicio)">
       <ion-item>
-        <ion-label>{{item.descripcion}}</ion-label>
+
+        <ion-label class="titulo">{{item.descripcion}} <p class="precio">L.{{item.precio}}</p></ion-label>
         <ion-icon slot="end" name="create"></ion-icon>
       </ion-item>
     </ion-item-sliding>

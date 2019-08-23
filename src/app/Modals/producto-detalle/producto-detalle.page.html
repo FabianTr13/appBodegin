@@ -102,8 +102,12 @@
             <h4>{{item.fecha}}</h4>
           </ion-label>
           <ion-label text-end slot="end">
-            <h2 class="transaccion">Cant.</h2>
-            <h4>{{item.cantidad}}</h4>
+            <h2 class="transaccion"
+                *ngIf="item.id_tipo_transaccion!=3 || item.id_tipo_consumo == 1">Cant.</h2>
+            <h2 class="transaccion"
+                *ngIf="item.id_tipo_transaccion==3 && item.id_tipo_consumo == 2">%</h2>
+            <h4 *ngIf="item.id_tipo_transaccion!=3 || item.id_tipo_consumo == 1">{{item.cantidad}}</h4>
+            <h4 *ngIf="item.id_tipo_transaccion==3 && item.id_tipo_consumo == 2">{{item.porcentaje}}</h4>
           </ion-label>
         </ion-item>
       </ion-list>
