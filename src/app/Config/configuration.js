@@ -7,4 +7,4 @@ export const Header = {
 }
 
 export const WEB_SERVICE = "http://192.168.2.219:3000/";
-export const isApp = false;
+export const isApp = true;

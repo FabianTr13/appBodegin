@@ -243,9 +243,8 @@ var RegisterPage = /** @class */ (function () {
                                 duration: 5000,
                             }).then(function (a) {
                                 a.present().then(function () {
-                                    console.log('presented');
                                     if (!_this.isLoading) {
-                                        a.dismiss().then(function () { return console.log('abort presenting'); });
+                                        a.dismiss().then(function () { });
                                     }
                                 });
                             })];

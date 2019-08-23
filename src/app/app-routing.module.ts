@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'transacciones', loadChildren: './Pages/inventario-transacciones/inventario-transacciones.module#InventarioTransaccionesPageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'config', loadChildren: './Pages/config-usuarios/config-usuarios.module#ConfigUsuariosPageModule', canActivate :[AuthGuard], data: {token: []} },
   { path: 'configUsuariosList', loadChildren: './Pages/config-usuarios-list/config-usuarios-list.module#ConfigUsuariosListPageModule', canActivate :[AuthGuard], data: {token: []} },
+  { path: 'pagos', loadChildren: './Pages/pagos/pagos.module#PagosPageModule' },
 ];
 
 @NgModule({

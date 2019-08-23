@@ -324,6 +324,22 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "datePicker"
       ]
+    },
+    {
+      "id": "card.io.cordova.mobilesdk.CardIO",
+      "file": "plugins/card.io.cordova.mobilesdk/www/cdv-plugin-card-io.js",
+      "pluginId": "card.io.cordova.mobilesdk",
+      "clobbers": [
+        "CardIO"
+      ]
+    },
+    {
+      "id": "com.paypal.cordova.mobilesdk.PayPalMobile",
+      "file": "plugins/com.paypal.cordova.mobilesdk/www/cdv-plugin-paypal-mobile-sdk.js",
+      "pluginId": "com.paypal.cordova.mobilesdk",
+      "clobbers": [
+        "PayPalMobile"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -343,6 +359,9 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-file": "6.0.2",
     "cordova-plugin-file-transfer": "1.7.1",
     "cordova-plugin-calendar": "5.1.4",
-    "cordova-plugin-datepicker": "0.9.3"
+    "cordova-plugin-datepicker": "0.9.3",
+    "cordova-plugin-vibration": "3.1.1",
+    "card.io.cordova.mobilesdk": "2.1.0",
+    "com.paypal.cordova.mobilesdk": "3.5.0"
   };
 });

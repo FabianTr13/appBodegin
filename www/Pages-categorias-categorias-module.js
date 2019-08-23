@@ -61,7 +61,7 @@ var CategoriasPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header-in titulo=\"Categorías\"></app-header-in>\r\n<ion-content>\r\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\">\r\n    <ion-refresher-content  pullingIcon=\"arrow-dropdown\"\r\n                            pullingText=\"Hale para recargar\"\r\n                            refreshingSpinner=\"circles\"\r\n                            refreshingText=\"Recargando...\"></ion-refresher-content>\r\n  </ion-refresher>\r\n  <div class=\"busqueda\">\r\n    <form #form=\"ngForm\">\r\n      <ion-grid>\r\n        <ion-row color=\"primary\" justify-content-center>\r\n          <ion-col>\r\n            <div #list>\r\n              <ion-item>\r\n                <ion-icon slot=\"end\"\r\n                          name=\"search\"\r\n                          color=\"#f4f4f4\">\r\n                </ion-icon>\r\n                <ion-input type=\"text\"\r\n                           placeholder=\"Buscar\"\r\n                           clearInput\r\n                           [(ngModel)]='textSearch'\r\n                           (ionChange)='busqueda($event.target.value)'\r\n                           (input)='busqueda($event.target.value)'\r\n                           >\r\n                </ion-input>\r\n              </ion-item>\r\n            </div>\r\n          </ion-col>\r\n        </ion-row>\r\n      </ion-grid>\r\n    </form>\r\n  </div>\r\n\r\n  <ion-list>\r\n    <ion-item-sliding *ngFor=\"let item of categorias\">\r\n      <ion-item-options side=\"start\">\r\n        <ion-item-option color=\"danger\"\r\n           (click)=\"categoriaDelete(item.id_categoria, item.descripcion)\">Eliminar<ion-icon slot=\"end\" name=\"trash\"></ion-icon>\r\n      </ion-item-option>\r\n      </ion-item-options>\r\n      <ion-item>\r\n        <ion-label>{{item.descripcion}}</ion-label>\r\n        <ion-icon slot=\"end\" name=\"create\" (click)=\"categoriaInsertUpdate(item.id_categoria, 'UPDATE', item.descripcion)\"></ion-icon>\r\n      </ion-item>\r\n    </ion-item-sliding>\r\n  </ion-list>\r\n\r\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\" #fab>\r\n    <ion-fab-button (click)=\"categoriaInsertUpdate(null,'INSERT', '')\">\r\n      <ion-icon name=\"add\"></ion-icon>\r\n    </ion-fab-button>\r\n  </ion-fab>\r\n</ion-content>\r\n"
+module.exports = "<app-header-in titulo=\"Categorías\"></app-header-in>\r\n<ion-content>\r\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\">\r\n    <ion-refresher-content  pullingIcon=\"arrow-dropdown\"\r\n                            pullingText=\"Hale para recargar\"\r\n                            refreshingSpinner=\"circles\"\r\n                            refreshingText=\"Recargando...\"></ion-refresher-content>\r\n  </ion-refresher>\r\n  <div class=\"busqueda\">\r\n    <form #form=\"ngForm\">\r\n      <ion-grid>\r\n        <ion-row color=\"primary\" justify-content-center>\r\n          <ion-col>\r\n            <div #list>\r\n              <ion-item>\r\n                <ion-icon slot=\"end\"\r\n                          name=\"search\"\r\n                          color=\"#f4f4f4\">\r\n                </ion-icon>\r\n                <ion-input type=\"text\"\r\n                           name=\"smartSearch\"\r\n                           placeholder=\"Buscar\"\r\n                           clearInput\r\n                           [(ngModel)]=\"textSearch\"\r\n                           (ionChange)='busqueda($event.target.value)'\r\n                           (input)='busqueda($event.target.value)'\r\n                           >\r\n                </ion-input>\r\n              </ion-item>\r\n            </div>\r\n          </ion-col>\r\n        </ion-row>\r\n      </ion-grid>\r\n    </form>\r\n  </div>\r\n\r\n  <ion-list *ngIf=\"categorias.length > 0\">\r\n    <ion-item-sliding *ngFor=\"let item of categorias\">\r\n      <ion-item-options side=\"start\">\r\n        <ion-item-option color=\"danger\"\r\n           (click)=\"categoriaDelete(item.id_categoria, item.descripcion)\">Eliminar<ion-icon slot=\"end\" name=\"trash\"></ion-icon>\r\n      </ion-item-option>\r\n      </ion-item-options>\r\n      <ion-item>\r\n        <ion-label>{{item.descripcion}}</ion-label>\r\n        <ion-icon slot=\"end\" name=\"create\" (click)=\"categoriaInsertUpdate(item.id_categoria, 'UPDATE', item.descripcion)\"></ion-icon>\r\n      </ion-item>\r\n    </ion-item-sliding>\r\n  </ion-list>\r\n\r\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\" #fab>\r\n    <ion-fab-button (click)=\"categoriaInsertUpdate(null,'INSERT', '')\">\r\n      <ion-icon name=\"add\"></ion-icon>\r\n    </ion-fab-button>\r\n  </ion-fab>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -103,6 +103,8 @@ var CategoriasPage = /** @class */ (function () {
         this.storage = storage;
         this.alertController = alertController;
         this.loadingController = loadingController;
+        this.categorias = [];
+        this.categorias_backup = [];
         this.textSearch = '';
     }
     CategoriasPage.prototype.ngOnInit = function () {
@@ -210,20 +212,18 @@ var CategoriasPage = /** @class */ (function () {
     };
     CategoriasPage.prototype.refreshUpdate = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var _a, _b, event;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_c) {
-                switch (_c.label) {
-                    case 0:
-                        _a = this;
-                        _b = this;
-                        return [4 /*yield*/, this.Pro_categorias.obtenerCategoriasAsync()];
+            var categorias_result, event;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.Pro_categorias.obtenerCategoriasAsync()];
                     case 1:
-                        _a.categorias = _b.categorias_backup = _c.sent();
+                        categorias_result = _a.sent();
+                        this.categorias = this.categorias_backup = Array.isArray(categorias_result) ? categorias_result : [];
                         event = new MouseEvent('click', { bubbles: false });
                         return [4 /*yield*/, this.el.nativeElement.dispatchEvent(event)];
                     case 2:
-                        _c.sent();
-                        this.textSearch = 'HOLA';
+                        _a.sent();
+                        this.textSearch = '';
                         return [2 /*return*/];
                 }
             });

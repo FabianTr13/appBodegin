@@ -35,7 +35,7 @@ export class SideMenuComponent implements OnInit {
       })
       this.Pro_usuario.getUsuarioSide(token).subscribe(user=>{
         this.usuario = user
-        console.log(user)
+        // console.log(user)
       })
     })
   }

@@ -69,7 +69,7 @@ var HomePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header  titulo=\"sucursal\"></app-header>\r\n<ion-content id=\"content1\" main>\r\n  <ion-grid>\r\n    <ion-row>\r\n      <ion-col col-6>\r\n        <ion-card text-center padding (click)=\"crearProducto()\">\r\n          <ion-img src=\"/assets/icones/producto.png\"></ion-img>\r\n          <h2>Nuevo</h2>\r\n        </ion-card>\r\n      </ion-col>\r\n      <ion-col col-6>\r\n        <ion-card text-center padding (click)=\"navegar('/entregas')\">\r\n          <ion-img src=\"/assets/icones/servicio.png\"></ion-img>\r\n          <h2>Entrega</h2>\r\n        </ion-card>\r\n      </ion-col>\r\n    </ion-row>\r\n    <ion-row>\r\n      <ion-col col-12>\r\n        <ion-card text-center padding (click)=\"navegar('transacciones')\">\r\n          <ion-img src=\"/assets/icones/transacciones.png\"></ion-img>\r\n          <h2>Transacciones</h2>\r\n        </ion-card>\r\n      </ion-col>\r\n    </ion-row>\r\n    <ion-row>\r\n      <ion-col col-6>\r\n        <ion-card text-center padding (click)=\"navegar('/inventarios')\">\r\n          <ion-img src=\"/assets/icones/inventario.png\"></ion-img>\r\n          <h2>Inventario</h2>\r\n        </ion-card>\r\n      </ion-col>\r\n      <ion-col col-6>\r\n        <ion-card text-center padding (click)=\"navegar('estadisticas')\">\r\n          <ion-img src=\"/assets/icones/estadisticas.png\"></ion-img>\r\n          <h2>Estadistica</h2>\r\n        </ion-card>\r\n      </ion-col>\r\n    </ion-row>\r\n    <ion-row>\r\n      <ion-col col-12>\r\n        <ion-card text-center padding (click)=\"navegar('/reportes')\">\r\n          <ion-img src=\"/assets/icones/reportes.png\"></ion-img>\r\n          <h2>Reportes</h2>\r\n        </ion-card>\r\n      </ion-col>\r\n    </ion-row>\r\n    <ion-row>\r\n      <ion-col col-6>\r\n        <ion-card text-center padding (click)=\"navegar('/categorias')\">\r\n          <ion-img src=\"/assets/icones/producto.png\"></ion-img>\r\n          <h2>Categorias</h2>\r\n        </ion-card>\r\n      </ion-col>\r\n      <ion-col col-6>\r\n        <ion-card text-center padding (click)=\"navegar('/servicios')\">\r\n          <ion-img src=\"/assets/icones/servicios.png\"></ion-img>\r\n          <h2>Servicios</h2>\r\n        </ion-card>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n    <ion-fab-button>\r\n      <ion-icon name=\"add\"></ion-icon>\r\n    </ion-fab-button>\r\n  </ion-fab>\r\n</ion-content>\r\n"
+module.exports = "<app-header  titulo=\"sucursal\"></app-header>\r\n<ion-content id=\"content1\" main>\r\n  <ion-grid>\r\n    <ion-row>\r\n      <ion-col col-6>\r\n        <ion-card text-center padding (click)=\"crearProducto()\">\r\n          <ion-img src=\"/assets/icones/producto.png\"></ion-img>\r\n          <h2>Nuevo</h2>\r\n        </ion-card>\r\n      </ion-col>\r\n      <ion-col col-6>\r\n        <ion-card text-center padding (click)=\"navegar('/entregas')\">\r\n          <ion-img src=\"/assets/icones/servicio.png\"></ion-img>\r\n          <h2>Entrega</h2>\r\n        </ion-card>\r\n      </ion-col>\r\n    </ion-row>\r\n    <ion-row>\r\n      <ion-col col-12>\r\n        <ion-card text-center padding (click)=\"navegar('transacciones')\">\r\n          <ion-img src=\"/assets/icones/transacciones.png\"></ion-img>\r\n          <h2>Transacciones</h2>\r\n        </ion-card>\r\n      </ion-col>\r\n    </ion-row>\r\n    <ion-row>\r\n      <ion-col col-6>\r\n        <ion-card text-center padding (click)=\"navegar('/inventarios')\">\r\n          <ion-img src=\"/assets/icones/inventario.png\"></ion-img>\r\n          <h2>Inventario</h2>\r\n        </ion-card>\r\n      </ion-col>\r\n      <ion-col col-6>\r\n        <ion-card text-center padding (click)=\"navegar('estadisticas')\">\r\n          <ion-img src=\"/assets/icones/estadisticas.png\"></ion-img>\r\n          <h2>Estadistica</h2>\r\n        </ion-card>\r\n      </ion-col>\r\n    </ion-row>\r\n    <ion-row>\r\n      <ion-col col-12>\r\n        <ion-card text-center padding (click)=\"navegar('/reportes')\">\r\n          <ion-img src=\"/assets/icones/reportes.png\"></ion-img>\r\n          <h2>Reportes</h2>\r\n        </ion-card>\r\n      </ion-col>\r\n    </ion-row>\r\n    <ion-row>\r\n      <ion-col col-6>\r\n        <ion-card text-center padding (click)=\"navegar('/categorias')\">\r\n          <ion-img src=\"/assets/icones/producto.png\"></ion-img>\r\n          <h2>Categorias</h2>\r\n        </ion-card>\r\n      </ion-col>\r\n      <ion-col col-6>\r\n        <ion-card text-center padding (click)=\"navegar('/servicios')\">\r\n          <ion-img src=\"/assets/icones/servicios.png\"></ion-img>\r\n          <h2>Servicios</h2>\r\n        </ion-card>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n  <!-- <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n    <ion-fab-button>\r\n      <ion-icon name=\"add\"></ion-icon>\r\n    </ion-fab-button>\r\n  </ion-fab> -->\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -108,14 +108,9 @@ var HomePage = /** @class */ (function () {
     function HomePage(Pro_router, modalController) {
         this.Pro_router = Pro_router;
         this.modalController = modalController;
-        this.onHeader = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.sucursal = "NINGUNA";
     }
     HomePage.prototype.ngOnInit = function () {
-    };
-    HomePage.prototype.headerSiii = function () {
-        console.log('eeeeeee');
-        this.onHeader.emit(1);
     };
     HomePage.prototype.navegar = function (pRuta) {
         this.Pro_router.navigate([pRuta]);
@@ -145,10 +140,6 @@ var HomePage = /** @class */ (function () {
             });
         });
     };
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
-    ], HomePage.prototype, "onHeader", void 0);
     HomePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-home',

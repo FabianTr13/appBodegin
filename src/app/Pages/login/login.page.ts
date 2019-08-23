@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { LoadingController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { Vibration } from '@ionic-native/vibration/ngx';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginPage implements OnInit {
               private router: Router,
               private storage: Storage,
               public toastController: ToastController,
-              public loadingController: LoadingController) {
+              public loadingController: LoadingController,
+              private vibration: Vibration) {
                 this.storage.get('usuario').then(resp=>{
                     this.usuario = resp
                     this.storage.remove('usuario').then(rr=>{})
@@ -36,6 +38,7 @@ export class LoginPage implements OnInit {
       if (resp!=null) {
         if (resp.token) {
           await this.storage.set('token',resp.token)
+          this.vibration.vibrate(500);
           await this.dismiss()
           this.router.navigate(['/home'])
         }

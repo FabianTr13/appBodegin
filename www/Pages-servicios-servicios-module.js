@@ -61,7 +61,7 @@ var ServiciosPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header-in titulo=\"Servicios\"></app-header-in>\r\n<ion-content>\r\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\">\r\n    <ion-refresher-content  pullingIcon=\"arrow-dropdown\"\r\n                            pullingText=\"Hale para recargar\"\r\n                            refreshingSpinner=\"circles\"\r\n                            refreshingText=\"Recargando...\"></ion-refresher-content>\r\n  </ion-refresher>\r\n  <div class=\"busqueda\">\r\n    <form>\r\n      <ion-grid>\r\n        <ion-row color=\"primary\" justify-content-center>\r\n          <ion-col>\r\n            <div #list>\r\n              <ion-item>\r\n                <ion-icon slot=\"end\"\r\n                          name=\"search\"\r\n                          color=\"#f4f4f4\">\r\n                </ion-icon>\r\n                <ion-input type=\"text\"\r\n                           placeholder=\"Buscar\"\r\n                           clearInput\r\n                           [(ngModel)]='textSearch'\r\n                           (ionChange)='busqueda($event.target.value)'\r\n                           (input)='busqueda($event.target.value)'\r\n                           >\r\n                </ion-input>\r\n              </ion-item>\r\n            </div>\r\n          </ion-col>\r\n        </ion-row>\r\n      </ion-grid>\r\n    </form>\r\n  </div>\r\n\r\n  <ion-list>\r\n    <ion-item-sliding *ngFor=\"let item of servicios\" (click)=\"editarServicio(item.id_servicio)\">\r\n      <ion-item>\r\n        <ion-label>{{item.descripcion}}</ion-label>\r\n        <ion-icon slot=\"end\" name=\"create\"></ion-icon>\r\n      </ion-item>\r\n    </ion-item-sliding>\r\n  </ion-list>\r\n\r\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\" #fab>\r\n    <ion-fab-button (click)=\"insertServicio()\">\r\n      <ion-icon name=\"add\"></ion-icon>\r\n    </ion-fab-button>\r\n  </ion-fab>\r\n</ion-content>\r\n"
+module.exports = "<app-header-in titulo=\"Servicios\"></app-header-in>\r\n<ion-content>\r\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\">\r\n    <ion-refresher-content  pullingIcon=\"arrow-dropdown\"\r\n                            pullingText=\"Hale para recargar\"\r\n                            refreshingSpinner=\"circles\"\r\n                            refreshingText=\"Recargando...\"></ion-refresher-content>\r\n  </ion-refresher>\r\n  <div class=\"busqueda\">\r\n    <form>\r\n      <ion-grid>\r\n        <ion-row color=\"primary\" justify-content-center>\r\n          <ion-col>\r\n            <div #list>\r\n              <ion-item>\r\n                <ion-icon slot=\"end\"\r\n                          name=\"search\"\r\n                          color=\"#f4f4f4\">\r\n                </ion-icon>\r\n                <ion-input type=\"text\"\r\n                           name=\"smartSearch\"\r\n                           placeholder=\"Buscar\"\r\n                           clearInput\r\n                           [(ngModel)]='textSearch'\r\n                           (ionChange)='busqueda($event.target.value)'\r\n                           (input)='busqueda($event.target.value)'\r\n                           >\r\n                </ion-input>\r\n              </ion-item>\r\n            </div>\r\n          </ion-col>\r\n        </ion-row>\r\n      </ion-grid>\r\n    </form>\r\n  </div>\r\n\r\n  <ion-list>\r\n    <ion-item-sliding *ngFor=\"let item of servicios\" (click)=\"editarServicio(item.id_servicio)\">\r\n      <ion-item>\r\n\r\n        <ion-label class=\"titulo\">{{item.descripcion}} <p class=\"precio\">L.{{item.precio}}</p></ion-label>\r\n        <ion-icon slot=\"end\" name=\"create\"></ion-icon>\r\n      </ion-item>\r\n    </ion-item-sliding>\r\n  </ion-list>\r\n\r\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\" #fab>\r\n    <ion-fab-button (click)=\"insertServicio()\">\r\n      <ion-icon name=\"add\"></ion-icon>\r\n    </ion-fab-button>\r\n  </ion-fab>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -72,7 +72,7 @@ module.exports = "<app-header-in titulo=\"Servicios\"></app-header-in>\r\n<ion-c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-col div ion-item {\n  --background: #3880ff;\n  --color: #fff; }\n  ion-col div ion-item ion-label {\n    font-size: 1.5em !important; }\n  .busqueda {\n  background: #3880ff; }\n  .footer {\n  position: fixed;\n  bottom: 20px;\n  z-index: 100; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvUGFnZXMvc2VydmljaW9zL0M6XFxVc2Vyc1xcRmFiaWFuXFxEb2N1bWVudHNcXGJvZGVnaW5cXGFwcEJvZGVnaW4vc3JjXFxhcHBcXFBhZ2VzXFxzZXJ2aWNpb3NcXHNlcnZpY2lvcy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFHUSxxQkFBYTtFQUNiLGFBQVEsRUFBQTtFQUpoQjtJQU1VLDJCQUEyQixFQUFBO0VBS3JDO0VBQ0UsbUJBQW1CLEVBQUE7RUFHckI7RUFDRyxlQUFjO0VBQ2QsWUFBVztFQUNYLFlBQVksRUFBQSIsImZpbGUiOiJzcmMvYXBwL1BhZ2VzL3NlcnZpY2lvcy9zZXJ2aWNpb3MucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNvbHtcclxuICBkaXZ7XHJcbiAgICBpb24taXRlbXtcclxuICAgICAgICAtLWJhY2tncm91bmQ6ICMzODgwZmY7XHJcbiAgICAgICAgLS1jb2xvcjogI2ZmZjtcclxuICAgICAgICBpb24tbGFiZWx7XHJcbiAgICAgICAgICBmb250LXNpemU6IDEuNWVtICFpbXBvcnRhbnQ7XHJcbiAgICAgICAgfVxyXG4gICAgfVxyXG4gIH1cclxufVxyXG4uYnVzcXVlZGF7XHJcbiAgYmFja2dyb3VuZDogIzM4ODBmZjtcclxufVxyXG5cclxuLmZvb3RlciB7XHJcbiAgIHBvc2l0aW9uOmZpeGVkO1xyXG4gICBib3R0b206MjBweDtcclxuICAgei1pbmRleDogMTAwO1xyXG59XHJcbiJdfQ== */"
+module.exports = "ion-col div ion-item {\n  --background: #3880ff;\n  --color: #fff; }\n\n.titulo {\n  font-size: 1.0em;\n  font-weight: bold;\n  color: #4e5c6a; }\n\n.busqueda {\n  background: #3880ff; }\n\n.footer {\n  position: fixed;\n  bottom: 20px;\n  z-index: 100; }\n\n.precio {\n  font-size: 0.7rem;\n  color: #3880ff; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvUGFnZXMvc2VydmljaW9zL0M6XFxVc2Vyc1xcRmFiaWFuXFxEb2N1bWVudHNcXGJvZGVnaW5cXGFwcEJvZGVnaW4vc3JjXFxhcHBcXFBhZ2VzXFxzZXJ2aWNpb3NcXHNlcnZpY2lvcy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFHUSxxQkFBYTtFQUNiLGFBQVEsRUFBQTs7QUFRaEI7RUFDRSxnQkFBZ0I7RUFDaEIsaUJBQWlCO0VBQ2pCLGNBQWMsRUFBQTs7QUFHaEI7RUFDRSxtQkFBbUIsRUFBQTs7QUFHckI7RUFDRyxlQUFjO0VBQ2QsWUFBVztFQUNYLFlBQVksRUFBQTs7QUFFZjtFQUNFLGlCQUFpQjtFQUNqQixjQUFjLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9QYWdlcy9zZXJ2aWNpb3Mvc2VydmljaW9zLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb2x7XHJcbiAgZGl2e1xyXG4gICAgaW9uLWl0ZW17XHJcbiAgICAgICAgLS1iYWNrZ3JvdW5kOiAjMzg4MGZmO1xyXG4gICAgICAgIC0tY29sb3I6ICNmZmY7XHJcbiAgICAgICAgaW9uLWxhYmVse1xyXG5cclxuICAgICAgICB9XHJcbiAgICB9XHJcbiAgfVxyXG59XHJcblxyXG4udGl0dWxve1xyXG4gIGZvbnQtc2l6ZTogMS4wZW07XHJcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgY29sb3I6ICM0ZTVjNmE7XHJcbn1cclxuXHJcbi5idXNxdWVkYXtcclxuICBiYWNrZ3JvdW5kOiAjMzg4MGZmO1xyXG59XHJcblxyXG4uZm9vdGVyIHtcclxuICAgcG9zaXRpb246Zml4ZWQ7XHJcbiAgIGJvdHRvbToyMHB4O1xyXG4gICB6LWluZGV4OiAxMDA7XHJcbn1cclxuLnByZWNpb3tcclxuICBmb250LXNpemU6IDAuN3JlbTtcclxuICBjb2xvcjogIzM4ODBmZjtcclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -163,6 +163,12 @@ var ServiciosPage = /** @class */ (function () {
                                     type: 'text',
                                     value: null,
                                     placeholder: 'Nombre'
+                                },
+                                {
+                                    name: 'costo',
+                                    type: 'tel',
+                                    value: 0,
+                                    placeholder: 'Costo'
                                 }
                             ],
                             buttons: [
@@ -176,8 +182,9 @@ var ServiciosPage = /** @class */ (function () {
                                         return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_c) {
                                             switch (_c.label) {
                                                 case 0:
-                                                    if (!(data.input != null && data.input.trim().length)) return [3 /*break*/, 3];
-                                                    return [4 /*yield*/, this.Pro_servicios.insertServicio(data.input).catch(function (err) { })];
+                                                    if (!(data.input != null && data.input.trim().length)) return [3 /*break*/, 6];
+                                                    if (!this.IsNumeric(data.costo)) return [3 /*break*/, 3];
+                                                    return [4 /*yield*/, this.Pro_servicios.insertServicio(data.input, data.costo).catch(function (err) { })];
                                                 case 1:
                                                     id_servicio = _c.sent();
                                                     _a = this;
@@ -187,11 +194,16 @@ var ServiciosPage = /** @class */ (function () {
                                                     _a.servicios = _b.servicios_backup = _c.sent();
                                                     this.editarServicio(id_servicio);
                                                     return [3 /*break*/, 5];
-                                                case 3: return [4 /*yield*/, this.showToast('Nombre vacio')];
+                                                case 3: return [4 /*yield*/, this.showToast('Ingrese un precio valido', 3000)];
                                                 case 4:
                                                     _c.sent();
                                                     _c.label = 5;
-                                                case 5: return [2 /*return*/];
+                                                case 5: return [3 /*break*/, 8];
+                                                case 6: return [4 /*yield*/, this.showToast('Nombre vacio')];
+                                                case 7:
+                                                    _c.sent();
+                                                    _c.label = 8;
+                                                case 8: return [2 /*return*/];
                                             }
                                         });
                                     }); }
@@ -207,6 +219,9 @@ var ServiciosPage = /** @class */ (function () {
                 }
             });
         });
+    };
+    ServiciosPage.prototype.IsNumeric = function (input) {
+        return (input - 0) == input && ('' + input).trim().length > 0;
     };
     ServiciosPage.prototype.showToast = function (p_mensaje, p_duration) {
         if (p_duration === void 0) { p_duration = 3000; }

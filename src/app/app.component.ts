@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -15,12 +14,12 @@ export class AppComponent {
     private statusBar: StatusBar
   ) {
     this.initializeApp();
-    this.statusBar.overlaysWebView(true);  
+    this.statusBar.overlaysWebView(true);
+    this.statusBar.styleDefault();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
   }

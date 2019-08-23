@@ -89,6 +89,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/vibration/ngx */ "./node_modules/@ionic-native/vibration/ngx/index.js");
+
 
 
 
@@ -97,13 +99,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var LoginPage = /** @class */ (function () {
-    function LoginPage(Pro_user, router, storage, toastController, loadingController) {
+    function LoginPage(Pro_user, router, storage, toastController, loadingController, vibration) {
         var _this = this;
         this.Pro_user = Pro_user;
         this.router = router;
         this.storage = storage;
         this.toastController = toastController;
         this.loadingController = loadingController;
+        this.vibration = vibration;
         this.isLoading = false;
         this.usuario = null;
         this.storage.get('usuario').then(function (resp) {
@@ -130,6 +133,7 @@ var LoginPage = /** @class */ (function () {
                                         return [4 /*yield*/, this.storage.set('token', resp.token)];
                                     case 1:
                                         _a.sent();
+                                        this.vibration.vibrate(500);
                                         return [4 /*yield*/, this.dismiss()];
                                     case 2:
                                         _a.sent();
@@ -225,7 +229,8 @@ var LoginPage = /** @class */ (function () {
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
             _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ToastController"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["LoadingController"]])
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["LoadingController"],
+            _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_6__["Vibration"]])
     ], LoginPage);
     return LoginPage;
 }());

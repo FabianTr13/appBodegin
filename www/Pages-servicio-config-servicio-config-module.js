@@ -53,7 +53,7 @@ var ProductosServiciosPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header-modal titulo=\"Productos\"></app-header-modal>\r\n<ion-content>\r\n  <div class=\"busqueda\">\r\n    <form>\r\n      <ion-grid>\r\n        <ion-row color=\"primary\" justify-content-center>\r\n          <ion-col>\r\n            <div #list>\r\n              <ion-item>\r\n                <ion-icon slot=\"end\"\r\n                          name=\"search\"\r\n                          color=\"#f4f4f4\">\r\n                </ion-icon>\r\n                <ion-input type=\"text\"\r\n                           placeholder=\"Buscar\"\r\n                           clearInput\r\n                           [(ngModel)]='textSearch'\r\n                           (ionChange)='busqueda($event.target.value)'\r\n                           (input)='busqueda($event.target.value)'\r\n                           >\r\n                </ion-input>\r\n              </ion-item>\r\n            </div>\r\n          </ion-col>\r\n        </ion-row>\r\n      </ion-grid>\r\n    </form>\r\n  </div>\r\n  <div text-center>\r\n    <h5>Productos</h5>\r\n  </div>\r\n  <ion-item lines=\"none\">\r\n    <ion-grid class=\"separador\">\r\n      <ion-row no-lines>\r\n        <ion-col class=\"col\" size=\"9\"> Producto </ion-col>\r\n        <ion-col class=\"col\" size=\"2\"> Cant. </ion-col>\r\n        <ion-col class=\"col\" size=\"1\"></ion-col>\r\n      </ion-row>\r\n      <ion-row align-items-center  no-lines *ngFor=\"let item of productos\">\r\n        <ion-col size=\"9\" text-left>\r\n          <ion-label> {{item.descripcion}} </ion-label>\r\n          <ion-badge *ngIf=\"item.tipo_consumo == 'Unidad'\" color=\"primary\">{{item.tipo_consumo}}</ion-badge>\r\n          <ion-badge *ngIf=\"item.tipo_consumo == 'Porcentaje'\" color=\"tertiary\">{{item.tipo_consumo}}</ion-badge>\r\n        </ion-col>\r\n        <ion-col size=\"2\" text-center>\r\n          <ion-input  class=\"inputCant\"\r\n                      name=\"phone\"\r\n                      maxlength=\"3\"\r\n                      minlength=\"3\"\r\n                      type=\"tel\"\r\n                      pattern=\"\\d*\"\r\n                      [(ngModel)]=\"item.cantidad\"></ion-input>\r\n        </ion-col>\r\n        <ion-col  size=\"1\">\r\n          <ion-checkbox color=\"primary\" [(ngModel)]=\"item.is_check\"></ion-checkbox>\r\n        </ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n  </ion-item>\r\n  <ion-item lines=\"none\">\r\n    <ion-button class=\"button\"\r\n                (click)=\"guardarProductos()\"\r\n                color=\"primary\"\r\n                size=\"default\"\r\n                shape=\"round\">Guardar<ion-icon slot=\"end\" name=\"save\"></ion-icon></ion-button>\r\n\r\n    <ion-button class=\"buttonExit\"\r\n                (click)=\"Salir()\"\r\n                color=\"medium\"\r\n                size=\"default\"\r\n                shape=\"round\">Cancelar<ion-icon slot=\"end\" name=\"exit\"></ion-icon></ion-button>\r\n  </ion-item>\r\n</ion-content>\r\n"
+module.exports = "<app-header-modal titulo=\"Productos\"></app-header-modal>\r\n<ion-content>\r\n  <div class=\"busqueda\">\r\n    <form>\r\n      <ion-grid>\r\n        <ion-row color=\"primary\" justify-content-center>\r\n          <ion-col>\r\n            <div #list>\r\n              <ion-item>\r\n                <ion-icon slot=\"end\"\r\n                          name=\"search\"\r\n                          color=\"#f4f4f4\">\r\n                </ion-icon>\r\n                <ion-input type=\"text\"\r\n                           name=\"smartSearch\"\r\n                           placeholder=\"Buscar\"\r\n                           clearInput\r\n                           [(ngModel)]='textSearch'\r\n                           (ionChange)='busqueda($event.target.value)'\r\n                           (input)='busqueda($event.target.value)'\r\n                           >\r\n                </ion-input>\r\n              </ion-item>\r\n            </div>\r\n          </ion-col>\r\n        </ion-row>\r\n      </ion-grid>\r\n    </form>\r\n  </div>\r\n  <div text-center>\r\n    <h5>Productos</h5>\r\n  </div>\r\n  <ion-item lines=\"none\">\r\n    <ion-grid class=\"separador\">\r\n      <ion-row no-lines>\r\n        <ion-col class=\"col\" size=\"9\"> Producto </ion-col>\r\n        <ion-col class=\"col\" size=\"2\"> Cant. </ion-col>\r\n        <ion-col class=\"col\" size=\"1\"></ion-col>\r\n      </ion-row>\r\n      <ion-row align-items-center  no-lines *ngFor=\"let item of productos\">\r\n        <ion-col size=\"9\" text-left>\r\n          <ion-label> {{item.descripcion}} </ion-label>\r\n          <ion-badge *ngIf=\"item.tipo_consumo == 'Unidad'\"\r\n                     color=\"primary\">{{item.tipo_consumo}}\r\n          </ion-badge>\r\n          <ion-badge *ngIf=\"item.tipo_consumo == 'Porcentaje'\"\r\n                     color=\"tertiary\">{{item.tipo_consumo}}\r\n          </ion-badge>\r\n        </ion-col>\r\n        <ion-col size=\"2\" text-center>\r\n          <ion-input  class=\"inputCant\"\r\n                      *ngIf=\"item.tipo_consumo == 'Unidad'\"\r\n                      name=\"phone\"\r\n                      maxlength=\"3\"\r\n                      minlength=\"3\"\r\n                      type=\"tel\"\r\n                      pattern=\"\\d*\"\r\n                      [(ngModel)]=\"item.cantidad\">\r\n          </ion-input>\r\n          <ion-input  class=\"inputPorcentaje\"\r\n                      *ngIf=\"item.tipo_consumo == 'Porcentaje'\"\r\n                      name=\"phone\"\r\n                      maxlength=\"3\"\r\n                      minlength=\"3\"\r\n                      type=\"tel\"\r\n                      pattern=\"\\d*\"\r\n                      [(ngModel)]=\"item.porcentaje\">\r\n          </ion-input>\r\n        </ion-col>\r\n        <ion-col  size=\"1\">\r\n          <ion-checkbox color=\"primary\"\r\n                        mode=\"ios\"\r\n                        [(ngModel)]=\"item.is_check\">\r\n          </ion-checkbox>\r\n        </ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n  </ion-item>\r\n  <ion-item lines=\"none\">\r\n    <ion-button class=\"button\"\r\n                (click)=\"guardarProductos()\"\r\n                color=\"primary\"\r\n                size=\"default\"\r\n                shape=\"round\">Guardar<ion-icon slot=\"end\" name=\"save\"></ion-icon></ion-button>\r\n\r\n    <ion-button class=\"buttonExit\"\r\n                (click)=\"Salir()\"\r\n                color=\"medium\"\r\n                size=\"default\"\r\n                shape=\"round\">Cancelar<ion-icon slot=\"end\" name=\"exit\"></ion-icon></ion-button>\r\n  </ion-item>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -64,7 +64,7 @@ module.exports = "<app-header-modal titulo=\"Productos\"></app-header-modal>\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".button {\n  position: fixed;\n  left: 0;\n  bottom: 50px;\n  right: 0;\n  z-index: 500; }\n\n.buttonExit {\n  position: fixed;\n  left: 0;\n  bottom: 5px;\n  right: 0;\n  z-index: 500; }\n\n.busqueda {\n  background: #3880ff; }\n\n.col {\n  color: gray;\n  border-top: 1px solid #dedede;\n  border-bottom: 1px solid #dedede; }\n\n.inputCant {\n  border: solid 1px #dedede;\n  border-radius: 25px; }\n\n.separador {\n  margin-bottom: 35px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvTW9kYWxzL3Byb2R1Y3Rvcy1zZXJ2aWNpb3MvQzpcXFVzZXJzXFxGYWJpYW5cXERvY3VtZW50c1xcYm9kZWdpblxcYXBwQm9kZWdpbi9zcmNcXGFwcFxcTW9kYWxzXFxwcm9kdWN0b3Mtc2VydmljaW9zXFxwcm9kdWN0b3Mtc2VydmljaW9zLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGVBQWU7RUFDZixPQUFPO0VBQ1AsWUFBWTtFQUNaLFFBQVE7RUFDUixZQUFZLEVBQUE7O0FBR2Q7RUFDRSxlQUFlO0VBQ2YsT0FBTztFQUNQLFdBQVc7RUFDWCxRQUFRO0VBQ1IsWUFBWSxFQUFBOztBQUdkO0VBQ0UsbUJBQW1CLEVBQUE7O0FBR3JCO0VBQ0EsV0FBVztFQUNYLDZCQUE2QjtFQUM3QixnQ0FBZ0MsRUFBQTs7QUFHaEM7RUFDRSx5QkFBeUI7RUFDekIsbUJBQW1CLEVBQUE7O0FBR3JCO0VBQ0UsbUJBQW1CLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9Nb2RhbHMvcHJvZHVjdG9zLXNlcnZpY2lvcy9wcm9kdWN0b3Mtc2VydmljaW9zLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5idXR0b257XHJcbiAgcG9zaXRpb246IGZpeGVkO1xyXG4gIGxlZnQ6IDA7XHJcbiAgYm90dG9tOiA1MHB4O1xyXG4gIHJpZ2h0OiAwO1xyXG4gIHotaW5kZXg6IDUwMDtcclxufVxyXG5cclxuLmJ1dHRvbkV4aXR7XHJcbiAgcG9zaXRpb246IGZpeGVkO1xyXG4gIGxlZnQ6IDA7XHJcbiAgYm90dG9tOiA1cHg7XHJcbiAgcmlnaHQ6IDA7XHJcbiAgei1pbmRleDogNTAwO1xyXG59XHJcblxyXG4uYnVzcXVlZGF7XHJcbiAgYmFja2dyb3VuZDogIzM4ODBmZjtcclxufVxyXG5cclxuLmNvbHtcclxuY29sb3I6IGdyYXk7XHJcbmJvcmRlci10b3A6IDFweCBzb2xpZCAjZGVkZWRlO1xyXG5ib3JkZXItYm90dG9tOiAxcHggc29saWQgI2RlZGVkZTtcclxufVxyXG5cclxuLmlucHV0Q2FudHtcclxuICBib3JkZXI6IHNvbGlkIDFweCAjZGVkZWRlO1xyXG4gIGJvcmRlci1yYWRpdXM6IDI1cHg7XHJcbn1cclxuXHJcbi5zZXBhcmFkb3J7XHJcbiAgbWFyZ2luLWJvdHRvbTogMzVweDtcclxufVxyXG4iXX0= */"
+module.exports = ".button {\n  position: fixed;\n  left: 0;\n  bottom: 50px;\n  right: 0;\n  z-index: 500; }\n\n.buttonExit {\n  position: fixed;\n  left: 0;\n  bottom: 5px;\n  right: 0;\n  z-index: 500; }\n\n.busqueda {\n  background: #3880ff; }\n\n.col {\n  color: gray;\n  border-top: 1px solid #dedede;\n  border-bottom: 1px solid #dedede; }\n\n.inputCant {\n  border: solid 1px #dedede;\n  border-radius: 25px; }\n\n.inputPorcentaje {\n  border: solid 1px #7044ff;\n  border-radius: 25px; }\n\n.separador {\n  margin-bottom: 35px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvTW9kYWxzL3Byb2R1Y3Rvcy1zZXJ2aWNpb3MvQzpcXFVzZXJzXFxGYWJpYW5cXERvY3VtZW50c1xcYm9kZWdpblxcYXBwQm9kZWdpbi9zcmNcXGFwcFxcTW9kYWxzXFxwcm9kdWN0b3Mtc2VydmljaW9zXFxwcm9kdWN0b3Mtc2VydmljaW9zLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGVBQWU7RUFDZixPQUFPO0VBQ1AsWUFBWTtFQUNaLFFBQVE7RUFDUixZQUFZLEVBQUE7O0FBR2Q7RUFDRSxlQUFlO0VBQ2YsT0FBTztFQUNQLFdBQVc7RUFDWCxRQUFRO0VBQ1IsWUFBWSxFQUFBOztBQUdkO0VBQ0UsbUJBQW1CLEVBQUE7O0FBR3JCO0VBQ0EsV0FBVztFQUNYLDZCQUE2QjtFQUM3QixnQ0FBZ0MsRUFBQTs7QUFHaEM7RUFDRSx5QkFBeUI7RUFDekIsbUJBQW1CLEVBQUE7O0FBR3JCO0VBQ0UseUJBQXlCO0VBQ3pCLG1CQUFtQixFQUFBOztBQUdyQjtFQUNFLG1CQUFtQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvTW9kYWxzL3Byb2R1Y3Rvcy1zZXJ2aWNpb3MvcHJvZHVjdG9zLXNlcnZpY2lvcy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYnV0dG9ue1xyXG4gIHBvc2l0aW9uOiBmaXhlZDtcclxuICBsZWZ0OiAwO1xyXG4gIGJvdHRvbTogNTBweDtcclxuICByaWdodDogMDtcclxuICB6LWluZGV4OiA1MDA7XHJcbn1cclxuXHJcbi5idXR0b25FeGl0e1xyXG4gIHBvc2l0aW9uOiBmaXhlZDtcclxuICBsZWZ0OiAwO1xyXG4gIGJvdHRvbTogNXB4O1xyXG4gIHJpZ2h0OiAwO1xyXG4gIHotaW5kZXg6IDUwMDtcclxufVxyXG5cclxuLmJ1c3F1ZWRhe1xyXG4gIGJhY2tncm91bmQ6ICMzODgwZmY7XHJcbn1cclxuXHJcbi5jb2x7XHJcbmNvbG9yOiBncmF5O1xyXG5ib3JkZXItdG9wOiAxcHggc29saWQgI2RlZGVkZTtcclxuYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNkZWRlZGU7XHJcbn1cclxuXHJcbi5pbnB1dENhbnR7XHJcbiAgYm9yZGVyOiBzb2xpZCAxcHggI2RlZGVkZTtcclxuICBib3JkZXItcmFkaXVzOiAyNXB4O1xyXG59XHJcblxyXG4uaW5wdXRQb3JjZW50YWple1xyXG4gIGJvcmRlcjogc29saWQgMXB4ICM3MDQ0ZmY7XHJcbiAgYm9yZGVyLXJhZGl1czogMjVweDtcclxufVxyXG5cclxuLnNlcGFyYWRvcntcclxuICBtYXJnaW4tYm90dG9tOiAzNXB4O1xyXG59XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -133,16 +133,24 @@ var ProductosServiciosPage = /** @class */ (function () {
                         i = 0;
                         _a.label = 1;
                     case 1:
-                        if (!(i < this.productos.length)) return [3 /*break*/, 4];
+                        if (!(i < this.productos.length)) return [3 /*break*/, 7];
+                        if (!(this.productos[i].tipo_consumo == 'Unidad')) return [3 /*break*/, 4];
                         if (!(this.productos[i].cantidad <= 0 && this.productos[i].is_check)) return [3 /*break*/, 3];
                         return [4 /*yield*/, this.showToast('Producto con cantidad invalida')];
                     case 2:
                         _a.sent();
                         return [2 /*return*/, false];
-                    case 3:
+                    case 3: return [3 /*break*/, 6];
+                    case 4:
+                        if (!(this.productos[i].porcentaje <= 0 && this.productos[i].is_check)) return [3 /*break*/, 6];
+                        return [4 /*yield*/, this.showToast('Producto con porcentaje invalido')];
+                    case 5:
+                        _a.sent();
+                        return [2 /*return*/, false];
+                    case 6:
                         i++;
                         return [3 /*break*/, 1];
-                    case 4: return [2 /*return*/, true];
+                    case 7: return [2 /*return*/, true];
                 }
             });
         });
@@ -286,7 +294,7 @@ var ServicioConfigPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header-in titulo=\"Configuracion de Servicio\"></app-header-in>\r\n<ion-content>\r\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\">\r\n    <ion-refresher-content  pullingIcon=\"arrow-dropdown\"\r\n                            pullingText=\"Hale para recargar\"\r\n                            refreshingSpinner=\"circles\"\r\n                            refreshingText=\"Recargando...\"></ion-refresher-content>\r\n  </ion-refresher>\r\n  <ion-item lines=\"none\">\r\n    <ion-label text-right>Eliminar</ion-label>\r\n      <ion-icon color=\"danger\" name=\"trash\" (click)=\"servicioDelete()\"></ion-icon>\r\n  </ion-item>\r\n  <ion-item lines=\"none\">\r\n      <ion-label text-wrap class=\"label\">{{servicio.encabezado.descripcion}}</ion-label>\r\n    <div slot=\"end\" text-center>\r\n      <ion-icon name=\"create\" (click)=\"updadeServicio('UPDATE')\"></ion-icon>\r\n    </div>\r\n  </ion-item>\r\n  <div text-center>\r\n    <h5>Productos</h5>\r\n  </div>\r\n  <ion-item lines=\"none\">\r\n    <ion-grid>\r\n      <ion-row no-lines>\r\n        <ion-col class=\"col\" size=\"10\"> Producto </ion-col>\r\n        <ion-col class=\"col\" size=\"2\"> Cant. </ion-col>\r\n      </ion-row>\r\n      <ion-row no-lines *ngFor=\"let item of productos\">\r\n        <ion-col size=\"10\" text-left>\r\n          <ion-label> {{item.descripcion}} </ion-label>\r\n          <ion-badge *ngIf=\"item.tipo_consumo == 'Unidad'\" color=\"primary\">{{item.tipo_consumo}}</ion-badge>\r\n          <ion-badge *ngIf=\"item.tipo_consumo == 'Porcentaje'\" color=\"tertiary\">{{item.tipo_consumo}}</ion-badge>\r\n        </ion-col>\r\n        <ion-col size=\"2\" text-center> {{item.cantidad}} </ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n  </ion-item>\r\n\r\n  <ion-item lines=\"none\">\r\n    <ion-button class=\"button\"\r\n                (click)=\"presentModal()\"\r\n                color=\"primary\"\r\n                size=\"default\"\r\n                shape=\"round\">Editar productos<ion-icon slot=\"end\" name=\"add-circle\"></ion-icon></ion-button>\r\n  </ion-item>\r\n</ion-content>\r\n"
+module.exports = "<app-header-in titulo=\"Configuracion de Servicio\"></app-header-in>\r\n<ion-content>\r\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\">\r\n    <ion-refresher-content  pullingIcon=\"arrow-dropdown\"\r\n                            pullingText=\"Hale para recargar\"\r\n                            refreshingSpinner=\"circles\"\r\n                            refreshingText=\"Recargando...\"></ion-refresher-content>\r\n  </ion-refresher>\r\n  <ion-item lines=\"none\">\r\n    <ion-label text-right>Eliminar</ion-label>\r\n      <ion-icon color=\"danger\" name=\"trash\" (click)=\"servicioDelete()\"></ion-icon>\r\n  </ion-item>\r\n  <ion-item lines=\"none\">\r\n      <ion-label text-wrap class=\"label\">\r\n        <ion-icon name=\"md-list-box\"\r\n                  color=\"primary\"\r\n                  slot=\"start\">\r\n        </ion-icon>{{servicio.encabezado.descripcion}}\r\n      </ion-label>\r\n    <div slot=\"end\" text-center>\r\n      <ion-icon name=\"create\" (click)=\"updadeServicio('UPDATE')\"></ion-icon>\r\n    </div>\r\n  </ion-item>\r\n  <ion-item lines=\"none\">\r\n      <ion-label text-wrap class=\"precio\">\r\n        <ion-icon name=\"md-cash\"\r\n                  color=\"primary\"\r\n                  slot=\"start\">\r\n        </ion-icon> L. {{servicio.encabezado.precio}}\r\n      </ion-label>\r\n    <div slot=\"end\" text-center>\r\n      <ion-icon name=\"create\" (click)=\"updadeServicioCosto()\"></ion-icon>\r\n    </div>\r\n  </ion-item>\r\n  <div text-center>\r\n    <h5>Productos</h5>\r\n  </div>\r\n  <ion-item lines=\"none\">\r\n    <ion-grid>\r\n      <ion-row no-lines>\r\n        <ion-col class=\"col\" size=\"10\"> Producto </ion-col>\r\n        <ion-col class=\"col\" size=\"2\"> C / % </ion-col>\r\n      </ion-row>\r\n      <ion-row class=\"rowLine\" *ngFor=\"let item of productos\">\r\n        <ion-col size=\"10\" text-left>\r\n          <ion-label> {{item.descripcion}} </ion-label>\r\n          <ion-badge *ngIf=\"item.tipo_consumo == 'Unidad'\" color=\"primary\">{{item.tipo_consumo}}</ion-badge>\r\n          <ion-badge *ngIf=\"item.tipo_consumo == 'Porcentaje'\" color=\"tertiary\">{{item.tipo_consumo}}</ion-badge>\r\n        </ion-col>\r\n        <ion-col size=\"2\"\r\n                 *ngIf=\"item.tipo_consumo == 'Porcentaje'\"\r\n                 text-center>\r\n           <ion-label class=\"porcentaje_valor\" text-center>{{item.porcentaje}}%</ion-label>\r\n        </ion-col>\r\n        <ion-col size=\"2\"\r\n                 *ngIf=\"item.tipo_consumo == 'Unidad'\"\r\n                 text-center>\r\n           <ion-label class=\"unidad_valor\">{{item.cantidad}}</ion-label>\r\n        </ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n  </ion-item>\r\n\r\n  <ion-item lines=\"none\">\r\n    <ion-button class=\"button\"\r\n                (click)=\"presentModal()\"\r\n                color=\"primary\"\r\n                size=\"default\"\r\n                shape=\"round\">Editar productos<ion-icon slot=\"end\" name=\"add-circle\"></ion-icon></ion-button>\r\n  </ion-item>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -297,7 +305,7 @@ module.exports = "<app-header-in titulo=\"Configuracion de Servicio\"></app-head
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-item {\n  --color: #6e6368; }\n\n.button {\n  position: fixed;\n  left: 0;\n  bottom: 20px;\n  right: 0; }\n\n.col {\n  color: gray;\n  border-top: 1px solid #dedede;\n  border-bottom: 1px solid #dedede; }\n\n.label {\n  font-size: 2em; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvUGFnZXMvc2VydmljaW8tY29uZmlnL0M6XFxVc2Vyc1xcRmFiaWFuXFxEb2N1bWVudHNcXGJvZGVnaW5cXGFwcEJvZGVnaW4vc3JjXFxhcHBcXFBhZ2VzXFxzZXJ2aWNpby1jb25maWdcXHNlcnZpY2lvLWNvbmZpZy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxnQkFBUSxFQUFBOztBQUdaO0VBQ0UsZUFBZTtFQUNmLE9BQU87RUFDUCxZQUFZO0VBQ1osUUFBUSxFQUFBOztBQUVWO0VBQ0EsV0FBVztFQUNYLDZCQUE2QjtFQUM3QixnQ0FBZ0MsRUFBQTs7QUFHaEM7RUFDRSxjQUFjLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9QYWdlcy9zZXJ2aWNpby1jb25maWcvc2VydmljaW8tY29uZmlnLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1pdGVte1xyXG4gICAgLS1jb2xvcjogIzZlNjM2ODtcclxufVxyXG5cclxuLmJ1dHRvbntcclxuICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgbGVmdDogMDtcclxuICBib3R0b206IDIwcHg7XHJcbiAgcmlnaHQ6IDA7XHJcbn1cclxuLmNvbHtcclxuY29sb3I6IGdyYXk7XHJcbmJvcmRlci10b3A6IDFweCBzb2xpZCAjZGVkZWRlO1xyXG5ib3JkZXItYm90dG9tOiAxcHggc29saWQgI2RlZGVkZTtcclxufVxyXG5cclxuLmxhYmVsIHtcclxuICBmb250LXNpemU6IDJlbTtcclxufVxyXG4iXX0= */"
+module.exports = "ion-item {\n  --color: #6e6368; }\n\n.button {\n  position: fixed;\n  left: 0;\n  bottom: 20px;\n  right: 0; }\n\n.col {\n  color: gray;\n  border-top: 1px solid #dedede;\n  border-bottom: 1px solid #dedede; }\n\n.label {\n  font-size: 1.0em;\n  font-weight: bold; }\n\n.precio {\n  font-size: 1.0em;\n  font-weight: bold;\n  color: #3880ff; }\n\n.rowLine {\n  border-top: solid 1px #ddd9d9; }\n\n.porcentaje_valor {\n  background: #7044ff;\n  color: white;\n  border: solid 1px #7044ff;\n  border-radius: 25px;\n  height: 100%;\n  line-height: 35px;\n  vertical-align: middle; }\n\n.unidad_valor {\n  background: #3880ff;\n  color: white;\n  border: solid 1px #3880ff;\n  border-radius: 25px;\n  height: 100%;\n  line-height: 40px;\n  vertical-align: middle; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvUGFnZXMvc2VydmljaW8tY29uZmlnL0M6XFxVc2Vyc1xcRmFiaWFuXFxEb2N1bWVudHNcXGJvZGVnaW5cXGFwcEJvZGVnaW4vc3JjXFxhcHBcXFBhZ2VzXFxzZXJ2aWNpby1jb25maWdcXHNlcnZpY2lvLWNvbmZpZy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxnQkFBUSxFQUFBOztBQUdaO0VBQ0UsZUFBZTtFQUNmLE9BQU87RUFDUCxZQUFZO0VBQ1osUUFBUSxFQUFBOztBQUVWO0VBQ0EsV0FBVztFQUNYLDZCQUE2QjtFQUM3QixnQ0FBZ0MsRUFBQTs7QUFHaEM7RUFDRSxnQkFBZ0I7RUFDaEIsaUJBQWlCLEVBQUE7O0FBR25CO0VBQ0UsZ0JBQWdCO0VBQ2hCLGlCQUFpQjtFQUNqQixjQUFjLEVBQUE7O0FBR2hCO0VBQ0UsNkJBQTZCLEVBQUE7O0FBRy9CO0VBQ0UsbUJBQW1CO0VBQ25CLFlBQVk7RUFDWix5QkFBeUI7RUFDekIsbUJBQW1CO0VBQ25CLFlBQVk7RUFDWixpQkFBaUI7RUFDakIsc0JBQXNCLEVBQUE7O0FBR3hCO0VBQ0UsbUJBQW1CO0VBQ25CLFlBQVk7RUFDWix5QkFBeUI7RUFDekIsbUJBQW1CO0VBQ25CLFlBQVk7RUFDWixpQkFBaUI7RUFDakIsc0JBQXNCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9QYWdlcy9zZXJ2aWNpby1jb25maWcvc2VydmljaW8tY29uZmlnLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1pdGVte1xyXG4gICAgLS1jb2xvcjogIzZlNjM2ODtcclxufVxyXG5cclxuLmJ1dHRvbntcclxuICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgbGVmdDogMDtcclxuICBib3R0b206IDIwcHg7XHJcbiAgcmlnaHQ6IDA7XHJcbn1cclxuLmNvbHtcclxuY29sb3I6IGdyYXk7XHJcbmJvcmRlci10b3A6IDFweCBzb2xpZCAjZGVkZWRlO1xyXG5ib3JkZXItYm90dG9tOiAxcHggc29saWQgI2RlZGVkZTtcclxufVxyXG5cclxuLmxhYmVsIHtcclxuICBmb250LXNpemU6IDEuMGVtO1xyXG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG59XHJcblxyXG4ucHJlY2lve1xyXG4gIGZvbnQtc2l6ZTogMS4wZW07XHJcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgY29sb3I6ICMzODgwZmY7XHJcbn1cclxuXHJcbi5yb3dMaW5le1xyXG4gIGJvcmRlci10b3A6IHNvbGlkIDFweCAjZGRkOWQ5O1xyXG59XHJcblxyXG4ucG9yY2VudGFqZV92YWxvcntcclxuICBiYWNrZ3JvdW5kOiAjNzA0NGZmO1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBib3JkZXI6IHNvbGlkIDFweCAjNzA0NGZmO1xyXG4gIGJvcmRlci1yYWRpdXM6IDI1cHg7XHJcbiAgaGVpZ2h0OiAxMDAlO1xyXG4gIGxpbmUtaGVpZ2h0OiAzNXB4O1xyXG4gIHZlcnRpY2FsLWFsaWduOiBtaWRkbGU7XHJcbn1cclxuXHJcbi51bmlkYWRfdmFsb3J7XHJcbiAgYmFja2dyb3VuZDogIzM4ODBmZjtcclxuICBjb2xvcjogd2hpdGU7XHJcbiAgYm9yZGVyOiBzb2xpZCAxcHggIzM4ODBmZjtcclxuICBib3JkZXItcmFkaXVzOiAyNXB4O1xyXG4gIGhlaWdodDogMTAwJTtcclxuICBsaW5lLWhlaWdodDogNDBweDtcclxuICB2ZXJ0aWNhbC1hbGlnbjogbWlkZGxlO1xyXG59XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -338,7 +346,8 @@ var ServicioConfigPage = /** @class */ (function () {
         this.servicio = {
             encabezado: {
                 descripcion: null,
-                id_servicio: null
+                id_servicio: null,
+                precio: null
             }
         };
         this.servicio.encabezado.id_servicio = route.snapshot.params["id_servicio"];
@@ -430,6 +439,68 @@ var ServicioConfigPage = /** @class */ (function () {
                 }
             });
         });
+    };
+    ServicioConfigPage.prototype.updadeServicioCosto = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var alert;
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.alertController.create({
+                            header: 'Cambiar precio',
+                            inputs: [
+                                {
+                                    name: 'input',
+                                    type: 'text',
+                                    value: this.servicio.encabezado.precio,
+                                    placeholder: 'Precio'
+                                }
+                            ],
+                            buttons: [
+                                {
+                                    text: 'Cancelar',
+                                    cssClass: 'secondary'
+                                }, {
+                                    text: 'Cambiar',
+                                    handler: function (data) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+                                        return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                                            switch (_a.label) {
+                                                case 0:
+                                                    if (!(data.input != null && data.input.trim().length)) return [3 /*break*/, 5];
+                                                    if (!this.IsNumeric(data.input)) return [3 /*break*/, 2];
+                                                    return [4 /*yield*/, this.Pro_servicios.updateCosto(this.servicio.encabezado.id_servicio, data.input).catch(function (err) { })];
+                                                case 1:
+                                                    _a.sent();
+                                                    this.servicio.encabezado.precio = data.input;
+                                                    return [3 /*break*/, 4];
+                                                case 2: return [4 /*yield*/, this.showToast('Precio no valido')];
+                                                case 3:
+                                                    _a.sent();
+                                                    _a.label = 4;
+                                                case 4: return [3 /*break*/, 7];
+                                                case 5: return [4 /*yield*/, this.showToast('Precio vacio')];
+                                                case 6:
+                                                    _a.sent();
+                                                    _a.label = 7;
+                                                case 7: return [2 /*return*/];
+                                            }
+                                        });
+                                    }); }
+                                }
+                            ]
+                        })];
+                    case 1:
+                        alert = _a.sent();
+                        return [4 /*yield*/, alert.present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ServicioConfigPage.prototype.IsNumeric = function (input) {
+        return (input - 0) == input && ('' + input).trim().length > 0;
     };
     ServicioConfigPage.prototype.servicioDelete = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
