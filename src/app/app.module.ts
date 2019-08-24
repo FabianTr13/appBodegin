@@ -17,6 +17,8 @@ import { ActionSheetController } from '@ionic/angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Base64 } from '@ionic-native/base64/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import { Vibration } from '@ionic-native/vibration/ngx';
+import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
   providers: [
     StatusBar,
     SplashScreen,
+    PayPal,
+    Vibration,
     Camera,
     FileTransfer,
     BarcodeScanner,

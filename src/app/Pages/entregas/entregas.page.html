@@ -17,7 +17,8 @@
           <img [src]="item_productos.fotografia | domSanitizer">
         </ion-avatar>
         <ion-label>{{item_productos.nombre}} &nbsp;</ion-label>
-        <ion-badge color="medium">{{item_productos.cantidad}}</ion-badge>
+        <ion-badge color="medium" *ngIf="item_productos.id_tipo_consumo == 1">{{item_productos.cantidad}}</ion-badge>
+        <ion-badge color="medium" *ngIf="item_productos.id_tipo_consumo == 2">{{item_productos.porcentaje}}%</ion-badge>
       </ion-chip>
     </ion-card-content>
     <div class="center-boton">

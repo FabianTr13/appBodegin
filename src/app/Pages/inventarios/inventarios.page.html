@@ -47,7 +47,8 @@
             <ion-badge *ngIf="item.tipo_consumo == 'Porcentaje'" color="tertiary">{{item.tipo_consumo}}</ion-badge>
           </ion-label>
           <ion-label text-end slot="end">
-            <h2 class="nombreProducto">Cant.</h2>
+            <h2 class="nombreProducto" *ngIf="item.tipo_consumo == 'Porcentaje'">%</h2>
+            <h2 class="nombreProducto" *ngIf="item.tipo_consumo == 'Unidad'">Cant.</h2>
             <h4>{{item.cantidad}}</h4>
           </ion-label>
         </ion-item>

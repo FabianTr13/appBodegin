@@ -82,15 +82,30 @@ export class ServiciosService {
 
     return await this.Pro_http.post(url, body, { headers }).toPromise()
   }
+
+  async updateCosto(p_id_servicio, p_costo){
+    //Preparacion de header
+    const headers = new HttpHeaders(Header);
+    //Preparacion de body
+    let body = {
+      id_servicio: p_id_servicio,
+      costo: p_costo
+    };
+
+    let url = `${WEB_SERVICE}api/servicios/updateCosto`
+
+    return await this.Pro_http.post(url, body, { headers }).toPromise()
+  }
   //--------------------
 
-  async insertServicio(p_nombre){
+  async insertServicio(p_nombre, p_costo){
     //Preparacion de header
     const headers = new HttpHeaders(Header);
     //Preparacion de body
     let body = {
       token: await this.storage.get('token'),
-      nombre: p_nombre
+      nombre: p_nombre,
+      costo: p_costo
     };
 
     let url = `${WEB_SERVICE}api/servicios/insertServicio`

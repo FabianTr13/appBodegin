@@ -43,9 +43,16 @@ export class ProductosServiciosPage implements OnInit {
 
   async validador(){
     for (let i = 0; i < this.productos.length; i++) {
-      if (this.productos[i].cantidad <= 0 && this.productos[i].is_check) {
+      if (this.productos[i].tipo_consumo == 'Unidad') {
+        if (this.productos[i].cantidad <= 0 && this.productos[i].is_check) {
           await this.showToast('Producto con cantidad invalida')
           return false
+        }
+      }else{
+        if (this.productos[i].porcentaje <= 0 && this.productos[i].is_check) {
+          await this.showToast('Producto con porcentaje invalido')
+          return false
+        }
       }
     }
     return true

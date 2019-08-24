@@ -57,6 +57,12 @@ export class ServiciosPage implements OnInit {
          type: 'text',
          value: null,
          placeholder: 'Nombre'
+       },
+       {
+         name: 'costo',
+         type: 'tel',
+         value: 0,
+         placeholder: 'Costo'
        }
      ],
      buttons: [
@@ -67,9 +73,14 @@ export class ServiciosPage implements OnInit {
          text: 'Cambiar',
          handler: async data=> {
            if (data.input != null && data.input.trim().length) {
-            let id_servicio = await this.Pro_servicios.insertServicio(data.input).catch(err=>{})
-            this.servicios = this.servicios_backup = await this.Pro_servicios.serviciosListAsync()
-            this.editarServicio(id_servicio)
+             if(this.IsNumeric(data.costo)){
+              let id_servicio = await this.Pro_servicios.insertServicio(data.input, data.costo).catch(err=>{})
+              this.servicios = this.servicios_backup = await this.Pro_servicios.serviciosListAsync()
+              this.editarServicio(id_servicio)
+            }
+            else{
+              await this.showToast('Ingrese un precio valido', 3000);
+            }
            }
            else{
              await this.showToast('Nombre vacio');
@@ -80,6 +91,10 @@ export class ServiciosPage implements OnInit {
    });
    await alert.present();
  }
+
+  IsNumeric(input){
+    return (input - 0) == input && (''+input).trim().length > 0;
+  }
 
  async showToast(p_mensaje, p_duration=3000){
    const toast = await this.toastController.create({

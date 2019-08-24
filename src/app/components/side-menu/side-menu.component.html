@@ -1,17 +1,18 @@
 <ion-menu contentId="content1" side="start">
   <ion-header no-border>
-    <ion-toolbar color ="primary">
+    <div class="heider"></div>
+    <ion-toolbar color ="primary" *ngIf="usuario && sucursal">
       <ion-item color ="primary" lines="none">
         <ion-avatar slot="start">
-          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+          <img [src]="usuario.foto_cliente | domSanitizer">
         </ion-avatar>
-        <ion-label class="titulo">Bodegin
+        <ion-label class="titulo">{{usuario.nombre_cliente | uppercase}}
         </ion-label>
       </ion-item>
       <div>
       <ion-item color ="primary" lines="none">
         <ion-img src="/assets/side/point_side.png"></ion-img>
-        <ion-label>Barrio las acacias</ion-label>
+        <ion-label>&nbsp;{{sucursal.descripcion}}</ion-label>
       </ion-item>
       </div>
     </ion-toolbar>
