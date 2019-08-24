@@ -148,159 +148,6 @@ var NuevoProductoPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/Pipe/dom-sanitizer.pipe.ts":
-/*!********************************************!*\
-  !*** ./src/app/Pipe/dom-sanitizer.pipe.ts ***!
-  \********************************************/
-/*! exports provided: DomSanitizerPipe */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DomSanitizerPipe", function() { return DomSanitizerPipe; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-
-
-
-var DomSanitizerPipe = /** @class */ (function () {
-    function DomSanitizerPipe(domSanitizer) {
-        this.domSanitizer = domSanitizer;
-    }
-    DomSanitizerPipe.prototype.transform = function (img) {
-        if (!img || img == null) {
-            return 'assets/img/camera.png';
-        }
-        else {
-            return this.domSanitizer.bypassSecurityTrustUrl(img);
-        }
-    };
-    DomSanitizerPipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
-            name: 'domSanitizer'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"]])
-    ], DomSanitizerPipe);
-    return DomSanitizerPipe;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/Pipe/image-sanitizer.pipe.ts":
-/*!**********************************************!*\
-  !*** ./src/app/Pipe/image-sanitizer.pipe.ts ***!
-  \**********************************************/
-/*! exports provided: ImageSanitizerPipe */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ImageSanitizerPipe", function() { return ImageSanitizerPipe; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-
-
-
-var ImageSanitizerPipe = /** @class */ (function () {
-    function ImageSanitizerPipe(domSanitizer) {
-        this.domSanitizer = domSanitizer;
-    }
-    ImageSanitizerPipe.prototype.transform = function (img) {
-        return this.domSanitizer.bypassSecurityTrustUrl(img);
-    };
-    ImageSanitizerPipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
-            name: 'imageSanitizer'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"]])
-    ], ImageSanitizerPipe);
-    return ImageSanitizerPipe;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/Pipe/imagen.pipe.ts":
-/*!*************************************!*\
-  !*** ./src/app/Pipe/imagen.pipe.ts ***!
-  \*************************************/
-/*! exports provided: ImagenPipe */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ImagenPipe", function() { return ImagenPipe; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-
-
-var ImagenPipe = /** @class */ (function () {
-    function ImagenPipe() {
-    }
-    ImagenPipe.prototype.transform = function (img) {
-        return img;
-    };
-    ImagenPipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
-            name: 'imagen'
-        })
-    ], ImagenPipe);
-    return ImagenPipe;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/Pipe/pipes.module.ts":
-/*!**************************************!*\
-  !*** ./src/app/Pipe/pipes.module.ts ***!
-  \**************************************/
-/*! exports provided: PipesModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PipesModule", function() { return PipesModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _dom_sanitizer_pipe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dom-sanitizer.pipe */ "./src/app/Pipe/dom-sanitizer.pipe.ts");
-/* harmony import */ var _image_sanitizer_pipe__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./image-sanitizer.pipe */ "./src/app/Pipe/image-sanitizer.pipe.ts");
-/* harmony import */ var _imagen_pipe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./imagen.pipe */ "./src/app/Pipe/imagen.pipe.ts");
-
-
-
-
-
-var PipesModule = /** @class */ (function () {
-    function PipesModule() {
-    }
-    PipesModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [
-                _dom_sanitizer_pipe__WEBPACK_IMPORTED_MODULE_2__["DomSanitizerPipe"],
-                _image_sanitizer_pipe__WEBPACK_IMPORTED_MODULE_3__["ImageSanitizerPipe"],
-                _imagen_pipe__WEBPACK_IMPORTED_MODULE_4__["ImagenPipe"]
-            ],
-            exports: [
-                _dom_sanitizer_pipe__WEBPACK_IMPORTED_MODULE_2__["DomSanitizerPipe"],
-                _image_sanitizer_pipe__WEBPACK_IMPORTED_MODULE_3__["ImageSanitizerPipe"],
-                _imagen_pipe__WEBPACK_IMPORTED_MODULE_4__["ImagenPipe"]
-            ]
-        })
-    ], PipesModule);
-    return PipesModule;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/Services/client.service.ts":
 /*!********************************************!*\
   !*** ./src/app/Services/client.service.ts ***!
@@ -580,8 +427,26 @@ var ServiciosService = /** @class */ (function () {
             });
         });
     };
+    ServiciosService.prototype.updateCosto = function (p_id_servicio, p_costo) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var headers, body, url;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["Header"]);
+                        body = {
+                            id_servicio: p_id_servicio,
+                            costo: p_costo
+                        };
+                        url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/servicios/updateCosto";
+                        return [4 /*yield*/, this.Pro_http.post(url, body, { headers: headers }).toPromise()];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
     //--------------------
-    ServiciosService.prototype.insertServicio = function (p_nombre) {
+    ServiciosService.prototype.insertServicio = function (p_nombre, p_costo) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var headers, body, _a, url;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
@@ -593,6 +458,7 @@ var ServiciosService = /** @class */ (function () {
                     case 1:
                         body = (_a.token = _b.sent(),
                             _a.nombre = p_nombre,
+                            _a.costo = p_costo,
                             _a);
                         url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/servicios/insertServicio";
                         return [2 /*return*/, this.Pro_http.post(url, body, { headers: headers }).toPromise()];
@@ -642,173 +508,6 @@ var ServiciosService = /** @class */ (function () {
             _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"]])
     ], ServiciosService);
     return ServiciosService;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/Services/user.service.ts":
-/*!******************************************!*\
-  !*** ./src/app/Services/user.service.ts ***!
-  \******************************************/
-/*! exports provided: UserService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserService", function() { return UserService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _Config_configuration__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Config/configuration */ "./src/app/Config/configuration.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
-
-
-
-
-
-
-var UserService = /** @class */ (function () {
-    function UserService(Pro_http, storage) {
-        this.Pro_http = Pro_http;
-        this.storage = storage;
-    }
-    UserService.prototype.login = function (p_usuario, p_password) {
-        //Preparacion de header
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["Header"]);
-        //Preparacion de body
-        var body = {
-            usuario: p_usuario,
-            password: p_password
-        };
-        var url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/usuarios/login";
-        return this.Pro_http.post(url, body, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
-            return result;
-        }));
-    };
-    UserService.prototype.confirmarCelular = function (p_numero) {
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["Header"]);
-        var body = {
-            celular: p_numero
-        };
-        var url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/usuarios/validaCelular";
-        return this.Pro_http.post(url, body, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
-            return result;
-        }));
-    };
-    UserService.prototype.validaUsuario = function (p_usuario, p_id_usuario) {
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["Header"]);
-        var body = {
-            id_usuario: p_id_usuario,
-            usuario: p_usuario
-        };
-        var url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/usuarios/validaUsuario";
-        return this.Pro_http.post(url, body, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
-            return result;
-        }));
-    };
-    UserService.prototype.eliminarUsuario = function (p_id_usuario) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var headers, body, url;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["Header"]);
-                        body = {
-                            id_usuario: p_id_usuario
-                        };
-                        url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/usuarios/deleteUser";
-                        return [4 /*yield*/, this.Pro_http.post(url, body, { headers: headers }).toPromise()];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    UserService.prototype.cambiarPassword = function (p_id_usuario, p_password) {
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["Header"]);
-        var body = {
-            id_usuario: p_id_usuario,
-            password: p_password
-        };
-        var url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/usuarios/cambiarPassword";
-        return this.Pro_http.post(url, body, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
-            return result;
-        }));
-    };
-    UserService.prototype.getUsuariosList = function (p_token, p_id_sucursal) {
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["Header"]);
-        var body = {
-            token: p_token,
-            id_sucursal: p_id_sucursal
-        };
-        var url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/usuarios/usuariosList";
-        return this.Pro_http.post(url, body, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
-            return result;
-        }));
-    };
-    UserService.prototype.getUsuariosConfigList = function (p_token) {
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["Header"]);
-        var body = {
-            token: p_token
-        };
-        var url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/usuarios/usuariosConfigList";
-        return this.Pro_http.post(url, body, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
-            return result;
-        }));
-    };
-    UserService.prototype.InsertUpdateUsuario = function (p_usuario, p_accion) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var headers, body, _a, url;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["Header"]);
-                        _a = {};
-                        return [4 /*yield*/, this.storage.get('token')];
-                    case 1:
-                        body = (_a.token = _b.sent(),
-                            _a.id_usuario = p_usuario.id_usuario,
-                            _a.nombre = p_usuario.nombre,
-                            _a.telefono = p_usuario.telefono,
-                            _a.usuario = p_usuario.usuario,
-                            _a.id_perfil = p_usuario.id_perfil,
-                            _a.accion = p_accion,
-                            _a);
-                        url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/usuarios/crearUsuario";
-                        return [4 /*yield*/, this.Pro_http.post(url, body, { headers: headers }).toPromise()];
-                    case 2: return [2 /*return*/, _b.sent()];
-                }
-            });
-        });
-    };
-    UserService.prototype.getUsuario = function (p_id_usuario) {
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["Header"]);
-        var body = {
-            id_usuario: p_id_usuario
-        };
-        var url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/usuarios/getUsuario";
-        return this.Pro_http.post(url, body, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
-            return result;
-        }));
-    };
-    UserService.prototype.getUPerfiles = function () {
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](_Config_configuration__WEBPACK_IMPORTED_MODULE_3__["Header"]);
-        var body = {};
-        var url = _Config_configuration__WEBPACK_IMPORTED_MODULE_3__["WEB_SERVICE"] + "api/usuarios/usuariosPerfiles";
-        return this.Pro_http.post(url, body, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (result) {
-            return result;
-        }));
-    };
-    UserService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
-            _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"]])
-    ], UserService);
-    return UserService;
 }());
 
 
