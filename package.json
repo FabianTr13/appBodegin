@@ -57,6 +57,7 @@
     "ionic-angular": "^3.9.8",
     "lodash": "^4.17.15",
     "ng-recaptcha": "^4.3.0",
+    "paypal-rest-sdk": "^1.8.1",
     "phonegap-plugin-barcodescanner": "^8.1.0",
     "resize-base64": "^1.0.12",
     "run": "1.4.0",
