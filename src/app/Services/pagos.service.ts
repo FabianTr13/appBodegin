@@ -19,7 +19,7 @@ export class PagosService {
     //Preparacion de body
     let body = {
       token: await this.storage.get('token'),
-      id: p_response.response.id,
+      id: p_response.id,
       monto: p_monto,
       response: p_response
     };
