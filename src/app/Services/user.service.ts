@@ -15,14 +15,15 @@ export class UserService {
               private storage:Storage,
               private router:Router) { }
 
-  login(p_usuario, p_password){
+  login(p_usuario, p_password, p_id_oneSignal){
     //Preparacion de header
     const headers = new HttpHeaders(Header);
 
     //Preparacion de body
     let body = {
       usuario:p_usuario,
-      password:p_password
+      password:p_password,
+      id_onesignal: p_id_oneSignal
     }
     let url = `${WEB_SERVICE}api/usuarios/login`
 

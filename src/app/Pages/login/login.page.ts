@@ -34,7 +34,8 @@ export class LoginPage implements OnInit {
 
   async login(form:NgForm){
     await this.present()
-    this.Pro_user.login(form.form.value.user, form.form.value.password).subscribe(async resp=>{
+    let id_onesignal = await this.storage.get('id_onesignal')
+    this.Pro_user.login(form.form.value.user, form.form.value.password, id_onesignal).subscribe(async resp=>{
       if (resp!=null) {
         if (resp.token) {
           await this.storage.set('token',resp.token)
