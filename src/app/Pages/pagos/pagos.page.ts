@@ -1,6 +1,9 @@
 import { Component, OnInit, AfterViewChecked  } from '@angular/core';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
+import { Storage } from '@ionic/storage';
 import { PagosService } from '../../Services/pagos.service';
+import { isApp } from '../../Config/configuration';
+import { LoadingController } from '@ionic/angular';
 declare let paypal: any;
 
 @Component({
@@ -11,12 +14,31 @@ declare let paypal: any;
 export class PagosPage implements OnInit {
 
   addScript: boolean = false;
-  monto = '1'
+  monto = '0'
+  pagos = [];
+  es_movil = false;
+  isLoading = false
 
   constructor(private payPal1: PayPal,
-              private Pro_pagos:PagosService) { }
+              private Pro_pagos:PagosService,
+              private storage:Storage,
+              public loadingController: LoadingController
+            ) { }
 
   ngOnInit() {
+    this.reload()
+    this.es_movil = isApp;
+  }
+
+  reload(){
+    this.present()
+    this.storage.get('token').then(token=>{
+      this.Pro_pagos.getPagos(token).subscribe(async data=>{
+          this.pagos = data;
+          this.monto = data.monto
+          await this.dismiss()
+      })
+    })
   }
 
   pagar(){
@@ -29,6 +51,7 @@ export class PagosPage implements OnInit {
       let payment = new PayPalPayment(this.monto, 'USD', 'Description', 'sale');
       this.payPal1.renderSinglePaymentUI(payment).then(async respose => {
         await this.Pro_pagos.insertPago(respose, this.monto)
+        this.reload();
       }, () => {});
       }, () => {});
     }, () => {});
@@ -52,8 +75,8 @@ export class PagosPage implements OnInit {
     },
     onAuthorize: (data, actions) => {
       return actions.payment.execute().then(async payment => {
-        console.log('pago', payment)
         await this.Pro_pagos.insertPago(payment, this.monto)
+        this.reload();
       })
     }
   };
@@ -74,5 +97,28 @@ export class PagosPage implements OnInit {
       scripttagElement.onload = resolve;
       document.body.appendChild(scripttagElement);
     })
+  }
+
+  async doRefresh(event) {
+    this.reload()
+    event.target.complete();
+  }
+
+  async present() {
+    this.isLoading = true;
+    return await this.loadingController.create({
+      duration: 5000
+    }).then(a => {
+      a.present().then(() => {
+        if (!this.isLoading) {
+          a.dismiss().then(() => {});
+        }
+      });
+    });
+  }
+
+  async dismiss() {
+    this.isLoading = false;
+    return await this.loadingController.dismiss().then(() => {});
   }
 }

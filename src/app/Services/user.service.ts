@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders }  from "@angular/common/http";
 import { Header, WEB_SERVICE } from '../Config/configuration';
 import { map } from 'rxjs/operators';
 import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,8 @@ import { Storage } from '@ionic/storage';
 export class UserService {
 
   constructor(private Pro_http:HttpClient,
-              private storage:Storage) { }
+              private storage:Storage,
+              private router:Router) { }
 
   login(p_usuario, p_password){
     //Preparacion de header
@@ -158,5 +161,30 @@ export class UserService {
     return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
       return result;
     }));
+  }
+
+
+  validaPerfil(): Promise<boolean>{
+    return new Promise(async (resolve, reject)=>{
+      let token = await this.storage.get('token')
+
+      //Preparacion de header
+      const headers = new HttpHeaders(Header);
+
+      //Preparacion de body
+      let body = {
+        token:  token
+      }
+      let url = `${WEB_SERVICE}api/usuarios/validaPerfil`
+      this.Pro_http.post(url, body, { headers }).subscribe((data:boolean) => {
+        if (data==false) {
+            this.router.navigate(['home'])
+        }
+        resolve(data)
+      }, err=>{
+        this.router.navigate(['home'])
+        resolve(false)
+      })
+    })
   }
 }
