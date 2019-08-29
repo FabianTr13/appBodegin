@@ -19,6 +19,7 @@ import { Base64 } from '@ionic-native/base64/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal
     PayPal,
     Vibration,
     Camera,
+    OneSignal,
     FileTransfer,
     BarcodeScanner,
     Base64,

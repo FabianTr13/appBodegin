@@ -111,7 +111,8 @@ export class ResetPassPage implements OnInit {
 
   async login(p_password){
     await this.present()
-    this.Pro_user.login(this.usuario, p_password).subscribe(async resp=>{
+    let id_onesignal = await this.storage.get('id_onesignal')
+    this.Pro_user.login(this.usuario, p_password, id_onesignal).subscribe(async resp=>{
       if (resp!=null) {
         if (resp.token) {
           await this.storage.set('token',resp.token)

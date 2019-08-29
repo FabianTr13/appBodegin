@@ -40,7 +40,8 @@ export class RegisterPage implements OnInit {
         if (resp!=null) {
           if (resp==true) {
             this.Pro_cliente.registraUsuario(p_form.form.value).subscribe(async data => {
-              this.Pro_user.login(p_form.form.value.user, p_form.form.value.password).subscribe(async respAuth=>{
+              let id_onesignal = await this.storage.get('id_onesignal')
+              this.Pro_user.login(p_form.form.value.user, p_form.form.value.password, id_onesignal).subscribe(async respAuth=>{
                 if (respAuth!=null) {
                   if (respAuth.token) {
                     await this.storage.set('token',respAuth.token)
@@ -95,7 +96,8 @@ export class RegisterPage implements OnInit {
 
   async login(p_usuario, p_password){
     await this.present()
-    this.Pro_user.login(p_usuario, p_password).subscribe(async resp=>{
+    let id_onesignal = await this.storage.get('id_onesignal')
+    this.Pro_user.login(p_usuario, p_password, id_onesignal).subscribe(async resp=>{
       if (resp!=null) {
         if (resp.token) {
           await this.storage.set('token',resp.token)
