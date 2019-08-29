@@ -12,14 +12,15 @@
         <ion-label class="counter" >14</ion-label>
       </ion-col>
       <ion-col align-self-center size-md="2" size-lg="2" size-xs="6">
-        <!-- <ion-button color="warning"
+        <ion-button color="warning"
+                    *ngIf="isApp_c"
                     (click)="pagar()"
                     disabled="true"
                     expand="full">Pagar &nbsp;<ion-icon color="success"
                                                         name="ios-cash">
                                               </ion-icon>
-        </ion-button> -->
-        <div id="paypal-checkout-btn"></div>
+        </ion-button>
+        <div *ngIf="!isApp_c" id="paypal-checkout-btn"></div>
       </ion-col>
     </ion-row>
     <ion-row justify-content-center>

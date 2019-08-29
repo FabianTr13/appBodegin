@@ -1,6 +1,8 @@
 import { Component, OnInit, AfterViewChecked  } from '@angular/core';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
 import { PagosService } from '../../Services/pagos.service';
+import { isApp } from '../../Config/configuration';
+
 declare let paypal: any;
 
 @Component({
@@ -12,9 +14,12 @@ export class PagosPage implements OnInit {
 
   addScript: boolean = false;
   monto = '1'
+  isApp_c;
 
   constructor(private payPal1: PayPal,
-              private Pro_pagos:PagosService) { }
+              private Pro_pagos:PagosService) {
+    this.isApp_c = isApp;
+  }
 
   ngOnInit() {
   }
