@@ -44,4 +44,18 @@ export class InventariosService {
       return result;
     }));
   }
+
+  async getChartAsync(p_id_sucursal){
+    //Preparacion de header
+    const headers = new HttpHeaders(Header);
+
+    //Preparacion de body
+    let body = {
+      token: await this.storage.get('token'),
+      id_sucursal: p_id_sucursal
+    }
+
+    let url = `${WEB_SERVICE}api/inventarios/getChart`
+    return this.Pro_http.post(url, body, { headers }).toPromise()
+  }
 }

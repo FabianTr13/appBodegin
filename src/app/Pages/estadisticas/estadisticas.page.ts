@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
 import { InventariosService } from '../../Services/inventarios.service';
 import { Storage } from '@ionic/storage';
+import { SucursalesService } from '../../Services/sucursales.service';
 
 @Component({
   selector: 'app-estadisticas',
@@ -20,22 +21,38 @@ export class EstadisticasPage implements OnInit {
   lineChart: any;
 
 
+  id_sucursal;
+  sucursales = []
   entregasDiarias = []
+  producto_inventario;
+  servicios_mensual;
+  servicios_anual = [];
 
   constructor(private Pro_inventarios:InventariosService,
-              private storage:Storage) { }
+              private storage:Storage,
+              private Pro_sucursales:SucursalesService) { }
 
   ngOnInit() {
     this.storage.get('token').then(token=>{
-      this.Pro_inventarios.getChart(token).subscribe(data=>{
-        this.entregasDiarias = data
-        console.log(data)
-        this.barChartMethod();
-        this.doughnutChartMethod();
-        this.lineChartMethod();
-        this.doughnutChartMethodServicio();
+      this.Pro_sucursales.obtenerSucursalSeleccionda(token).subscribe(async sucursal=>{
+          this.id_sucursal = sucursal.id_sucursal.toString()
+          let suc = await this.Pro_sucursales.sucursalesListUsuario()
+          this.sucursales = Array.isArray(suc) ? suc : []
+          await this.verSucursal()
       })
     })
+  }
+
+  async verSucursal(){
+    let data = await this.Pro_inventarios.getChartAsync(this.id_sucursal)
+      this.entregasDiarias = data[0].servicios_diario.dias
+      this.producto_inventario = data[0].productos_inventario
+      this.servicios_mensual = data[0].servicios_mensual
+      this.servicios_anual = data[0].servicios_anual.meses
+      this.barChartMethod();
+      this.doughnutChartMethod();
+      this.lineChartMethod();
+      this.doughnutChartMethodServicio();
   }
 
   barChartMethod() {
@@ -45,7 +62,7 @@ export class EstadisticasPage implements OnInit {
         labels: ['LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB'],
         datasets: [{
           label: '# Entregas semanal',
-          data: [200, 50, 30, 15, 20, 34],
+          data: this.entregasDiarias,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -81,10 +98,10 @@ export class EstadisticasPage implements OnInit {
     this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
       type: 'pie',
       data: {
-        labels: ['BJP', 'Congress', 'AAP', 'CPM', 'SP'],
+        labels: this.producto_inventario.productos,
         datasets: [{
-          label: '# of Votes',
-          data: [50, 29, 15, 10, 7],
+          label: 'Productos',
+          data: this.producto_inventario.inventario,
           backgroundColor: [
             'rgba(255, 159, 64, 0.2)',
             'rgba(255, 99, 132, 0.2)',
@@ -108,10 +125,10 @@ export class EstadisticasPage implements OnInit {
     this.doughnutChart = new Chart(this.doughnutCanvasService.nativeElement, {
       type: 'pie',
       data: {
-        labels: ['BJP', 'Congress', 'AAP', 'CPM', 'SP'],
+        labels: this.servicios_mensual.servicios,
         datasets: [{
-          label: '# of Votes',
-          data: [50, 29, 15, 10, 7],
+          label: 'Servicios por mes',
+          data: this.servicios_mensual.inventario,
           backgroundColor: [
             'rgba(255, 159, 64, 0.2)',
             'rgba(255, 99, 132, 0.2)',
@@ -156,7 +173,7 @@ export class EstadisticasPage implements OnInit {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [65, 59, 80, 81, 56, 55, 40, 10, 5, 50, 10, 15],
+            data: this.servicios_anual,
             spanGaps: false,
           }
         ]
