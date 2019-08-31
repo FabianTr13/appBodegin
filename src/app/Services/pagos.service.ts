@@ -14,14 +14,14 @@ export class PagosService {
               private storage:Storage,
               private router:Router) { }
 
-  async insertPago(p_response, p_monto){
+  async insertPago(p_response,  p_id, p_monto){
     //Preparacion de header
     const headers = new HttpHeaders(Header);
 
     //Preparacion de body
     let body = {
       token: await this.storage.get('token'),
-      id: p_response.id,
+      id: p_id,
       monto: p_monto,
       response: p_response
     };

@@ -1,6 +1,6 @@
 page-home {
     ion-icon {
-        font-size: 5em;
+        font-size: 3em;
     }
 }
 
@@ -11,9 +11,10 @@ ion-grid{
         background-color: #3880ff;
         box-shadow: none;
         color: #FFFFFF;
-        border-radius: 0px;
+        border-radius: 5px;
+        margin: 0px;
         ion-img{
-          height: 64px;
+          height: 40px;
         }
       }
     }

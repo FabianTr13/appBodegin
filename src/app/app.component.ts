@@ -17,7 +17,8 @@ export class AppComponent {
   ) {
     this.initializeApp();
     this.statusBar.overlaysWebView(true);
-    this.statusBar.styleDefault();
+    // this.statusBar.styleDefault();
+    this.statusBar.backgroundColorByHexString('#1d62dd');
   }
 
   initializeApp() {

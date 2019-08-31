@@ -4,7 +4,7 @@
   <form *ngIf="cliente.id_cliente!=null"  #form="ngForm" (ngSubmit)="updateUsuario()">
     <ion-grid>
       <ion-row justify-content-center>
-        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <ion-col align-self-center size-md="6" size-lg="6" size-xs="12">
           <div text-center>
             <ion-avatar class="avatar">
               <img [src]="cliente.foto[1] | domSanitizer"

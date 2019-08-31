@@ -1,4 +1,9 @@
+ion-toolbar{
+  border-bottom: 2px #fff solid !important;
+}
+
 ion-header{
+  --background: #3880ff;
   ion-toolbar{
     ion-item{
       ion-img{
@@ -13,6 +18,7 @@ ion-header{
   }
 }
 .heider{
+  // background: #1d62dd;
   background: #3880ff;
   height: 12px;
 }

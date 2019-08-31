@@ -50,7 +50,7 @@ export class PagosPage implements OnInit {
     })).then(() => {
       let payment = new PayPalPayment(this.monto, 'USD', 'Description', 'sale');
       this.payPal1.renderSinglePaymentUI(payment).then(async respose => {
-        await this.Pro_pagos.insertPago(respose, this.monto)
+        await this.Pro_pagos.insertPago(respose, respose.response.id, this.monto)
         this.reload();
       }, () => {});
       }, () => {});
@@ -75,7 +75,7 @@ export class PagosPage implements OnInit {
     },
     onAuthorize: (data, actions) => {
       return actions.payment.execute().then(async payment => {
-        await this.Pro_pagos.insertPago(payment, this.monto)
+        await this.Pro_pagos.insertPago(payment, payment.id, this.monto)
         this.reload();
       })
     }

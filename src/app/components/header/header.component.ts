@@ -3,6 +3,7 @@ import { AlertController } from '@ionic/angular';
 import { SucursalesService } from '../../Services/sucursales.service';
 import { Storage } from '@ionic/storage';
 import { SideMenuComponent } from '../side-menu/side-menu.component';
+import { isApp } from '../../Config/configuration';
 
 @Component({
   selector: 'app-header',
@@ -21,8 +22,8 @@ export class HeaderComponent implements OnInit {
     id_sucursal : null,
     descripcion : null
   }
-
   @Input() titulo: String = "";
+  es_app = false;
 
   ngOnInit() {
     this.storage.get('token').then(token=>{
@@ -30,6 +31,7 @@ export class HeaderComponent implements OnInit {
         this.sucursal = data;
       })
     })
+    this.es_app = isApp;
   }
 
   sideMenuRefresh(){

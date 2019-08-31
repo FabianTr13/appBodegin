@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { isApp } from '../../Config/configuration';
 
 @Component({
   selector: 'app-header-modal',
@@ -8,9 +9,12 @@ import { Component, OnInit, Input } from '@angular/core';
 export class HeaderModalComponent implements OnInit {
 
   @Input() titulo: String = "";
-
+  es_app;
+  
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.es_app = isApp;
+  }
 
 }
