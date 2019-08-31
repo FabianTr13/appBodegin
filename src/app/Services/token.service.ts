@@ -29,10 +29,12 @@ export class TokenService {
       let url = `${WEB_SERVICE}api/usuarios/validaToken`
 
       this.Pro_http.post(url, body, { headers }).subscribe((data:boolean) => {
-        if (data==false) {
-            this.router.navigate(['login'])
+        if (data==true) {
+            resolve(true)
+        }else{
+          this.router.navigate(['login'])
+          resolve(false)
         }
-        resolve(data)
       }, err=>{
         this.router.navigate(['login'])
         resolve(false)
