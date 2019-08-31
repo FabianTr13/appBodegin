@@ -15,7 +15,10 @@ export class PagosPage implements OnInit {
 
   addScript: boolean = false;
   monto = '0'
-  pagos = [];
+  pagos = {
+    dias_restantes:0,
+    historial:[]
+  };
   es_movil = false;
   isLoading = false
 

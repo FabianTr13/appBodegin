@@ -56,6 +56,9 @@ MIT
 @ionic-native/file-transfer
 MIT
 
+@ionic-native/onesignal
+MIT
+
 @ionic-native/paypal
 MIT
 

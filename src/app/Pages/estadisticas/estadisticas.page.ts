@@ -180,4 +180,8 @@ export class EstadisticasPage implements OnInit {
       }
     });
   }
+
+  async sucursalGet(p_sucursal){
+    this.id_sucursal = p_sucursal.target.value
+  }
 }
