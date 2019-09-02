@@ -16,6 +16,7 @@ export class SideMenuComponent implements OnInit {
 
   sucursal;
   usuario;
+  finger;
 
   constructor(private Pro_router:Router,
               private modalController:ModalController,
@@ -25,6 +26,14 @@ export class SideMenuComponent implements OnInit {
 
   ngOnInit() {
     this.refresher()
+    this.storage.get('finger').then(finger=>{
+      this.finger = finger
+    })
+
+    if (this.finger == null || this.finger == undefined) {
+      this.finger = false;
+      this.storage.set('finger', false)
+    }
   }
 
   public refresher(){
@@ -42,6 +51,10 @@ export class SideMenuComponent implements OnInit {
 
   navegar(pRuta){
     this.Pro_router.navigate([pRuta])
+  }
+
+  fingerLoad(p_load){
+    this.storage.set('finger', this.finger)
   }
 
   async crearProducto() {
