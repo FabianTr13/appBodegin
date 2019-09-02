@@ -29,11 +29,6 @@ export class SideMenuComponent implements OnInit {
     this.storage.get('finger').then(finger=>{
       this.finger = finger
     })
-
-    if (this.finger == null || this.finger == undefined) {
-      this.finger = false;
-      this.storage.set('finger', false)
-    }
   }
 
   public refresher(){
@@ -54,6 +49,7 @@ export class SideMenuComponent implements OnInit {
   }
 
   fingerLoad(p_load){
+    this.finger = p_load.target.value
     this.storage.set('finger', this.finger)
   }
 

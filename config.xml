@@ -3,7 +3,7 @@
     <name>Bodegin</name>
     <description>Inventarios y servicios</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://192.168.2.219:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -106,6 +106,5 @@
     <plugin name="com.paypal.cordova.mobilesdk" spec="3.5.0" />
     <plugin name="onesignal-cordova-plugin" spec="2.5.2" />
     <plugin name="cordova-plugin-fingerprint-aio" spec="^1.7.0" />
-    <allow-navigation href="http://192.168.2.219:8100" sessionid="a2e3d420" />
     <engine name="android" spec="^8.0.0" />
 </widget>

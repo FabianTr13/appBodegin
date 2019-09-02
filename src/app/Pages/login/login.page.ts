@@ -31,6 +31,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.is_app = isApp
+     setTimeout( async() => { await this.loginFinger() }, 2000);
   }
 
   isLoading = false;
@@ -65,7 +66,7 @@ export class LoginPage implements OnInit {
 
   async loginFinger(){
     this.storage.get('finger').then(finger =>{
-      if (finger == true) {
+      if (finger == 'on') {
         this.faio.show({
           clientId: 'FingerprintCredential',
           clientSecret: 'o7aoOMYUbyxaD23oFAnJ',
