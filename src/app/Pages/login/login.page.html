@@ -29,7 +29,7 @@
           </div>
         </ion-col>
       </ion-row>
-      <ion-row color="primary" justify-content-center>
+      <ion-row color="primary" justify-content-center *ngIf="is_app">
         <ion-col align-self-center size-md="1" size-lg="1" size-xs="2">
           <ion-icon name="finger-print" class="icon-size" (click)="loginFinger()"></ion-icon>
         </ion-col>

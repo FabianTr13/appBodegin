@@ -30,10 +30,12 @@ export class LoginPage implements OnInit {
               }
 
   ngOnInit() {
+    this.is_app = isApp
   }
 
   isLoading = false;
   usuario = null
+  is_app = null
 
   async login(form:NgForm, kind = 1, p_finger = null){
     let credential = {
