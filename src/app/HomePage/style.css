@@ -1,5 +1,5 @@
 /* --------------------------
-:: Template Name: Colorlib App - App Landing Page 
+:: Template Name: Colorlib App - App Landing Page
 :: Template Author: Colorlib
 :: Template Author URI: https://colorlib.com/
 :: Description: Colorlib is a One Page based App Landing Template. It's very clean, creative & beautiful. It's super     responsive & ultra light.
@@ -199,7 +199,7 @@ ol {
     font-size: 24px;
     right: 30px;
     width: 50px;
-    background-color: #fb397d;
+    background-color: #3880ff;
     color: #fff;
     text-align: center;
     height: 50px;
@@ -233,7 +233,7 @@ p {
 
 .section-heading > h2 {
     font-weight: 300;
-    color: #5b32b4;
+    color: #3880ff;
     font-size: 48px;
     margin: 0;
 }
@@ -378,7 +378,7 @@ p {
     color: #fff;
     font-weight: 500;
     display: inline-block;
-    border: 2px solid #a883e9;
+    border: 2px solid #fff;
     height: 50px;
     min-width: 178px;
     line-height: 46px;
@@ -387,7 +387,7 @@ p {
 }
 
 .sing-up-button > a:hover {
-    background: #fb397d;
+    background: #10dc60;
     color: #fff;
     border-color: transparent;
     -webkit-transition-duration: 500ms;
@@ -398,7 +398,7 @@ p {
 /* stcicky css */
 
 .header_area.sticky {
-    background-color: #884bdf;
+    background-color: #3880ff;
     -webkit-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     height: 70px;
@@ -424,7 +424,8 @@ p {
 -------------------------- */
 
 .wellcome_area {
-    background-image: url(img/bg-img/welcome-bg.png);
+    /* background-image: url(img/bg-img/welcome-bg.png); */
+    background: #3880ff;
     height: 900px;
     position: relative;
     z-index: 1;
@@ -500,7 +501,7 @@ p {
 }
 
 .get-start-area .submit {
-    background-color: #fb397d;
+    background-color: #f04141;
     color: #fff;
     font-weight: 500;
     display: inline-block;
@@ -514,7 +515,7 @@ p {
 }
 
 .get-start-area .submit:hover {
-    background: #6f52e5;
+    background: #10dc60;
     color: #fff;
     -webkit-transition-duration: 500ms;
     -o-transition-duration: 500ms;
@@ -671,7 +672,7 @@ p {
 }
 
 .single-feature > i {
-    color: #fb397d;
+    color: #3880ff;
     font-size: 30px;
     display: inline-block;
     float: left;
@@ -680,7 +681,7 @@ p {
 
 .single-feature > h5 {
     font-size: 22px;
-    color: #5b32b4;
+    color: #3880ff;
 }
 
 .single-feature > p {
@@ -860,13 +861,13 @@ p {
 }
 
 .single-price-plan .package-plan > h5 {
-    color: #5b32b4;
+    color: #3880ff;
     font-size: 18px;
 }
 
 
 .single-price-plan .package-plan .ca-price h4 {
-    color: #fb397d;
+    color: #000;
     font-size: 48px;
     position: relative;
     z-index: 1;
@@ -876,7 +877,7 @@ p {
 
 .single-price-plan .package-plan .ca-price span {
     font-size: 18px;
-    color: #fb397d;
+    color: #000;
 }
 
 .single-price-plan .plan-button > a {
@@ -906,7 +907,7 @@ p {
 .single-price-plan.active .package-plan,
 .single-price-plan.active .plan-button > a,
 .single-price-plan:hover .plan-button > a {
-    background-color: #a865e1;
+    background-color: #3880ff;
 }
 
 .single-price-plan.active .package-plan .ca-price > h4,
@@ -1093,7 +1094,7 @@ p {
 
 .member-text > h4 {
     font-size: 22px;
-    color: #5b32b4;
+    color: #3880ff;
 }
 
 .member-text > p {
@@ -1107,7 +1108,8 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(105, 75, 228, 0.8);
+    /* background-color: rgba(105, 75, 228, 0.8); */
+    background: #3880ff;
     border-radius: 30px 30px 30px 0;
     opacity: 0;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -1142,7 +1144,7 @@ p {
 .team-social-icon > a {
     font-size: 14px;
     color: #fff;
-    background: #9a81d7;
+    background: #0060d7;
     height: 40px;
     width: 40px;
     line-height: 40px;
@@ -1211,7 +1213,7 @@ p {
 }
 
 .btn.submit-btn:hover {
-    background: #5b32b4;
+    background: #3880ff;
     color: #fff;
     -webkit-transition-duration: 500ms;
     -o-transition-duration: 500ms;
@@ -1231,7 +1233,7 @@ p {
 -------------------------- */
 
 .footer-text > h2 {
-    color: #5b32b4;
+    color: #3880ff;
     font-size: 72px;
     font-weight: 700;
 }
