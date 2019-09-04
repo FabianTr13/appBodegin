@@ -20,6 +20,7 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { OneSignal } from '@ionic-native/onesignal/ngx';
     Vibration,
     Camera,
     OneSignal,
+    FingerprintAIO,
     FileTransfer,
     BarcodeScanner,
     Base64,

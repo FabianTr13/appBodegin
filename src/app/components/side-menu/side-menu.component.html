@@ -67,10 +67,14 @@
         <ion-img src="/assets/side/config.png"></ion-img>
           Configuración
       </ion-item>
-      <ion-item (click)="navegar('/login')">
-        <ion-img src="/assets/side/logout.png"></ion-img>
-          Salir
-      </ion-item>
+      <ion-item>
+         <ion-label>Ingreso con huella</ion-label>
+         <ion-toggle [(ngModel)]="finger" (ionChange)="fingerLoad($event)" mode='ios'></ion-toggle>
+       </ion-item>
+       <ion-item (click)="navegar('/login')">
+         <ion-img src="/assets/side/logout.png"></ion-img>
+         Salir
+       </ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>

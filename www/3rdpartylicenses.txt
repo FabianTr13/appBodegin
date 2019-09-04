@@ -56,6 +56,9 @@ MIT
 @ionic-native/file-transfer
 MIT
 
+@ionic-native/fingerprint-aio
+MIT
+
 @ionic-native/onesignal
 MIT
 

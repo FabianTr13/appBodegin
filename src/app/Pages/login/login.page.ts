@@ -6,6 +6,8 @@ import { Storage } from '@ionic/storage';
 import { LoadingController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { Vibration } from '@ionic-native/vibration/ngx';
+import { isApp } from '../../Config/configuration';
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,8 @@ export class LoginPage implements OnInit {
               private storage: Storage,
               public toastController: ToastController,
               public loadingController: LoadingController,
-              private vibration: Vibration) {
+              private vibration: Vibration,
+              private faio: FingerprintAIO) {
                 this.storage.get('usuario').then(resp=>{
                     this.usuario = resp
                     this.storage.remove('usuario').then(rr=>{})
@@ -27,15 +30,23 @@ export class LoginPage implements OnInit {
               }
 
   ngOnInit() {
+    this.is_app = isApp
+     setTimeout( async() => { await this.loginFinger() }, 2000);
   }
 
   isLoading = false;
   usuario = null
+  is_app = null
 
-  async login(form:NgForm){
+  async login(form:NgForm, kind = 1, p_finger = null){
+    let credential = {
+        user : kind == 1 ? form.form.value.user : p_finger.usuario,
+        pass : kind == 1 ? form.form.value.password : p_finger.password
+    }
+
     await this.present()
     let id_onesignal = await this.storage.get('id_onesignal')
-    this.Pro_user.login(form.form.value.user, form.form.value.password, id_onesignal).subscribe(async resp=>{
+    this.Pro_user.login(credential.user, credential.pass, id_onesignal).subscribe(async resp=>{
       if (resp!=null) {
         if (resp.token) {
           await this.storage.set('token',resp.token)
@@ -51,6 +62,24 @@ export class LoginPage implements OnInit {
     }, async err=>{
       await this.dismiss()
     });
+  }
+
+  async loginFinger(){
+    this.storage.get('finger').then(finger =>{
+      if (finger == 'on') {
+        this.faio.show({
+          clientId: 'FingerprintCredential',
+          clientSecret: 'o7aoOMYUbyxaD23oFAnJ',
+          disableBackup:true,
+      })
+      .then( async result => {
+        let finger = await this.Pro_user.loginFinger()
+        console.log(finger)
+        this.login(null, 2, finger)
+      })
+      .catch((error: any) => console.log(error));
+      }
+    })
   }
 
   async present() {

@@ -59,6 +59,17 @@ export class UserService {
     }));
   }
 
+  async loginFinger(){
+    const headers = new HttpHeaders(Header);
+    let body = {
+      token:await this.storage.get('token')
+    }
+
+    let url = `${WEB_SERVICE}api/usuarios/loginFinger`
+
+    return await this.Pro_http.post(url, body, { headers }).toPromise()
+  }
+
   async eliminarUsuario(p_id_usuario){
     const headers = new HttpHeaders(Header);
     let body = {
