@@ -14,7 +14,7 @@
     }
     .welcome-thumb {
         width: 50%;
-        bottom: -100px;
+        bottom: -20px;
         right: 50px;
     }
     .video-area {
@@ -53,8 +53,8 @@
         text-align: left;
     }
     .welcome-thumb {
-        width: 50%;
-        bottom: -100px;
+        width: 40%;
+        bottom: 0px;
         right: 0;
     }
     .wellcome-heading {
@@ -127,7 +127,7 @@
     #ca-navbar {
         padding: 20px;
         border-radius: 3px;
-        background-color: #5b32b4;
+        background-color: #3880ff;
         text-align: left;
     }
     .sing-up-button {
@@ -143,15 +143,50 @@
     .wellcome-heading > h2 {
         font-size: 48px;
     }
+    .get-start-area .submit{
+      background-color: #f04141;
+      color: #fff;
+      font-weight: 500;
+      display: inline-block;
+      border: none;
+      height: 50px;
+      min-width: 140px;
+      line-height: 46px;
+      text-align: center;
+      border-radius: 24px 24px 24px 0px;
+      margin-left: 10px;
+    }
     .get-start-area .email {
         margin-bottom: 20px;
         max-width: 100%;
     }
     .welcome-thumb {
-        width: 90%;
-        bottom: -74px;
-        right: 0;
+        width: 65%;
+        bottom: 0px;
+        right: 50px;
     }
+
+    .wellcome_area {
+        /* background-image: url(img/bg-img/welcome-bg.png); */
+        background: #3880ff;
+        height: 700px;
+        position: relative;
+        z-index: 1;
+        background-position: bottom center;
+        background-size: cover;
+    }
+
+    .wellcome_area:after {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        height: 2px;
+        background-color: #fff;
+        content: '';
+        bottom: 0;
+        z-index: 2;
+    }
+
     .logo_area > a > h2 {
         font-size: 40px;
         margin-top: 10px;
@@ -214,7 +249,7 @@
     }
     .wellcome-heading > h3 {
         font-size: 252px;
-        top: -105px;
+        top: -145px;
         left: -1px;
     }
     .wellcome-heading,
@@ -234,8 +269,8 @@
         font-size: 70px;
     }
     .welcome-thumb {
-        bottom: -109px;
-        width: 75%;
+        bottom: 0px;
+        width: 40%;
     }
     .wellcome-heading {
         margin-bottom: 50px;
