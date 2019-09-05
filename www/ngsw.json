@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1567690763635,
+  "timestamp": 1567691465180,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -487,7 +487,7 @@
     "/assets/transacciones/out.png": "c2fdbddc5c306fa2f097d0974da99e0b15ecd761",
     "/common.0848fde6dec3f452e244.js": "f0887d5df4f667b86675de45c7fdb5c493863638",
     "/es2015-polyfills.504a17b42164056589df.js": "7570d00147578b3761d7f98d057bead1ef857c57",
-    "/index.html": "438b3f4e34f564e8a1102a7c14c9de06ab57e9fd",
+    "/index.html": "11559b03b79e0573ebc9a70ceb945bd79adc6f84",
     "/main.4b5ac4a54d9d917fe3da.js": "419270e045f1e1d777d8a15715ad6cd170ddbedd",
     "/polyfills.9ccc9e25ed7d36fbe127.js": "1719b733a191643a900b0df274abd7593fed160c",
     "/runtime.a41e46e77e4d510e7a73.js": "d6d172f38c7611c53b20ae3b6724a1079e832277",
