@@ -18,9 +18,22 @@ export class ReportePuntoPedidoPage implements OnInit {
 
   ngOnInit() {
     this.storage.get('token').then(token=>{
-      this.Pro_inventario.reporteStock(token).subscribe(report=>{
+      this.Pro_inventario.reportePedido(token).subscribe(report=>{
         this.reporte = report
       })
     })
+  }
+
+  async doRefresh(event) {
+    this.storage.get('token').then(token=>{
+      this.Pro_inventario.reportePedido(token).subscribe(data=>{
+        this.reporte = data
+        event.target.complete();
+      })
+    })
+  }
+
+  async Salir(){
+    this.modalController.dismiss();
   }
 }

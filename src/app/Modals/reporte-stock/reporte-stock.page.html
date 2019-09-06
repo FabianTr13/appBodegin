@@ -1,9 +1,42 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>reporteStock</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<app-header-modal titulo="Inventario de seguridad"></app-header-modal>
+<ion-content class="contenedor">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+  <ion-refresher-content  pullingIcon="arrow-dropdown"
+                          pullingText="Hale para recargar"
+                          refreshingSpinner="circles"
+                          refreshingText="Recargando..."></ion-refresher-content>
+  </ion-refresher>
+  <ion-card class="car" *ngFor="let item of reporte">
+    <ion-item class="car-head" lines="none">
+     <ion-avatar>
+       <img [src]="item.fotografia | domSanitizer" />
+     </ion-avatar>
+     <p>&nbsp;{{item.nombre}}</p>
+     <ion-avatar slot="end">
+       <img [src]="item.estado | domSanitizer" />
+     </ion-avatar>
+    </ion-item>
+    <ion-card-content>
+      <ion-label>
+        <ion-badge *ngIf="item.id_tipo_consumo == 1" color="primary">Unidad</ion-badge>
+        <ion-badge *ngIf="item.id_tipo_consumo == 2" color="tertiary">Porcentaje&nbsp;{{item.porcentaje_actual}}%</ion-badge>
+      </ion-label>
+      <ion-row>
+        En inventario: {{item.cantidad}}
+      </ion-row>
+      <ion-row>
+        Minimo de inventario: {{item.minimo}}
+      </ion-row>
+      <ion-row>
+        Promedio de venta diario: {{item.promedio_venta_diaria}}
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <div class="border"></div>
+  <ion-button shape="round"
+              class="buttonExit"
+              size="default"
+              (click)="Salir()"
+              color="medium"
+              expand="block">Salir <ion-icon slot="end" name="exit"></ion-icon></ion-button>
 </ion-content>

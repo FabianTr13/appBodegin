@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { ReportePuntoPedidoPageModule } from '../../Modals/reporte-punto-pedido/reporte-punto-pedido.module';
-import { ReportePuntoPedidoPage } from '../../Modals/reporte-punto-pedido/reporte-punto-pedido.page';
 import { IonicModule } from '@ionic/angular';
 import { ReportesPage } from './reportes.page';
+import { ReportePuntoPedidoPageModule } from '../../Modals/reporte-punto-pedido/reporte-punto-pedido.module';
+import { ReportePuntoPedidoPage } from '../../Modals/reporte-punto-pedido/reporte-punto-pedido.page';
+import { ReporteStockPageModule } from '../../Modals/reporte-stock/reporte-stock.module';
+import { ReporteStockPage } from '../../Modals/reporte-stock/reporte-stock.page';
 
 const routes: Routes = [
   {
@@ -17,15 +19,17 @@ const routes: Routes = [
 
 @NgModule({
   entryComponents:[
-    ReportePuntoPedidoPage
+    ReportePuntoPedidoPage,
+    ReporteStockPage
   ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ReportePuntoPedidoPageModule,
     RouterModule.forChild(routes),
-    ComponentsModule
+    ComponentsModule,
+    ReportePuntoPedidoPageModule,
+    ReporteStockPageModule
   ],
   declarations: [ReportesPage]
 })
