@@ -1,0 +1,10 @@
+<app-header-modal titulo="Stock de seguridad"></app-header-modal>
+<ion-content>
+  <ion-grid>
+    <ion-row justify-content-center *ngFor="let item of reporte">
+      <ion-col align-self-center size-md="2" size-lg="2" size-xs="2">
+        {{item.nombre}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
