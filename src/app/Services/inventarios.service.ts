@@ -45,6 +45,36 @@ export class InventariosService {
     }));
   }
 
+  reporteStock(p_token){
+    //Preparacion de header
+    const headers = new HttpHeaders(Header);
+
+    //Preparacion de body
+    let body = {
+      token: p_token
+    }
+
+    let url = `${WEB_SERVICE}api/inventarios/reporteStock`
+    return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
+      return result;
+    }));
+  }
+
+  reportePedido(p_token){
+    //Preparacion de header
+    const headers = new HttpHeaders(Header);
+
+    //Preparacion de body
+    let body = {
+      token: p_token
+    }
+
+    let url = `${WEB_SERVICE}api/inventarios/reportePedido`
+    return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
+      return result;
+    }));
+  }
+
   async getChartAsync(p_id_sucursal){
     //Preparacion de header
     const headers = new HttpHeaders(Header);
