@@ -75,6 +75,37 @@ export class InventariosService {
     }));
   }
 
+  ordenesCompra(p_token){
+    //Preparacion de header
+    const headers = new HttpHeaders(Header);
+
+    //Preparacion de body
+    let body = {
+      token: p_token
+    }
+
+    let url = `${WEB_SERVICE}api/inventarios/ordenesCompra`
+    return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
+      return result;
+    }));
+  }
+
+  getOrdenCompra(p_id_producto, p_id_sucursal){
+    //Preparacion de header
+    const headers = new HttpHeaders(Header);
+
+    //Preparacion de body
+    let body = {
+      id_producto: p_id_producto,
+      id_sucursal: p_id_sucursal
+    }
+
+    let url = `${WEB_SERVICE}api/inventarios/getOrdenCompra`
+    return this.Pro_http.post(url, body, { headers }).pipe(map((result: any) => {
+      return result;
+    }));
+  }
+
   async getChartAsync(p_id_sucursal){
     //Preparacion de header
     const headers = new HttpHeaders(Header);
