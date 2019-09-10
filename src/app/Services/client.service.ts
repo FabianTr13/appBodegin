@@ -57,7 +57,8 @@ export class ClientService {
       direccion:p_form.direccion,
       celular:p_form.phone,
       usuario:p_form.user,
-      clave:p_form.password
+      clave:p_form.password,
+      correo:p_form.correo
     }
     let url = `${WEB_SERVICE}api/clientes/CrearCliente`
 
@@ -93,7 +94,8 @@ export class ClientService {
       rtn: p_cliente.rtn,
       telefono: p_cliente.telefono,
       direccion: p_cliente.direccion,
-      usuario: p_cliente.usuario
+      usuario: p_cliente.usuario,
+      correo: p_cliente.correo
     }
 
     let url = `${WEB_SERVICE}api/clientes/updateCliente`

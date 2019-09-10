@@ -1,0 +1,92 @@
+ion-header{
+  ion-toolbar{
+    ion-item{
+      ion-img{
+        margin-right: 10%;
+        width: 10px;
+        height: 10px;
+      }
+      ion-label{
+        font-size: 1.2em !important;
+      }
+    }
+  }
+}
+.heider{
+  background: #3880ff;
+  height: 25px;
+}
+
+.borde{
+  border:1px solid #000000;
+}
+
+.titulo{
+  font-size: 0.75rem;
+}
+
+.subtitulo{
+  font-size:0.5rem;
+
+}
+
+.subtitulo_left{
+  font-size:0.48rem;
+}
+
+.nombre_cliente{
+  font-size:0.9rem;
+  margin-top: 10px;
+}
+
+.titulo_tabla{
+  font-size: 0.8rem;
+}
+
+.borde_titulo{
+  margin-left: 5px;
+  margin-right: 5px;
+  border-bottom: 2px solid #000000;
+}
+
+.borde_vehiculo{
+  margin-left: 5px;
+  margin-right: 5px;
+  // font-weight: 100;
+  border-top: 2px dashed #000000;
+  border-bottom: 2px dashed #000000;
+}
+
+
+
+.item_tabla{
+  font-size: 0.6rem;
+}
+.descripcion_item{
+  font-size: 0.7rem;
+}
+
+
+@media only screen and (min-width : 700px) {
+  .titulo{
+    font-size: 1.5rem;
+  }
+  .subtitulo{
+    font-size:1rem;
+  }
+  .subtitulo_left{
+    font-size:1rem;
+  }
+  .nombre_cliente{
+    font-size:1rem;
+    margin-top: 10px;
+  }
+  .titulo_tabla{
+    font-size: 1rem;
+  }
+
+  .item_tabla{
+    font-size: 1rem;
+  }
+
+}

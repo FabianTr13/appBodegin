@@ -1,0 +1,29 @@
+<app-header-in titulo="Ordenes de compra"></app-header-in>
+<ion-content class="contenedor">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+  <ion-refresher-content  pullingIcon="arrow-dropdown"
+                          pullingText="Hale para recargar"
+                          refreshingSpinner="circles"
+                          refreshingText="Recargando..."></ion-refresher-content>
+  </ion-refresher>
+  <ion-card class="car" *ngFor="let item of reporte" (click)="verOrden(item)">
+    <ion-item class="car-head" lines="none">
+     <ion-avatar>
+       <img [src]="item.fotografia | domSanitizer" />
+     </ion-avatar>
+     <p>&nbsp;{{item.nombre}}</p>
+     <ion-avatar slot="end">
+       <ion-icon name="ios-cart" color="primary" size="large"></ion-icon>
+     </ion-avatar>
+    </ion-item>
+    <ion-card-content>
+      <ion-label>
+        <ion-badge color="primary">Sucursal {{item.sucursal}}</ion-badge>
+      </ion-label>
+      <ion-row>
+        Cantidad recomendada a pedir: {{item.cantidad_pedir}}
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <div class="border"></div>
+</ion-content>

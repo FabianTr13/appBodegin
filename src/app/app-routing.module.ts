@@ -22,6 +22,8 @@ const routes: Routes = [
   { path: 'config', loadChildren: './Pages/config-usuarios/config-usuarios.module#ConfigUsuariosPageModule', canActivate :[AuthGuard, PagosGuard, RolesGuard], data: {token: []} },
   { path: 'configUsuariosList', loadChildren: './Pages/config-usuarios-list/config-usuarios-list.module#ConfigUsuariosListPageModule', canActivate :[AuthGuard, PagosGuard, RolesGuard], data: {token: []} },
   { path: 'pagos', loadChildren: './Pages/pagos/pagos.module#PagosPageModule', canActivate :[AuthGuard, RolesGuard], data: {token: []} },
+  { path: 'ordenes', loadChildren: './Pages/ordenes/ordenes.module#OrdenesPageModule', canActivate :[AuthGuard, PagosGuard, RolesGuard], data: {token: []} },
+  // { path: 'ordenes-compra', loadChildren: './Modals/ordenes-compra/ordenes-compra.module#OrdenesCompraPageModule' , canActivate :[AuthGuard, PagosGuard, RolesGuard], data: {token: []} },
 ];
 
 @NgModule({

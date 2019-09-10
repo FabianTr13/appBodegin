@@ -25,7 +25,8 @@ export class ConfigUsuariosPage implements OnInit {
     telefono:null,
     direccion:null,
     usuario:null,
-    foto: []
+    foto: [],
+    correo:null
   }
 
   @ViewChild('fileInput') el:ElementRef;
@@ -183,6 +184,7 @@ export class ConfigUsuariosPage implements OnInit {
               this.Pro_cliente.updateCliente(this.cliente).subscribe(async data => {
                 await this.guardarImagen()
                 await this.dismiss()
+                await this.showToast('Cambios guardados con exito', 5000)
               }, async err=>{
                 await this.dismiss()
               })

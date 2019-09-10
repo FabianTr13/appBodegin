@@ -41,7 +41,9 @@ export class SucursalesPage implements OnInit {
     let suc = {
       id_sucursal:p_sucursal ? p_sucursal.id_sucursal : null,
       descripcion: p_sucursal ? p_sucursal.descripcion : null,
-      nombre_corto: p_sucursal ? p_sucursal.nombre_corto : null
+      nombre_corto: p_sucursal ? p_sucursal.nombre_corto : null,
+      direccion: p_sucursal ? p_sucursal.direccion : null,
+      telefono: p_sucursal ? p_sucursal.telefono : null
     }
 
     const modal = await this.modalController.create({
@@ -72,7 +74,7 @@ export class SucursalesPage implements OnInit {
         }, {
           text: 'Eliminar',
           handler: async data => {
-            await this.Pro_sucursales.InserUpdateDeleteSucursal(p_id_sucursal, data,'', 'DELETE');
+            await this.Pro_sucursales.InserUpdateDeleteSucursal(p_id_sucursal, data,'','','', 'DELETE');
             await this.refreshUpdate();
           }
         }

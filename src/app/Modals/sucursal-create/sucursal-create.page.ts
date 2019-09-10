@@ -14,7 +14,9 @@ export class SucursalCreatePage implements OnInit {
   @Input() sucursal = {
     id_sucursal:null,
     descripcion:null,
-    nombre_corto:null
+    nombre_corto:null,
+    direccion:null,
+    telefono:null
   };
   @Input() accion;
   usuarios = [
@@ -39,7 +41,7 @@ export class SucursalCreatePage implements OnInit {
     this.storage.get('token').then(token=>{
       this.Pro_usuarios.getUsuariosList(token, this.sucursal.id_sucursal).subscribe(data=>{
         this.usuarios = data;
-        console.log(data)
+        console.log(this.sucursal)
       })
     })
   }
@@ -48,9 +50,11 @@ export class SucursalCreatePage implements OnInit {
     this.Pro_sucursales.InserUpdateDeleteSucursal(this.sucursal.id_sucursal,
       this.sucursal.descripcion,
       this.sucursal.nombre_corto,
-      this.accion
+      this.sucursal.direccion,
+      this.sucursal.telefono,
+      this.accion,
     )
-    console.log(this.usuarios)
+    // console.log(this.usuarios)
     await this.Pro_sucursales.insertSucursalUsuario(this.usuarios, this.sucursal.id_sucursal)
     this.modalController.dismiss(this.sucursal);
   }

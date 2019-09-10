@@ -21,6 +21,9 @@ import { Vibration } from '@ionic-native/vibration/ngx';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
 
 @NgModule({
   declarations: [
@@ -49,8 +52,11 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
     OneSignal,
     FingerprintAIO,
     FileTransfer,
+    FileOpener,
+    File,
     BarcodeScanner,
     Base64,
+    SocialSharing,
     ActionSheetController,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

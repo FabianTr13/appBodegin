@@ -22,6 +22,9 @@
         <ion-badge *ngIf="item.id_tipo_consumo == 2" color="tertiary">Porcentaje&nbsp;{{item.porcentaje_actual}}%</ion-badge>
       </ion-label>
       <ion-row>
+        <ion-badge color="primary">Sucursal: {{item.sucursal}}</ion-badge>
+      </ion-row>
+      <ion-row>
         En inventario: {{item.cantidad}}
       </ion-row>
       <ion-row>
