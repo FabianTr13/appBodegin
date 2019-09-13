@@ -106,6 +106,7 @@ export class OrdenesCompraPage implements OnInit {
    }
    this.pdfObj = pdfMake.createPdf(docDefinition);
  }
+
  async downloadPdf() {
    await this.share()
    if (this.plt.is('cordova')) {
