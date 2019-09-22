@@ -113,6 +113,5 @@
     <plugin name="cordova-plugin-x-socialsharing" spec="5.6.0">
         <variable name="ANDROID_SUPPORT_V4_VERSION" value="24.1.1+" />
     </plugin>
-    <allow-navigation href="http://192.168.2.219:8101" sessionid="e7b70a5e" />
     <engine name="android" spec="^8.0.0" />
 </widget>

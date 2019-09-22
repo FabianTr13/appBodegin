@@ -40,7 +40,7 @@
     </ion-row>
     <ion-row  justify-content-center
               class="row_historial"
-              *ngFor="let item of pagos.historial">
+              *ngFor="let item of pagos.historial" (click)="downloadPdf(item.id_pago)">
       <ion-col align-self-center size-md="5" size-lg="3" size-xs="10">
         <ion-label>
           <h2 class="id_pago">{{item.id}}</h2>

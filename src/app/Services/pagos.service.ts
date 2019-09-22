@@ -45,6 +45,19 @@ export class PagosService {
     }));
   }
 
+  async getFactura(p_id){
+    //Preparacion de header
+    const headers = new HttpHeaders(Header);
+
+    //Preparacion de body
+    let body = {
+      id_pago:  p_id
+    };
+    let url = `${WEB_SERVICE}api/pagos/getFactura`
+
+    return await this.Pro_http.post(url, body, { headers }).toPromise()
+  }
+
   pago(): Promise<boolean>{
     return new Promise(async (resolve, reject)=>{
       let token = await this.storage.get('token')
