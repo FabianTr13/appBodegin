@@ -168,8 +168,8 @@ export class PagosPage implements OnInit {
           [ 'Producto', 'Cant.', 'Precio Ant.', 'Total' ],
           [ pagos['descripcion'],
             '1',
-            pagos['monto'],
-            pagos['monto']
+            'L. ' + pagos['monto'],
+            'L. ' + pagos['monto']
           ],
         ]
       }

@@ -59,7 +59,7 @@ export class EstadisticasPage implements OnInit {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
       type: 'bar',
       data: {
-        labels: ['LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB'],
+        labels: ['LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB', 'DOM'],
         datasets: [{
           label: '# Entregas semanal',
           data: this.entregasDiarias,
