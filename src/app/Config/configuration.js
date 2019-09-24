@@ -7,4 +7,4 @@ export const Header = {
 }
 
 export const WEB_SERVICE = "http://www.bodegin.com:3000/";
-export const isApp = false;
+export const isApp = true;
