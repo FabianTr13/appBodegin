@@ -68,7 +68,9 @@ export class ResetPassPage implements OnInit {
         }
     }else if (this.celularConfirmado && this.codigoConfirmado) {
       if (p_valor.form.value.nuevaPassC != null && p_valor.form.value.nuevaPass != null) {
+
         if (p_valor.form.value.nuevaPassC == p_valor.form.value.nuevaPass) {
+          console.log(p_valor.form.value.nuevaPass)
           this.Pro_user.cambiarPassword(this.id_usuario, p_valor.form.value.nuevaPass).subscribe(async resp =>{
             await this.login(p_valor.form.value.nuevaPass)
             await this.dismiss()
