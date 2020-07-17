@@ -68,7 +68,7 @@
     "html-dom-to-pdf": "^1.0.2",
     "ionic-angular": "^3.9.8",
     "jspdf": "^1.5.3",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "ng-recaptcha": "^4.3.0",
     "onesignal-cordova-plugin": "2.5.2",
     "paypal-rest-sdk": "^1.8.1",
